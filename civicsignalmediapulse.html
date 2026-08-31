@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CivicSignal — Africa's Media Pulse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --cream:#F7F3EA;
+    --cream-2:#EFE9DB;
+    --ink:#1B2340;
+    --navy:#22305A;
+    --navy-deep:#141B33;
+    --line:#DED6C3;
+    --muted:#6b6455;
+
+    --c-politics:#2b3a67;
+    --c-economy:#3aa6a0;
+    --c-culture:#8b7ec8;
+    --c-technology:#e8a13a;
+    --c-conflict:#d9663b;
+    --c-health:#5fa8d3;
+    --c-gender:#b0538a;
+    --c-climate:#6fae4e;
+    --c-other:#b7b2a4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Manrope',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Source Serif 4', Georgia, serif;}
+  a{color:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  @media(max-width:720px){.wrap{padding:0 18px;}}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:40;
+    background:rgba(247,243,234,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:0.01em;font-size:17px;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--c-conflict);display:inline-block;}
+  .navlinks{display:flex;gap:28px;font-size:14px;font-weight:600;color:var(--navy);}
+  .navlinks a{opacity:0.7;text-decoration:none;}
+  .navlinks a:hover{opacity:1;}
+  .navlinks{display:none;}
+  @media(min-width:860px){.navlinks{display:flex;}}
+  .req-btn{background:var(--navy-deep);color:#fff;border:none;padding:10px 18px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 20px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--c-conflict);margin-bottom:18px;
+  }
+  .eyebrow::before{content:'';width:22px;height:1.5px;background:var(--c-conflict);display:inline-block;}
+  h1.hero-title{
+    font-size:clamp(34px,5.2vw,58px);
+    line-height:1.06;
+    font-weight:600;
+    margin:0 0 20px;
+    max-width:15ch;
+    color:var(--navy-deep);
+  }
+  .hero-sub{font-size:17px;line-height:1.6;color:var(--muted);max-width:60ch;margin:0 0 34px;}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:34px;margin-bottom:8px;}
+  .stat b{display:block;font-size:26px;font-family:'Source Serif 4',serif;color:var(--navy-deep);}
+  .stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;}
+
+  /* ---------- STREAMGRAPH CARD ---------- */
+  .panel{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:26px 26px 14px;
+    box-shadow:0 1px 0 rgba(20,27,51,0.02);
+  }
+  .panel-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;margin-bottom:4px;}
+  .panel-title{font-size:13px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--navy);}
+  .panel-note{font-size:12px;color:var(--muted);}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin:12px 0 6px;font-size:12px;color:var(--navy);}
+  .legend .item{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;opacity:1;transition:opacity .15s;}
+  .legend .item.off{opacity:0.32;}
+  .legend .sw{width:9px;height:9px;border-radius:2px;display:inline-block;}
+  .chart-box{height:320px;position:relative;margin-top:6px;}
+  @media(max-width:720px){.chart-box{height:260px;}}
+
+  /* ---------- FILTER BAR ---------- */
+  .filters{
+    display:flex;flex-wrap:wrap;gap:12px;
+    margin:34px 0 26px;
+    align-items:center;
+  }
+  .filters label{display:flex;flex-direction:column;gap:5px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;}
+  select{
+    appearance:none;
+    background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path d="M0 0l5 6 5-6z" fill="%2322305A"/></svg>') no-repeat right 12px center;
+    border:1px solid var(--line);
+    border-radius:9px;
+    padding:9px 30px 9px 12px;
+    font-size:13px;font-weight:600;color:var(--ink);
+    min-width:160px;
+    font-family:inherit;
+    cursor:pointer;
+  }
+  .reset{
+    align-self:flex-end;
+    background:none;border:none;color:var(--c-conflict);font-weight:700;font-size:13px;cursor:pointer;padding:9px 4px;
+  }
+
+  /* ---------- SECTION HEADS ---------- */
+  .section{margin:64px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px;gap:16px;flex-wrap:wrap;}
+  .section-head h2{font-size:26px;font-weight:600;margin:0;color:var(--navy-deep);}
+  .section-head p{font-size:14px;color:var(--muted);margin:6px 0 0;max-width:56ch;}
+  .count-pill{font-size:12px;font-weight:700;color:var(--navy);background:var(--cream-2);border-radius:999px;padding:5px 12px;white-space:nowrap;}
+
+  /* ---------- ENTITY CARDS ---------- */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:620px){.grid{grid-template-columns:1fr;}}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;
+    display:flex;flex-direction:column;gap:12px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(27,35,64,0.06);}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
+  .card-name{font-weight:700;font-size:15.5px;line-height:1.25;}
+  .badge{font-size:10.5px;font-weight:700;background:var(--cream-2);color:var(--navy);border-radius:999px;padding:4px 9px;white-space:nowrap;}
+  .meta-row{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);}
+  .meta-row span{display:flex;align-items:center;gap:5px;}
+  .radar-box{height:190px;}
+  .card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;}
+  .card-foot b{color:var(--navy-deep);font-size:14px;font-family:'Source Serif 4',serif;}
+  .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);font-size:14px;}
+
+  /* ---------- FEED ---------- */
+  .feed-list{display:flex;flex-direction:column;}
+  .feed-row{
+    display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;
+    padding:14px 0;border-bottom:1px solid var(--line);
+  }
+  .feed-row:last-child{border-bottom:none;}
+  .topic-dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .feed-title{font-size:14px;font-weight:600;line-height:1.4;}
+  .feed-sub{font-size:12px;color:var(--muted);margin-top:3px;}
+  .feed-date{font-size:12px;color:var(--muted);white-space:nowrap;}
+
+  /* ---------- TOPIC TOTALS BARS ---------- */
+  .bars{display:flex;flex-direction:column;gap:12px;}
+  .bar-row{display:grid;grid-template-columns:170px 1fr 50px;align-items:center;gap:12px;font-size:13px;}
+  .bar-track{background:var(--cream-2);border-radius:6px;height:10px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:6px;}
+
+  /* ---------- INFO STRIP ---------- */
+  .info-strip{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+    background:var(--navy-deep);color:#EFE9DB;border-radius:18px;padding:36px 32px;
+  }
+  @media(max-width:780px){.info-strip{grid-template-columns:1fr;}}
+  .info-strip h3{font-size:14px;font-weight:700;margin:0 0 8px;color:#fff;}
+  .info-strip p{font-size:13px;line-height:1.6;color:#C7C2B4;margin:0;}
+
+  footer{border-top:1px solid var(--line);margin-top:70px;padding:28px 0;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  /* ---------- STATUS BANNER (loading / data-fetch error) ---------- */
+  .status-banner{padding:10px 24px;font-size:13px;font-weight:600;text-align:center;}
+  .status-banner.loading{background:var(--navy-deep);color:#fff;}
+  .status-banner.error{background:var(--c-conflict);color:#fff;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand"><span class="dot"></span> CivicSignal</div>
+    <nav class="navlinks">
+      <a href="#pulse">Media Pulse</a>
+      <a href="#entities">Profiles</a>
+      <a href="#feed">Coverage feed</a>
+      <a href="#about">About the corpus</a>
+    </nav>
+    <button class="req-btn">Request access</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" id="pulse">
+    <div class="eyebrow">Code for Africa · Tech showcase</div>
+    <h1 class="hero-title">Africa's digital-native media, in motion.</h1>
+    <p class="hero-sub">CivicSignal listens in on independent digital publishers, creator-journalists and newsletters across the continent — tracking what they cover, in which languages, and how coverage shifts week to week.</p>
+    <div class="hero-stats" id="heroStats"></div>
+  </section>
+
+  <section class="panel" style="margin-top:28px;">
+    <div class="panel-head">
+      <div>
+        <div class="panel-title">Volume of stories, by topic</div>
+        <div class="panel-note">Last 30 days · classified from article title &amp; body text</div>
+      </div>
+      <div class="panel-note" id="chartRange"></div>
+    </div>
+    <div class="legend" id="legend"></div>
+    <div class="chart-box"><canvas id="streamChart"></canvas></div>
+  </section>
+
+  <section class="section" id="entities">
+    <div class="section-head">
+      <div>
+        <h2>Media profiles</h2>
+        <p>Topical coverage for the most active publishers in the corpus. Radar shows share of a publisher's stories in each topic.</p>
+      </div>
+      <span class="count-pill" id="pubCount"></span>
+    </div>
+
+    <div class="filters">
+      <label>Country
+        <select id="fCountry"><option value="all">All countries</option></select>
+      </label>
+      <label>Language
+        <select id="fLang"><option value="all">All languages</option></select>
+      </label>
+      <label>Topic focus
+        <select id="fTopic"><option value="all">All topics</option></select>
+      </label>
+      <button class="reset" id="resetBtn">Reset filters</button>
+    </div>
+
+    <div class="grid" id="cardGrid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>Topic mix, whole corpus</h2>
+        <p>Share of all classified articles by topic, across every publisher and country in this dataset.</p>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="bars" id="topicBars"></div>
+    </div>
+  </section>
+
+  <section class="section" id="feed">
+    <div class="section-head">
+      <div>
+        <h2>Recent coverage</h2>
+        <p>Latest classified stories across the corpus, most recent first.</p>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="feed-list" id="feedList"></div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="info-strip">
+      <div>
+        <h3>What this is</h3>
+        <p>A working showcase built from a scraped corpus of African digital-native publishers — titles, body text, country and publication date, run through a lightweight topic &amp; language classifier.</p>
+      </div>
+      <div>
+        <h3>How topics are assigned</h3>
+        <p>Each article is scored against bilingual (English/French) keyword sets across eight topics; the highest-scoring topic wins. Articles matching nothing are left as "Other" and excluded from the charts above.</p>
+      </div>
+      <div>
+        <h3>Known limits</h3>
+        <p>Publication dates lean heavily on recent scrape runs, keyword classification is heuristic rather than semantic, and Arabic-language coverage is detected but not yet topic-classified with dedicated keywords.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>CivicSignal · Code for Africa — working demo, not for distribution</span>
+  <span id="genDate"></span>
+</footer>
+
+<script>
+// This page holds no data of its own - every number, chart and list below comes from
+// showcase_data.json, fetched fresh each time the page loads. Refreshing that JSON file
+// on the server (see the showcase-data skill: classify_topics.py + build_showcase_data.py)
+// is all that's needed to bring this page current - nothing here ever needs to change.
+//
+// DATA_URL is relative to this HTML file's own location, so it works wherever the two are
+// deployed together, on any server. Change it only if showcase_data.json will live somewhere
+// else relative to this page (e.g. a subdirectory).
+const DATA_URL = 'showcase_data.json';
+
+function showBanner(message, kind){
+  // kind: 'loading' | 'error'. Only one banner is shown at a time.
+  hideBanner();
+  const el = document.createElement('div');
+  el.id = 'statusBanner';
+  el.className = 'status-banner ' + kind;
+  el.textContent = message;
+  document.body.insertAdjacentElement('afterbegin', el);
+}
+function hideBanner(){
+  const existing = document.getElementById('statusBanner');
+  if(existing) existing.remove();
+}
+
+showBanner('Loading latest data…', 'loading');
+
+fetch(DATA_URL, { cache: 'no-store' })  // no-store: never show a browser-cached JSON after a refresh
+  .then(res => {
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    return res.json();
+  })
+  .then(data => {
+    hideBanner();
+    renderPage(data);
+  })
+  .catch(err => {
+    console.error('Failed to load ' + DATA_URL, err);
+    showBanner(
+      "Couldn't load the latest data (" + DATA_URL + "). Make sure it's been generated " +
+      "(see the showcase-data skill) and deployed in the same folder as this page. (" + err.message + ')',
+      'error'
+    );
+  });
+
+function renderPage(DATA) {
+const CATS = DATA.categories;
+const COLORS = DATA.colors;
+const LABELS = Object.fromEntries([...CATS, 'Other'].map(c => [c, c]));
+
+const HAS_CHART = typeof Chart !== 'undefined';
+if(!HAS_CHART){
+  document.body.insertAdjacentHTML('afterbegin',
+    '<div class="status-banner error">'
+    + 'Chart library did not load from the CDN (no internet access, or the request was blocked) — numbers and lists below still work, but the graphs are skipped.'
+    + '</div>');
+}
+
+document.getElementById('genDate').textContent = 'Generated ' + DATA.generatedAt + ' · ' + DATA.totals.articles.toLocaleString() + ' articles classified';
+
+// ---- hero stats ----
+const heroStats = document.getElementById('heroStats');
+const statDefs = [
+  [DATA.totals.articles.toLocaleString(), 'Stories in corpus'],
+  [DATA.totals.publishers.toLocaleString(), 'Publishers tracked'],
+  [DATA.totals.countries, 'Countries covered'],
+  [DATA.totals.languages, 'Languages detected'],
+];
+heroStats.innerHTML = statDefs.map(([v,l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
+
+// ---- legend (toggleable) ----
+const legendEl = document.getElementById('legend');
+let hidden = new Set();
+function renderLegend(){
+  legendEl.innerHTML = CATS.map(c => `
+    <span class="item ${hidden.has(c)?'off':''}" data-cat="${c}">
+      <span class="sw" style="background:${COLORS[c]}"></span>${LABELS[c]}
+    </span>`).join('');
+  legendEl.querySelectorAll('.item').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const cat = el.dataset.cat;
+      if(hidden.has(cat)) hidden.delete(cat); else hidden.add(cat);
+      renderLegend();
+      updateChart();
+    });
+  });
+}
+
+// ---- streamgraph (stacked area) ----
+const days = Object.keys(DATA.daily).sort();
+document.getElementById('chartRange').textContent = days[0] + ' – ' + days[days.length-1];
+const ctx = document.getElementById('streamChart').getContext('2d');
+let chart;
+function buildDatasets(){
+  return CATS.filter(c=>!hidden.has(c)).map(c => ({
+    label: LABELS[c],
+    data: days.map(d => DATA.daily[d][c] || 0),
+    backgroundColor: COLORS[c] + 'CC',
+    borderColor: COLORS[c],
+    borderWidth: 1,
+    fill: true,
+    tension: 0.35,
+    pointRadius: 0,
+  }));
+}
+function updateChart(){
+  if(!HAS_CHART) return;
+  const datasets = buildDatasets();
+  if(chart){ chart.data.datasets = datasets; chart.update(); return; }
+  chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: days.map(d=>d.slice(5)), datasets },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      interaction:{mode:'index', intersect:false},
+      plugins:{ legend:{display:false}, tooltip:{
+        backgroundColor:'#1B2340', padding:10, titleFont:{weight:700}, bodyFont:{size:11},
+      }},
+      scales:{
+        x:{ stacked:true, grid:{display:false}, ticks:{maxTicksLimit:8, color:'#6b6455', font:{size:11}} },
+        y:{ stacked:true, grid:{color:'#EFE9DB'}, ticks:{color:'#6b6455', font:{size:11}} },
+      }
+    }
+  });
+}
+renderLegend();
+updateChart();
+
+// ---- filters ----
+const fCountry = document.getElementById('fCountry');
+const fLang = document.getElementById('fLang');
+const fTopic = document.getElementById('fTopic');
+[...new Set(DATA.publishers.map(p=>p.country))].sort().forEach(c=>{
+  fCountry.innerHTML += `<option value="${c}">${c}</option>`;
+});
+[...new Set(DATA.publishers.map(p=>p.lang))].sort().forEach(l=>{
+  fLang.innerHTML += `<option value="${l}">${l}</option>`;
+});
+CATS.forEach(c=>{ fTopic.innerHTML += `<option value="${c}">${LABELS[c]}</option>`; });
+
+const radarCharts = {};
+function renderCards(){
+  const cv = fCountry.value, lv = fLang.value, tv = fTopic.value;
+  const filtered = DATA.publishers.filter(p =>
+    (cv==='all'||p.country===cv) && (lv==='all'||p.lang===lv) && (tv==='all'||p.topTopic===tv)
+  );
+  document.getElementById('pubCount').textContent = `Showing ${filtered.length} of ${DATA.publishers.length} profiled`;
+  const grid = document.getElementById('cardGrid');
+  Object.values(radarCharts).forEach(rc=>rc.destroy());
+  Object.keys(radarCharts).forEach(k=>delete radarCharts[k]);
+
+  if(filtered.length===0){
+    grid.innerHTML = `<div class="empty">No publishers match these filters. Try resetting.</div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map((p,i) => `
+    <div class="card">
+      <div class="card-top">
+        <div class="card-name">${p.name}</div>
+        <span class="badge">${p.entityType}</span>
+      </div>
+      <div class="meta-row">
+        <span>${p.country}</span><span>·</span><span>${p.lang}</span>
+      </div>
+      <div class="radar-box"><canvas id="radar-${i}"></canvas></div>
+      <div class="card-foot">
+        <span>Top topic: <b style="font-size:12px;color:${COLORS[p.topTopic]||'#1B2340'}">${LABELS[p.topTopic]}</b></span>
+        <span><b>${p.total}</b> stories</span>
+      </div>
+    </div>
+  `).join('');
+
+  if(!HAS_CHART) return;
+  filtered.forEach((p,i) => {
+    const c = document.getElementById(`radar-${i}`).getContext('2d');
+    radarCharts[i] = new Chart(c, {
+      type:'radar',
+      data:{
+        labels: CATS.map(c=>LABELS[c]),
+        datasets:[{
+          data: CATS.map(c=>p.radar[c]||0),
+          backgroundColor:'rgba(43,58,103,0.14)',
+          borderColor:'#2b3a67',
+          borderWidth:1.5,
+          pointRadius:2,
+          pointBackgroundColor:'#2b3a67',
+        }]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false}, tooltip:{enabled:true, callbacks:{label:(ctx)=>ctx.formattedValue+'%'}}},
+        scales:{ r:{
+          angleLines:{color:'#EFE9DB'}, grid:{color:'#EFE9DB'},
+          ticks:{display:false}, pointLabels:{font:{size:8.5}, color:'#6b6455'}
+        }}
+      }
+    });
+  });
+}
+[fCountry,fLang,fTopic].forEach(el=>el.addEventListener('change', renderCards));
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  fCountry.value='all'; fLang.value='all'; fTopic.value='all'; renderCards();
+});
+renderCards();
+
+// ---- topic totals bars ----
+const totalAll = Object.values(DATA.topicTotals).reduce((a,b)=>a+b,0);
+const barsEl = document.getElementById('topicBars');
+const sortedTopics = Object.entries(DATA.topicTotals).sort((a,b)=>b[1]-a[1]);
+barsEl.innerHTML = sortedTopics.map(([topic,count]) => {
+  const pct = (100*count/totalAll).toFixed(1);
+  return `<div class="bar-row">
+    <span>${LABELS[topic]||topic}</span>
+    <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${COLORS[topic]}"></div></div>
+    <span>${pct}%</span>
+  </div>`;
+}).join('');
+
+// ---- feed ----
+const feedEl = document.getElementById('feedList');
+feedEl.innerHTML = DATA.feed.map(f => `
+  <div class="feed-row">
+    <span class="topic-dot" style="background:${COLORS[f.topic]}"></span>
+    <div>
+      <div class="feed-title">${f.title}</div>
+      <div class="feed-sub">${f.publisher} · ${f.country} · <span style="color:${COLORS[f.topic]}">${LABELS[f.topic]}</span></div>
+    </div>
+    <div class="feed-date">${f.date}</div>
+  </div>
+`).join('');
+
+} // end renderPage
+</script>
+</body>
+</html>

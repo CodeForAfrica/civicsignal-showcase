@@ -480,7 +480,7 @@ const fTopic = document.getElementById('fTopic');
 });
 CATS.forEach(c=>{ fTopic.innerHTML += `<option value="${c}">${LABELS[c]}</option>`; });
 
-const SOCIAL_LABELS = {facebook:'Facebook', twitter:'X / Twitter', instagram:'Instagram', linkedin:'LinkedIn', youtube:'YouTube', tiktok:'TikTok'};
+const SOCIAL_LABELS = {facebook:'Facebook', twitter:'X / Twitter', instagram:'Instagram', linkedin:'LinkedIn', youtube:'YouTube', tiktok:'TikTok', telegram:'Telegram', fediverse:'Mastodon', mastodon:'Mastodon'};
 function formatFollowers(n){
   if(n==null) return null;
   if(n>=1000000) return (n/1000000).toFixed(1).replace(/\.0$/,'')+'M';

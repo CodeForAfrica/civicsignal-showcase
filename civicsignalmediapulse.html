@@ -194,6 +194,12 @@
   .card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;}
   .card-foot b{color:var(--navy-deep);font-size:14px;font-family:'Source Serif 4',serif;}
   .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);font-size:14px;}
+  .load-more-wrap{display:flex;justify-content:center;margin-top:28px;}
+  .load-more-btn{
+    background:#fff;border:1px solid var(--line);border-radius:999px;padding:12px 26px;
+    font-family:inherit;font-weight:700;font-size:13.5px;color:var(--navy-deep);cursor:pointer;
+  }
+  .load-more-btn:hover{background:var(--cream-2);}
 
   /* ---------- FEED ---------- */
   .feed-list{display:flex;flex-direction:column;}
@@ -249,7 +255,7 @@
 
   <section class="hero" id="pulse">
     <div class="eyebrow">Code for Africa · Tech showcase</div>
-    <h1 class="hero-title">Africa's digital-native media, in motion.</h1>
+    <h1 class="hero-title">Africa's Emerging Media Ecosystem, in motion</h1>
     <p class="hero-sub">CivicSignal listens in on independent digital publishers, creator-journalists, and newsletter/Telegram push-media channels across the continent — tracking what they cover, in which languages, and how coverage shifts week to week.</p>
     <div class="hero-stats" id="heroStats"></div>
     <div class="source-mix" id="sourceMix"></div>
@@ -298,6 +304,7 @@
     </div>
 
     <div class="grid" id="cardGrid"></div>
+    <div class="load-more-wrap" id="loadMoreWrap"></div>
   </section>
 
   <section class="section">
@@ -412,7 +419,8 @@ document.getElementById('genDate').textContent = 'Generated ' + DATA.generatedAt
 const heroStats = document.getElementById('heroStats');
 const statDefs = [
   [DATA.totals.articles.toLocaleString(), 'Stories in corpus'],
-  [DATA.totals.publishers.toLocaleString(), 'Publishers tracked'],
+  [(DATA.totals.mapped||0).toLocaleString(), 'Publishers mapped'],
+  [(DATA.totals.tracked||0).toLocaleString(), 'Publishers tracked'],
   [DATA.totals.countries, 'Countries covered'],
   [DATA.totals.languages, 'Languages detected'],
 ];
@@ -472,9 +480,15 @@ function renderHighlights(weekDays){
     ${spikeDays.map(d => {
       const h = dh[d];
       const { day, month } = formatDay(d);
-      const headlines = h.headlines.map(x => `<div class="spike-headline">— <b>${x.title}</b> (${x.publisher})</div>`).join('');
+      const topicBit = h.topTopic
+        ? ` — driven largely by <span style="color:${COLORS[h.topTopic]||'inherit'};font-weight:600;">${LABELS[h.topTopic]}</span> coverage`
+        : '';
+      const pctBit = (h.pctAboveAvg!=null) ? `, ${h.pctAboveAvg}% above this week's daily average` : '';
+      const headlines = h.headlines.length
+        ? h.headlines.map(x => `<div class="spike-headline">— <b>${x.title}</b> (${x.publisher})</div>`).join('')
+        : `<div class="spike-headline">No substantial headlines captured for this day.</div>`;
       return `<div class="spike-day">
-        <div class="spike-day-head"><b>${day} ${month}</b><span>${h.total.toLocaleString()} stories that day, well above this week's average</span></div>
+        <div class="spike-day-head"><b>${day} ${month}</b><span>${h.total.toLocaleString()} stories${pctBit}${topicBit}</span></div>
         ${headlines}
       </div>`;
     }).join('')}
@@ -620,23 +634,37 @@ function renderCardBack(p){
   return rows.join('');
 }
 
-const radarCharts = {};
-function renderCards(){
+// Rendering all ~700 cards (each with its own live Chart.js radar) at once is what was
+// freezing the page - only ever build DOM/charts for the currently-visible slice, and let
+// "Load more" grow it in fixed batches instead.
+const PAGE_SIZE = 24;
+let visibleCount = PAGE_SIZE;
+
+function getFiltered(){
   const sv = fSource.value, cv = fCountry.value, lv = fLang.value, tv = fTopic.value;
-  const filtered = DATA.publishers.filter(p =>
+  return DATA.publishers.filter(p =>
     (sv==='all'||p.entityType===sv) && (cv==='all'||p.country===cv) && (lv==='all'||p.lang===lv) && (tv==='all'||p.topTopic===tv)
   );
-  document.getElementById('pubCount').textContent = `Showing ${filtered.length} of ${DATA.publishers.length} profiled`;
+}
+
+const radarCharts = {};
+function renderCards(){
+  const filtered = getFiltered();
+  const loadMoreWrap = document.getElementById('loadMoreWrap');
+  document.getElementById('pubCount').textContent =
+    `Showing ${Math.min(visibleCount, filtered.length)} of ${filtered.length} profiled`;
   const grid = document.getElementById('cardGrid');
   Object.values(radarCharts).forEach(rc=>rc.destroy());
   Object.keys(radarCharts).forEach(k=>delete radarCharts[k]);
 
   if(filtered.length===0){
     grid.innerHTML = `<div class="empty">No publishers match these filters. Try resetting.</div>`;
+    loadMoreWrap.innerHTML = '';
     return;
   }
 
-  grid.innerHTML = filtered.map((p,i) => `
+  const visible = filtered.slice(0, visibleCount);
+  grid.innerHTML = visible.map((p,i) => `
     <div class="card">
       <div class="flip-inner" data-flipped="false" role="button" tabindex="0"
            aria-label="${p.name} card. Press to see more detail.">
@@ -674,8 +702,18 @@ function renderCards(){
     });
   });
 
+  if(visibleCount < filtered.length){
+    loadMoreWrap.innerHTML = `<button class="load-more-btn" id="loadMoreBtn">Load more (${filtered.length - visibleCount} remaining)</button>`;
+    document.getElementById('loadMoreBtn').addEventListener('click', () => {
+      visibleCount += PAGE_SIZE;
+      renderCards();
+    });
+  } else {
+    loadMoreWrap.innerHTML = '';
+  }
+
   if(!HAS_CHART) return;
-  filtered.forEach((p,i) => {
+  visible.forEach((p,i) => {
     const c = document.getElementById(`radar-${i}`).getContext('2d');
     radarCharts[i] = new Chart(c, {
       type:'radar',
@@ -701,9 +739,11 @@ function renderCards(){
     });
   });
 }
-[fSource,fCountry,fLang,fTopic].forEach(el=>el.addEventListener('change', renderCards));
+[fSource,fCountry,fLang,fTopic].forEach(el=>el.addEventListener('change', ()=>{ visibleCount = PAGE_SIZE; renderCards(); }));
 document.getElementById('resetBtn').addEventListener('click', ()=>{
-  fSource.value='all'; fCountry.value='all'; fLang.value='all'; fTopic.value='all'; renderCards();
+  fSource.value='all'; fCountry.value='all'; fLang.value='all'; fTopic.value='all';
+  visibleCount = PAGE_SIZE;
+  renderCards();
 });
 renderCards();
 

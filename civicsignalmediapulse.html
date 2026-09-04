@@ -97,11 +97,30 @@
   .panel-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;margin-bottom:4px;}
   .panel-title{font-size:13px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--navy);}
   .panel-note{font-size:12px;color:var(--muted);}
+  .week-nav{display:flex;align-items:center;gap:10px;}
+  .week-nav .panel-note{min-width:132px;text-align:center;font-weight:600;color:var(--navy);}
+  .week-btn{
+    background:#fff;border:1px solid var(--line);border-radius:8px;width:28px;height:28px;
+    font-size:16px;font-weight:700;color:var(--navy);cursor:pointer;line-height:1;
+    display:flex;align-items:center;justify-content:center;font-family:inherit;
+  }
+  .week-btn:hover:not(:disabled){background:var(--cream-2);}
+  .week-btn:disabled{opacity:0.3;cursor:default;}
   .legend{display:flex;flex-wrap:wrap;gap:14px;margin:12px 0 6px;font-size:12px;color:var(--navy);}
   .legend .item{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;opacity:1;transition:opacity .15s;}
   .legend .item.off{opacity:0.32;}
+  .legend .rank{font-family:'Source Serif 4',serif;font-weight:600;color:var(--muted);font-size:11px;}
   .legend .sw{width:9px;height:9px;border-radius:2px;display:inline-block;}
   .chart-box{height:320px;position:relative;margin-top:6px;}
+  .week-highlights{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);}
+  .week-highlights-title{font-size:12px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .spike-day{margin-bottom:12px;}
+  .spike-day:last-child{margin-bottom:0;}
+  .spike-day-head{display:flex;align-items:baseline;gap:8px;font-size:13px;margin-bottom:5px;}
+  .spike-day-head b{font-family:'Source Serif 4',serif;color:var(--navy-deep);}
+  .spike-headline{font-size:12.5px;color:var(--muted);line-height:1.5;}
+  .spike-headline b{color:var(--ink);font-weight:600;}
+  .no-spike{font-size:13px;color:var(--muted);}
   @media(max-width:720px){.chart-box{height:260px;}}
 
   /* ---------- FILTER BAR ---------- */
@@ -239,13 +258,18 @@
   <section class="panel" style="margin-top:28px;">
     <div class="panel-head">
       <div>
-        <div class="panel-title">Volume of stories, by topic</div>
-        <div class="panel-note">Last 30 days · classified from article title &amp; body text</div>
+        <div class="panel-title">Weekly Signal</div>
+        <div class="panel-note">Volume of Stories by Topic</div>
       </div>
-      <div class="panel-note" id="chartRange"></div>
+      <div class="week-nav">
+        <button class="week-btn" id="weekPrev" aria-label="Previous week">‹</button>
+        <span class="panel-note" id="chartRange"></span>
+        <button class="week-btn" id="weekNext" aria-label="Next week">›</button>
+      </div>
     </div>
     <div class="legend" id="legend"></div>
     <div class="chart-box"><canvas id="streamChart"></canvas></div>
+    <div id="weekHighlights"></div>
   </section>
 
   <section class="section" id="entities">
@@ -406,33 +430,82 @@ sourceMixEl.innerHTML = Object.entries(sourceTypes).map(([type,count]) => `
   <span class="chip"><span class="sw" style="background:${SOURCE_COLORS[type]||'var(--muted)'}"></span>${type} · <b>${count.toLocaleString()}</b></span>
 `).join('');
 
-// ---- legend (toggleable) ----
+// ---- legend (toggleable, ranked by volume for the displayed week) ----
 const legendEl = document.getElementById('legend');
 let hidden = new Set();
-function renderLegend(){
-  legendEl.innerHTML = CATS.map(c => `
+function renderLegend(rankedCats){
+  legendEl.innerHTML = rankedCats.map((c,i) => `
     <span class="item ${hidden.has(c)?'off':''}" data-cat="${c}">
-      <span class="sw" style="background:${COLORS[c]}"></span>${LABELS[c]}
+      <span class="rank">${i+1}</span><span class="sw" style="background:${COLORS[c]}"></span>${LABELS[c]}
     </span>`).join('');
   legendEl.querySelectorAll('.item').forEach(el=>{
     el.addEventListener('click', ()=>{
       const cat = el.dataset.cat;
       if(hidden.has(cat)) hidden.delete(cat); else hidden.add(cat);
-      renderLegend();
       updateChart();
     });
   });
 }
 
-// ---- streamgraph (stacked area) ----
+// ---- human-readable week range, e.g. "2 Sep – 9 Sep, 2026" ----
+const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function formatDay(d){
+  const [y,m,day] = d.split('-').map(Number);
+  return { day, month: MONTH_NAMES[m-1], year: y };
+}
+function formatWeekRange(weekDays){
+  if(!weekDays.length) return 'No data';
+  const a = formatDay(weekDays[0]), b = formatDay(weekDays[weekDays.length-1]);
+  return `${a.day} ${a.month} – ${b.day} ${b.month}, ${b.year}`;
+}
+
+// ---- notable-days panel: real headlines from days with unusually high volume that week -----
+// (grounded in this dataset's own numbers, not a claimed real-world cause - see
+// build_showcase_data.py's spike-detection comment for why)
+function renderHighlights(weekDays){
+  const el = document.getElementById('weekHighlights');
+  const dh = DATA.dailyHighlights || {};
+  const spikeDays = weekDays.filter(d => dh[d] && dh[d].isSpike);
+  if(!spikeDays.length){ el.innerHTML = ''; return; }
+  el.innerHTML = `<div class="week-highlights">
+    <div class="week-highlights-title">Notable this week</div>
+    ${spikeDays.map(d => {
+      const h = dh[d];
+      const { day, month } = formatDay(d);
+      const headlines = h.headlines.map(x => `<div class="spike-headline">— <b>${x.title}</b> (${x.publisher})</div>`).join('');
+      return `<div class="spike-day">
+        <div class="spike-day-head"><b>${day} ${month}</b><span>${h.total.toLocaleString()} stories that day, well above this week's average</span></div>
+        ${headlines}
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+
+// ---- streamgraph (stacked area, one week at a time) ----
 const days = Object.keys(DATA.daily).sort();
-document.getElementById('chartRange').textContent = days[0] + ' – ' + days[days.length-1];
+const WEEK_SIZE = 7;
+let weekOffset = 0; // 0 = most recent week; increasing steps back in time
+const weekPrevBtn = document.getElementById('weekPrev');
+const weekNextBtn = document.getElementById('weekNext');
+
+function currentWeek(){
+  const end = Math.max(0, days.length - weekOffset*WEEK_SIZE);
+  const start = Math.max(0, end - WEEK_SIZE);
+  return { start, weekDays: days.slice(start, end) };
+}
+
+function rankTopicsForWeek(weekDays){
+  const totals = {};
+  CATS.forEach(c => { totals[c] = weekDays.reduce((sum,d) => sum + (DATA.daily[d][c]||0), 0); });
+  return [...CATS].sort((a,b) => totals[b]-totals[a]);
+}
+
 const ctx = document.getElementById('streamChart').getContext('2d');
 let chart;
-function buildDatasets(){
-  return CATS.filter(c=>!hidden.has(c)).map(c => ({
+function buildDatasets(weekDays, rankedCats){
+  return rankedCats.filter(c=>!hidden.has(c)).map(c => ({
     label: LABELS[c],
-    data: days.map(d => DATA.daily[d][c] || 0),
+    data: weekDays.map(d => DATA.daily[d][c] || 0),
     backgroundColor: COLORS[c] + 'CC',
     borderColor: COLORS[c],
     borderWidth: 1,
@@ -442,12 +515,26 @@ function buildDatasets(){
   }));
 }
 function updateChart(){
+  const { start, weekDays } = currentWeek();
+  document.getElementById('chartRange').textContent = formatWeekRange(weekDays);
+  weekPrevBtn.disabled = start === 0;
+  weekNextBtn.disabled = weekOffset === 0;
+
+  const rankedCats = rankTopicsForWeek(weekDays);
+  renderLegend(rankedCats);
+  renderHighlights(weekDays);
+
   if(!HAS_CHART) return;
-  const datasets = buildDatasets();
-  if(chart){ chart.data.datasets = datasets; chart.update(); return; }
+  const datasets = buildDatasets(weekDays, rankedCats);
+  if(chart){
+    chart.data.labels = weekDays.map(d=>d.slice(5));
+    chart.data.datasets = datasets;
+    chart.update();
+    return;
+  }
   chart = new Chart(ctx, {
     type: 'line',
-    data: { labels: days.map(d=>d.slice(5)), datasets },
+    data: { labels: weekDays.map(d=>d.slice(5)), datasets },
     options: {
       responsive:true, maintainAspectRatio:false,
       interaction:{mode:'index', intersect:false},
@@ -455,13 +542,14 @@ function updateChart(){
         backgroundColor:'#1B2340', padding:10, titleFont:{weight:700}, bodyFont:{size:11},
       }},
       scales:{
-        x:{ stacked:true, grid:{display:false}, ticks:{maxTicksLimit:8, color:'#6b6455', font:{size:11}} },
+        x:{ stacked:true, grid:{display:false}, ticks:{color:'#6b6455', font:{size:11}} },
         y:{ stacked:true, grid:{color:'#EFE9DB'}, ticks:{color:'#6b6455', font:{size:11}} },
       }
     }
   });
 }
-renderLegend();
+weekPrevBtn.addEventListener('click', ()=>{ weekOffset++; updateChart(); });
+weekNextBtn.addEventListener('click', ()=>{ if(weekOffset>0){ weekOffset--; updateChart(); } });
 updateChart();
 
 // ---- filters ----

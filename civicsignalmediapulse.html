@@ -269,6 +269,21 @@
   .feed-sub{font-size:12px;color:var(--muted);margin-top:3px;}
   .feed-date{font-size:12px;color:var(--muted);white-space:nowrap;}
 
+  /* ---------- RECENT COVERAGE: 3-up topic columns ---------- */
+  .feed-topic-picker{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;}
+  .feed-topic-picker label{display:flex;flex-direction:column;gap:5px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;}
+  .feed-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media(max-width:900px){.feed-columns{grid-template-columns:1fr;}}
+  .feed-col{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0;}
+  .feed-col-head{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+  .feed-col-sw{width:10px;height:10px;border-radius:3px;flex:0 0 auto;}
+  .feed-col-head h3{font-size:14px;font-weight:900;color:var(--navy-deep);}
+  .feed-col-summary{font-size:12.5px;color:var(--muted);background:var(--cream-2);border-radius:8px;padding:10px 12px;margin-bottom:14px;line-height:1.55;}
+  .feed-col-summary b{color:var(--ink);}
+  .feed-col .feed-row{grid-template-columns:1fr;gap:2px;padding:10px 0;}
+  .feed-col .feed-date{font-size:11px;}
+  .feed-col-empty{font-size:12.5px;color:var(--muted);padding:8px 0;}
+
   /* ---------- TOPIC TOTALS BARS ---------- */
   .bars{display:flex;flex-direction:column;gap:12px;}
   .bar-row{display:grid;grid-template-columns:170px 1fr 50px;align-items:center;gap:12px;font-size:13px;}
@@ -427,12 +442,11 @@
     <div class="section-head">
       <div>
         <h2>Recent coverage</h2>
-        <p>Latest classified stories across the corpus, most recent first.</p>
+        <p>Latest classified stories across the corpus &mdash; pick up to three topics to compare side by side. Each column's summary is a live snapshot built from the same data below it, not a generated write-up.</p>
       </div>
     </div>
-    <div class="panel">
-      <div class="feed-list" id="feedList"></div>
-    </div>
+    <div class="feed-topic-picker" id="feedTopicPicker"></div>
+    <div class="feed-columns" id="feedColumns"></div>
   </section>
 
   </div>
@@ -973,18 +987,62 @@ barsEl.innerHTML = sortedTopics.map(([topic,count]) => {
   </div>`;
 }).join('');
 
-// ---- feed ----
-const feedEl = document.getElementById('feedList');
-feedEl.innerHTML = DATA.feed.map(f => `
-  <div class="feed-row">
-    <span class="topic-dot" style="background:${COLORS[f.topic]}"></span>
-    <div>
-      <div class="feed-title">${f.title}</div>
-      <div class="feed-sub">${f.publisher} · ${f.country} · <span style="color:${COLORS[f.topic]}">${LABELS[f.topic]}</span>${f.entityType ? ` · <span class="badge" data-type="${f.entityType}" style="padding:2px 8px;font-size:10px;">${f.entityType}</span>` : ''}</div>
-    </div>
-    <div class="feed-date">${f.date}</div>
-  </div>
+// ---- recent coverage: 3 topic-picked columns, each with a stats-based (not AI-generated) summary ----
+function computeColumnSummary(items, topicLabel){
+  if(!items.length) return `No recent stories tagged <b>${topicLabel}</b> in this feed sample.`;
+  const pubCounts = {};
+  items.forEach(f => { pubCounts[f.publisher] = (pubCounts[f.publisher] || 0) + 1; });
+  const [topPub, topPubCount] = Object.entries(pubCounts).sort((a, b) => b[1] - a[1])[0];
+  const uniquePubs = Object.keys(pubCounts).length;
+  const countries = new Set(items.map(f => f.country));
+  return `<b>${items.length}</b> ${items.length === 1 ? 'story' : 'stories'} from <b>${uniquePubs}</b> publisher${uniquePubs === 1 ? '' : 's'} `
+    + `across <b>${countries.size}</b> countr${countries.size === 1 ? 'y' : 'ies'}. Most active here: <b>${topPub}</b> (${topPubCount}).`;
+}
+
+function renderFeedColumns(){
+  const picks = feedTopicSelects.map(s => s.value);
+  const columnsEl = document.getElementById('feedColumns');
+  columnsEl.innerHTML = picks.map(topic => {
+    const items = DATA.feed.filter(f => f.topic === topic);
+    const label = LABELS[topic] || topic;
+    const summary = computeColumnSummary(items, label);
+    const rows = items.length
+      ? items.map(f => `
+        <div class="feed-row">
+          <div>
+            <div class="feed-title">${f.title}</div>
+            <div class="feed-sub">${f.publisher} &middot; ${f.country}${f.entityType ? ` &middot; <span class="badge" data-type="${f.entityType}" style="padding:2px 8px;font-size:10px;">${f.entityType}</span>` : ''}</div>
+            <div class="feed-date">${f.date}</div>
+          </div>
+        </div>`).join('')
+      : `<div class="feed-col-empty">No recent stories tagged ${label} in this feed sample.</div>`;
+    return `
+      <div class="feed-col">
+        <div class="feed-col-head">
+          <span class="feed-col-sw" style="background:${COLORS[topic] || '#999'}"></span>
+          <h3>${label}</h3>
+        </div>
+        <div class="feed-col-summary">${summary}</div>
+        ${rows}
+      </div>`;
+  }).join('');
+}
+
+const rankedFeedTopics = Object.entries(DATA.topicTotals)
+  .filter(([t]) => CATS.includes(t)) // 'Other' shows up in topicTotals but isn't a selectable column topic
+  .sort((a, b) => b[1] - a[1]).map(([t]) => t);
+const defaultFeedPicks = rankedFeedTopics.slice(0, 3);
+const feedPickerEl = document.getElementById('feedTopicPicker');
+feedPickerEl.innerHTML = [0, 1, 2].map(i => `
+  <label>Column ${i + 1}
+    <select class="feed-topic-select" data-col="${i}">
+      ${CATS.map(c => `<option value="${c}" ${c === defaultFeedPicks[i] ? 'selected' : ''}>${LABELS[c] || c}</option>`).join('')}
+    </select>
+  </label>
 `).join('');
+const feedTopicSelects = Array.from(feedPickerEl.querySelectorAll('.feed-topic-select'));
+feedTopicSelects.forEach(s => s.addEventListener('change', renderFeedColumns));
+renderFeedColumns();
 
 // ---- corpus search (keyword, to start - entity search is next) ----
 const searchInput = document.getElementById('corpusSearch');

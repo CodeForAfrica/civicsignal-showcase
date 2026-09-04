@@ -54,7 +54,7 @@
   .ticker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
   .stat{padding:8px 20px;border-left:1px solid var(--line);}
   .stat:first-child{padding-left:0;border-left:none;}
-  .stat .num{display:block;font-size:clamp(1.4rem,2.4vw,2rem);font-weight:900;color:var(--red);letter-spacing:-0.01em;}
+  .stat .num{display:block;font-size:clamp(1.4rem,2.4vw,2rem);font-weight:900;color:var(--navy-deep);letter-spacing:-0.01em;}
   .stat .label{display:block;margin-top:6px;font-size:12px;color:var(--ink-dim);line-height:1.35;}
   @media(max-width:800px){.ticker-grid{grid-template-columns:repeat(2,1fr);row-gap:24px;}.stat{border-left:none;padding-left:0;}}
 
@@ -66,7 +66,7 @@
   .flagship{font-family:var(--font-display);font-weight:700;font-style:italic;font-size:clamp(1.2rem,2.4vw,1.6rem);line-height:1.5;color:var(--ink);border-left:4px solid var(--red);padding-left:22px;margin:8px 0 0;max-width:56ch;}
 
   .stat-callout{display:flex;align-items:baseline;gap:22px;border-left:4px solid var(--red);padding-left:22px;margin:8px 0 0;flex-wrap:wrap;}
-  .stat-callout .fs-num{font-family:var(--font-display);font-weight:900;font-size:clamp(2rem,4vw,2.8rem);color:var(--red);line-height:1;white-space:nowrap;}
+  .stat-callout .fs-num{font-family:var(--font-display);font-weight:900;font-size:clamp(2rem,4vw,2.8rem);color:var(--navy-deep);line-height:1;white-space:nowrap;}
   .stat-callout p{font-size:14.5px;color:var(--ink-dim);line-height:1.6;max-width:52ch;margin:0;}
 
   .search-cta{
@@ -102,6 +102,13 @@
   .country-card p{font-size:13px;color:var(--ink-dim);line-height:1.5;margin:0;}
   .country-card b{color:var(--ink);}
   .country-card b a{color:inherit;text-decoration:underline;}
+
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+  @media(max-width:800px){.team-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:500px){.team-grid{grid-template-columns:1fr;}}
+  .team-role{background:var(--bg-alt);border:1px solid var(--line);border-radius:8px;padding:14px 16px;}
+  .t-role{display:block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px;}
+  .t-name{font-size:14px;font-weight:700;color:var(--ink);}
 
   .layers{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
   .layer{padding:18px 22px;border-bottom:1px solid var(--line);background:var(--bg-raised);display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:16px;align-items:center;}
@@ -306,6 +313,30 @@
           <li>Presenting follower totals as equivalent to trust, quality or civic value.</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="border-bottom:none;">
+  <div class="wrap">
+    <span class="kicker">The people behind the research</span>
+    <h2>The Code for Africa team.</h2>
+    <div class="team-grid">
+      <div class="team-role"><span class="t-role">Project Lead</span><span class="t-name">Saif Ali</span></div>
+      <div class="team-role"><span class="t-role">Project Manager</span><span class="t-name">Sarah Gowon</span></div>
+      <div class="team-role"><span class="t-role">Research Managers</span><span class="t-name">Praise Abraham, CC Chargi</span></div>
+      <div class="team-role"><span class="t-role">Project Advisers</span><span class="t-name">Justin Arenstein, Chris Roper, Amanda Strydom</span></div>
+      <div class="team-role"><span class="t-role">Report Author</span><span class="t-name">Zada Hanmer</span></div>
+    </div>
+    <h3 style="margin:36px 0 16px;font-size:1.05rem;font-family:var(--font-display);font-weight:900;">Researchers per country</h3>
+    <div class="country-grid">
+      <div class="country-card"><div class="cname">C&ocirc;te d'Ivoire</div><p>Coulibaly Apalo, Sandra Kohet, Mariam Ouattara</p></div>
+      <div class="country-card"><div class="cname">Ghana</div><p>Stephen Tindi</p></div>
+      <div class="country-card"><div class="cname">Kenya</div><p>Emma Laura Kisa, Rodgers Omondi, Harriet Ogayo, Naomi Wanjiku</p></div>
+      <div class="country-card"><div class="cname">Morocco</div><p>Najwa Aboufikr, Fadwa Kamal, Mahmoud Maamar, Ahmed Sguiri</p></div>
+      <div class="country-card"><div class="cname">Nigeria</div><p>Lukman Abolade, Deborah Dinnah, Gbemisola Esho, Ifunanya Ezugwu, Olwautosin Victory George, Chioma Obinagwam, Akpo Patricia Uyeh</p></div>
+      <div class="country-card"><div class="cname">Senegal</div><p>Diop Ababacar, Ibrahima Ndiaye, Mariam Sanogo, Arame Thiam</p></div>
+      <div class="country-card"><div class="cname">South Africa</div><p>Zada Hanmer, Penelope Marais, Gloria Motsoere, Dr. Sandra Roberts</p></div>
     </div>
   </div>
 </section>

@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CivicSignal — Africa's Media Pulse</title>
+<title>CivicSignal — Wavelength</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=optional" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <style>
   :root{
@@ -39,59 +39,42 @@
   }
   h1,h2,h3,.serif{font-family:'Lato',system-ui,sans-serif;font-weight:900;}
   a{color:inherit;}
-  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
   @media(max-width:720px){.wrap{padding:0 18px;}}
 
   /* ---------- shared site nav (all 5 pages) ---------- */
   .cs-nav{background:var(--navy);border-bottom:3px solid var(--red);}
-  .cs-nav-inner{max-width:1240px;margin:0 auto;padding:12px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .cs-nav-inner{max-width:1120px;margin:0 auto;padding:12px clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
   @media(max-width:720px){.cs-nav-inner{padding:12px 18px;}}
   .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
-  .cs-logo-badge{background:#fff;border-radius:6px;padding:5px 9px;display:flex;align-items:center;height:30px;}
-  .cs-logo-badge img{height:20px;width:auto;display:block;}
   .cs-wordmark{font-family:'Lato',sans-serif;font-weight:900;font-size:17px;color:#fff;letter-spacing:0.01em;}
-  .cs-wordmark span{color:#F0A0A2;}
+  .cs-pipe{color:var(--red);font-weight:700;font-size:16px;margin:0 2px;}
+  .cs-orgname{font-family:'Lato',sans-serif;font-weight:700;font-size:13px;color:#B9C2DA;letter-spacing:0.02em;}
   .cs-navlinks{display:flex;gap:22px;flex-wrap:wrap;}
+  .cs-nav-inner{line-height:1;}
   .cs-navlinks a{color:#B9C2DA;font-family:'Lato',sans-serif;font-weight:700;font-size:13.5px;text-decoration:none;letter-spacing:0.01em;}
   .cs-navlinks a:hover,.cs-navlinks a.active{color:#fff;}
   .cs-footbar{background:var(--navy-deep);}
-  .cs-footbar-inner{max-width:1240px;margin:0 auto;padding:16px 32px;font-family:'Lato',sans-serif;font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .cs-footbar-inner{max-width:1120px;margin:0 auto;padding:16px clamp(20px,5vw,56px);font-family:'Lato',sans-serif;font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .cs-footbar-inner a{color:#8791AC;}
 
-  /* ---------- in-page sub-nav (this page's own sections) ---------- */
-  header.nav{
-    position:sticky;top:0;z-index:40;
-    background:rgba(244,243,240,0.92);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:0.01em;font-size:17px;}
-  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--red);display:inline-block;}
-  .navlinks{display:flex;gap:28px;font-size:14px;font-weight:700;color:var(--navy);}
-  .navlinks a{opacity:0.7;text-decoration:none;}
-  .navlinks a:hover{opacity:1;}
-  .navlinks{display:none;}
-  @media(min-width:860px){.navlinks{display:flex;}}
-  .req-btn{background:var(--navy-deep);color:#fff;border:none;padding:10px 18px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;}
-
   /* ---------- HERO ---------- */
-  .hero{padding:64px 0 20px;}
+  .hero{background:var(--cream-2);border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
   .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
-    color:var(--c-conflict);margin-bottom:18px;
-  }
-  .eyebrow::before{content:'';width:22px;height:1.5px;background:var(--c-conflict);display:inline-block;}
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:32px;display:block;
+  line-height:1.2;}
   h1.hero-title{
-    font-size:clamp(34px,5.2vw,58px);
-    line-height:1.06;
+    font-size:clamp(2rem,5vw,3.3rem);
+    line-height:1.1;
+    letter-spacing:-0.015em;
     font-weight:900;
     margin:0 0 20px;
     max-width:24ch;
     color:var(--navy-deep);
   }
-  .hero-sub{font-size:17px;line-height:1.6;color:var(--muted);max-width:60ch;margin:0 0 34px;}
+  .hero-sub{font-size:1.1rem;line-height:1.6;color:var(--muted);max-width:60ch;margin:0 0 34px;}
   .hero-stats{display:flex;flex-wrap:wrap;gap:34px;margin-bottom:8px;}
   .stat b{display:block;font-size:26px;font-family:'Lato',sans-serif;font-weight:900;color:var(--navy-deep);}
   .stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;}
@@ -111,8 +94,6 @@
     padding:26px 26px 14px;
     box-shadow:0 1px 0 rgba(20,27,51,0.02);
   }
-  .panel-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;margin-bottom:4px;}
-  .panel-title{font-size:13px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--navy);}
   .panel-note{font-size:12px;color:var(--muted);}
   .week-nav{display:flex;align-items:center;gap:10px;}
   .week-nav .panel-note{min-width:132px;text-align:center;font-weight:600;color:var(--navy);}
@@ -162,6 +143,11 @@
     align-self:flex-end;
     background:none;border:none;color:var(--c-conflict);font-weight:700;font-size:13px;cursor:pointer;padding:9px 4px;
   }
+
+  /* ---------- PANEL STEPPER ---------- */
+  .stepper-panel{border-radius:18px;padding:40px clamp(20px,4vw,44px);margin:0 0 28px;}
+  .stepper-panel:nth-of-type(odd){background:var(--cream-2);}
+  .stepper-panel:nth-of-type(even){background:#DFDDD6;}
 
   /* ---------- SECTION HEADS ---------- */
   .section{margin:64px 0;}
@@ -258,46 +244,36 @@
 <header class="cs-nav">
   <div class="cs-nav-inner">
     <a href="index.html" class="cs-brand">
-      <span class="cs-logo-badge"><img src="assets/cfa-logo.png" alt="Code for Africa"></span>
-      <span class="cs-wordmark">Civic<span>Signal</span></span>
+      <span class="cs-wordmark">CivicSignal</span><span class="cs-pipe">|</span><span class="cs-orgname">Code for Africa</span>
     </a>
     <nav class="cs-navlinks">
-      <a href="civicsignalmediapulse.html" class="active">Ecosystem Monitoring</a>
-      <a href="project-oasis.html">Project Oasis</a>
-      <a href="cnti-creators.html">CNTI Creators</a>
+      <a href="civicsignalmediapulse.html" class="active">Wavelength</a>
+      <a href="project-oasis.html">Digital Natives</a>
+      <a href="cnti-creators.html">Creators</a>
       <a href="push-media.html">Push Media</a>
     </nav>
   </div>
 </header>
 
-<header class="nav">
-  <div class="wrap nav-inner">
-    <div class="brand"><span class="dot"></span> Ecosystem Monitor</div>
-    <nav class="navlinks">
-      <a href="#pulse">Media Pulse</a>
-      <a href="#entities">Profiles</a>
-      <a href="#feed">Coverage feed</a>
-      <a href="#about">About the corpus</a>
-    </nav>
-    <button class="req-btn">Request access</button>
+<header class="hero" id="pulse">
+  <div class="wrap">
+    <div class="eyebrow">Africa's emerging media ecosystem - in motion</div>
+    <h1 class="hero-title">Wavelength</h1>
+    <p class="hero-sub">CivicSignal listens in on independent digital publishers, creator-journalists, and newsletter/Telegram push-media channels across the continent — tracking what they cover, in which languages, and how coverage shifts week to week.</p>
+    <div class="hero-stats" id="heroStats"></div>
+    <div class="source-mix" id="sourceMix"></div>
   </div>
 </header>
 
 <main class="wrap">
 
-  <section class="hero" id="pulse">
-    <div class="eyebrow">Code for Africa · Tech showcase</div>
-    <h1 class="hero-title">Africa's Emerging Media Ecosystem, in motion</h1>
-    <p class="hero-sub">CivicSignal listens in on independent digital publishers, creator-journalists, and newsletter/Telegram push-media channels across the continent — tracking what they cover, in which languages, and how coverage shifts week to week.</p>
-    <div class="hero-stats" id="heroStats"></div>
-    <div class="source-mix" id="sourceMix"></div>
-  </section>
+  <div class="stepper" id="stepper">
 
-  <section class="panel" style="margin-top:28px;">
-    <div class="panel-head">
+  <section class="section stepper-panel" id="weekly-signal" data-panel-title="Weekly Signal">
+    <div class="section-head">
       <div>
-        <div class="panel-title">Weekly Signal</div>
-        <div class="panel-note">Volume of Stories by Topic</div>
+        <h2>Weekly Signal</h2>
+        <p>One week of coverage at a time, broken down by topic. Step back with &lsaquo; to compare against earlier weeks; the legend re-ranks itself by that week's own volume, and any day that spiked well above the week's average gets called out below the chart with the real headlines behind it.</p>
       </div>
       <div class="week-nav">
         <button class="week-btn" id="weekPrev" aria-label="Previous week">‹</button>
@@ -305,16 +281,18 @@
         <button class="week-btn" id="weekNext" aria-label="Next week">›</button>
       </div>
     </div>
-    <div class="legend" id="legend"></div>
-    <div class="chart-box"><canvas id="streamChart"></canvas></div>
-    <div id="weekHighlights"></div>
+    <div class="panel">
+      <div class="legend" id="legend"></div>
+      <div class="chart-box"><canvas id="streamChart"></canvas></div>
+      <div id="weekHighlights"></div>
+    </div>
   </section>
 
-  <section class="section" id="entities">
+  <section class="section stepper-panel" id="entities" data-panel-title="Fingerprints">
     <div class="section-head">
       <div>
-        <h2>Media profiles</h2>
-        <p>Topical coverage for the most active publishers in the corpus. Radar shows share of a publisher's stories in each topic.</p>
+        <h2>Fingerprints</h2>
+        <p>Every publisher's topical fingerprint &mdash; the unique mix of subjects it covers, sized by how active it's been. Two outlets can publish the same volume of stories and look nothing alike here.</p>
       </div>
       <span class="count-pill" id="pubCount"></span>
     </div>
@@ -339,7 +317,7 @@
     <div class="load-more-wrap" id="loadMoreWrap"></div>
   </section>
 
-  <section class="section">
+  <section class="section stepper-panel" data-panel-title="Topic mix, whole corpus">
     <div class="section-head">
       <div>
         <h2>Topic mix, whole corpus</h2>
@@ -351,7 +329,7 @@
     </div>
   </section>
 
-  <section class="section" id="feed">
+  <section class="section stepper-panel" id="feed" data-panel-title="Recent coverage">
     <div class="section-head">
       <div>
         <h2>Recent coverage</h2>
@@ -362,6 +340,8 @@
       <div class="feed-list" id="feedList"></div>
     </div>
   </section>
+
+  </div>
 
   <section class="section" id="about">
     <div class="info-strip">

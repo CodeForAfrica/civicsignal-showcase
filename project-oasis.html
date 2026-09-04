@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CivicSignal — Project Oasis Partnership</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=optional" rel="stylesheet">
 <style>
   :root{
     --navy:#022069; --navy-deep:#051335;
@@ -30,22 +30,22 @@
   .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;}
 
   .cs-nav{background:var(--navy);border-bottom:3px solid var(--red);}
-  .cs-nav-inner{max-width:1160px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .cs-nav-inner{max-width:1120px;margin:0 auto;padding:12px clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
   @media(max-width:720px){.cs-nav-inner{padding:12px 18px;}}
   .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
-  .cs-logo-badge{background:#fff;border-radius:6px;padding:5px 9px;display:flex;align-items:center;height:30px;}
-  .cs-logo-badge img{height:20px;width:auto;display:block;}
   .cs-wordmark{font-family:var(--font-display);font-weight:900;font-size:17px;color:#fff;letter-spacing:0.01em;}
-  .cs-wordmark span{color:#F0A0A2;}
+  .cs-pipe{color:var(--red);font-weight:700;font-size:16px;margin:0 2px;}
+  .cs-orgname{font-family:'Lato',sans-serif;font-weight:700;font-size:13px;color:#B9C2DA;letter-spacing:0.02em;}
   .cs-navlinks{display:flex;gap:22px;flex-wrap:wrap;}
+  .cs-nav-inner{line-height:1;}
   .cs-navlinks a{color:#B9C2DA;font-family:var(--font-body);font-weight:700;font-size:13.5px;text-decoration:none;letter-spacing:0.01em;}
   .cs-navlinks a:hover,.cs-navlinks a.active{color:#fff;}
   .cs-footbar{background:var(--navy-deep);}
-  .cs-footbar-inner{max-width:1160px;margin:0 auto;padding:16px 28px;font-family:var(--font-body);font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .cs-footbar-inner{max-width:1120px;margin:0 auto;padding:16px clamp(20px,5vw,56px);font-family:var(--font-body);font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .cs-footbar-inner a{color:#8791AC;}
 
   header.masthead{background:var(--bg-alt);border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
-  .masthead-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;color:var(--ink-faint);text-transform:uppercase;}
+  .masthead-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;color:var(--ink-faint);text-transform:uppercase;line-height:1.2;}
   h1.headline{font-size:clamp(2rem,5vw,3.3rem);line-height:1.1;max-width:19ch;letter-spacing:-0.015em;}
   h1.headline em{font-style:normal;color:var(--red);}
   .dek{margin-top:20px;max-width:60ch;font-size:1.1rem;color:var(--ink-dim);}
@@ -109,13 +109,12 @@
 <header class="cs-nav">
   <div class="cs-nav-inner">
     <a href="index.html" class="cs-brand">
-      <span class="cs-logo-badge"><img src="assets/cfa-logo.png" alt="Code for Africa"></span>
-      <span class="cs-wordmark">Civic<span>Signal</span></span>
+      <span class="cs-wordmark">CivicSignal</span><span class="cs-pipe">|</span><span class="cs-orgname">Code for Africa</span>
     </a>
     <nav class="cs-navlinks">
-      <a href="civicsignalmediapulse.html">Ecosystem Monitoring</a>
-      <a href="project-oasis.html" class="active">Project Oasis</a>
-      <a href="cnti-creators.html">CNTI Creators</a>
+      <a href="civicsignalmediapulse.html">Wavelength</a>
+      <a href="project-oasis.html" class="active">Digital Natives</a>
+      <a href="cnti-creators.html">Creators</a>
       <a href="push-media.html">Push Media</a>
     </nav>
   </div>
@@ -124,7 +123,7 @@
 <header class="masthead">
   <div class="wrap">
     <div class="masthead-top">
-      <span>CivicSignal &times; SembraMedia</span>
+      <span>CivicSignal &middot; SembraMedia</span>
       <span>Project Oasis, African expansion &middot; 2025 Report</span>
     </div>
     <h1 class="headline">Africa's new media map is being redrawn. <em>We mapped it.</em></h1>
@@ -253,7 +252,7 @@
     <h2>The launch made the report useful today. CivicSignal makes it useful tomorrow.</h2>
     <p class="lede">Project Oasis mapped African information ecosystems that had never been systematically documented before. CivicSignal extends that proposition into persistent observation &mdash; of actors, content, audiences and influence, as they change.</p>
     <div class="ctarow">
-      <a class="btn btn-primary" href="civicsignalmediapulse.html">See the ecosystem monitor</a>
+      <a class="btn btn-primary" href="civicsignalmediapulse.html">See Wavelength</a>
       <a class="btn btn-ghost" href="#" onclick="return false;">Explore the Project Oasis directory</a>
     </div>
     <div class="colophon">

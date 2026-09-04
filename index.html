@@ -5,45 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CivicSignal — Code for Africa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F5F3ED; --bg-raised:#FFFFFF; --bg-inset:#141B33;
-    --line:#DEDACB; --line-soft:#E9E6DA;
-    --ink:#1B2340; --ink-dim:#5B5F6E; --ink-faint:#8B8E9A;
-    --accent:#C05A32; --accent-wash:rgba(192,90,50,0.1);
-    --teal:#1F6F63; --gold:#C08A28;
-    --font-display:'Fraunces',Georgia,serif; --font-body:'Archivo',-apple-system,'Segoe UI',sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+    --navy:#022069; --navy-deep:#051335;
+    --red:#EB2227; --red-wash:rgba(235,34,39,0.08);
+    --blue:#1D78BE; --blue-wash:rgba(29,120,190,0.08);
+    --bg:#FFFFFF; --bg-alt:#F4F3F0; --bg-raised:#FFFFFF;
+    --line:#E2E0DA;
+    --ink:#16181C; --ink-dim:#565A66; --ink-faint:#8A8E99;
+    --font-display:'Lato',-apple-system,'Segoe UI',sans-serif;
+    --font-body:'Lato',-apple-system,'Segoe UI',sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
   }
   *{box-sizing:border-box;}
   html{background:var(--bg);}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
-  a{color:var(--accent);}
+  a{color:var(--blue);}
   img,svg{max-width:100%;}
-  .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
   @media(max-width:720px){.wrap{padding:0 18px;}}
-  h1,h2,h3{font-family:var(--font-display);font-weight:600;text-wrap:balance;margin:0;}
-  .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px;}
+  h1,h2,h3{font-family:var(--font-display);font-weight:900;text-wrap:balance;margin:0;letter-spacing:-0.01em;}
+  .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:14px;}
 
-  header.masthead{padding:clamp(56px,9vw,96px) 0 56px;}
-  .masthead-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:40px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;color:var(--ink-faint);text-transform:uppercase;}
-  .wordmark{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:13px;letter-spacing:0.08em;font-weight:700;text-decoration:none;}
-  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-wash);}
-  h1.headline{font-size:clamp(2.1rem,5.5vw,3.6rem);line-height:1.08;max-width:17ch;letter-spacing:-0.01em;}
-  h1.headline em{font-style:italic;color:var(--accent);font-weight:500;}
+  /* ---------- shared site nav (all 5 pages) ---------- */
+  .cs-nav{background:var(--navy);border-bottom:3px solid var(--red);}
+  .cs-nav-inner{max-width:1160px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  @media(max-width:720px){.cs-nav-inner{padding:12px 18px;}}
+  .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .cs-logo-badge{background:#fff;border-radius:6px;padding:5px 9px;display:flex;align-items:center;height:30px;}
+  .cs-logo-badge img{height:20px;width:auto;display:block;}
+  .cs-wordmark{font-family:var(--font-display);font-weight:900;font-size:17px;color:#fff;letter-spacing:0.01em;}
+  .cs-wordmark span{color:#F0A0A2;}
+  .cs-navlinks{display:flex;gap:22px;flex-wrap:wrap;}
+  .cs-navlinks a{color:#B9C2DA;font-family:var(--font-body);font-weight:700;font-size:13.5px;text-decoration:none;letter-spacing:0.01em;}
+  .cs-navlinks a:hover,.cs-navlinks a.active{color:#fff;}
+
+  /* ---------- shared site footer bar (all 5 pages) ---------- */
+  .cs-footbar{background:var(--navy-deep);}
+  .cs-footbar-inner{max-width:1160px;margin:0 auto;padding:16px 28px;font-family:var(--font-body);font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .cs-footbar-inner a{color:#8791AC;}
+
+  header.masthead{padding:clamp(56px,9vw,96px) 0 56px;background:var(--bg-alt);border-bottom:1px solid var(--line);}
+  h1.headline{font-size:clamp(2.1rem,5.5vw,3.6rem);line-height:1.08;max-width:17ch;letter-spacing:-0.015em;}
+  h1.headline em{font-style:normal;color:var(--red);}
   .dek{margin-top:22px;max-width:62ch;font-size:1.15rem;color:var(--ink-dim);}
-  .flagship{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(1.15rem,2.2vw,1.4rem);line-height:1.5;color:var(--ink);border-left:3px solid var(--accent);padding-left:20px;margin-top:32px;max-width:52ch;}
+  .flagship{font-family:var(--font-display);font-weight:700;font-style:italic;font-size:clamp(1.15rem,2.2vw,1.4rem);line-height:1.5;color:var(--ink);border-left:4px solid var(--red);padding-left:20px;margin-top:32px;max-width:52ch;}
 
-  section.block{padding:clamp(48px,8vw,84px) 0;border-top:1px solid var(--line);}
+  section.block{padding:clamp(48px,8vw,84px) 0;border-bottom:1px solid var(--line);}
   section.block h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:16px;max-width:28ch;}
   section.block .lede{font-size:1.03rem;color:var(--ink-dim);max-width:70ch;margin-bottom:28px;}
-  section.block .lede strong{color:var(--ink);font-weight:600;}
+  section.block .lede strong{color:var(--ink);font-weight:700;}
 
   .signal-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
   @media(max-width:820px){.signal-row{grid-template-columns:1fr;}}
   .signal-card{background:var(--bg-raised);border:1px solid var(--line);border-radius:10px;padding:22px;}
-  .signal-card .src{font-family:var(--font-mono);font-size:10.5px;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;}
-  .signal-card .big{font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--ink);line-height:1;}
+  .signal-card .src{font-family:var(--font-mono);font-size:10.5px;color:var(--blue);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;}
+  .signal-card .big{font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--ink);line-height:1;}
   .signal-card p{font-size:13px;color:var(--ink-dim);line-height:1.55;margin:10px 0 0;}
 
   .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
@@ -53,34 +71,43 @@
     padding:28px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:inherit;
     transition:transform .15s ease, box-shadow .15s ease;
   }
-  .card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(27,35,64,0.08);}
+  .card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(2,32,105,0.1);}
   .card .tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;display:inline-block;width:fit-content;}
-  .tag-monitor{background:rgba(31,111,99,0.12);color:var(--teal);}
-  .tag-oasis{background:rgba(192,90,50,0.12);color:var(--accent);}
-  .tag-cnti{background:rgba(192,138,40,0.12);color:var(--gold);}
-  .tag-push{background:rgba(31,111,99,0.12);color:var(--teal);}
+  .tag-monitor{background:var(--blue-wash);color:var(--blue);}
+  .tag-oasis{background:var(--red-wash);color:var(--red);}
+  .tag-cnti{background:var(--red-wash);color:var(--red);}
+  .tag-push{background:var(--blue-wash);color:var(--blue);}
   .card h3{font-size:1.3rem;}
   .card p{font-size:14px;color:var(--ink-dim);line-height:1.6;margin:0;flex:1;}
-  .card .cta{font-size:13px;font-weight:700;color:var(--ink);}
+  .card .cta{font-size:13px;font-weight:700;color:var(--navy);}
   .card .cta::after{content:' \2192';}
 
-  footer.close{background:var(--bg-inset);color:#EFE9DB;padding:clamp(48px,8vw,80px) 0 40px;margin-top:20px;}
-  footer.close .wrap{}
+  footer.close{background:var(--navy);color:#EFE9E2;padding:clamp(48px,8vw,80px) 0 0;margin-top:0;}
   footer.close h2{color:#fff;font-size:clamp(1.3rem,2.6vw,1.7rem);max-width:26ch;}
-  footer.close .lede{margin-top:14px;max-width:60ch;color:#C7C2B4;font-size:1rem;}
-  footer.close a{color:#F0C896;}
-  .footlinks{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px;font-size:13.5px;}
-  .colophon{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.12);font-family:var(--font-mono);font-size:11px;color:#8b93a8;letter-spacing:0.03em;line-height:1.7;}
+  footer.close .lede{margin-top:14px;max-width:60ch;color:#C7CEE0;font-size:1rem;}
+  footer.close a{color:#F0A0A2;}
+  .footlinks{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px;font-size:13.5px;padding-bottom:40px;}
 </style>
 </head>
 <body>
 
+<header class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="index.html" class="cs-brand">
+      <span class="cs-logo-badge"><img src="assets/cfa-logo.png" alt="Code for Africa"></span>
+      <span class="cs-wordmark">Civic<span>Signal</span></span>
+    </a>
+    <nav class="cs-navlinks">
+      <a href="civicsignalmediapulse.html">Ecosystem Monitoring</a>
+      <a href="project-oasis.html">Project Oasis</a>
+      <a href="cnti-creators.html">CNTI Creators</a>
+      <a href="push-media.html">Push Media</a>
+    </nav>
+  </div>
+</header>
+
 <header class="masthead">
   <div class="wrap">
-    <div class="masthead-top">
-      <span class="wordmark"><span class="dot"></span>CivicSignal</span>
-      <span>Code for Africa &middot; Media Intelligence</span>
-    </div>
     <h1 class="headline">Mapping and tracking are <em>two different things.</em></h1>
     <p class="dek">Code for Africa does both. CivicSignal is the continuous-monitoring layer that sits on top of the continent's biggest mapping efforts &mdash; watching what changes after the map is drawn.</p>
     <div class="flagship">&ldquo;Project Oasis maps the ecosystem. CivicSignal makes the map move.&rdquo;</div>
@@ -112,7 +139,7 @@
   </div>
 </section>
 
-<section class="block">
+<section class="block" style="border-bottom:none;">
   <div class="wrap">
     <span class="kicker">Four ways in</span>
     <h2>Explore CivicSignal's work.</h2>
@@ -133,7 +160,7 @@
       <a class="card" href="cnti-creators.html">
         <span class="tag tag-cnti">Creator research</span>
         <h3>CNTI Creator Partnership</h3>
-        <p>With the Center for News, Technology and Innovation: a survey of 42 South African creator-journalists &mdash; who they are, how they work, and how unevenly they get paid for it.</p>
+        <p>With the Center for News, Technology and Innovation and ProjectC: a survey of 42 South African creator-journalists &mdash; who they are, how they work, and how unevenly they get paid for it.</p>
         <span class="cta">See the survey</span>
       </a>
       <a class="card" href="push-media.html">
@@ -152,13 +179,17 @@
     <p class="lede">Project Oasis and the CNTI survey each gave Code for Africa an unusually detailed snapshot of who's publishing, and how. CivicSignal is the infrastructure that keeps watching after the snapshot is taken.</p>
     <div class="footlinks">
       <a href="https://cnti.org/reports/south-africa-indie-info-providers/" target="_blank" rel="noopener">CNTI report &rarr;</a>
+      <a href="https://projectc.biz/" target="_blank" rel="noopener">ProjectC &rarr;</a>
       <a href="https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026" target="_blank" rel="noopener">Reuters Digital News Report 2026 &rarr;</a>
-    </div>
-    <div class="colophon">
-      CivicSignal &middot; Code for Africa &mdash; working showcase, not for distribution. DNR 2026 figures: Reuters Institute for the Study of Journalism, Digital News Report 2026 (Executive Summary and Kenya country chapter). Project Oasis figures: Project Oasis 2025 Report and the CivicSignal/Code for Africa launch brief. See each page's own footer for full sourcing.
     </div>
   </div>
 </footer>
+<div class="cs-footbar">
+  <div class="cs-footbar-inner">
+    <span>CivicSignal &middot; Code for Africa &mdash; working showcase, not for distribution</span>
+    <span>DNR 2026 &amp; Project Oasis figures cited on each page &mdash; see that page's footer for full sourcing</span>
+  </div>
+</div>
 
 </body>
 </html>

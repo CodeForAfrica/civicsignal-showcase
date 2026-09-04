@@ -5,108 +5,126 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CivicSignal — Project Oasis Partnership</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
   :root{
-    --bg:#10161A; --bg-raised:#171F24; --bg-inset:#0B1013;
-    --line:#2A343A; --line-soft:#1E2529;
-    --text:#EDEAE0; --text-dim:#97A5A6; --text-faint:#647071;
-    --accent:#E8A33D; --accent-dim:#B77F2E; --accent-wash:rgba(232,163,61,0.12);
-    --teal:#5FB8AC; --teal-wash:rgba(95,184,172,0.12); --rose:#D9836C;
-    --font-display:'Fraunces',Georgia,serif; --font-body:'Archivo',-apple-system,'Segoe UI',sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+    --navy:#022069; --navy-deep:#051335;
+    --red:#EB2227; --red-wash:rgba(235,34,39,0.08);
+    --blue:#1D78BE; --blue-wash:rgba(29,120,190,0.08);
+    --bg:#FFFFFF; --bg-alt:#F4F3F0; --bg-raised:#FFFFFF;
+    --line:#E2E0DA;
+    --ink:#16181C; --ink-dim:#565A66; --ink-faint:#8A8E99;
+    --font-display:'Lato',-apple-system,'Segoe UI',sans-serif;
+    --font-body:'Lato',-apple-system,'Segoe UI',sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
   }
   *{box-sizing:border-box;}
   html{background:var(--bg);}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
-  a{color:var(--accent);}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:var(--blue);}
   img,svg{max-width:100%;}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
   @media(max-width:720px){.wrap{padding:0 18px;}}
-  h1,h2,h3{font-family:var(--font-display);font-weight:600;text-wrap:balance;margin:0;}
-  .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px;}
+  h1,h2,h3{font-family:var(--font-display);font-weight:900;text-wrap:balance;margin:0;letter-spacing:-0.01em;}
+  .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:14px;}
   .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;}
 
-  header.masthead{background:var(--bg-inset);border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
-  .masthead-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:36px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;color:var(--text-faint);text-transform:uppercase;}
-  .wordmark{display:flex;align-items:center;gap:10px;color:var(--text);font-size:13px;letter-spacing:0.1em;text-decoration:none;}
-  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-wash);}
-  h1.headline{font-size:clamp(2rem,5vw,3.3rem);line-height:1.1;max-width:19ch;letter-spacing:-0.01em;}
-  h1.headline em{font-style:italic;color:var(--accent);font-weight:500;}
-  .dek{margin-top:20px;max-width:60ch;font-size:1.1rem;color:var(--text-dim);}
+  .cs-nav{background:var(--navy);border-bottom:3px solid var(--red);}
+  .cs-nav-inner{max-width:1160px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  @media(max-width:720px){.cs-nav-inner{padding:12px 18px;}}
+  .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .cs-logo-badge{background:#fff;border-radius:6px;padding:5px 9px;display:flex;align-items:center;height:30px;}
+  .cs-logo-badge img{height:20px;width:auto;display:block;}
+  .cs-wordmark{font-family:var(--font-display);font-weight:900;font-size:17px;color:#fff;letter-spacing:0.01em;}
+  .cs-wordmark span{color:#F0A0A2;}
+  .cs-navlinks{display:flex;gap:22px;flex-wrap:wrap;}
+  .cs-navlinks a{color:#B9C2DA;font-family:var(--font-body);font-weight:700;font-size:13.5px;text-decoration:none;letter-spacing:0.01em;}
+  .cs-navlinks a:hover,.cs-navlinks a.active{color:#fff;}
+  .cs-footbar{background:var(--navy-deep);}
+  .cs-footbar-inner{max-width:1160px;margin:0 auto;padding:16px 28px;font-family:var(--font-body);font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .cs-footbar-inner a{color:#8791AC;}
+
+  header.masthead{background:var(--bg-alt);border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
+  .masthead-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;color:var(--ink-faint);text-transform:uppercase;}
+  h1.headline{font-size:clamp(2rem,5vw,3.3rem);line-height:1.1;max-width:19ch;letter-spacing:-0.015em;}
+  h1.headline em{font-style:normal;color:var(--red);}
+  .dek{margin-top:20px;max-width:60ch;font-size:1.1rem;color:var(--ink-dim);}
 
   section.ticker{padding:34px 0 38px;border-bottom:1px solid var(--line);}
   .ticker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
   .stat{padding:8px 20px;border-left:1px solid var(--line);}
   .stat:first-child{padding-left:0;border-left:none;}
-  .stat .num{display:block;font-size:clamp(1.4rem,2.4vw,2rem);font-weight:600;color:var(--accent);letter-spacing:-0.01em;}
-  .stat .label{display:block;margin-top:6px;font-size:12px;color:var(--text-dim);line-height:1.35;}
+  .stat .num{display:block;font-size:clamp(1.4rem,2.4vw,2rem);font-weight:900;color:var(--red);letter-spacing:-0.01em;}
+  .stat .label{display:block;margin-top:6px;font-size:12px;color:var(--ink-dim);line-height:1.35;}
   @media(max-width:800px){.ticker-grid{grid-template-columns:repeat(2,1fr);row-gap:24px;}.stat{border-left:none;padding-left:0;}}
 
   section.block{padding:clamp(48px,8vw,84px) 0;border-bottom:1px solid var(--line);}
   section.block h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:16px;max-width:26ch;}
-  section.block .lede{font-size:1.03rem;color:var(--text-dim);max-width:68ch;margin-bottom:28px;}
-  section.block .lede strong{color:var(--text);font-weight:600;}
+  section.block .lede{font-size:1.03rem;color:var(--ink-dim);max-width:68ch;margin-bottom:28px;}
+  section.block .lede strong{color:var(--ink);font-weight:700;}
 
-  .flagship{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(1.2rem,2.4vw,1.6rem);line-height:1.5;color:var(--text);border-left:2px solid var(--accent);padding-left:22px;margin:8px 0 0;max-width:56ch;}
+  .flagship{font-family:var(--font-display);font-weight:700;font-style:italic;font-size:clamp(1.2rem,2.4vw,1.6rem);line-height:1.5;color:var(--ink);border-left:4px solid var(--red);padding-left:22px;margin:8px 0 0;max-width:56ch;}
 
   .findings{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
   @media(max-width:800px){.findings{grid-template-columns:1fr;}}
   .finding{background:var(--bg-raised);border:1px solid var(--line);border-radius:8px;padding:22px;}
-  .finding .fn{font-family:var(--font-mono);font-size:12px;color:var(--accent);letter-spacing:0.05em;}
+  .finding .fn{font-family:var(--font-mono);font-size:12px;color:var(--red);letter-spacing:0.05em;}
   .finding h3{font-size:1.15rem;margin:10px 0 8px;}
-  .finding p{font-size:13.5px;color:var(--text-dim);line-height:1.55;margin:0;}
+  .finding p{font-size:13.5px;color:var(--ink-dim);line-height:1.55;margin:0;}
 
   .country-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   @media(max-width:900px){.country-grid{grid-template-columns:1fr 1fr;}}
   @media(max-width:600px){.country-grid{grid-template-columns:1fr;}}
-  .country-card{background:var(--bg-raised);border:1px solid var(--line);border-radius:8px;padding:18px 20px;}
-  .country-card .cname{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
-  .country-card p{font-size:13px;color:var(--text-dim);line-height:1.5;margin:0;}
-  .country-card b{color:var(--text);}
+  .country-card{background:var(--bg-alt);border:1px solid var(--line);border-radius:8px;padding:18px 20px;}
+  .country-card .cname{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+  .country-card p{font-size:13px;color:var(--ink-dim);line-height:1.5;margin:0;}
+  .country-card b{color:var(--ink);}
 
   .layers{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
-  .layer{padding:18px 22px;border-bottom:1px solid var(--line-soft);display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:16px;align-items:center;}
+  .layer{padding:18px 22px;border-bottom:1px solid var(--line);background:var(--bg-raised);display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:16px;align-items:center;}
   .layer:last-child{border-bottom:none;}
-  .layer .lname{font-family:var(--font-display);font-weight:600;font-size:1.05rem;}
-  .layer .lq{font-size:13px;color:var(--text-dim);}
-  .layer .lrole{font-family:var(--font-mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:0.04em;text-align:right;}
+  .layer .lname{font-family:var(--font-display);font-weight:900;font-size:1.05rem;}
+  .layer .lq{font-size:13px;color:var(--ink-dim);}
+  .layer .lrole{font-family:var(--font-mono);font-size:11px;color:var(--red);text-transform:uppercase;letter-spacing:0.04em;text-align:right;}
   @media(max-width:700px){.layer{grid-template-columns:1fr;text-align:left;}.layer .lrole{text-align:left;}}
 
   .guardrails{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
   @media(max-width:800px){.guardrails{grid-template-columns:1fr;}}
-  .guardrails h4{font-size:13px;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-dim);margin-bottom:12px;}
-  .guardrails ul{margin:0;padding-left:18px;color:var(--text-dim);font-size:13.5px;line-height:1.7;}
-  .guardrails li b{color:var(--text);}
+  .guardrails h4{font-size:13px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-dim);margin-bottom:12px;}
+  .guardrails ul{margin:0;padding-left:18px;color:var(--ink-dim);font-size:13.5px;line-height:1.7;}
+  .guardrails li b{color:var(--ink);}
 
-  footer.close{background:var(--bg-inset);padding:clamp(48px,8vw,80px) 0 40px;}
-  footer.close h2{font-size:clamp(1.4rem,3vw,1.9rem);max-width:24ch;}
-  footer.close .lede{margin-top:14px;max-width:60ch;color:var(--text-dim);font-size:1rem;}
+  footer.close{background:var(--navy);color:#EFE9E2;padding:clamp(48px,8vw,80px) 0 0;}
+  footer.close h2{color:#fff;font-size:clamp(1.4rem,3vw,1.9rem);max-width:24ch;}
+  footer.close .lede{margin-top:14px;max-width:60ch;color:#C7CEE0;font-size:1rem;}
   .ctarow{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{font-family:var(--font-body);font-weight:600;font-size:14px;padding:12px 22px;border-radius:4px;text-decoration:none;display:inline-block;}
-  .btn-primary{background:var(--accent);color:#1B1305;}
-  .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--text);}
-  .colophon{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:11px;color:var(--text-faint);letter-spacing:0.03em;line-height:1.7;}
+  .btn{font-family:var(--font-body);font-weight:700;font-size:14px;padding:12px 22px;border-radius:4px;text-decoration:none;display:inline-block;}
+  .btn-primary{background:var(--red);color:#fff;}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;}
+  .colophon{margin-top:36px;padding:20px 0 32px;border-top:1px solid rgba(255,255,255,0.15);font-family:var(--font-mono);font-size:11px;color:#8791AC;letter-spacing:0.03em;line-height:1.7;}
 </style>
 </head>
 <body>
 
-<div style="background:#141b33;font-family:-apple-system,'Segoe UI',Arial,sans-serif;">
-  <div style="max-width:1100px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-    <a href="index.html" style="color:#fff;font-weight:700;font-size:14px;text-decoration:none;letter-spacing:0.02em;">&#9679; CivicSignal</a>
-    <nav style="display:flex;gap:18px;flex-wrap:wrap;">
-      <a href="civicsignalmediapulse.html" style="color:#C7C2B4;font-size:13px;text-decoration:none;">Ecosystem Monitoring</a>
-      <a href="project-oasis.html" style="color:#fff;font-size:13px;text-decoration:none;font-weight:600;">Project Oasis</a>
-      <a href="cnti-creators.html" style="color:#C7C2B4;font-size:13px;text-decoration:none;">CNTI Creators</a>
-      <a href="push-media.html" style="color:#C7C2B4;font-size:13px;text-decoration:none;">Push Media</a>
+<header class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="index.html" class="cs-brand">
+      <span class="cs-logo-badge"><img src="assets/cfa-logo.png" alt="Code for Africa"></span>
+      <span class="cs-wordmark">Civic<span>Signal</span></span>
+    </a>
+    <nav class="cs-navlinks">
+      <a href="civicsignalmediapulse.html">Ecosystem Monitoring</a>
+      <a href="project-oasis.html" class="active">Project Oasis</a>
+      <a href="cnti-creators.html">CNTI Creators</a>
+      <a href="push-media.html">Push Media</a>
     </nav>
   </div>
-</div>
+</header>
 
 <header class="masthead">
   <div class="wrap">
     <div class="masthead-top">
-      <a class="wordmark" href="index.html"><span class="dot"></span>CivicSignal &times; SembraMedia</a>
+      <span>CivicSignal &times; SembraMedia</span>
       <span>Project Oasis, African expansion &middot; 2025 Report</span>
     </div>
     <h1 class="headline">Africa's new media map is being redrawn. <em>We mapped it.</em></h1>
@@ -243,11 +261,10 @@
     </div>
   </div>
 </footer>
-
-<div style="background:#141b33;font-family:-apple-system,'Segoe UI',Arial,sans-serif;">
-  <div style="max-width:1100px;margin:0 auto;padding:16px 28px;font-size:12px;color:#8b93a8;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+<div class="cs-footbar">
+  <div class="cs-footbar-inner">
     <span>CivicSignal &middot; Code for Africa</span>
-    <a href="index.html" style="color:#8b93a8;">&larr; All CivicSignal pages</a>
+    <a href="index.html">&larr; All CivicSignal pages</a>
   </div>
 </div>
 

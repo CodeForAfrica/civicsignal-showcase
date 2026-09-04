@@ -5,17 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CivicSignal — Africa's Media Pulse</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <style>
   :root{
-    --cream:#F7F3EA;
-    --cream-2:#EFE9DB;
-    --ink:#1B2340;
-    --navy:#22305A;
-    --navy-deep:#141B33;
-    --line:#DED6C3;
-    --muted:#6b6455;
+    --cream:#F4F3F0;
+    --cream-2:#E9E7E1;
+    --ink:#16181C;
+    --navy:#022069;
+    --navy-deep:#051335;
+    --red:#EB2227;
+    --line:#E2E0DA;
+    --muted:#565A66;
 
     --c-politics:#2b3a67;
     --c-economy:#3aa6a0;
@@ -33,25 +34,41 @@
     margin:0;
     background:var(--cream);
     color:var(--ink);
-    font-family:'Manrope',system-ui,sans-serif;
+    font-family:'Lato',system-ui,sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3,.serif{font-family:'Source Serif 4', Georgia, serif;}
+  h1,h2,h3,.serif{font-family:'Lato',system-ui,sans-serif;font-weight:900;}
   a{color:inherit;}
   .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
   @media(max-width:720px){.wrap{padding:0 18px;}}
 
-  /* ---------- NAV ---------- */
+  /* ---------- shared site nav (all 5 pages) ---------- */
+  .cs-nav{background:var(--navy);border-bottom:3px solid var(--red);}
+  .cs-nav-inner{max-width:1240px;margin:0 auto;padding:12px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  @media(max-width:720px){.cs-nav-inner{padding:12px 18px;}}
+  .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .cs-logo-badge{background:#fff;border-radius:6px;padding:5px 9px;display:flex;align-items:center;height:30px;}
+  .cs-logo-badge img{height:20px;width:auto;display:block;}
+  .cs-wordmark{font-family:'Lato',sans-serif;font-weight:900;font-size:17px;color:#fff;letter-spacing:0.01em;}
+  .cs-wordmark span{color:#F0A0A2;}
+  .cs-navlinks{display:flex;gap:22px;flex-wrap:wrap;}
+  .cs-navlinks a{color:#B9C2DA;font-family:'Lato',sans-serif;font-weight:700;font-size:13.5px;text-decoration:none;letter-spacing:0.01em;}
+  .cs-navlinks a:hover,.cs-navlinks a.active{color:#fff;}
+  .cs-footbar{background:var(--navy-deep);}
+  .cs-footbar-inner{max-width:1240px;margin:0 auto;padding:16px 32px;font-family:'Lato',sans-serif;font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .cs-footbar-inner a{color:#8791AC;}
+
+  /* ---------- in-page sub-nav (this page's own sections) ---------- */
   header.nav{
     position:sticky;top:0;z-index:40;
-    background:rgba(247,243,234,0.92);
+    background:rgba(244,243,240,0.92);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
   .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:0.01em;font-size:17px;}
-  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--c-conflict);display:inline-block;}
-  .navlinks{display:flex;gap:28px;font-size:14px;font-weight:600;color:var(--navy);}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:0.01em;font-size:17px;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--red);display:inline-block;}
+  .navlinks{display:flex;gap:28px;font-size:14px;font-weight:700;color:var(--navy);}
   .navlinks a{opacity:0.7;text-decoration:none;}
   .navlinks a:hover{opacity:1;}
   .navlinks{display:none;}
@@ -69,14 +86,14 @@
   h1.hero-title{
     font-size:clamp(34px,5.2vw,58px);
     line-height:1.06;
-    font-weight:600;
+    font-weight:900;
     margin:0 0 20px;
     max-width:24ch;
     color:var(--navy-deep);
   }
   .hero-sub{font-size:17px;line-height:1.6;color:var(--muted);max-width:60ch;margin:0 0 34px;}
   .hero-stats{display:flex;flex-wrap:wrap;gap:34px;margin-bottom:8px;}
-  .stat b{display:block;font-size:26px;font-family:'Source Serif 4',serif;color:var(--navy-deep);}
+  .stat b{display:block;font-size:26px;font-family:'Lato',sans-serif;font-weight:900;color:var(--navy-deep);}
   .stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;}
   .source-mix{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 4px;}
   .source-mix .chip{
@@ -84,7 +101,7 @@
     background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px;
   }
   .source-mix .chip .sw{width:8px;height:8px;border-radius:50%;display:inline-block;}
-  .source-mix .chip b{font-family:'Source Serif 4',serif;font-weight:600;}
+  .source-mix .chip b{font-family:'Lato',sans-serif;font-weight:900;}
 
   /* ---------- STREAMGRAPH CARD ---------- */
   .panel{
@@ -109,7 +126,7 @@
   .legend{display:flex;flex-wrap:wrap;gap:14px;margin:12px 0 6px;font-size:12px;color:var(--navy);}
   .legend .item{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;opacity:1;transition:opacity .15s;}
   .legend .item.off{opacity:0.32;}
-  .legend .rank{font-family:'Source Serif 4',serif;font-weight:600;color:var(--muted);font-size:11px;}
+  .legend .rank{font-family:'Lato',sans-serif;font-weight:900;color:var(--muted);font-size:11px;}
   .legend .sw{width:9px;height:9px;border-radius:2px;display:inline-block;}
   .chart-box{height:320px;position:relative;margin-top:6px;}
   .week-highlights{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);}
@@ -117,7 +134,7 @@
   .spike-day{margin-bottom:12px;}
   .spike-day:last-child{margin-bottom:0;}
   .spike-day-head{display:flex;align-items:baseline;gap:8px;font-size:13px;margin-bottom:5px;}
-  .spike-day-head b{font-family:'Source Serif 4',serif;color:var(--navy-deep);}
+  .spike-day-head b{font-family:'Lato',sans-serif;font-weight:900;color:var(--navy-deep);}
   .spike-headline{font-size:12.5px;color:var(--muted);line-height:1.5;}
   .spike-headline b{color:var(--ink);font-weight:600;}
   .no-spike{font-size:13px;color:var(--muted);}
@@ -132,7 +149,7 @@
   .filters label{display:flex;flex-direction:column;gap:5px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;}
   select{
     appearance:none;
-    background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path d="M0 0l5 6 5-6z" fill="%2322305A"/></svg>') no-repeat right 12px center;
+    background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path d="M0 0l5 6 5-6z" fill="%23022069"/></svg>') no-repeat right 12px center;
     border:1px solid var(--line);
     border-radius:9px;
     padding:9px 30px 9px 12px;
@@ -192,7 +209,7 @@
   .meta-row span{display:flex;align-items:center;gap:5px;}
   .radar-box{height:190px;}
   .card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;}
-  .card-foot b{color:var(--navy-deep);font-size:14px;font-family:'Source Serif 4',serif;}
+  .card-foot b{color:var(--navy-deep);font-size:14px;font-family:'Lato',sans-serif;font-weight:900;}
   .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);font-size:14px;}
   .load-more-wrap{display:flex;justify-content:center;margin-top:28px;}
   .load-more-btn{
@@ -238,21 +255,24 @@
 </head>
 <body>
 
-<div style="background:#141b33;font-family:-apple-system,'Segoe UI',Arial,sans-serif;">
-  <div style="max-width:1100px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-    <a href="index.html" style="color:#fff;font-weight:700;font-size:14px;text-decoration:none;letter-spacing:0.02em;">&#9679; CivicSignal</a>
-    <nav style="display:flex;gap:18px;flex-wrap:wrap;">
-      <a href="civicsignalmediapulse.html" style="color:#fff;font-size:13px;text-decoration:none;font-weight:600;">Ecosystem Monitoring</a>
-      <a href="project-oasis.html" style="color:#C7C2B4;font-size:13px;text-decoration:none;">Project Oasis</a>
-      <a href="cnti-creators.html" style="color:#C7C2B4;font-size:13px;text-decoration:none;">CNTI Creators</a>
-      <a href="push-media.html" style="color:#C7C2B4;font-size:13px;text-decoration:none;">Push Media</a>
+<header class="cs-nav">
+  <div class="cs-nav-inner">
+    <a href="index.html" class="cs-brand">
+      <span class="cs-logo-badge"><img src="assets/cfa-logo.png" alt="Code for Africa"></span>
+      <span class="cs-wordmark">Civic<span>Signal</span></span>
+    </a>
+    <nav class="cs-navlinks">
+      <a href="civicsignalmediapulse.html" class="active">Ecosystem Monitoring</a>
+      <a href="project-oasis.html">Project Oasis</a>
+      <a href="cnti-creators.html">CNTI Creators</a>
+      <a href="push-media.html">Push Media</a>
     </nav>
   </div>
-</div>
+</header>
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <div class="brand"><span class="dot"></span> CivicSignal</div>
+    <div class="brand"><span class="dot"></span> Ecosystem Monitor</div>
     <nav class="navlinks">
       <a href="#pulse">Media Pulse</a>
       <a href="#entities">Profiles</a>
@@ -367,10 +387,10 @@
   <span id="genDate"></span>
 </footer>
 
-<div style="background:#141b33;font-family:-apple-system,'Segoe UI',Arial,sans-serif;">
-  <div style="max-width:1100px;margin:0 auto;padding:16px 28px;font-size:12px;color:#8b93a8;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+<div class="cs-footbar">
+  <div class="cs-footbar-inner">
     <span>CivicSignal &middot; Code for Africa</span>
-    <a href="index.html" style="color:#8b93a8;">&larr; All CivicSignal pages</a>
+    <a href="index.html">&larr; All CivicSignal pages</a>
   </div>
 </div>
 

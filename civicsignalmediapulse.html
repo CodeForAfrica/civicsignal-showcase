@@ -78,6 +78,13 @@
   .hero-stats{display:flex;flex-wrap:wrap;gap:34px;margin-bottom:8px;}
   .stat b{display:block;font-size:26px;font-family:'Source Serif 4',serif;color:var(--navy-deep);}
   .stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;}
+  .source-mix{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 4px;}
+  .source-mix .chip{
+    display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--navy);
+    background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px;
+  }
+  .source-mix .chip .sw{width:8px;height:8px;border-radius:50%;display:inline-block;}
+  .source-mix .chip b{font-family:'Source Serif 4',serif;font-weight:600;}
 
   /* ---------- STREAMGRAPH CARD ---------- */
   .panel{
@@ -127,19 +134,41 @@
   .section-head p{font-size:14px;color:var(--muted);margin:6px 0 0;max-width:56ch;}
   .count-pill{font-size:12px;font-weight:700;color:var(--navy);background:var(--cream-2);border-radius:999px;padding:5px 12px;white-space:nowrap;}
 
-  /* ---------- ENTITY CARDS ---------- */
+  /* ---------- ENTITY CARDS (click to flip) ---------- */
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:620px){.grid{grid-template-columns:1fr;}}
-  .card{
-    background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;
-    display:flex;flex-direction:column;gap:12px;
-    transition:transform .15s ease, box-shadow .15s ease;
+  .card{perspective:1600px;height:420px;}
+  .card:hover .flip-inner{box-shadow:0 10px 24px rgba(27,35,64,0.06);}
+  .flip-inner{
+    position:relative;width:100%;height:100%;cursor:pointer;
+    transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,.15,.2,1);
   }
-  .card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(27,35,64,0.06);}
+  .flip-inner.is-flipped{transform:rotateY(180deg);}
+  .card-face{
+    position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;
+    display:flex;flex-direction:column;gap:12px;overflow:hidden;
+  }
+  .card-back{transform:rotateY(180deg);overflow-y:auto;}
+  .flip-hint{display:flex;align-items:center;gap:4px;font-size:10.5px;color:var(--muted);white-space:nowrap;}
+  .back-title{font-weight:700;font-size:15px;}
+  .back-row{display:flex;align-items:baseline;gap:6px;font-size:12.5px;color:var(--ink);}
+  .back-row .k{color:var(--muted);min-width:78px;flex:none;}
+  .back-row a{color:var(--navy);text-decoration:underline;word-break:break-all;}
+  .back-section{border-top:1px solid var(--line);padding-top:10px;margin-top:2px;}
+  .back-section-label{font-size:10.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+  .social-chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .social-chip{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--navy);background:var(--cream-2);border-radius:999px;padding:5px 10px;text-decoration:none;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:6px;}
+  .tag{font-size:11px;color:var(--navy);background:var(--cream-2);border-radius:6px;padding:3px 8px;}
+  .back-empty{margin:auto 0;text-align:center;color:var(--muted);font-size:13px;}
   .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
   .card-name{font-weight:700;font-size:15.5px;line-height:1.25;}
   .badge{font-size:10.5px;font-weight:700;background:var(--cream-2);color:var(--navy);border-radius:999px;padding:4px 9px;white-space:nowrap;}
+  .badge[data-type="Push Media"]{background:rgba(217,102,59,0.14);color:var(--c-conflict);}
+  .badge[data-type="Creator"]{background:rgba(58,166,160,0.14);color:var(--c-economy);}
+  .badge[data-type="Digital-native publisher"]{background:rgba(43,58,103,0.1);color:var(--c-politics);}
   .meta-row{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);}
   .meta-row span{display:flex;align-items:center;gap:5px;}
   .radar-box{height:190px;}
@@ -202,8 +231,9 @@
   <section class="hero" id="pulse">
     <div class="eyebrow">Code for Africa · Tech showcase</div>
     <h1 class="hero-title">Africa's digital-native media, in motion.</h1>
-    <p class="hero-sub">CivicSignal listens in on independent digital publishers, creator-journalists and newsletters across the continent — tracking what they cover, in which languages, and how coverage shifts week to week.</p>
+    <p class="hero-sub">CivicSignal listens in on independent digital publishers, creator-journalists, and newsletter/Telegram push-media channels across the continent — tracking what they cover, in which languages, and how coverage shifts week to week.</p>
     <div class="hero-stats" id="heroStats"></div>
+    <div class="source-mix" id="sourceMix"></div>
   </section>
 
   <section class="panel" style="margin-top:28px;">
@@ -228,6 +258,9 @@
     </div>
 
     <div class="filters">
+      <label>Source type
+        <select id="fSource"><option value="all">All source types</option></select>
+      </label>
       <label>Country
         <select id="fCountry"><option value="all">All countries</option></select>
       </label>
@@ -271,7 +304,7 @@
     <div class="info-strip">
       <div>
         <h3>What this is</h3>
-        <p>A working showcase built from a scraped corpus of African digital-native publishers — titles, body text, country and publication date, run through a lightweight topic &amp; language classifier.</p>
+        <p>A working showcase unifying three source types: scraped digital-native publishers and creator-journalists (titles, body text, country and publication date), plus Push Media — newsletters, Telegram and fediverse channels monitored by a separate Code for Africa platform. All three run through the same topic &amp; language classifier.</p>
       </div>
       <div>
         <h3>How topics are assigned</h3>
@@ -279,7 +312,7 @@
       </div>
       <div>
         <h3>Known limits</h3>
-        <p>Publication dates lean heavily on recent scrape runs, keyword classification is heuristic rather than semantic, and Arabic-language coverage is detected but not yet topic-classified with dedicated keywords.</p>
+        <p>Publication dates lean heavily on recent scrape runs, keyword classification is heuristic rather than semantic, Arabic-language coverage is detected but not yet topic-classified with dedicated keywords, and Push Media sources are cross-border by nature — they're labeled "Pan-African" rather than attributed to one of the seven tracked countries.</p>
       </div>
     </div>
   </section>
@@ -361,6 +394,18 @@ const statDefs = [
 ];
 heroStats.innerHTML = statDefs.map(([v,l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
 
+// ---- source mix (digital-native / creator / push media breakdown) ----
+const SOURCE_COLORS = {
+  'Digital-native publisher': 'var(--c-politics)',
+  'Creator': 'var(--c-economy)',
+  'Push Media': 'var(--c-conflict)',
+};
+const sourceMixEl = document.getElementById('sourceMix');
+const sourceTypes = DATA.totals.sourceTypes || {};
+sourceMixEl.innerHTML = Object.entries(sourceTypes).map(([type,count]) => `
+  <span class="chip"><span class="sw" style="background:${SOURCE_COLORS[type]||'var(--muted)'}"></span>${type} · <b>${count.toLocaleString()}</b></span>
+`).join('');
+
 // ---- legend (toggleable) ----
 const legendEl = document.getElementById('legend');
 let hidden = new Set();
@@ -420,9 +465,13 @@ renderLegend();
 updateChart();
 
 // ---- filters ----
+const fSource = document.getElementById('fSource');
 const fCountry = document.getElementById('fCountry');
 const fLang = document.getElementById('fLang');
 const fTopic = document.getElementById('fTopic');
+[...new Set(DATA.publishers.map(p=>p.entityType))].sort().forEach(s=>{
+  fSource.innerHTML += `<option value="${s}">${s}</option>`;
+});
 [...new Set(DATA.publishers.map(p=>p.country))].sort().forEach(c=>{
   fCountry.innerHTML += `<option value="${c}">${c}</option>`;
 });
@@ -431,11 +480,63 @@ const fTopic = document.getElementById('fTopic');
 });
 CATS.forEach(c=>{ fTopic.innerHTML += `<option value="${c}">${LABELS[c]}</option>`; });
 
+const SOCIAL_LABELS = {facebook:'Facebook', twitter:'X / Twitter', instagram:'Instagram', linkedin:'LinkedIn', youtube:'YouTube', tiktok:'TikTok'};
+function formatFollowers(n){
+  if(n==null) return null;
+  if(n>=1000000) return (n/1000000).toFixed(1).replace(/\.0$/,'')+'M';
+  if(n>=1000) return (n/1000).toFixed(1).replace(/\.0$/,'')+'K';
+  return String(n);
+}
+function renderCardBack(p){
+  const e = p.enrichment;
+  const rows = [];
+  rows.push(`<div class="back-title">${p.name}</div>`);
+  if(p.url) rows.push(`<div class="back-row"><span class="k">Website</span><a href="${p.url}" target="_blank" rel="noopener">${p.url.replace(/^https?:\/\//,'')}</a></div>`);
+  rows.push(`<div class="back-row"><span class="k">Type</span><span>${p.entityType}</span></div>`);
+  if(e && e.hqCity) rows.push(`<div class="back-row"><span class="k">HQ</span><span>${e.hqCity}, ${p.country}</span></div>`);
+  else rows.push(`<div class="back-row"><span class="k">Country</span><span>${p.country}</span></div>`);
+  if(e && e.established) rows.push(`<div class="back-row"><span class="k">Founded</span><span>${e.established}</span></div>`);
+  if(e && e.coverageType) rows.push(`<div class="back-row"><span class="k">Coverage</span><span>${e.coverageType}</span></div>`);
+  if(e && e.bioShort) rows.push(`<div class="back-row" style="display:block;"><span class="k" style="display:block;margin-bottom:2px;">About</span><span>${e.bioShort}</span></div>`);
+
+  if(e && e.contentType && e.contentType.length){
+    rows.push(`<div class="back-section"><div class="back-section-label">Editorial focus</div>
+      <div class="tag-row">${e.contentType.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`);
+  }
+
+  if(e && e.staff){
+    const parts = [];
+    if(e.staff.full_time) parts.push(`${e.staff.full_time} full-time`);
+    if(e.staff.part_time) parts.push(`${e.staff.part_time} part-time`);
+    if(e.staff.freelance) parts.push(`${e.staff.freelance} freelance`);
+    if(e.staff.volunteer) parts.push(`${e.staff.volunteer} volunteer`);
+    if(parts.length) rows.push(`<div class="back-section"><div class="back-section-label">Staff</div><div>${parts.join(' · ')}</div></div>`);
+  }
+
+  if(e && e.social && e.social.length){
+    const chips = e.social.map(s => {
+      const label = SOCIAL_LABELS[s.platform] || s.platform;
+      const count = formatFollowers(s.followers);
+      const text = count ? `${label} · ${count}` : label;
+      return s.url
+        ? `<a class="social-chip" href="${s.url}" target="_blank" rel="noopener">${text}</a>`
+        : `<span class="social-chip">${text}</span>`;
+    }).join('');
+    rows.push(`<div class="back-section"><div class="back-section-label">Social reach</div><div class="social-chips">${chips}</div></div>`);
+  }
+
+  if(!e){
+    rows.push(`<div class="back-empty">No additional organizational detail available for this source.</div>`);
+  }
+
+  return rows.join('');
+}
+
 const radarCharts = {};
 function renderCards(){
-  const cv = fCountry.value, lv = fLang.value, tv = fTopic.value;
+  const sv = fSource.value, cv = fCountry.value, lv = fLang.value, tv = fTopic.value;
   const filtered = DATA.publishers.filter(p =>
-    (cv==='all'||p.country===cv) && (lv==='all'||p.lang===lv) && (tv==='all'||p.topTopic===tv)
+    (sv==='all'||p.entityType===sv) && (cv==='all'||p.country===cv) && (lv==='all'||p.lang===lv) && (tv==='all'||p.topTopic===tv)
   );
   document.getElementById('pubCount').textContent = `Showing ${filtered.length} of ${DATA.publishers.length} profiled`;
   const grid = document.getElementById('cardGrid');
@@ -449,20 +550,41 @@ function renderCards(){
 
   grid.innerHTML = filtered.map((p,i) => `
     <div class="card">
-      <div class="card-top">
-        <div class="card-name">${p.name}</div>
-        <span class="badge">${p.entityType}</span>
-      </div>
-      <div class="meta-row">
-        <span>${p.country}</span><span>·</span><span>${p.lang}</span>
-      </div>
-      <div class="radar-box"><canvas id="radar-${i}"></canvas></div>
-      <div class="card-foot">
-        <span>Top topic: <b style="font-size:12px;color:${COLORS[p.topTopic]||'#1B2340'}">${LABELS[p.topTopic]}</b></span>
-        <span><b>${p.total}</b> stories</span>
+      <div class="flip-inner" data-flipped="false" role="button" tabindex="0"
+           aria-label="${p.name} card. Press to see more detail.">
+        <div class="card-face card-front">
+          <div class="card-top">
+            <div class="card-name">${p.name}</div>
+            <span class="badge" data-type="${p.entityType}">${p.entityType}</span>
+          </div>
+          <div class="meta-row">
+            <span>${p.country}</span><span>·</span><span>${p.lang}</span>
+          </div>
+          <div class="radar-box"><canvas id="radar-${i}"></canvas></div>
+          <div class="card-foot">
+            <span>Top topic: <b style="font-size:12px;color:${COLORS[p.topTopic]||'#1B2340'}">${LABELS[p.topTopic]}</b></span>
+            <span><b>${p.total}</b> stories</span>
+          </div>
+          <div class="flip-hint" style="justify-content:flex-end;">⟳ more detail</div>
+        </div>
+        <div class="card-face card-back">
+          ${renderCardBack(p)}
+        </div>
       </div>
     </div>
   `).join('');
+
+  grid.querySelectorAll('.flip-inner').forEach(el => {
+    const toggle = () => {
+      const flipped = el.dataset.flipped === 'true';
+      el.dataset.flipped = String(!flipped);
+      el.classList.toggle('is-flipped', !flipped);
+    };
+    el.addEventListener('click', (e) => { if(e.target.closest('a')) return; toggle(); });
+    el.addEventListener('keydown', (e) => {
+      if((e.key==='Enter'||e.key===' ') && !e.target.closest('a')){ e.preventDefault(); toggle(); }
+    });
+  });
 
   if(!HAS_CHART) return;
   filtered.forEach((p,i) => {
@@ -491,9 +613,9 @@ function renderCards(){
     });
   });
 }
-[fCountry,fLang,fTopic].forEach(el=>el.addEventListener('change', renderCards));
+[fSource,fCountry,fLang,fTopic].forEach(el=>el.addEventListener('change', renderCards));
 document.getElementById('resetBtn').addEventListener('click', ()=>{
-  fCountry.value='all'; fLang.value='all'; fTopic.value='all'; renderCards();
+  fSource.value='all'; fCountry.value='all'; fLang.value='all'; fTopic.value='all'; renderCards();
 });
 renderCards();
 
@@ -517,7 +639,7 @@ feedEl.innerHTML = DATA.feed.map(f => `
     <span class="topic-dot" style="background:${COLORS[f.topic]}"></span>
     <div>
       <div class="feed-title">${f.title}</div>
-      <div class="feed-sub">${f.publisher} · ${f.country} · <span style="color:${COLORS[f.topic]}">${LABELS[f.topic]}</span></div>
+      <div class="feed-sub">${f.publisher} · ${f.country} · <span style="color:${COLORS[f.topic]}">${LABELS[f.topic]}</span>${f.entityType ? ` · <span class="badge" data-type="${f.entityType}" style="padding:2px 8px;font-size:10px;">${f.entityType}</span>` : ''}</div>
     </div>
     <div class="feed-date">${f.date}</div>
   </div>

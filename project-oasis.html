@@ -65,12 +65,34 @@
 
   .flagship{font-family:var(--font-display);font-weight:700;font-style:italic;font-size:clamp(1.2rem,2.4vw,1.6rem);line-height:1.5;color:var(--ink);border-left:4px solid var(--red);padding-left:22px;margin:8px 0 0;max-width:56ch;}
 
+  .stat-callout{display:flex;align-items:baseline;gap:22px;border-left:4px solid var(--red);padding-left:22px;margin:8px 0 0;flex-wrap:wrap;}
+  .stat-callout .fs-num{font-family:var(--font-display);font-weight:900;font-size:clamp(2rem,4vw,2.8rem);color:var(--red);line-height:1;white-space:nowrap;}
+  .stat-callout p{font-size:14.5px;color:var(--ink-dim);line-height:1.6;max-width:52ch;margin:0;}
+
+  .search-cta{
+    margin-top:28px;background:var(--navy);border-radius:18px;padding:26px 30px;
+    display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+  }
+  .search-cta-title{font-size:1.05rem;font-weight:900;color:#fff;margin-bottom:6px;}
+  .search-cta p{font-size:13px;color:#C7CEE0;margin:0;max-width:48ch;}
+  .search-cta-btn{
+    flex:0 0 auto;background:var(--red);color:#fff;font-weight:700;font-size:13.5px;
+    padding:13px 24px;border-radius:999px;text-decoration:none;white-space:nowrap;
+  }
+  .search-cta-btn:hover{background:#c91b1f;}
+
   .findings{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
   @media(max-width:800px){.findings{grid-template-columns:1fr;}}
   .finding{background:var(--bg-raised);border:1px solid var(--line);border-radius:8px;padding:22px;}
   .finding .fn{font-family:var(--font-mono);font-size:12px;color:var(--red);letter-spacing:0.05em;}
   .finding h3{font-size:1.15rem;margin:10px 0 8px;}
   .finding p{font-size:13.5px;color:var(--ink-dim);line-height:1.55;margin:0;}
+  .finding-bar{height:8px;background:var(--line);border-radius:4px;margin-top:16px;overflow:hidden;}
+  .finding-bar-fill{height:100%;background:var(--red);border-radius:4px;}
+  .finding-bar-stack{display:flex;height:8px;border-radius:4px;overflow:hidden;margin-top:16px;}
+  .finding-legend{display:flex;flex-wrap:wrap;gap:12px 16px;margin-top:10px;font-size:11.5px;color:var(--ink-dim);}
+  .finding-legend span{display:flex;align-items:center;gap:6px;}
+  .finding-legend i{width:8px;height:8px;border-radius:2px;display:inline-block;}
 
   .country-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   @media(max-width:900px){.country-grid{grid-template-columns:1fr 1fr;}}
@@ -79,6 +101,7 @@
   .country-card .cname{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
   .country-card p{font-size:13px;color:var(--ink-dim);line-height:1.5;margin:0;}
   .country-card b{color:var(--ink);}
+  .country-card b a{color:inherit;text-decoration:underline;}
 
   .layers{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
   .layer{padding:18px 22px;border-bottom:1px solid var(--line);background:var(--bg-raised);display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:16px;align-items:center;}
@@ -123,11 +146,11 @@
 <header class="masthead">
   <div class="wrap">
     <div class="masthead-top">
-      <span>CivicSignal &middot; SembraMedia</span>
+      <span>CivicSignal &middot; <a href="https://directory.globalprojectoasis.org/africa-mundi/" target="_blank" rel="noopener" style="color:inherit;">SembraMedia</a></span>
       <span>Project Oasis, African expansion &middot; 2025 Report</span>
     </div>
-    <h1 class="headline">Africa's new media map is being redrawn. <em>We mapped it.</em></h1>
-    <p class="dek">Code for Africa and SembraMedia ran the African expansion of Global Project Oasis: a systematic effort to identify, verify and profile independent digital-native media across seven countries. This is the map. CivicSignal is what makes it move.</p>
+    <h1 class="headline">Africa's new media map is being redrawn. <em>We are mapping it.</em></h1>
+    <p class="dek">Code for Africa and <a href="https://directory.globalprojectoasis.org/africa-mundi/" target="_blank" rel="noopener">SembraMedia</a> ran the African expansion of Global Project Oasis: a systematic effort to identify, verify and profile independent digital-native media across seven diverse African countries &mdash; a first of its kind. CivicSignal builds on that foundation, extending the same mapping to other emerging media and tracking how it all changes over time.</p>
   </div>
 </header>
 
@@ -145,9 +168,19 @@
 <section class="block">
   <div class="wrap">
     <span class="kicker">The launch proposition</span>
-    <h2>A previously fragmented layer of Africa's information ecosystem, made visible.</h2>
-    <p class="lede">The strongest story here isn't simply that 763 organisations answered a survey. It's that a continent-scale research process made a previously fragmented layer of Africa's media ecosystem visible for the first time &mdash; and gave Code for Africa a platform to argue for <strong>continuous monitoring, not one-off mapping.</strong></p>
-    <div class="flagship">&ldquo;Project Oasis maps the ecosystem. CivicSignal makes the map move.&rdquo;</div>
+    <h2>A first-of-its-kind mapping of Africa's digital-native media.</h2>
+    <p class="lede">This is one of the first systematic efforts to map digital-native media across multiple African countries &mdash; spanning seven diverse markets, from Dakar to Nairobi. It's a genuine milestone for the sector, and Code for Africa is proud to have partnered with <a href="https://directory.globalprojectoasis.org/africa-mundi/" target="_blank" rel="noopener">SembraMedia</a> on it. <strong>CivicSignal builds on that foundation</strong> by extending the same mapping approach to other emerging media, and tracking how all of it evolves over time.</p>
+    <div class="stat-callout">
+      <span class="fs-num">54% <span style="font-size:1rem;font-weight:400;color:var(--ink-dim);">vs 51%</span></span>
+      <p>For the first time, more people get news weekly from social media and video platforms than from news organisations' own websites and apps &mdash; <a href="https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026" target="_blank" rel="noopener">Reuters Institute, Digital News Report 2026</a>. The ground this map covers keeps shifting under it.</p>
+    </div>
+    <div class="search-cta">
+      <div>
+        <div class="search-cta-title">Mapping digital-native media in your region?</div>
+        <p>CivicSignal partners with researchers and funders on mapping digital-native media and other emerging media across African countries.</p>
+      </div>
+      <a class="search-cta-btn" href="mailto:saif@codeforafrica.org?subject=Research%20partnership%20-%20digital-native%20media%20mapping">Partner with CivicSignal on research</a>
+    </div>
   </div>
 </section>
 
@@ -165,21 +198,51 @@
         <span class="fn">02 &middot; FOUNDING WAVE</span>
         <h3>Almost 1 in 3 outlets founded 2019&ndash;2022</h3>
         <p>The pandemic and its aftermath coincided with a pronounced rise in digital-native formation &mdash; crisis disrupted legacy media, but also expanded demand for timely digital information. An association, not a proven single cause.</p>
+        <div class="finding-bar"><div class="finding-bar-fill" style="width:33%;"></div></div>
+        <div class="finding-legend"><span><i style="background:var(--red);"></i>Founded 2019&ndash;2022 (&asymp;33%)</span></div>
       </div>
       <div class="finding">
         <span class="fn">03 &middot; LANGUAGE</span>
         <h3>99% publish primarily in English, French or Arabic</h3>
         <p>English 64.4%, French 28.4%, Arabic 6.2%. Nearly half also use at least one additional language &mdash; including Swahili, Wolof, Hausa, isiXhosa, isiZulu, Yoruba and others &mdash; pointing to emerging multilingual practice.</p>
+        <div class="finding-bar-stack">
+          <div style="width:64.4%;background:var(--navy);"></div>
+          <div style="width:28.4%;background:var(--red);"></div>
+          <div style="width:6.2%;background:var(--blue);"></div>
+          <div style="width:1%;background:var(--line);"></div>
+        </div>
+        <div class="finding-legend">
+          <span><i style="background:var(--navy);"></i>English 64.4%</span>
+          <span><i style="background:var(--red);"></i>French 28.4%</span>
+          <span><i style="background:var(--blue);"></i>Arabic 6.2%</span>
+          <span><i style="background:var(--line);"></i>Other &asymp;1%</span>
+        </div>
       </div>
       <div class="finding">
         <span class="fn">04 &middot; BUSINESS MODEL</span>
         <h3>62.7% for-profit &mdash; but mostly small</h3>
         <p>The sector is increasingly formal and commercial, yet more than three-quarters of outlets reporting staff data have 20 or fewer workers. Formalisation doesn't automatically mean institutional security.</p>
+        <div class="finding-bar-stack">
+          <div style="width:62.7%;background:var(--red);"></div>
+          <div style="width:37.3%;background:var(--line);"></div>
+        </div>
+        <div class="finding-legend">
+          <span><i style="background:var(--red);"></i>For-profit 62.7%</span>
+          <span><i style="background:var(--line);"></i>Non-profit / other 37.3%</span>
+        </div>
       </div>
       <div class="finding">
         <span class="fn">05 &middot; LEADERSHIP</span>
         <h3>59.3% have men-only founding teams</h3>
         <p>Women founders are considerably more visible in non-profit and hybrid organisations (55.2% and 48.0%) than in for-profit ones (30.6%). Market-led growth alone won't fix this gap.</p>
+        <div class="finding-bar-stack">
+          <div style="width:59.3%;background:var(--navy);"></div>
+          <div style="width:40.7%;background:var(--line);"></div>
+        </div>
+        <div class="finding-legend">
+          <span><i style="background:var(--navy);"></i>Men-only founding team 59.3%</span>
+          <span><i style="background:var(--line);"></i>Mixed / women-only 40.7%</span>
+        </div>
       </div>
       <div class="finding">
         <span class="fn">06 &middot; INFLUENCE</span>
@@ -196,12 +259,12 @@
     <h2>What the numbers look like in seven different media markets.</h2>
     <p class="lede">A few illustrative organisations from the full report &mdash; chosen to show how differently the same forces (language, platform reach, business model) play out country to country.</p>
     <div class="country-grid">
-      <div class="country-card"><div class="cname">Senegal</div><p><b>Seneweb</b> &mdash; founded 1999, one of the earliest digital-natives in the study. <b>2.4M</b> Facebook followers and <b>2M</b> on Instagram; 35 full-time staff.</p></div>
-      <div class="country-card"><div class="cname">Morocco</div><p><b>El Botola</b> &mdash; sports outlet founded 2007 on "0 dirham." Now commands <b>5.5M</b> Facebook followers covering football across five languages.</p></div>
-      <div class="country-card"><div class="cname">Nigeria</div><p><b>Inclusive News Network</b> &mdash; hybrid-funded outlet reporting on and for persons with disabilities, blending reader donations, ads and partnerships.</p></div>
-      <div class="country-card"><div class="cname">Ghana</div><p><b>AkwatiaTV</b> publishes primarily in Twi &mdash; one of very few indigenous-language digital-natives identified in the entire sample.</p></div>
-      <div class="country-card"><div class="cname">C&ocirc;te d'Ivoire</div><p>The country's non-profit digital-native sector is led largely by women, including <b>Influence Mag</b>, focused on empowering young girls and African women through education.</p></div>
-      <div class="country-card"><div class="cname">Kenya</div><p><b>Until Everyone Is Free</b> &mdash; a podcast publishing exclusively in Sheng, a Kiswahili-English blend with no formalised writing system.</p></div>
+      <div class="country-card"><div class="cname">Senegal</div><p><b><a href="https://www.seneweb.com" target="_blank" rel="noopener">Seneweb</a></b> &mdash; founded 1999, one of the earliest digital-natives in the study. <b>2.4M</b> Facebook followers and <b>2M</b> on Instagram; 35 full-time staff.</p></div>
+      <div class="country-card"><div class="cname">Morocco</div><p><b><a href="https://www.elbotolamedia.com/" target="_blank" rel="noopener">El Botola</a></b> &mdash; sports outlet founded 2007 on "0 dirham." Now commands <b>5.5M</b> Facebook followers covering football across five languages.</p></div>
+      <div class="country-card"><div class="cname">Nigeria</div><p><b><a href="https://inclusivenews.com.ng" target="_blank" rel="noopener">Inclusive News Network</a></b> &mdash; hybrid-funded outlet reporting on and for persons with disabilities, blending reader donations, ads and partnerships.</p></div>
+      <div class="country-card"><div class="cname">Ghana</div><p><b><a href="https://www.facebook.com/profile.php?id=61564356658000" target="_blank" rel="noopener">AkwatiaTV</a></b> publishes primarily in Twi &mdash; one of very few indigenous-language digital-natives identified in the entire sample.</p></div>
+      <div class="country-card"><div class="cname">C&ocirc;te d'Ivoire</div><p>The country's non-profit digital-native sector is led largely by women, including <b><a href="https://influencemag.ci/" target="_blank" rel="noopener">Influence Mag</a></b>, focused on empowering young girls and African women through education.</p></div>
+      <div class="country-card"><div class="cname">Kenya</div><p><b><a href="https://www.youtube.com/channel/UCYdgVq7DSNBBXqutdt7PNzQ" target="_blank" rel="noopener">Until Everyone Is Free</a></b> &mdash; a podcast publishing exclusively in Sheng, a Kiswahili-English blend with no formalised writing system.</p></div>
     </div>
   </div>
 </section>
@@ -209,10 +272,10 @@
 <section class="block">
   <div class="wrap">
     <span class="kicker">Where CivicSignal fits</span>
-    <h2>Project Oasis is the map. CivicSignal is the layer that watches it change.</h2>
-    <p class="lede">Project Oasis gives Code for Africa an unusually detailed snapshot. The next challenge &mdash; and CivicSignal's reason to exist &mdash; is making that map move.</p>
+    <h2>Mapping, infrastructure, and continuous intelligence &mdash; three distinct layers.</h2>
+    <p class="lede">CivicSignal is the intelligence layer: it tracks what media actors are publishing, reaching and changing over time. It sits alongside &mdash; not on top of &mdash; the mapping efforts that help identify who those actors are in the first place.</p>
     <div class="layers">
-      <div class="layer"><span class="lname">Project Oasis / Directory</span><span class="lq">Who are the digital-native media?</span><span class="lrole">The map</span></div>
+      <div class="layer"><span class="lname">Regional Mapping Efforts</span><span class="lq">Who are the digital-native media?</span><span class="lrole">The map</span></div>
       <div class="layer"><span class="lname">CfA MediaData</span><span class="lq">What actors constitute the information ecosystem?</span><span class="lrole">The infrastructure</span></div>
       <div class="layer"><span class="lname">CivicSignal</span><span class="lq">What are they publishing, reaching and changing over time?</span><span class="lrole">The intelligence layer</span></div>
     </div>
@@ -249,8 +312,8 @@
 
 <footer class="close">
   <div class="wrap">
-    <h2>The launch made the report useful today. CivicSignal makes it useful tomorrow.</h2>
-    <p class="lede">Project Oasis mapped African information ecosystems that had never been systematically documented before. CivicSignal extends that proposition into persistent observation &mdash; of actors, content, audiences and influence, as they change.</p>
+    <h2>A map is a starting point. CivicSignal is what keeps watching.</h2>
+    <p class="lede">CivicSignal maintains persistent observation of Africa's media actors, content, audiences and influence &mdash; tracking how the picture changes, continuously.</p>
     <div class="ctarow">
       <a class="btn btn-primary" href="civicsignalmediapulse.html">See Wavelength</a>
       <a class="btn btn-ghost" href="#" onclick="return false;">Explore the Project Oasis directory</a>

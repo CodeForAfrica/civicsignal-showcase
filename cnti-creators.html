@@ -214,6 +214,8 @@
     color:var(--ink-soft);
     background:var(--card);
   }
+  .archetype-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px;}
+  .chip-hybrid{background:var(--teal-dim);color:var(--teal);border-color:var(--teal);font-weight:600;}
 
   /* ---------- insight box ---------- */
   .insight{
@@ -225,6 +227,20 @@
   .insight p{font-size:14.5px;color:var(--ink-soft);}
   .insight p + p{margin-top:8px;}
   .insight strong{color:var(--ink);}
+
+  /* ---------- press links ---------- */
+  .press-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:4px;}
+  @media(max-width:700px){.press-grid{grid-template-columns:1fr;}}
+  .press-card{
+    display:block;background:var(--card);border:1px solid var(--line);border-radius:8px;
+    padding:20px 22px;text-decoration:none;color:inherit;
+    transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .press-card:hover{box-shadow:0 10px 24px rgba(0,0,0,0.08);transform:translateY(-2px);}
+  .press-source{font-size:12px;color:var(--teal);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;}
+  .press-card h5{font-size:16px;font-weight:600;margin-bottom:10px;line-height:1.4;}
+  .press-excerpt{font-size:13px;font-style:italic;color:var(--ink-soft);line-height:1.6;margin-bottom:12px;}
+  .press-link{font-size:13px;font-weight:700;color:var(--ink);}
 
   /* ---------- network cards ---------- */
   .network-grid{
@@ -261,6 +277,8 @@
     color:var(--teal);
     margin-bottom:6px;
   }
+  .creator-body .outlet a{color:inherit;text-decoration:none;}
+  .creator-body .outlet a:hover{text-decoration:underline;}
   .creator-body .beat{
     display:inline-block;
     font-size:11px;
@@ -314,11 +332,11 @@
 
   <header>
     <div class="masthead-top">
-      <span>CivicSignal &middot; CNTI &middot; ProjectC</span>
+      <span>CivicSignal &middot; <a href="https://cnti.org/" target="_blank" rel="noopener" style="color:inherit;">CNTI</a> &middot; <a href="https://projectc.biz/" target="_blank" rel="noopener" style="color:inherit;">ProjectC</a></span>
       <span>South Africa · n = 42 respondents</span>
     </div>
     <h1>A mature creator economy, unevenly paid.</h1>
-    <p class="dek">A survey of 42 South African creators and independent journalists — who they are, what they do, how they sustain the work, and where it ties back into institutional journalism. A partnership between Code for Africa, the Center for News, Technology and Innovation (CNTI), and <a href="https://projectc.biz/" target="_blank" rel="noopener">ProjectC</a>.</p>
+    <p class="dek">A survey of 42 South African creators and independent journalists — who they are, what they do, how they sustain the work, and where it ties back into institutional journalism. A partnership between Code for Africa, the <a href="https://cnti.org/" target="_blank" rel="noopener">Center for News, Technology and Innovation (CNTI)</a>, and <a href="https://projectc.biz/" target="_blank" rel="noopener">ProjectC</a>.</p>
   </header>
 
   <div class="hero">
@@ -476,6 +494,42 @@
 
   <section>
     <div class="section-head">
+      <h3>How CivicSignal makes sense of the creator economy</h3>
+      <span class="n">Mapping framework, 2026</span>
+    </div>
+    <p class="hero-caption" style="max-width:70ch;margin-top:0;">CivicSignal's mapping framework is grounded in a distinction among three related but conceptually separate functions:</p>
+    <ul style="margin:14px 0 0;padding-left:18px;font-size:13.5px;color:var(--ink-soft);line-height:1.7;max-width:70ch;">
+      <li><strong style="color:var(--ink);">Content creation is a production activity:</strong> the development and presentation of content for an audience.</li>
+      <li><strong style="color:var(--ink);">Influence is an audience relationship and effect:</strong> the capacity to engage an audience and shape its attention, interpretation, attitudes, or behaviour.</li>
+      <li><strong style="color:var(--ink);">Journalism is a professional function and method:</strong> the production of public-interest information through reporting, verification, editorial judgement, and adherence to professional and ethical standards.</li>
+    </ul>
+    <p class="hero-caption" style="max-width:70ch;">These functions frequently overlap &mdash; an actor may be a content creator, an influencer, a journalist, or a combination of the three.</p>
+    <div class="archetype-row">
+      <span class="chip">Content creator</span>
+      <span class="chip chip-hybrid">Creator&ndash;influencer</span>
+      <span class="chip">Influencer</span>
+      <span class="chip chip-hybrid">Creator&ndash;journalist</span>
+      <span class="chip chip-hybrid">Journalist&ndash;influencer</span>
+      <span class="chip">Journalist</span>
+    </div>
+    <div class="grid2" style="margin-top:28px;">
+      <div class="stat-block">
+        <h4>Three layers, not one score</h4>
+        <ul style="margin:0;padding-left:18px;font-size:13.5px;color:var(--ink-soft);line-height:1.7;">
+          <li><strong style="color:var(--ink);">Actor identity &amp; role</strong> &mdash; who they are, and what functions they perform.</li>
+          <li><strong style="color:var(--ink);">Practices &amp; capacities</strong> &mdash; how they produce, distribute, finance and govern the work.</li>
+          <li><strong style="color:var(--ink);">Ecosystem position &amp; outcomes</strong> &mdash; their reach, trust and influence, and the risks and resourcing gaps they face.</li>
+        </ul>
+      </div>
+      <div class="stat-block">
+        <h4>Why it matters</h4>
+        <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0;">The goal isn't a follower-count leaderboard. It's a fuller picture of who's producing and interpreting information, what standards and resources back their work, and where targeted support &mdash; funding, training, protection &mdash; could strengthen Africa's independent media ecosystem.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
       <h3>A sampling of the network</h3>
       <span class="n">10 of 32 named creators</span>
     </div>
@@ -484,7 +538,7 @@
         <div class="avatar">NG</div>
         <div class="creator-body">
           <h5>Nathan Geffen</h5>
-          <div class="outlet">GroundUp</div>
+          <div class="outlet"><a href="https://groundup.org.za" target="_blank" rel="noopener">GroundUp</a></div>
           <span class="beat">Investigative</span>
           <p class="desc">Public-interest journalist covering health, justice and inequality.</p>
         </div>
@@ -493,7 +547,7 @@
         <div class="avatar">NH</div>
         <div class="creator-body">
           <h5>Nobesuthu Hejana</h5>
-          <div class="outlet">eNCA</div>
+          <div class="outlet"><a href="https://www.enca.com" target="_blank" rel="noopener">eNCA</a></div>
           <span class="beat">Broadcast</span>
           <p class="desc">Broadcast news reporter for national television.</p>
         </div>
@@ -502,7 +556,7 @@
         <div class="avatar">NE</div>
         <div class="creator-body">
           <h5>Nicole Engelbrecht</h5>
-          <div class="outlet">True Crime South Africa</div>
+          <div class="outlet"><a href="https://iono.fm/rss/chan/4657" target="_blank" rel="noopener">True Crime South Africa</a></div>
           <span class="beat">Podcast</span>
           <p class="desc">Podcast creator and host of one of SA's leading true-crime shows.</p>
         </div>
@@ -511,7 +565,7 @@
         <div class="avatar">LJ</div>
         <div class="creator-body">
           <h5>Leonie Joubert</h5>
-          <div class="outlet">Story Ark</div>
+          <div class="outlet"><a href="https://podcasts.apple.com/us/podcast/story-ark-tales-from-southern-africas-climate-tipping/id1818599360" target="_blank" rel="noopener">Story Ark</a></div>
           <span class="beat">Science / climate</span>
           <p class="desc">Science and climate journalist; contributes to Daily Maverick and Mongabay.</p>
         </div>
@@ -520,7 +574,7 @@
         <div class="avatar">MK</div>
         <div class="creator-body">
           <h5>Mark Keohane</h5>
-          <div class="outlet">KEO.co.za</div>
+          <div class="outlet"><a href="https://www.keo.co.za/" target="_blank" rel="noopener">KEO.co.za</a></div>
           <span class="beat">Sport</span>
           <p class="desc">Rugby journalist and founder of a dedicated rugby news outlet.</p>
         </div>
@@ -529,7 +583,7 @@
         <div class="avatar">ZM</div>
         <div class="creator-body">
           <h5>Zanele Mji</h5>
-          <div class="outlet">Golden City Podcast</div>
+          <div class="outlet"><a href="https://www.goldencitypodcast.co.za" target="_blank" rel="noopener">Golden City Podcast</a></div>
           <span class="beat">Investigative</span>
           <p class="desc">Investigative journalist with bylines at TIME and Context.</p>
         </div>
@@ -538,7 +592,7 @@
         <div class="avatar">JM</div>
         <div class="creator-body">
           <h5>Jacqueline May</h5>
-          <div class="outlet">Twyg</div>
+          <div class="outlet"><a href="https://twyg.co.za/" target="_blank" rel="noopener">Twyg</a></div>
           <span class="beat">Fashion</span>
           <p class="desc">Founder and editor covering sustainable fashion.</p>
         </div>
@@ -547,7 +601,7 @@
         <div class="avatar">GT</div>
         <div class="creator-body">
           <h5>Giulietta Talevi</h5>
-          <div class="outlet">Currency News</div>
+          <div class="outlet"><a href="https://currencynews.co.za/" target="_blank" rel="noopener">Currency News</a></div>
           <span class="beat">Business</span>
           <p class="desc">Co-founder covering business and finance.</p>
         </div>
@@ -556,7 +610,7 @@
         <div class="avatar">BV</div>
         <div class="creator-body">
           <h5>Brett Venter</h5>
-          <div class="outlet">Stuff South Africa</div>
+          <div class="outlet"><a href="https://stuff.co.za" target="_blank" rel="noopener">Stuff South Africa</a></div>
           <span class="beat">Tech</span>
           <p class="desc">Tech editor at a national consumer technology outlet.</p>
         </div>
@@ -565,13 +619,34 @@
         <div class="avatar">DL</div>
         <div class="creator-body">
           <h5>Desmond Latham</h5>
-          <div class="outlet">History of South Africa</div>
+          <div class="outlet"><a href="https://iono.fm/rss/chan/6011" target="_blank" rel="noopener">History of South Africa</a></div>
           <span class="beat">History podcast</span>
           <p class="desc">Creator and host of a long-running history podcast.</p>
         </div>
       </div>
     </div>
     <p class="hero-caption" style="margin-top:20px;">No photos are used, to avoid image-rights issues — initials only. Selected from a full roster of 32 to span distinct beats and formats.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h3>In the press</h3>
+      <span class="n">Related reading</span>
+    </div>
+    <div class="press-grid">
+      <a class="press-card" href="https://www.dailymaverick.co.za/article/2026-06-03-news-creators-are-on-the-up-as-legacy-media-falls-out-of-favour/" target="_blank" rel="noopener">
+        <div class="press-source">Daily Maverick &middot; Chris Roper &middot; 3 June 2026</div>
+        <h5>News creators are on the up as legacy media falls out of favour</h5>
+        <p class="press-excerpt">&ldquo;News media in South Africa are staring down the barrel of an existential threat, and the bullet has already been fired. Many legacy brands that we know and still, despite everything, trust, will almost certainly disappear in the next few years.&rdquo;</p>
+        <span class="press-link">Read the article &rarr;</span>
+      </a>
+      <a class="press-card" href="https://mg.co.za/thought-leader/2026-06-12-a-brave-news-world/" target="_blank" rel="noopener">
+        <div class="press-source">Mail &amp; Guardian &middot; Saif Ali &middot; 12 June 2026</div>
+        <h5>A brave news world</h5>
+        <p class="press-excerpt">&ldquo;As of September 2024, about one in four people in the country said they get news from individuals rather than organisations; a striking figure in a media environment still largely understood through the lens of institutions.&rdquo;</p>
+        <span class="press-link">Read the article &rarr;</span>
+      </a>
+    </div>
   </section>
 
   <footer>

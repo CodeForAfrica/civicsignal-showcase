@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CivicSignal — Code for Africa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F3ED; --bg-raised:#FFFFFF; --bg-inset:#141B33;
+    --line:#DEDACB; --line-soft:#E9E6DA;
+    --ink:#1B2340; --ink-dim:#5B5F6E; --ink-faint:#8B8E9A;
+    --accent:#C05A32; --accent-wash:rgba(192,90,50,0.1);
+    --teal:#1F6F63; --gold:#C08A28;
+    --font-display:'Fraunces',Georgia,serif; --font-body:'Archivo',-apple-system,'Segoe UI',sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;}
+  html{background:var(--bg);}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:var(--accent);}
+  img,svg{max-width:100%;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
+  @media(max-width:720px){.wrap{padding:0 18px;}}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;text-wrap:balance;margin:0;}
+  .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px;}
+
+  header.masthead{padding:clamp(56px,9vw,96px) 0 56px;}
+  .masthead-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:40px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;color:var(--ink-faint);text-transform:uppercase;}
+  .wordmark{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:13px;letter-spacing:0.08em;font-weight:700;text-decoration:none;}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-wash);}
+  h1.headline{font-size:clamp(2.1rem,5.5vw,3.6rem);line-height:1.08;max-width:17ch;letter-spacing:-0.01em;}
+  h1.headline em{font-style:italic;color:var(--accent);font-weight:500;}
+  .dek{margin-top:22px;max-width:62ch;font-size:1.15rem;color:var(--ink-dim);}
+  .flagship{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(1.15rem,2.2vw,1.4rem);line-height:1.5;color:var(--ink);border-left:3px solid var(--accent);padding-left:20px;margin-top:32px;max-width:52ch;}
+
+  section.block{padding:clamp(48px,8vw,84px) 0;border-top:1px solid var(--line);}
+  section.block h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:16px;max-width:28ch;}
+  section.block .lede{font-size:1.03rem;color:var(--ink-dim);max-width:70ch;margin-bottom:28px;}
+  section.block .lede strong{color:var(--ink);font-weight:600;}
+
+  .signal-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+  @media(max-width:820px){.signal-row{grid-template-columns:1fr;}}
+  .signal-card{background:var(--bg-raised);border:1px solid var(--line);border-radius:10px;padding:22px;}
+  .signal-card .src{font-family:var(--font-mono);font-size:10.5px;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;}
+  .signal-card .big{font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--ink);line-height:1;}
+  .signal-card p{font-size:13px;color:var(--ink-dim);line-height:1.55;margin:10px 0 0;}
+
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  @media(max-width:820px){.cards{grid-template-columns:1fr;}}
+  .card{
+    background:var(--bg-raised);border:1px solid var(--line);border-radius:14px;
+    padding:28px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:inherit;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(27,35,64,0.08);}
+  .card .tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;display:inline-block;width:fit-content;}
+  .tag-monitor{background:rgba(31,111,99,0.12);color:var(--teal);}
+  .tag-oasis{background:rgba(192,90,50,0.12);color:var(--accent);}
+  .tag-cnti{background:rgba(192,138,40,0.12);color:var(--gold);}
+  .tag-push{background:rgba(31,111,99,0.12);color:var(--teal);}
+  .card h3{font-size:1.3rem;}
+  .card p{font-size:14px;color:var(--ink-dim);line-height:1.6;margin:0;flex:1;}
+  .card .cta{font-size:13px;font-weight:700;color:var(--ink);}
+  .card .cta::after{content:' \2192';}
+
+  footer.close{background:var(--bg-inset);color:#EFE9DB;padding:clamp(48px,8vw,80px) 0 40px;margin-top:20px;}
+  footer.close .wrap{}
+  footer.close h2{color:#fff;font-size:clamp(1.3rem,2.6vw,1.7rem);max-width:26ch;}
+  footer.close .lede{margin-top:14px;max-width:60ch;color:#C7C2B4;font-size:1rem;}
+  footer.close a{color:#F0C896;}
+  .footlinks{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px;font-size:13.5px;}
+  .colophon{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.12);font-family:var(--font-mono);font-size:11px;color:#8b93a8;letter-spacing:0.03em;line-height:1.7;}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-top">
+      <span class="wordmark"><span class="dot"></span>CivicSignal</span>
+      <span>Code for Africa &middot; Media Intelligence</span>
+    </div>
+    <h1 class="headline">Mapping and tracking are <em>two different things.</em></h1>
+    <p class="dek">Code for Africa does both. CivicSignal is the continuous-monitoring layer that sits on top of the continent's biggest mapping efforts &mdash; watching what changes after the map is drawn.</p>
+    <div class="flagship">&ldquo;Project Oasis maps the ecosystem. CivicSignal makes the map move.&rdquo;</div>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <span class="kicker">Why this matters now</span>
+    <h2>Africa's information ecosystem is moving faster than any one-time map can capture.</h2>
+    <p class="lede">This isn't a CivicSignal talking point &mdash; it's what the world's largest annual study of news consumption found this year. Code for Africa is a named sponsor of the <a href="https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026" target="_blank" rel="noopener">Reuters Institute's Digital News Report 2026</a>, and CfA's Chris Roper co-authored its South Africa chapter.</p>
+    <div class="signal-row">
+      <div class="signal-card">
+        <div class="src">DNR 2026 &middot; Global</div>
+        <div class="big">54% <span style="font-size:1rem;color:var(--ink-faint);">vs 51%</span></div>
+        <p>For the first time, social media and video networks are used weekly for news by more people globally than news organisations' own websites and apps.</p>
+      </div>
+      <div class="signal-card">
+        <div class="src">DNR 2026 &middot; Global</div>
+        <div class="big">46%</div>
+        <p>Get some news from creators of any type &mdash; not a fringe behaviour, a mainstream one. Trust in news overall has fallen to its lowest recorded level (37%).</p>
+      </div>
+      <div class="signal-card">
+        <div class="src">DNR 2026 &middot; Kenya</div>
+        <div class="big">62% <span style="font-size:1rem;color:var(--ink-faint);">(+16pp)</span></div>
+        <p>WhatsApp reach for news in Kenya, with TikTok close behind at 58% (+20pp) &mdash; both jumped in a single year. Neither is visible to a website crawler.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <span class="kicker">Four ways in</span>
+    <h2>Explore CivicSignal's work.</h2>
+    <p class="lede">Each of these is a distinct piece of the same argument: understanding Africa's information ecosystem takes more than a directory, and it doesn't stop being true the day the research is published.</p>
+    <div class="cards">
+      <a class="card" href="civicsignalmediapulse.html">
+        <span class="tag tag-monitor">Live monitoring</span>
+        <h3>Emerging Media Ecosystems Monitoring</h3>
+        <p>Digital-native publishers, creator-journalists and Push Media sources, unified into one live view &mdash; topic-classified, filterable, updated continuously. This is the map moving.</p>
+        <span class="cta">Open the monitor</span>
+      </a>
+      <a class="card" href="project-oasis.html">
+        <span class="tag tag-oasis">Research partnership</span>
+        <h3>Project Oasis Partnership</h3>
+        <p>With SembraMedia: ~1,100 digital-native media organisations identified, 763 profiled, across seven African countries &mdash; the largest systematic map of its kind.</p>
+        <span class="cta">See the findings</span>
+      </a>
+      <a class="card" href="cnti-creators.html">
+        <span class="tag tag-cnti">Creator research</span>
+        <h3>CNTI Creator Partnership</h3>
+        <p>With the Center for News, Technology and Innovation: a survey of 42 South African creator-journalists &mdash; who they are, how they work, and how unevenly they get paid for it.</p>
+        <span class="cta">See the survey</span>
+      </a>
+      <a class="card" href="push-media.html">
+        <span class="tag tag-push">Monitoring tool</span>
+        <h3>Push Media Monitoring</h3>
+        <p>Newsletters, Telegram channels and fediverse accounts &mdash; the news that never touches a website, and so is invisible to any ordinary crawler. 376 sources tracked and counting.</p>
+        <span class="cta">See what it watches</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="close">
+  <div class="wrap">
+    <h2>The map is moving. CivicSignal is how Code for Africa keeps up with it.</h2>
+    <p class="lede">Project Oasis and the CNTI survey each gave Code for Africa an unusually detailed snapshot of who's publishing, and how. CivicSignal is the infrastructure that keeps watching after the snapshot is taken.</p>
+    <div class="footlinks">
+      <a href="https://cnti.org/reports/south-africa-indie-info-providers/" target="_blank" rel="noopener">CNTI report &rarr;</a>
+      <a href="https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026" target="_blank" rel="noopener">Reuters Digital News Report 2026 &rarr;</a>
+    </div>
+    <div class="colophon">
+      CivicSignal &middot; Code for Africa &mdash; working showcase, not for distribution. DNR 2026 figures: Reuters Institute for the Study of Journalism, Digital News Report 2026 (Executive Summary and Kenya country chapter). Project Oasis figures: Project Oasis 2025 Report and the CivicSignal/Code for Africa launch brief. See each page's own footer for full sourcing.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

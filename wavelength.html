@@ -7,6 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=optional" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <style>
   :root{
     --cream:#F4F3F0;
@@ -286,6 +290,12 @@
   /* ---------- RECENT COVERAGE: 3-up topic columns ---------- */
   .feed-topic-picker{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;}
   .feed-topic-picker label{display:flex;flex-direction:column;gap:5px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;}
+  #feedSortToggle{display:flex;gap:6px;margin-bottom:20px;}
+  #feedSortToggle button{
+    font-family:'Lato',sans-serif;font-size:12px;font-weight:700;color:var(--muted);
+    background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;
+  }
+  #feedSortToggle button.active{background:var(--navy);border-color:var(--navy);color:#fff;}
   .feed-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   @media(max-width:900px){.feed-columns{grid-template-columns:1fr;}}
   .feed-col{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0;}
@@ -317,6 +327,66 @@
   .event-samples .feed-row{padding:10px 0;}
   .event-samples .feed-row:first-of-type{padding-top:12px;}
   .events-empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;}
+
+  /* ---------- MAJOR EVENTS: List/Map carousel ---------- */
+  .carousel-nav{display:flex;align-items:center;gap:8px;margin-bottom:18px;}
+  .carousel-dot{
+    font-family:'Lato',sans-serif;font-size:12.5px;font-weight:700;color:var(--muted);
+    background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 16px;cursor:pointer;
+  }
+  .carousel-dot.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .carousel-newtab{margin-left:auto;font-size:12px;font-weight:700;color:var(--navy);text-decoration:none;}
+  .carousel-newtab:hover{text-decoration:underline;}
+  .disclaimer{
+    background:#fff;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:8px;
+    padding:12px 16px;font-size:12.5px;line-height:1.6;color:var(--muted);margin-bottom:20px;
+    display:flex;flex-direction:column;gap:3px;
+  }
+  .disclaimer b{color:var(--ink);font-size:12.5px;font-weight:700;}
+  .disclaimer em{font-style:normal;font-weight:700;color:var(--ink);}
+  .event-map-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px;}
+  .legend-note{font-size:11.5px;color:var(--muted);margin:0 0 18px;}
+  .event-map-board{display:grid;grid-template-columns:minmax(280px,1.2fr) minmax(300px,0.9fr);gap:20px;align-items:start;}
+  @media(max-width:860px){.event-map-board{grid-template-columns:1fr;}}
+  .event-map-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;}
+  #eventsMap{width:100%;height:520px;border-radius:10px;background:#DCD9D1;}
+  .event-map-detail{
+    background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;
+    box-sizing:border-box;overflow-y:auto;
+  }
+  .event-map-detail .detail-empty{color:var(--muted);font-size:13.5px;text-align:center;padding:60px 20px;}
+  .event-map-detail .detail-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:4px;}
+  .event-map-detail .detail-head h3{font-size:17px;font-weight:900;margin:0;color:var(--ink);}
+  .event-map-detail .detail-kind{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted);}
+  .event-map-detail .detail-sub{font-size:12.5px;color:var(--muted);margin-bottom:14px;}
+  .event-map-detail .sort-toggle{display:flex;gap:6px;margin-bottom:14px;}
+  .event-map-detail .sort-toggle button{
+    font-family:'Lato',sans-serif;font-size:11px;font-weight:700;color:var(--muted);
+    background:var(--cream-2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer;
+  }
+  .event-map-detail .sort-toggle button.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .event-map-detail .event-item{padding:12px 0;border-top:1px solid var(--line);}
+  .event-map-detail .event-item:first-of-type{border-top:none;padding-top:0;}
+  .event-map-detail .event-item-top{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+  .event-map-detail .event-item-cat{width:8px;height:8px;border-radius:50%;flex:0 0 auto;}
+  .event-map-detail .event-item-date{font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
+  .event-map-detail .event-item-headline{font-size:13.5px;font-weight:600;line-height:1.45;color:var(--ink);}
+  .event-map-detail .event-item-meta{font-size:11.5px;color:var(--muted);margin-top:3px;}
+  .event-map-detail .event-item-samples{margin-top:6px;padding-left:16px;border-left:2px solid var(--line);}
+  .event-map-detail .event-item-sample{font-size:12px;color:var(--muted);line-height:1.5;}
+  .event-map-detail .event-item-sample a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(2,32,105,0.25);}
+  .event-map-detail .event-item-sample a:hover{border-bottom-color:var(--navy);}
+  .pulse-marker{position:relative;}
+  .pulse-ring{position:absolute;top:50%;left:50%;border-radius:50%;transform:translate(-50%,-50%) scale(1);opacity:0.55;animation:pulse 2.2s cubic-bezier(.2,.6,.4,1) infinite;pointer-events:none;}
+  .pulse-ring.ring-2{animation-delay:1.1s;}
+  @keyframes pulse{0%{transform:translate(-50%,-50%) scale(1);opacity:.55;}100%{transform:translate(-50%,-50%) scale(2.6);opacity:0;}}
+  @media(prefers-reduced-motion:reduce){.pulse-ring{display:none;}}
+  .pulse-dot{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:2px solid #fff;
+    box-shadow:0 1px 4px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;color:#fff;
+    font-family:'IBM Plex Mono',monospace;font-weight:600;transition:transform .15s ease;z-index:1;
+  }
+  .pulse-marker.is-active .pulse-dot{transform:translate(-50%,-50%) scale(1.25);outline:3px solid var(--red);outline-offset:2px;z-index:2;}
 
   /* ---------- TOPIC TOTALS BARS ---------- */
   .bars{display:flex;flex-direction:column;gap:12px;}
@@ -413,25 +483,47 @@
   <section class="section stepper-panel" id="major-events" data-panel-title="Major Events">
     <div class="section-head">
       <div>
-        <h2>Major Events</h2>
-        <p>Correlated coverage, not a single keyword hit &mdash; each card below is independent reporting from multiple publishers converging on the same real-world incident within a tight date window. Detected automatically from shared entities and timing; not hand-curated, so treat categories and entities as a strong signal, not a verified fact-check.</p>
+        <h2 id="eventsSlideHeading">Major Events</h2>
+        <p id="eventsSlideLede">Correlated coverage, not a single keyword hit &mdash; each card below is independent reporting from multiple publishers converging on the same real-world incident within a tight date window. Detected automatically from shared entities and timing; not hand-curated, so treat categories and entities as a strong signal, not a verified fact-check.</p>
       </div>
       <span class="count-pill" id="eventCount"></span>
     </div>
-    <div class="filters">
-      <label>Category
-        <select id="fEventCategory"><option value="all">All categories</option></select>
-      </label>
-      <label>Sort by
-        <select id="fEventSort">
-          <option value="articles">Most coverage</option>
-          <option value="recent">Most recent</option>
-          <option value="publishers">Most publishers</option>
-        </select>
-      </label>
+
+    <div class="carousel-nav">
+      <button class="carousel-dot active" data-slide="list" aria-label="List view">List</button>
+      <button class="carousel-dot" data-slide="map" aria-label="Map view">Map</button>
+      <a class="carousel-newtab" id="eventsMapNewTab" href="major-events-map.html" target="_blank" rel="noopener" hidden>Open map in new tab &nearr;</a>
     </div>
-    <div class="events-list" id="eventsList"></div>
-    <div class="load-more-wrap" id="eventsLoadMoreWrap"></div>
+
+    <div class="carousel-slide" id="eventsSlideList">
+      <div class="filters">
+        <label>Category
+          <select id="fEventCategory"><option value="all">All categories</option></select>
+        </label>
+        <label>Sort by
+          <select id="fEventSort">
+            <option value="articles">Most coverage</option>
+            <option value="recent">Most recent</option>
+            <option value="publishers">Most publishers</option>
+          </select>
+        </label>
+      </div>
+      <div class="events-list" id="eventsList"></div>
+      <div class="load-more-wrap" id="eventsLoadMoreWrap"></div>
+    </div>
+
+    <div class="carousel-slide" id="eventsSlideMap" hidden>
+      <div class="disclaimer"><b>Referent location, not confirmed occurrence</b><span>Each marker is a <em>referent location</em> &mdash; the place a story's own text most prominently names, surfaced via named-entity extraction &mdash; not a verified site of occurrence. A story datelined in Lagos about a policy affecting Kano will map to Lagos here. Read this as &ldquo;what places does the coverage talk about,&rdquo; not &ldquo;where did this happen.&rdquo;</span></div>
+      <div class="event-map-legend" id="eventMapLegend"></div>
+      <p class="legend-note">Solid border = city-level, real coordinates. Dashed border = country fallback (no confident city match).</p>
+      <div class="event-map-board">
+        <div class="event-map-card">
+          <div id="eventsMap"></div>
+          <p class="map-note">Base map &copy; <a href="https://www.esri.com" target="_blank" rel="noopener">Esri</a>.</p>
+        </div>
+        <div class="event-map-detail" id="eventsMapDetail"></div>
+      </div>
+    </div>
   </section>
 
   <section class="section stepper-panel" id="entities" data-panel-title="Fingerprints">
@@ -511,7 +603,19 @@
         <p>Latest classified stories across the corpus &mdash; pick up to three topics to compare side by side. Each column's summary is a live snapshot built from the same data below it, not a generated write-up.</p>
       </div>
     </div>
+    <div class="filters">
+      <label>Country
+        <select id="fFeedCountry"><option value="all">All countries</option></select>
+      </label>
+      <label>Language
+        <select id="fFeedLang"><option value="all">All languages</option></select>
+      </label>
+    </div>
     <div class="feed-topic-picker" id="feedTopicPicker"></div>
+    <div class="sort-toggle" id="feedSortToggle">
+      <button class="active" data-order="newest">Newest first</button>
+      <button data-order="oldest">Oldest first</button>
+    </div>
     <div class="feed-columns" id="feedColumns"></div>
   </section>
 
@@ -1081,11 +1185,22 @@ function computeColumnSummary(items, topicLabel){
     + `across <b>${countries.size}</b> countr${countries.size === 1 ? 'y' : 'ies'}. Most active here: <b>${topPub}</b> (${topPubCount}).`;
 }
 
+let feedSortOrder = 'newest';
+const fFeedCountry = document.getElementById('fFeedCountry');
+const fFeedLang = document.getElementById('fFeedLang');
+(DATA.countries || []).forEach(c => { fFeedCountry.innerHTML += `<option value="${c}">${c}</option>`; });
+(DATA.topLanguages || []).forEach(l => { fFeedLang.innerHTML += `<option value="${l}">${l}</option>`; });
+
 function renderFeedColumns(){
   const picks = feedTopicSelects.map(s => s.value);
+  const countryPick = fFeedCountry.value, langPick = fFeedLang.value;
   const columnsEl = document.getElementById('feedColumns');
   columnsEl.innerHTML = picks.map(topic => {
-    const items = DATA.feed.filter(f => f.topic === topic);
+    const items = DATA.feed.filter(f => f.topic === topic
+        && (countryPick === 'all' || f.country === countryPick)
+        && (langPick === 'all' || f.lang === langPick))
+      .slice()
+      .sort((a, b) => feedSortOrder === 'newest' ? b.date.localeCompare(a.date) : a.date.localeCompare(b.date));
     const label = LABELS[topic] || topic;
     const summary = computeColumnSummary(items, label);
     const rows = items.length
@@ -1124,6 +1239,15 @@ feedPickerEl.innerHTML = [0, 1, 2].map(i => `
 `).join('');
 const feedTopicSelects = Array.from(feedPickerEl.querySelectorAll('.feed-topic-select'));
 feedTopicSelects.forEach(s => s.addEventListener('change', renderFeedColumns));
+fFeedCountry.addEventListener('change', renderFeedColumns);
+fFeedLang.addEventListener('change', renderFeedColumns);
+document.querySelectorAll('#feedSortToggle button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    feedSortOrder = btn.dataset.order;
+    document.querySelectorAll('#feedSortToggle button').forEach(b => b.classList.toggle('active', b === btn));
+    renderFeedColumns();
+  });
+});
 renderFeedColumns();
 
 // ---- major events ----
@@ -1219,6 +1343,168 @@ function renderEvents(){
 fEventCategory.addEventListener('change', () => { eventsVisibleCount = EVENTS_PAGE_SIZE; renderEvents(); });
 fEventSort.addEventListener('change', () => { eventsVisibleCount = EVENTS_PAGE_SIZE; renderEvents(); });
 renderEvents();
+
+// ---- major events: List/Map carousel ----
+const SLIDE_COPY = {
+  list: {
+    heading: 'Major Events',
+    lede: "Correlated coverage, not a single keyword hit — each card below is independent reporting from multiple publishers converging on the same real-world incident within a tight date window. Detected automatically from shared entities and timing; not hand-curated, so treat categories and entities as a strong signal, not a verified fact-check.",
+  },
+  map: {
+    heading: 'Major events, spatially',
+    lede: "Every detected major event, plotted at its most specific resolvable location. Scroll or pinch to zoom, drag to pan, click a marker for its events.",
+  },
+};
+const eventsSlideHeading = document.getElementById('eventsSlideHeading');
+const eventsSlideLede = document.getElementById('eventsSlideLede');
+const eventsSlideList = document.getElementById('eventsSlideList');
+const eventsSlideMap = document.getElementById('eventsSlideMap');
+const eventsMapNewTab = document.getElementById('eventsMapNewTab');
+let eventsMapInitialized = false;
+
+document.querySelectorAll('.carousel-dot').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const slide = btn.dataset.slide;
+    document.querySelectorAll('.carousel-dot').forEach(b => b.classList.toggle('active', b === btn));
+    eventsSlideList.hidden = slide !== 'list';
+    eventsSlideMap.hidden = slide !== 'map';
+    eventsMapNewTab.hidden = slide !== 'map';
+    eventsSlideHeading.textContent = SLIDE_COPY[slide].heading;
+    eventsSlideLede.textContent = SLIDE_COPY[slide].lede;
+    if (slide === 'map') {
+      if (!eventsMapInitialized) { initEventsMap(); eventsMapInitialized = true; }
+      setTimeout(() => eventsMapLeaflet && eventsMapLeaflet.invalidateSize(), 50);
+    }
+  });
+});
+
+let eventsMapLeaflet = null;
+function initEventsMap(){
+  const clusters = {};
+  EVENTS.forEach(e => {
+    if (!e.location) return;
+    const key = e.location.lat.toFixed(3) + ',' + e.location.lon.toFixed(3);
+    (clusters[key] = clusters[key] || []).push(e);
+  });
+  const MARKERS = Object.values(clusters).map(evs => {
+    const catCounts = {};
+    evs.forEach(e => { catCounts[e.category] = (catCounts[e.category]||0) + e.articleCount; });
+    const dominantCategory = Object.entries(catCounts).sort((a,b)=>b[1]-a[1])[0][0];
+    return {
+      lat: evs[0].location.lat, lon: evs[0].location.lon, kind: evs[0].location.kind, label: evs[0].location.label,
+      dominantCategory, dominantColor: EVENT_COLORS[dominantCategory] || '#8a8a8a',
+      totalArticles: evs.reduce((s,e)=>s+e.articleCount,0), eventCount: evs.length,
+      events: evs.slice().sort((a,b) => b.articleCount - a.articleCount),
+    };
+  }).sort((a,b) => b.totalArticles - a.totalArticles);
+
+  document.getElementById('eventMapLegend').innerHTML = Object.entries(EVENT_COLORS).map(([cat,color]) => `
+    <div class="legend-chip" data-cat="${cat}" style="display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px 6px 10px;cursor:pointer;">
+      <i style="width:10px;height:10px;border-radius:3px;background:${color};display:inline-block;"></i>${cat}
+    </div>`).join('');
+
+  let hiddenCats = new Set();
+  function refreshMapLegendState(){
+    document.querySelectorAll('#eventMapLegend .legend-chip').forEach(el => {
+      el.style.opacity = hiddenCats.has(el.dataset.cat) ? '0.35' : '1';
+    });
+  }
+  document.querySelectorAll('#eventMapLegend .legend-chip').forEach(el => {
+    el.addEventListener('click', () => {
+      const cat = el.dataset.cat;
+      if (hiddenCats.has(cat)) hiddenCats.delete(cat); else hiddenCats.add(cat);
+      refreshMapLegendState();
+      renderEventMarkers();
+    });
+  });
+
+  eventsMapLeaflet = L.map('eventsMap', {scrollWheelZoom:true}).setView([4, 12], 4);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 16,
+    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+  }).addTo(eventsMapLeaflet);
+
+  let activeIdx = 0;
+  let sortOrder = 'newest';
+  let leafletMarkers = [];
+
+  function makeIcon(m, isActive){
+    const maxArticles = Math.max(...MARKERS.map(x=>x.totalArticles), 1);
+    const size = Math.max(14, Math.round(30 * Math.sqrt(m.totalArticles / maxArticles)));
+    const ringSize = Math.round(size * 0.85);
+    const borderStyle = m.kind === 'city' ? 'solid' : 'dashed';
+    return L.divIcon({
+      className: '',
+      html: `<div class="pulse-marker${isActive?' is-active':''}" style="width:${size}px;height:${size}px;">
+        <div class="pulse-ring" style="width:${ringSize}px;height:${ringSize}px;background:${m.dominantColor};"></div>
+        <div class="pulse-ring ring-2" style="width:${ringSize}px;height:${ringSize}px;background:${m.dominantColor};"></div>
+        <div class="pulse-dot" style="width:${size}px;height:${size}px;background:${m.dominantColor};font-size:${Math.max(9,size*0.32)}px;border-style:${borderStyle};">${m.eventCount}</div>
+      </div>`,
+      iconSize: [size, size], iconAnchor: [size/2, size/2],
+    });
+  }
+
+  function renderEventMarkers(){
+    leafletMarkers.forEach(lm => eventsMapLeaflet.removeLayer(lm));
+    leafletMarkers = [];
+    MARKERS.forEach((m, i) => {
+      if (hiddenCats.has(m.dominantCategory)) return;
+      const lm = L.marker([m.lat, m.lon], {icon: makeIcon(m, i === activeIdx)}).addTo(eventsMapLeaflet);
+      lm.on('click', () => selectEventMarker(i));
+      leafletMarkers.push(lm);
+    });
+  }
+
+  function sortedMarkerEvents(m){
+    const sorted = m.events.slice();
+    sorted.sort((a, b) => sortOrder === 'newest'
+      ? b.startDate.localeCompare(a.startDate)
+      : a.startDate.localeCompare(b.startDate));
+    return sorted;
+  }
+
+  window.setEventsMapSortOrder = (order) => { sortOrder = order; selectEventMarker(activeIdx); };
+
+  function selectEventMarker(idx){
+    activeIdx = idx;
+    renderEventMarkers();
+    const m = MARKERS[idx];
+    const detail = document.getElementById('eventsMapDetail');
+    detail.innerHTML = `
+      <div class="detail-head">
+        <div><div class="detail-kind">${m.kind === 'city' ? 'Referent city' : 'Referent country (no specific city matched)'}</div><h3>${m.label}</h3></div>
+        <span class="event-badge" style="background:${m.dominantColor}">${m.dominantCategory}</span>
+      </div>
+      <div class="detail-sub">${m.eventCount} event${m.eventCount>1?'s':''} &middot; ${m.totalArticles.toLocaleString()} articles &middot; most-mentioned location, not a confirmed site</div>
+      <div class="sort-toggle">
+        <button class="${sortOrder==='newest'?'active':''}" onclick="setEventsMapSortOrder('newest')">Newest first</button>
+        <button class="${sortOrder==='oldest'?'active':''}" onclick="setEventsMapSortOrder('oldest')">Oldest first</button>
+      </div>
+      ${sortedMarkerEvents(m).map(e => `
+        <div class="event-item">
+          <div class="event-item-top">
+            <span class="event-item-cat" style="background:${EVENT_COLORS[e.category]||'#999'}"></span>
+            <span class="event-item-date">${e.startDate}${e.startDate!==e.endDate ? ' to '+e.endDate : ''}</span>
+          </div>
+          <div class="event-item-headline">${e.headline}</div>
+          <div class="event-item-meta">${e.articleCount} articles &middot; ${e.publisherCount} publishers</div>
+          ${e.sampleArticles && e.sampleArticles.length ? `<div class="event-item-samples">${e.sampleArticles.slice(0,3).map(s => `
+            <div class="event-item-sample">${s.url ? `<a href="${s.url}" target="_blank" rel="noopener">${s.title}</a>` : s.title} <span>&mdash; ${s.publisher}</span></div>`).join('')}</div>` : ''}
+        </div>`).join('')}
+    `;
+  }
+  window.eventsMapSelectMarker = selectEventMarker;
+
+  renderEventMarkers();
+  if (MARKERS.length) selectEventMarker(0);
+  else document.getElementById('eventsMapDetail').innerHTML = '<div class="detail-empty">No geocoded events yet.</div>';
+
+  const mapCard = document.querySelector('.event-map-card');
+  const mapDetail = document.getElementById('eventsMapDetail');
+  function syncEventMapDetailHeight(){ mapDetail.style.height = mapCard.offsetHeight + 'px'; }
+  new ResizeObserver(syncEventMapDetailHeight).observe(mapCard);
+  syncEventMapDetailHeight();
+}
 
 // ---- corpus search (keyword, to start - entity search is next) ----
 const searchInput = document.getElementById('corpusSearch');

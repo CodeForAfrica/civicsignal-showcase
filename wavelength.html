@@ -23,21 +23,26 @@
     --cream-3:#D5DEEA;
     --muted:#565A66;
 
-    --c-politics:#2b3a67;
-    --c-economy:#3aa6a0;
-    --c-culture:#8b7ec8;
-    --c-technology:#e8a13a;
-    --c-conflict:#d9663b;
-    --c-health:#5fa8d3;
-    --c-gender:#b0538a;
-    --c-climate:#6fae4e;
-    --c-other:#b7b2a4;
+    --c-politics:#3B4CCA;
+    --c-economy:#00B8A9;
+    --c-culture:#9B5DE5;
+    --c-technology:#F4A100;
+    --c-conflict:#F0653D;
+    --c-health:#3AA0FF;
+    --c-gender:#E5489B;
+    --c-climate:#3DBE6C;
+    --c-other:#94A3B8;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--cream);
+    background-color:var(--cream);
+    background-image:
+      radial-gradient(circle at 92% -6%, rgba(2,32,105,0.11) 0%, rgba(2,32,105,0) 40%),
+      radial-gradient(rgba(213,222,234,0.55) 1.1px, transparent 1.1px);
+    background-size:auto, 26px 26px;
+    background-repeat:no-repeat, repeat;
     color:var(--ink);
     font-family:'Lato',system-ui,sans-serif;
     -webkit-font-smoothing:antialiased;
@@ -64,8 +69,9 @@
   .cs-footbar-inner a{color:#8791AC;}
 
   /* ---------- HERO ---------- */
-  .hero{background:var(--cream-2);border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
+  .hero{border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
   .eyebrow-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:32px;}
+  .eyebrow-right{display:flex;align-items:center;gap:12px;}
   .eyebrow{
     font-family:'IBM Plex Mono',ui-monospace,monospace;
     font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
@@ -87,11 +93,11 @@
   .hero-sub{font-size:1.1rem;line-height:1.6;color:var(--muted);max-width:60ch;margin:0 0 28px;}
   .pulse-line{width:100%;max-width:420px;height:28px;overflow:hidden;margin-bottom:28px;}
   .pulse-line svg{display:block;width:100%;height:100%;}
-  .pulse-line path{fill:none;stroke:var(--red);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:6 5;}
+  .pulse-line path{fill:none;stroke:var(--red);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6 5;}
   @media (prefers-reduced-motion: no-preference){.pulse-line path{animation:dash 3.2s linear infinite;}}
   @keyframes dash{to{stroke-dashoffset:-220;}}
   .hero-stats{display:flex;flex-wrap:wrap;gap:34px;margin-bottom:8px;}
-  .stat b{display:block;font-size:26px;font-family:'Lato',sans-serif;font-weight:900;color:var(--navy-deep);}
+  .stat b{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:26px;font-weight:600;color:var(--navy-deep);font-variant-numeric:tabular-nums;}
   .stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;}
   .source-mix{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 4px;}
   .source-mix .chip{
@@ -105,7 +111,7 @@
   .panel{
     background:#fff;
     border:1px solid var(--line);
-    border-radius:18px;
+    border-radius:14px;
     padding:26px 26px 14px;
     box-shadow:0 1px 0 rgba(20,27,51,0.02);
   }
@@ -126,6 +132,12 @@
     display:flex;align-items:center;justify-content:center;color:var(--navy);cursor:pointer;
   }
   .icon-btn:hover{background:var(--cream-2);}
+  .ghost-btn{
+    background:none;border:none;width:26px;height:26px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:var(--navy);cursor:pointer;
+  }
+  .ghost-btn:hover{background:var(--cream-2);}
+  .ghost-btn svg{width:15px;height:15px;}
   .share-note{font-size:11.5px;color:var(--muted);font-style:italic;}
   .legend{display:flex;flex-wrap:wrap;gap:14px;margin:12px 0 6px;font-size:12px;color:var(--navy);}
   .legend .item{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;opacity:1;transition:opacity .15s;}
@@ -147,7 +159,7 @@
     appearance:none;
     background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path d="M0 0l5 6 5-6z" fill="%23022069"/></svg>') no-repeat right 12px center;
     border:1px solid var(--line);
-    border-radius:9px;
+    border-radius:8px;
     padding:9px 30px 9px 12px;
     font-size:13px;font-weight:600;color:var(--ink);
     min-width:160px;
@@ -179,10 +191,12 @@
   .entity-item:first-of-type{border-top:none;}
   .entity-item:hover{background:var(--cream-2);}
   .entity-item-main{display:flex;align-items:center;gap:9px;min-width:0;}
-  .entity-type-badge{font-size:9.5px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:#fff;border-radius:5px;padding:3px 7px;flex:0 0 auto;}
+  .entity-type-badge{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:#fff;border-radius:5px;padding:3px 7px;flex:0 0 auto;}
   .entity-type-badge[data-type="PERSON"]{background:var(--navy);}
   .entity-type-badge[data-type="ORG"]{background:var(--c-economy);}
   .entity-type-badge[data-type="PLACE"]{background:var(--c-technology);}
+  .entity-type-icon{width:10px;height:10px;flex:0 0 auto;display:flex;}
+  .entity-type-icon svg{width:100%;height:100%;}
   .entity-item-name{font-size:14px;font-weight:700;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .entity-item-count{font-size:12px;color:var(--muted);white-space:nowrap;}
   .entity-detail{padding:6px 4px 4px;}
@@ -213,14 +227,15 @@
   .search-cta-btn:hover{background:#c91b1f;}
 
   /* ---------- PANEL STEPPER ---------- */
-  .stepper-panel{border-radius:18px;padding:40px clamp(20px,4vw,44px);margin:0 0 28px;}
-  .stepper-panel:nth-of-type(odd){background:var(--cream-2);}
-  .stepper-panel:nth-of-type(even){background:var(--cream-3);}
+  .stepper-panel{padding:36px 0;margin:0;border-bottom:1px solid var(--line);}
+  .stepper-panel:last-of-type{border-bottom:none;}
 
   /* ---------- SECTION HEADS ---------- */
   .section{margin:64px 0;}
   .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px;gap:16px;flex-wrap:wrap;}
-  .section-head h2{font-size:26px;font-weight:600;margin:0;color:var(--navy-deep);}
+  .section-head h2{font-size:26px;font-weight:600;margin:0;color:var(--navy-deep);display:flex;align-items:center;gap:12px;}
+  .panel-icon{width:22px;height:22px;flex:0 0 auto;color:var(--red);}
+  .panel-icon svg{width:100%;height:100%;}
   .section-head p{font-size:14px;color:var(--muted);margin:6px 0 0;max-width:56ch;}
   .count-pill{font-size:12px;font-weight:700;color:var(--navy);background:var(--cream-2);border-radius:999px;padding:5px 12px;white-space:nowrap;}
 
@@ -234,17 +249,14 @@
   .flip-inner{
     position:relative;width:100%;height:100%;cursor:pointer;
     transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,.15,.2,1),box-shadow .25s ease;
-    box-shadow:0 1px 3px rgba(27,35,64,0.05);border-radius:16px;
+    box-shadow:0 1px 3px rgba(27,35,64,0.05);border-radius:12px;
   }
   .flip-inner.is-flipped{transform:rotateY(180deg);}
   .card-face{
     position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
-    background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px 16px;
+    border-radius:12px;padding:17px 20px 16px;
     display:flex;flex-direction:column;gap:8px;overflow:hidden;
-  }
-  .card-face::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:4px;
-    border-radius:16px 16px 0 0;background:var(--accent,var(--navy));
+    background:#fff;border:1px solid var(--line);border-top:3px solid var(--accent,var(--navy));
   }
   .card-back{transform:rotateY(180deg);}
   .flip-hint{display:flex;align-items:center;gap:4px;font-size:10.5px;color:var(--muted);white-space:nowrap;}
@@ -272,14 +284,19 @@
   .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
   .card-name{font-weight:700;font-size:15.5px;line-height:1.25;}
   .badge{font-size:10.5px;font-weight:700;background:var(--cream-2);color:var(--navy);border-radius:999px;padding:4px 9px;white-space:nowrap;}
-  .badge[data-type="Push Media"]{background:rgba(217,102,59,0.14);color:var(--c-conflict);}
-  .badge[data-type="Creator"]{background:rgba(58,166,160,0.14);color:var(--c-economy);}
-  .badge[data-type="Digital-native publisher"]{background:rgba(43,58,103,0.1);color:var(--c-politics);}
+  .badge[data-type="Push Media"]{background:rgba(240,101,61,0.14);color:var(--c-conflict);}
+  .badge[data-type="Creator"]{background:rgba(0,184,169,0.14);color:var(--c-economy);}
+  .badge[data-type="Digital-native publisher"]{background:rgba(59,76,202,0.1);color:var(--c-politics);}
   .meta-row{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);}
   .meta-row span{display:flex;align-items:center;gap:5px;}
   .radar-box{height:158px;position:relative;}
-  .card-top-entities{display:flex;flex-wrap:wrap;gap:5px;}
-  .card-top-entities .tag{font-size:9.5px;padding:2px 6px;}
+  .card-top-entities{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:2px;}
+  .card-top-entities-label{font-size:9px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--muted);margin-right:1px;}
+  .card-top-entities .tag{font-size:9.5px;padding:2px 7px;display:flex;align-items:center;gap:4px;}
+  .card-top-entities .tag .entity-type-icon{width:9px;height:9px;opacity:0.7;}
+  .card-top-entities .tag[data-etype="PERSON"] .entity-type-icon{color:var(--navy);}
+  .card-top-entities .tag[data-etype="ORG"] .entity-type-icon{color:var(--c-economy);}
+  .card-top-entities .tag[data-etype="PLACE"] .entity-type-icon{color:var(--c-technology);}
   .radar-box::before{
     content:'';position:absolute;inset:8%;border-radius:50%;
     background:radial-gradient(circle,var(--accent,var(--navy)) 0%,transparent 72%);opacity:0.05;
@@ -350,7 +367,10 @@
 
   /* ---------- MAJOR EVENTS ---------- */
   .events-list{display:flex;flex-direction:column;gap:14px;}
-  .event-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .event-card{
+    position:relative;border-radius:12px;padding:18px 20px 18px 19px;
+    background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent,var(--navy));
+  }
   .event-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
   .event-badge{font-size:10.5px;font-weight:700;border-radius:999px;padding:4px 10px;color:#fff;white-space:nowrap;}
   .event-daterange{font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace;white-space:nowrap;}
@@ -471,7 +491,12 @@
   <div class="wrap">
     <div class="eyebrow-row">
       <div class="eyebrow">Africa's emerging media ecosystem - in motion</div>
-      <div class="live-status" id="liveStatus"><span class="live-dot"></span><span id="liveStatusText"></span></div>
+      <div class="eyebrow-right">
+        <div class="live-status" id="liveStatus"><span class="live-dot"></span><span id="liveStatusText"></span></div>
+        <button class="ghost-btn" id="sharePageBtn" aria-label="Share" title="Share">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>
+        </button>
+      </div>
     </div>
     <h1 class="hero-title">Wavelength</h1>
     <p class="hero-sub">CivicSignal listens in on independent digital publishers, creator-journalists, and newsletter/Telegram push-media channels across the continent — tracking what they cover, in which languages, and how coverage shifts week to week.</p>
@@ -482,6 +507,7 @@
     </div>
     <div class="hero-stats" id="heroStats"></div>
     <div class="source-mix" id="sourceMix"></div>
+    <span class="share-note" id="pageShareNote" hidden></span>
   </div>
 </header>
 
@@ -492,7 +518,7 @@
   <section class="section stepper-panel" id="weekly-signal" data-panel-title="Weekly Signal">
     <div class="section-head">
       <div>
-        <h2>Weekly Signal</h2>
+        <h2><span class="panel-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1 8c1.1-3.4 2.7-3.4 3.8 0s2.7 3.4 3.8 0 2.7-3.4 3.8 0 1.6 1.7 2.6 1.7"/></svg></span>Weekly Signal</h2>
         <p>One week of coverage at a time, broken down by topic. Step back with &lsaquo; to compare against earlier weeks, or filter by country and language below; the legend re-ranks itself by whichever week and filter you're looking at.</p>
       </div>
       <div class="week-nav">
@@ -526,7 +552,7 @@
   <section class="section stepper-panel" id="major-events" data-panel-title="Major Events">
     <div class="section-head">
       <div>
-        <h2 id="eventsSlideHeading">Major Events</h2>
+        <h2><span class="panel-icon"><svg viewBox="0 0 16 16" fill="currentColor" stroke="currentColor"><circle cx="8" cy="8" r="1.3" stroke="none"/><circle cx="8" cy="8" r="3.8" fill="none" stroke-width="1.4" opacity="0.65"/><circle cx="8" cy="8" r="6.4" fill="none" stroke-width="1.4" opacity="0.35"/></svg></span><span id="eventsSlideHeading">Major Events</span></h2>
         <p id="eventsSlideLede">Correlated coverage, not a single keyword hit &mdash; each card below is independent reporting from multiple publishers converging on the same real-world incident within a tight date window. Detected automatically from shared entities and timing; not hand-curated, so treat categories and entities as a strong signal, not a verified fact-check.</p>
       </div>
       <span class="count-pill" id="eventCount"></span>
@@ -572,7 +598,7 @@
   <section class="section stepper-panel" id="entities" data-panel-title="Fingerprints">
     <div class="section-head">
       <div>
-        <h2>Fingerprints</h2>
+        <h2><span class="panel-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M8 3.2c-2.9 0-5 2.2-5 5.2 0 1.6.4 2.8 1 3.8"/><path d="M8 1.6c-3.9 0-6.8 3-6.8 6.8 0 1.9.5 3.4 1.2 4.6"/><path d="M8 4.8c-2 0-3.4 1.6-3.4 3.6 0 1.8.7 3 1.4 3.8"/><path d="M8 6.4c-1.1 0-2 .9-2 2.1 0 1.3.5 2.2 1.1 3"/><path d="M8 4.8v2"/><path d="M8 8v5.6"/></svg></span>Fingerprints</h2>
         <p>Every publisher's topical fingerprint &mdash; the unique mix of subjects it covers, sized by how active it's been. Two outlets can publish the same volume of stories and look nothing alike here.</p>
       </div>
       <span class="count-pill" id="pubCount"></span>
@@ -604,7 +630,7 @@
   <section class="section stepper-panel" id="corpus-search" data-panel-title="Search the corpus">
     <div class="section-head">
       <div>
-        <h2 id="searchSlideHeading">Search the corpus</h2>
+        <h2><span class="panel-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7" cy="7" r="4.3"/><path d="M13.2 13.2l-2.9-2.9"/></svg></span><span id="searchSlideHeading">Search the corpus</span></h2>
         <p id="searchSlideLede">Keyword search across profiled publishers and recent coverage &mdash; search by name, country, topic or a word from a headline.</p>
       </div>
     </div>
@@ -626,17 +652,17 @@
     </div>
     <div class="search-cta">
       <div>
-        <div class="search-cta-title">Want tracking built around your topic?</div>
+        <div class="search-cta-title">What's most important for your investigation?</div>
         <p>CivicSignal can stand up a customized tracking report &mdash; your keywords, your countries, your cadence.</p>
       </div>
-      <a class="search-cta-btn" id="searchCtaBtn" href="mailto:saif@codeforafrica.org?subject=Custom%20CivicSignal%20tracking%20report">Request a custom tracking report</a>
+      <a class="search-cta-btn" id="searchCtaBtn" href="mailto:saif@codeforafrica.org?subject=Custom%20CivicSignal%20tracking%20report">Your wavelength.</a>
     </div>
   </section>
 
   <section class="section stepper-panel" data-panel-title="Topic mix, whole corpus">
     <div class="section-head">
       <div>
-        <h2>Topic mix, whole corpus</h2>
+        <h2><span class="panel-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 2a6 6 0 0 1 5.2 9L8 8z"/></svg></span>Topic mix, whole corpus</h2>
         <p>Share of all classified articles by topic, across every publisher and country in this dataset.</p>
       </div>
     </div>
@@ -648,7 +674,7 @@
   <section class="section stepper-panel" id="feed" data-panel-title="Recent coverage">
     <div class="section-head">
       <div>
-        <h2>Recent coverage</h2>
+        <h2><span class="panel-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4.5h12M2 8h12M2 11.5h8"/></svg></span>Recent coverage</h2>
         <p>Latest classified stories across the corpus &mdash; pick up to three topics to compare side by side. Each column's summary is a live snapshot built from the same data below it, not a generated write-up.</p>
       </div>
     </div>
@@ -762,16 +788,34 @@ if(!HAS_CHART){
 document.getElementById('genDate').textContent = 'Generated ' + DATA.generatedAt + ' · ' + DATA.totals.articles.toLocaleString() + ' articles classified';
 document.getElementById('liveStatusText').textContent = 'LIVE · UPDATED ' + DATA.generatedAt;
 
-// ---- hero stats ----
+// ---- header/panel banner: same footprint-row treatment as the index page's masthead stats ----
+// ---- hero stats: animated count-up ----
 const heroStats = document.getElementById('heroStats');
 const statDefs = [
-  [DATA.totals.articles.toLocaleString(), 'Stories in corpus'],
-  [(DATA.totals.mapped||0).toLocaleString(), 'Publishers mapped'],
-  [(DATA.totals.tracked||0).toLocaleString(), 'Publishers tracked'],
+  [DATA.totals.articles, 'Stories in corpus'],
+  [DATA.totals.mapped||0, 'Publishers mapped'],
+  [DATA.totals.tracked||0, 'Publishers tracked'],
   [DATA.totals.countries, 'Countries covered'],
   [DATA.totals.languages, 'Languages detected'],
 ];
-heroStats.innerHTML = statDefs.map(([v,l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
+heroStats.innerHTML = statDefs.map(([v,l]) => `
+  <div class="stat">
+    <b class="count-up" data-target="${v}">0</b>
+    <span>${l}</span>
+  </div>`).join('');
+
+document.querySelectorAll('.count-up').forEach(el => {
+  const target = Number(el.dataset.target) || 0;
+  const duration = 900;
+  const start = performance.now();
+  function tick(now){
+    const p = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(target * eased).toLocaleString();
+    if(p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+});
 
 // ---- source mix (digital-native / creator / push media breakdown) ----
 const SOURCE_COLORS = {
@@ -1043,6 +1087,17 @@ function groupByType(list){
     .concat(Object.keys(groups).filter(t => !GROUP_ORDER.includes(t)).map(t => ({ type: t, items: groups[t] })));
 }
 
+// ---- shared iconography: minimal 1.5px-stroke inline SVGs, no icon font/CDN needed ----
+const ENTITY_ICONS = {
+  PERSON: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5.2" r="2.7"/><path d="M2.6 14c0-3 2.4-5 5.4-5s5.4 2 5.4 5"/></svg>',
+  ORG: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2.2" width="10" height="11.6" rx="0.8"/><path d="M5.6 5.2h1.4M9 5.2h1.4M5.6 8h1.4M9 8h1.4M5.6 10.8h1.4M9 10.8h1.4"/></svg>',
+  PLACE: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14.2s5-4.4 5-8.2a5 5 0 0 0-10 0c0 3.8 5 8.2 5 8.2z"/><circle cx="8" cy="6" r="1.8"/></svg>',
+};
+function entityIconSVG(type){ return ENTITY_ICONS[type] || ''; }
+function entityTypeBadgeHTML(type){
+  return `<span class="entity-type-badge" data-type="${type}"><span class="entity-type-icon">${entityIconSVG(type)}</span>${type}</span>`;
+}
+
 const radarCharts = {};
 function cardHTML(p, radarId){
   const accent = COLORS[p.topTopic] || '#1B2340';
@@ -1063,7 +1118,7 @@ function cardHTML(p, radarId){
             <span>Top topic: <b style="font-size:12px;color:${COLORS[p.topTopic]||'#1B2340'}">${LABELS[p.topTopic]}</b></span>
             <span><b>${p.total}</b> stories</span>
           </div>
-          ${p.topEntities && p.topEntities.length ? `<div class="card-top-entities">${p.topEntities.map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+          ${p.topEntities && p.topEntities.length ? `<div class="card-top-entities"><span class="card-top-entities-label">Top entities:</span>${p.topEntities.map(e=>`<span class="tag" data-etype="${e.type}"><span class="entity-type-icon">${entityIconSVG(e.type)}</span>${escapeHtml(e.text)}</span>`).join('')}</div>` : ''}
           <div class="flip-hint" style="justify-content:flex-end;">⟳ more detail</div>
         </div>
         <div class="card-face card-back">
@@ -1098,11 +1153,11 @@ function mountRadar(p, radarId){
       labels: CATS.map(c=>LABELS[c]),
       datasets:[{
         data: CATS.map(c=>p.radar[c]||0),
-        backgroundColor:'rgba(43,58,103,0.14)',
-        borderColor:'#2b3a67',
+        backgroundColor:'rgba(235,34,39,0.14)',
+        borderColor:'#EB2227',
         borderWidth:1.5,
         pointRadius:2,
-        pointBackgroundColor:'#2b3a67',
+        pointBackgroundColor:'#EB2227',
       }]
     },
     options:{
@@ -1318,7 +1373,7 @@ function eventCardHTML(e){
       </details>`
     : '';
   return `
-    <div class="event-card">
+    <div class="event-card" style="--accent:${color}">
       <div class="event-card-top">
         <span class="event-badge" style="background:${color}">${e.category}</span>
         <span class="event-daterange">${formatEventDateRange(e)}</span>
@@ -1543,7 +1598,7 @@ function highlight(text, q){
 
 function runSearch(q){
   const query = q.trim();
-  searchCtaBtn.href = 'mailto:saif@codeforafrica.org?subject=Custom%20CivicSignal%20monitoring%20report'
+  searchCtaBtn.href = 'mailto:saif@codeforafrica.org?subject=Custom%20CivicSignal%20tracking%20report'
     + (query ? '&body=' + encodeURIComponent(`Topic/keyword I'd like monitored: "${query}"\n\n`) : '');
 
   if(!query){
@@ -1622,7 +1677,7 @@ function entityListHTML(matches, query){
   return matches.map((e, i) => `
     <div class="entity-item" data-idx="${i}">
       <div class="entity-item-main">
-        <span class="entity-type-badge" data-type="${e.type}">${e.type}</span>
+        ${entityTypeBadgeHTML(e.type)}
         <span class="entity-item-name">${highlight(e.text, query)}</span>
       </div>
       <span class="entity-item-count">${e.count.toLocaleString()} mention${e.count===1?'':'s'}</span>
@@ -1638,7 +1693,7 @@ function renderEntityDetail(e){
     <button class="entity-detail-back" id="entityBackBtn">&larr; Back to results</button>
     <div class="entity-detail">
       <div class="entity-detail-head">
-        <span class="entity-type-badge" data-type="${e.type}">${e.type}</span>
+        ${entityTypeBadgeHTML(e.type)}
         <h3>${escapeHtml(e.text)}</h3>
       </div>
       <div class="entity-detail-stats">${countryList}</div>
@@ -1670,7 +1725,7 @@ function entitySuggestionsHTML(){
     <div class="entity-suggestions-label">Most mentioned</div>
     <div class="entity-suggestions">${suggestions.map((e,i) => `
       <button class="entity-suggestion-chip" data-idx="${i}">
-        <span class="entity-type-badge" data-type="${e.type}">${e.type}</span>${escapeHtml(e.text)}
+        ${entityTypeBadgeHTML(e.type)}${escapeHtml(e.text)}
       </button>`).join('')}</div>`;
 }
 
@@ -1727,7 +1782,67 @@ function wrapCanvasText(ctx, text, maxWidth){
   return lines;
 }
 
+// cfa-logo.png ships with ~15% transparent padding baked in on every side, so drawing it at a
+// small footer height leaves the actual mark looking tiny/squished - crop that padding out here
+// instead of shipping a second logo asset. Coordinates are the image's real content bounding box
+// (measured in its native 5334x3000px canvas) plus a 2% margin so anti-aliased edges aren't clipped.
+const LOGO_CROP = { sx: 723, sy: 394, sw: 3887, sh: 2212 };
+function drawLogo(ctx, logo, x, y, targetH, align){
+  const targetW = targetH * (LOGO_CROP.sw / LOGO_CROP.sh);
+  const dx = align === 'right' ? x - targetW : x;
+  ctx.drawImage(logo, LOGO_CROP.sx, LOGO_CROP.sy, LOGO_CROP.sw, LOGO_CROP.sh, dx, y, targetW, targetH);
+  return targetW;
+}
+
+// splits fixed copy into {text, bold} words so a share-image caption can bold one phrase inline -
+// canvas has no rich-text support, so this treats bold as a per-word font switch instead
+function buildRichWords(prefix, boldPhrase, suffix){
+  const words = [];
+  prefix.trim().split(' ').filter(Boolean).forEach(w => words.push({ text: w, bold: false }));
+  boldPhrase.trim().split(' ').filter(Boolean).forEach(w => words.push({ text: w, bold: true }));
+  suffix.trim().split(' ').filter(Boolean).forEach(w => words.push({ text: w, bold: false }));
+  return words;
+}
+
+function wrapRichWords(ctx, words, maxWidth, normalFont, boldFont){
+  const lines = [[]];
+  let x = 0;
+  ctx.font = normalFont;
+  const spaceW = ctx.measureText(' ').width;
+  words.forEach(w => {
+    ctx.font = w.bold ? boldFont : normalFont;
+    const ww = ctx.measureText(w.text).width;
+    const line = lines[lines.length - 1];
+    const addW = (line.length ? spaceW : 0) + ww;
+    if(x + addW > maxWidth && line.length){
+      lines.push([w]);
+      x = ww;
+    } else {
+      line.push(w);
+      x += addW;
+    }
+  });
+  return lines;
+}
+
+function drawRichLines(ctx, lines, x, y, lineH, normalFont, boldFont, normalColor, boldColor){
+  ctx.font = normalFont;
+  const spaceW = ctx.measureText(' ').width;
+  lines.forEach((line, li) => {
+    let lx = x;
+    const ly = y + li * lineH;
+    line.forEach(w => {
+      ctx.font = w.bold ? boldFont : normalFont;
+      ctx.fillStyle = w.bold ? boldColor : normalColor;
+      ctx.fillText(w.text, lx, ly);
+      lx += ctx.measureText(w.text).width + spaceW;
+    });
+  });
+}
+
 const WEEKLY_SHARE_EXPLAINER = "Code for Africa (CfA) is a civic-technology non-profit working across the continent. CivicSignal is CfA's media-monitoring platform, and Wavelength is its live view of emerging media — digital-native publishers, creator-journalists and Push Media sources. This chart, Weekly Signal, shows daily story volume by topic for one week.";
+
+const PAGE_SHARE_EXPLAINER = "Code for Africa (CfA) is a civic-technology non-profit working across the continent. CivicSignal is CfA's media-monitoring platform.";
 
 async function buildWeeklyShareImage(){
   const chartCanvas = document.getElementById('streamChart');
@@ -1773,7 +1888,7 @@ async function buildWeeklyShareImage(){
   const headerH = titleFont + gapTitleToRange + rangeFont + gapRangeToLegend + legendH + gapLegendToChart;
 
   // footer: wrap the explainer text against the width left of the logo, to size the canvas correctly
-  const logoW = logo ? logoH * (logo.width / logo.height) : 0;
+  const logoW = logo ? logoH * (LOGO_CROP.sw / LOGO_CROP.sh) : 0;
   probe.font = `${footerFont}px Lato, sans-serif`;
   const explainerLines = wrapCanvasText(probe, WEEKLY_SHARE_EXPLAINER, w - logoW - Math.round(pad * 0.6));
   const footerLineH = Math.round(footerFont * 1.5);
@@ -1786,7 +1901,7 @@ async function buildWeeklyShareImage(){
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
 
-  ctx.fillStyle = '#F4F3F0';
+  ctx.fillStyle = '#F1F4F8';
   ctx.fillRect(0, 0, out.width, out.height);
 
   // header: title + date range, then legend - laid out with an explicit top-down cursor so
@@ -1808,7 +1923,7 @@ async function buildWeeklyShareImage(){
     row.forEach(item => {
       ctx.fillStyle = item.color;
       ctx.fillRect(lx, cursorY + (legendRowH - swatchSize) / 2, swatchSize, swatchSize);
-      ctx.fillStyle = '#1B2340';
+      ctx.fillStyle = '#051335';
       ctx.font = `600 ${legendFont}px Lato, sans-serif`;
       ctx.fillText(item.label, lx + swatchSize + 10, cursorY + legendRowH * 0.68);
       lx += swatchSize + 10 + ctx.measureText(item.label).width + itemGap;
@@ -1823,7 +1938,7 @@ async function buildWeeklyShareImage(){
   // footer: divider, explainer text bottom-left, CfA logo bottom-right (drawn at its native
   // aspect ratio with image smoothing on, so it stays crisp instead of pixelating)
   const footerTop = chartTop + h;
-  ctx.strokeStyle = '#E2E0DA';
+  ctx.strokeStyle = '#D5DEEA';
   ctx.beginPath();
   ctx.moveTo(pad, footerTop + Math.round(pad * 0.15));
   ctx.lineTo(out.width - pad, footerTop + Math.round(pad * 0.15));
@@ -1838,7 +1953,171 @@ async function buildWeeklyShareImage(){
 
   if(logo){
     const logoY = footerTop + (footerH - logoH) / 2 + Math.round(pad * 0.2);
-    ctx.drawImage(logo, out.width - pad - logoW, logoY, logoW, logoH);
+    drawLogo(ctx, logo, out.width - pad, logoY, logoH, 'right');
+  }
+
+  return out;
+}
+
+async function buildPageShareImage(){
+  let logo = null;
+  try{ logo = await loadImage('assets/cfa-logo.png'); } catch(err){ /* proceed without the logo if it fails to load */ }
+
+  const w = 1200;
+  const pad = Math.round(w * 0.045);
+  const wordmarkFont = Math.round(w * 0.0145);
+  const liveFont = Math.round(w * 0.0105);
+  const titleFont = Math.round(w * 0.075);
+  const subFont = Math.round(w * 0.0225);
+  const statValFont = Math.round(w * 0.028);
+  const statLabelFont = Math.max(11, Math.round(w * 0.011));
+  const footerFont = Math.max(11, Math.round(w * 0.0125));
+  const logoH = Math.round(w * 0.09);
+
+  const wordmarkBold = `900 ${wordmarkFont}px Lato, sans-serif`;
+  const wordmarkNormal = `700 ${wordmarkFont}px Lato, sans-serif`;
+  const subNormal = `${subFont}px Lato, sans-serif`;
+  const subBold = `900 ${subFont}px Lato, sans-serif`;
+
+  const probe = document.createElement('canvas').getContext('2d');
+
+  // subtitle: one phrase bolded inline, wrapped word-by-word against the canvas width
+  const richWords = buildRichWords(
+    'A live view of ',
+    "Africa's emerging media ecosystem",
+    ' — digital-native publishers, creator-journalists and push media, tracked continuously.'
+  );
+  const subLines = wrapRichWords(probe, richWords, w - pad * 2, subNormal, subBold);
+  const subLineH = Math.round(subFont * 1.5);
+
+  // footer: wrap the attribution text against the width left of the logo, to size the canvas correctly
+  const logoW = logo ? logoH * (LOGO_CROP.sw / LOGO_CROP.sh) : 0;
+  probe.font = `${footerFont}px Lato, sans-serif`;
+  const explainerLines = wrapCanvasText(probe, PAGE_SHARE_EXPLAINER, w - logoW - Math.round(pad * 0.6));
+  const footerLineH = Math.round(footerFont * 1.5);
+  const footerH = Math.max(logoH, explainerLines.length * footerLineH) + Math.round(pad * 0.6);
+
+  // stat row widths, measured up front so columns don't overlap
+  const statDefs = [
+    [DATA.totals.articles, 'Stories'],
+    [DATA.totals.tracked || DATA.totals.mapped || 0, 'Publishers'],
+    [DATA.totals.countries, 'Countries'],
+    [DATA.totals.languages, 'Languages'],
+  ];
+  probe.font = `600 ${statValFont}px 'IBM Plex Mono', monospace`;
+  const statWidths = statDefs.map(([v, l]) => {
+    const valW = probe.measureText((v || 0).toLocaleString()).width;
+    probe.font = `700 ${statLabelFont}px Lato, sans-serif`;
+    const labW = probe.measureText(l.toUpperCase()).width;
+    probe.font = `600 ${statValFont}px 'IBM Plex Mono', monospace`;
+    return Math.max(valW, labW);
+  });
+  const statGap = Math.round(w * 0.045);
+
+  // vertical layout, top-down cursor - same discipline as buildWeeklyShareImage
+  const gapWordmarkToTitle = Math.round(pad * 0.9);
+  const gapTitleToSub = Math.round(pad * 0.35);
+  const gapSubToPulse = Math.round(pad * 0.7);
+  const pulseH = Math.round(w * 0.028);
+  const gapPulseToStats = Math.round(pad * 0.6);
+  const statsH = statValFont + Math.round(statLabelFont * 1.6);
+  const gapStatsToFooter = Math.round(pad * 0.8);
+
+  const headerH = wordmarkFont + gapWordmarkToTitle + titleFont + gapTitleToSub
+    + subLines.length * subLineH + gapSubToPulse + pulseH + gapPulseToStats + statsH + gapStatsToFooter;
+
+  const out = document.createElement('canvas');
+  out.width = w + pad * 2;
+  out.height = headerH + footerH + pad * 2;
+  const ctx = out.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+
+  ctx.fillStyle = '#F1F4F8';
+  ctx.fillRect(0, 0, out.width, out.height);
+
+  let cursorY = pad;
+
+  // wordmark (left) + live badge (right), same baseline
+  cursorY += wordmarkFont * 0.85;
+  ctx.font = wordmarkBold;
+  ctx.fillStyle = '#022069';
+  ctx.fillText('CivicSignal', pad, cursorY);
+  const wmW = ctx.measureText('CivicSignal').width;
+  ctx.font = wordmarkNormal;
+  ctx.fillStyle = '#EB2227';
+  ctx.fillText('  |  ', pad + wmW, cursorY);
+  const pipeW = ctx.measureText('  |  ').width;
+  ctx.fillStyle = '#565A66';
+  ctx.fillText('Code for Africa', pad + wmW + pipeW, cursorY);
+
+  const liveText = (document.getElementById('liveStatusText')?.textContent || 'LIVE').toUpperCase();
+  ctx.font = `600 ${liveFont}px 'IBM Plex Mono', monospace`;
+  const liveTextW = ctx.measureText(liveText).width;
+  const dotR = Math.max(2, Math.round(liveFont * 0.28));
+  const liveX = out.width - pad - liveTextW;
+  ctx.fillStyle = '#EB2227';
+  ctx.beginPath();
+  ctx.arc(liveX - dotR * 2.6, cursorY - liveFont * 0.32, dotR, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#565A66';
+  ctx.fillText(liveText, liveX, cursorY);
+
+  cursorY += gapWordmarkToTitle + titleFont * 0.82;
+  ctx.font = `900 ${titleFont}px Lato, sans-serif`;
+  ctx.fillStyle = '#051335';
+  ctx.fillText('Wavelength', pad, cursorY);
+
+  cursorY += gapTitleToSub + subFont * 0.85;
+  drawRichLines(ctx, subLines, pad, cursorY, subLineH, subNormal, subBold, '#565A66', '#051335');
+  cursorY += (subLines.length - 1) * subLineH;
+
+  cursorY += gapSubToPulse;
+  // decorative pulse line, same zigzag shape as the hero's, scaled to fit
+  const pulseW = Math.round(w * 0.3);
+  const pulsePts = [[0,17],[40,17],[52,4],[64,30],[76,17],[110,17],[122,10],[134,24],[146,17],[360,17]];
+  const psx = pulseW / 360, psy = pulseH / 34;
+  ctx.strokeStyle = '#EB2227';
+  ctx.lineWidth = Math.max(1.5, w * 0.0013);
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  pulsePts.forEach(([px, py], i) => {
+    const cx = pad + px * psx, cy = cursorY + py * psy;
+    if(i === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+  });
+  ctx.stroke();
+
+  cursorY += pulseH + gapPulseToStats;
+  let statX = pad;
+  statDefs.forEach(([v, l], i) => {
+    ctx.font = `600 ${statValFont}px 'IBM Plex Mono', monospace`;
+    ctx.fillStyle = '#051335';
+    ctx.fillText((v || 0).toLocaleString(), statX, cursorY + statValFont * 0.8);
+    ctx.font = `700 ${statLabelFont}px Lato, sans-serif`;
+    ctx.fillStyle = '#565A66';
+    ctx.fillText(l.toUpperCase(), statX, cursorY + statValFont + statLabelFont * 1.3);
+    statX += statWidths[i] + statGap;
+  });
+
+  // footer: divider, attribution text bottom-left, CfA logo bottom-right
+  const footerTop = pad + headerH;
+  ctx.strokeStyle = '#D5DEEA';
+  ctx.beginPath();
+  ctx.moveTo(pad, footerTop + Math.round(pad * 0.15));
+  ctx.lineTo(out.width - pad, footerTop + Math.round(pad * 0.15));
+  ctx.stroke();
+
+  const footerTextTop = footerTop + Math.round(pad * 0.55);
+  ctx.fillStyle = '#565A66';
+  ctx.font = `${footerFont}px Lato, sans-serif`;
+  explainerLines.forEach((line, i) => {
+    ctx.fillText(line, pad, footerTextTop + i * footerLineH + footerFont);
+  });
+
+  if(logo){
+    const logoY = footerTop + (footerH - logoH) / 2 + Math.round(pad * 0.2);
+    drawLogo(ctx, logo, out.width - pad, logoY, logoH, 'right');
   }
 
   return out;
@@ -1859,13 +2138,13 @@ function downloadBlob(blob, filename){
   URL.revokeObjectURL(url);
 }
 
-function flashShareNote(message){
-  const note = document.getElementById('shareNote');
+function flashShareNote(message, noteId){
+  const note = document.getElementById(noteId || 'shareNote');
   if(!note) return;
   note.textContent = message;
   note.hidden = false;
-  clearTimeout(flashShareNote._t);
-  flashShareNote._t = setTimeout(() => { note.hidden = true; }, 4000);
+  clearTimeout(note._t);
+  note._t = setTimeout(() => { note.hidden = true; }, 4000);
 }
 
 const shareNativeBtn = document.getElementById('shareWeeklyNative');
@@ -1921,6 +2200,47 @@ if(shareDownloadBtn){
   shareDownloadBtn.addEventListener('click', async () => {
     const blob = await canvasToPngBlob(await buildWeeklyShareImage());
     if(blob) downloadBlob(blob, 'civicsignal-weekly-signal.png');
+  });
+}
+
+const sharePageBtn = document.getElementById('sharePageBtn');
+if(sharePageBtn){
+  sharePageBtn.addEventListener('click', async () => {
+    // open the tab synchronously, in direct response to the click - see shareNativeBtn above
+    const whatsappTab = window.open('', '_blank', 'noopener');
+
+    const blob = await canvasToPngBlob(await buildPageShareImage());
+    if(!blob){ if(whatsappTab) whatsappTab.close(); return; }
+    const file = new File([blob], 'civicsignal-wavelength.png', { type: 'image/png' });
+    const shareUrl = location.href.split('#')[0];
+    const caption = `Code for Africa's emerging media monitoring dashboard, live: ${shareUrl}\n\n${PAGE_SHARE_EXPLAINER}`;
+
+    if(navigator.canShare && navigator.canShare({ files: [file] })){
+      if(whatsappTab) whatsappTab.close();
+      try{
+        await navigator.share({ files: [file], title: 'CivicSignal Wavelength', text: caption });
+      } catch(err){ /* user cancelled the share sheet */ }
+      return;
+    }
+
+    let copied = false;
+    if(navigator.clipboard && window.ClipboardItem){
+      try{
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+        copied = true;
+      } catch(err){ /* clipboard write refused - still open WhatsApp, just download the image too */ }
+    }
+
+    const waUrl = 'https://wa.me/?text=' + encodeURIComponent(caption);
+    if(whatsappTab) whatsappTab.location.href = waUrl;
+    else window.open(waUrl, '_blank', 'noopener');
+
+    if(copied){
+      flashShareNote('Opened WhatsApp and copied the image — paste it (Ctrl/Cmd+V) into the chat.', 'pageShareNote');
+    } else {
+      downloadBlob(blob, 'civicsignal-wavelength.png');
+      flashShareNote('Opened WhatsApp and downloaded the image — attach it from your downloads.', 'pageShareNote');
+    }
   });
 }
 

@@ -169,6 +169,31 @@
   .search-item .si-main b{font-weight:700;}
   .search-item .si-meta{font-size:12px;color:var(--muted);white-space:nowrap;}
   .search-no-results{padding:22px 4px;color:var(--muted);font-size:13.5px;}
+  .entity-item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 4px;border-top:1px solid var(--line);cursor:pointer;}
+  .entity-item:first-of-type{border-top:none;}
+  .entity-item:hover{background:var(--cream-2);}
+  .entity-item-main{display:flex;align-items:center;gap:9px;min-width:0;}
+  .entity-type-badge{font-size:9.5px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:#fff;border-radius:5px;padding:3px 7px;flex:0 0 auto;}
+  .entity-type-badge[data-type="PERSON"]{background:var(--navy);}
+  .entity-type-badge[data-type="ORG"]{background:var(--c-economy);}
+  .entity-type-badge[data-type="PLACE"]{background:var(--c-technology);}
+  .entity-item-name{font-size:14px;font-weight:700;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .entity-item-count{font-size:12px;color:var(--muted);white-space:nowrap;}
+  .entity-detail{padding:6px 4px 4px;}
+  .entity-detail-back{font-size:12px;font-weight:700;color:var(--navy);background:none;border:none;cursor:pointer;padding:0 0 16px;font-family:inherit;}
+  .entity-detail-back:hover{text-decoration:underline;}
+  .entity-detail-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .entity-detail-head h3{font-size:19px;font-weight:900;margin:0;color:var(--ink);}
+  .entity-detail-stats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
+  .entity-detail-stat{font-size:12px;color:var(--muted);background:var(--cream-2);border-radius:999px;padding:5px 12px;}
+  .entity-detail-stat b{color:var(--ink);}
+  .entity-suggestions-label{font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);margin:22px 0 12px;}
+  .entity-suggestions{display:flex;flex-wrap:wrap;gap:8px;}
+  .entity-suggestion-chip{
+    display:flex;align-items:center;gap:7px;font-family:inherit;font-size:13px;font-weight:600;color:var(--ink);
+    background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px 7px 8px;cursor:pointer;
+  }
+  .entity-suggestion-chip:hover{background:var(--cream-2);border-color:var(--navy);}
   .search-cta{
     margin-top:20px;background:var(--navy-deep);border-radius:18px;padding:26px 30px;
     display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
@@ -195,7 +220,6 @@
 
   /* ---------- ENTITY CARDS (click to flip) ---------- */
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  .grid-stacked{display:block;}
   @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:620px){.grid{grid-template-columns:1fr;}}
   .card{perspective:1600px;height:452px;}
@@ -247,7 +271,9 @@
   .badge[data-type="Digital-native publisher"]{background:rgba(43,58,103,0.1);color:var(--c-politics);}
   .meta-row{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);}
   .meta-row span{display:flex;align-items:center;gap:5px;}
-  .radar-box{height:184px;position:relative;}
+  .radar-box{height:158px;position:relative;}
+  .card-top-entities{display:flex;flex-wrap:wrap;gap:5px;}
+  .card-top-entities .tag{font-size:9.5px;padding:2px 6px;}
   .radar-box::before{
     content:'';position:absolute;inset:8%;border-radius:50%;
     background:radial-gradient(circle,var(--accent,var(--navy)) 0%,transparent 72%);opacity:0.05;
@@ -262,16 +288,24 @@
   }
   .load-more-btn:hover{background:var(--cream-2);}
 
-  .group-block{margin-bottom:36px;}
-  .group-block:last-child{margin-bottom:0;}
-  .group-block .grid{margin-top:0;}
-  .group-head{
-    display:flex;align-items:baseline;gap:10px;margin-bottom:16px;padding-bottom:10px;
-    border-bottom:1px solid var(--line);
-    font-size:15px;font-weight:900;color:var(--navy-deep);
+  .type-carousel{margin-bottom:36px;}
+  .type-carousel:last-child{margin-bottom:0;}
+  .type-carousel .grid{margin-top:0;}
+  .type-carousel-head{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px;padding-bottom:10px;
+    border-bottom:1px solid var(--line);flex-wrap:wrap;
   }
-  .group-head .group-count{font-size:12px;font-weight:700;color:var(--muted);}
-  .group-block .load-more-wrap{margin-top:20px;}
+  .type-carousel-title{display:flex;align-items:baseline;gap:10px;font-size:15px;font-weight:900;color:var(--navy-deep);}
+  .type-carousel-title .group-count{font-size:12px;font-weight:700;color:var(--muted);}
+  .carousel-arrows{display:flex;align-items:center;gap:10px;}
+  .carousel-arrow-btn{
+    width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:#fff;
+    font-size:16px;color:var(--navy-deep);cursor:pointer;display:flex;align-items:center;justify-content:center;
+    font-family:inherit;line-height:1;
+  }
+  .carousel-arrow-btn:hover:not(:disabled){background:var(--cream-2);}
+  .carousel-arrow-btn:disabled{opacity:0.3;cursor:default;}
+  .carousel-page-indicator{font-size:12px;font-weight:700;color:var(--muted);font-family:'IBM Plex Mono',monospace;min-width:44px;text-align:center;}
 
   /* ---------- FEED ---------- */
   .feed-list{display:flex;flex-direction:column;}
@@ -536,9 +570,6 @@
     </div>
 
     <div class="filters">
-      <label>Source type
-        <select id="fSource"><option value="all">All source types</option></select>
-      </label>
       <label>Country
         <select id="fCountry"><option value="all">All countries</option></select>
       </label>
@@ -558,21 +589,30 @@
       <button class="reset" id="resetBtn">Reset filters</button>
     </div>
 
-    <div class="grid" id="cardGrid"></div>
-    <div class="load-more-wrap" id="loadMoreWrap"></div>
+    <div id="cardCarousels"></div>
   </section>
 
   <section class="section stepper-panel" id="corpus-search" data-panel-title="Search the corpus">
     <div class="section-head">
       <div>
-        <h2>Search the corpus</h2>
-        <p>Keyword search across profiled publishers and recent coverage, to start &mdash; search by name, country, topic or a word from a headline. Entity search (people, organisations, narratives) is coming next.</p>
+        <h2 id="searchSlideHeading">Search the corpus</h2>
+        <p id="searchSlideLede">Keyword search across profiled publishers and recent coverage &mdash; search by name, country, topic or a word from a headline.</p>
       </div>
     </div>
-    <div class="panel">
+    <div class="carousel-nav">
+      <button class="carousel-dot active" data-search-slide="keyword" aria-label="Keyword search">Keyword</button>
+      <button class="carousel-dot" data-search-slide="entity" aria-label="Entity search">Entities</button>
+    </div>
+    <div class="panel" id="searchSlideKeyword">
       <input type="text" id="corpusSearch" class="search-input" placeholder="Try &quot;election&quot;, &quot;Kenya&quot;, a publisher name, or a topic&hellip;" autocomplete="off">
       <div id="searchResults" class="search-results">
         <p class="search-placeholder">Start typing to search across 759 profiled publishers and the latest coverage feed.</p>
+      </div>
+    </div>
+    <div class="panel" id="searchSlideEntity" hidden>
+      <input type="text" id="entitySearch" class="search-input" placeholder="Try a president's name, a company, or an institution&hellip;" autocomplete="off">
+      <div id="entitySearchResults" class="search-results">
+        <p class="search-placeholder">Start typing to search the ~600 most-mentioned people, organisations and places across every source type &mdash; not just what's on this page today.</p>
       </div>
     </div>
     <div class="search-cta">
@@ -877,14 +917,10 @@ weekNextBtn.addEventListener('click', ()=>{ if(weekOffset>0){ weekOffset--; upda
 updateChart();
 
 // ---- filters ----
-const fSource = document.getElementById('fSource');
 const fCountry = document.getElementById('fCountry');
 const fLang = document.getElementById('fLang');
 const fTopic = document.getElementById('fTopic');
 const fSort = document.getElementById('fSort');
-[...new Set(DATA.publishers.map(p=>p.entityType))].sort().forEach(s=>{
-  fSource.innerHTML += `<option value="${s}">${s}</option>`;
-});
 [...new Set(DATA.publishers.map(p=>p.country))].sort().forEach(c=>{
   fCountry.innerHTML += `<option value="${c}">${c}</option>`;
 });
@@ -957,12 +993,9 @@ function renderCardBack(p){
 }
 
 // Rendering all ~700 cards (each with its own live Chart.js radar) at once is what was
-// freezing the page - only ever build DOM/charts for the currently-visible slice, and let
-// "Load more" grow it in fixed batches instead.
-const PAGE_SIZE = 24;
-const GROUP_PAGE_SIZE = 12;
-let visibleCount = PAGE_SIZE;
-let groupVisibleCounts = {};
+// freezing the page - only ever build DOM/charts for the current carousel page of each type.
+const CAROUSEL_PAGE_SIZE = 3;
+let carouselPage = {}; // entityType -> current page index (0-based)
 
 function topicDiversity(p){
   return CATS.filter(c => (p.radar[c]||0) > 0).length;
@@ -982,9 +1015,9 @@ function sortPublishers(list){
 }
 
 function getFiltered(){
-  const sv = fSource.value, cv = fCountry.value, lv = fLang.value, tv = fTopic.value;
+  const cv = fCountry.value, lv = fLang.value, tv = fTopic.value;
   const filtered = DATA.publishers.filter(p =>
-    (sv==='all'||p.entityType===sv) && (cv==='all'||p.country===cv) && (lv==='all'||p.lang===lv) && (tv==='all'||p.topTopic===tv)
+    (cv==='all'||p.country===cv) && (lv==='all'||p.lang===lv) && (tv==='all'||p.topTopic===tv)
   );
   return sortPublishers(filtered);
 }
@@ -1015,6 +1048,7 @@ function cardHTML(p, radarId){
           <div class="meta-row">
             <span>${p.country}</span><span>·</span><span>${p.lang}${p.lang2 ? ` + ${p.lang2}` : ''}</span>
           </div>
+          ${p.topEntities && p.topEntities.length ? `<div class="card-top-entities">${p.topEntities.map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
           <div class="radar-box"><canvas id="radar-${radarId}"></canvas></div>
           <div class="card-foot">
             <span>Top topic: <b style="font-size:12px;color:${COLORS[p.topTopic]||'#1B2340'}">${LABELS[p.topTopic]}</b></span>
@@ -1074,88 +1108,64 @@ function mountRadar(p, radarId){
 
 function renderCards(){
   const filtered = getFiltered();
-  const loadMoreWrap = document.getElementById('loadMoreWrap');
-  const grid = document.getElementById('cardGrid');
+  const container = document.getElementById('cardCarousels');
   Object.values(radarCharts).forEach(rc=>rc.destroy());
   Object.keys(radarCharts).forEach(k=>delete radarCharts[k]);
 
   if(filtered.length===0){
     document.getElementById('pubCount').textContent = `Showing 0 of 0 profiled`;
-    grid.innerHTML = `<div class="empty">No publishers match these filters. Try resetting.</div>`;
-    loadMoreWrap.innerHTML = '';
+    container.innerHTML = `<div class="empty">No publishers match these filters. Try resetting.</div>`;
     return;
   }
 
-  const grouped = fSource.value === 'all';
-  let radarId = 0;
-
-  if(!grouped){
-    grid.classList.remove('grid-stacked');
-    grid.classList.add('grid');
-    document.getElementById('pubCount').textContent =
-      `Showing ${Math.min(visibleCount, filtered.length)} of ${filtered.length} profiled`;
-    const visible = filtered.slice(0, visibleCount);
-    grid.innerHTML = visible.map(p => cardHTML(p, radarId++)).join('');
-    wireCards(grid);
-
-    if(visibleCount < filtered.length){
-      loadMoreWrap.innerHTML = `<button class="load-more-btn" id="loadMoreBtn">Load more (${filtered.length - visibleCount} remaining)</button>`;
-      document.getElementById('loadMoreBtn').addEventListener('click', () => {
-        visibleCount += PAGE_SIZE;
-        renderCards();
-      });
-    } else {
-      loadMoreWrap.innerHTML = '';
-    }
-
-    if(HAS_CHART) visible.forEach((p,i) => mountRadar(p, i));
-    return;
-  }
-
-  // No source type selected: group by type so a high-volume type doesn't drown out the others.
-  grid.classList.remove('grid');
-  grid.classList.add('grid-stacked');
-  document.getElementById('pubCount').textContent = `Showing ${filtered.length} profiled, grouped by type`;
-  loadMoreWrap.innerHTML = '';
   const groups = groupByType(filtered);
-  const pending = []; // {p, radarId} to mount after the whole grid's HTML is in the DOM
+  document.getElementById('pubCount').textContent =
+    `${filtered.length} profiled across ${groups.length} source type${groups.length===1?'':'s'}`;
 
-  grid.innerHTML = groups.map(({type, items}) => {
-    const count = groupVisibleCounts[type] || GROUP_PAGE_SIZE;
-    const visibleItems = items.slice(0, count);
+  let radarId = 0;
+  const pending = []; // {p, radarId} to mount after the whole carousel's HTML is in the DOM
+
+  container.innerHTML = groups.map(({type, items}) => {
+    const totalPages = Math.max(1, Math.ceil(items.length / CAROUSEL_PAGE_SIZE));
+    let page = carouselPage[type] || 0;
+    if(page >= totalPages) page = totalPages - 1;
+    carouselPage[type] = page;
+    const start = page * CAROUSEL_PAGE_SIZE;
+    const visibleItems = items.slice(start, start + CAROUSEL_PAGE_SIZE);
     const cards = visibleItems.map(p => { const id = radarId++; pending.push({p, id}); return cardHTML(p, id); }).join('');
-    const more = count < items.length
-      ? `<div class="load-more-wrap"><button class="load-more-btn" data-group="${type}">Load more ${type} (${items.length - count} remaining)</button></div>`
-      : '';
     return `
-      <div class="group-block">
-        <div class="group-head"><span>${type}</span><span class="group-count">${items.length}</span></div>
-        <div class="grid">${cards}</div>
-        ${more}
+      <div class="type-carousel">
+        <div class="type-carousel-head">
+          <div class="type-carousel-title"><span>${type}</span><span class="group-count">${items.length}</span></div>
+          <div class="carousel-arrows">
+            <button class="carousel-arrow-btn" data-group="${type}" data-dir="-1" ${page<=0?'disabled':''} aria-label="Previous ${type} page">&lsaquo;</button>
+            <span class="carousel-page-indicator">${page+1} / ${totalPages}</span>
+            <button class="carousel-arrow-btn" data-group="${type}" data-dir="1" ${page>=totalPages-1?'disabled':''} aria-label="Next ${type} page">&rsaquo;</button>
+          </div>
+        </div>
+        <div class="grid type-carousel-track">${cards}</div>
       </div>
     `;
   }).join('');
 
-  grid.querySelectorAll('.group-block .grid').forEach(g => wireCards(g));
-  grid.querySelectorAll('.load-more-btn[data-group]').forEach(btn => {
+  container.querySelectorAll('.type-carousel-track').forEach(g => wireCards(g));
+  container.querySelectorAll('.carousel-arrow-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const type = btn.dataset.group;
-      groupVisibleCounts[type] = (groupVisibleCounts[type] || GROUP_PAGE_SIZE) + GROUP_PAGE_SIZE;
+      carouselPage[type] = (carouselPage[type] || 0) + Number(btn.dataset.dir);
       renderCards();
     });
   });
 
   if(HAS_CHART) pending.forEach(({p, id}) => mountRadar(p, id));
 }
-[fSource,fCountry,fLang,fTopic,fSort].forEach(el=>el.addEventListener('change', ()=>{
-  visibleCount = PAGE_SIZE;
-  groupVisibleCounts = {};
+[fCountry,fLang,fTopic,fSort].forEach(el=>el.addEventListener('change', ()=>{
+  carouselPage = {};
   renderCards();
 }));
 document.getElementById('resetBtn').addEventListener('click', ()=>{
-  fSource.value='all'; fCountry.value='all'; fLang.value='all'; fTopic.value='all'; fSort.value='active';
-  visibleCount = PAGE_SIZE;
-  groupVisibleCounts = {};
+  fCountry.value='all'; fLang.value='all'; fTopic.value='all'; fSort.value='active';
+  carouselPage = {};
   renderCards();
 });
 renderCards();
@@ -1362,10 +1372,10 @@ const eventsSlideMap = document.getElementById('eventsSlideMap');
 const eventsMapNewTab = document.getElementById('eventsMapNewTab');
 let eventsMapInitialized = false;
 
-document.querySelectorAll('.carousel-dot').forEach(btn => {
+document.querySelectorAll('#major-events .carousel-dot').forEach(btn => {
   btn.addEventListener('click', () => {
     const slide = btn.dataset.slide;
-    document.querySelectorAll('.carousel-dot').forEach(b => b.classList.toggle('active', b === btn));
+    document.querySelectorAll('#major-events .carousel-dot').forEach(b => b.classList.toggle('active', b === btn));
     eventsSlideList.hidden = slide !== 'list';
     eventsSlideMap.hidden = slide !== 'map';
     eventsMapNewTab.hidden = slide !== 'map';
@@ -1568,6 +1578,117 @@ function runSearch(q){
 
 searchInput.addEventListener('input', () => runSearch(searchInput.value));
 runSearch('');
+
+// ---- search: Keyword / Entity carousel toggle ----
+const SEARCH_SLIDE_COPY = {
+  keyword: {
+    heading: 'Search the corpus',
+    lede: "Keyword search across profiled publishers and recent coverage — search by name, country, topic or a word from a headline.",
+  },
+  entity: {
+    heading: 'Search the corpus',
+    lede: "Search the people, organisations and places this corpus actually names — real recurring entities extracted from the coverage itself, not a keyword guess.",
+  },
+};
+document.querySelectorAll('#corpus-search [data-search-slide]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const slide = btn.dataset.searchSlide;
+    document.querySelectorAll('#corpus-search [data-search-slide]').forEach(b => b.classList.toggle('active', b === btn));
+    document.getElementById('searchSlideKeyword').hidden = slide !== 'keyword';
+    document.getElementById('searchSlideEntity').hidden = slide !== 'entity';
+    document.getElementById('searchSlideHeading').textContent = SEARCH_SLIDE_COPY[slide].heading;
+    document.getElementById('searchSlideLede').textContent = SEARCH_SLIDE_COPY[slide].lede;
+  });
+});
+
+// ---- entity search: precomputed index of the ~600 most-mentioned people/orgs/places,
+// across all three source types, not just what's on this page today ----
+const ENTITY_INDEX = DATA.entityIndex || [];
+const entitySearchInput = document.getElementById('entitySearch');
+const entitySearchResults = document.getElementById('entitySearchResults');
+const ENTITY_RESULT_LIMIT = 12;
+
+function entityListHTML(matches, query){
+  return matches.map((e, i) => `
+    <div class="entity-item" data-idx="${i}">
+      <div class="entity-item-main">
+        <span class="entity-type-badge" data-type="${e.type}">${e.type}</span>
+        <span class="entity-item-name">${highlight(e.text, query)}</span>
+      </div>
+      <span class="entity-item-count">${e.count.toLocaleString()} mention${e.count===1?'':'s'}</span>
+    </div>`).join('');
+}
+
+function renderEntityDetail(e){
+  const countryList = Object.entries(e.countries).sort((a,b)=>b[1]-a[1])
+    .map(([c,n]) => `<span class="entity-detail-stat">${escapeHtml(c)}: <b>${n}</b></span>`).join('');
+  const sourceList = Object.entries(e.sourceTypes).sort((a,b)=>b[1]-a[1])
+    .map(([t,n]) => `<span class="entity-detail-stat">${escapeHtml(t)}: <b>${n}</b></span>`).join('');
+  entitySearchResults.innerHTML = `
+    <button class="entity-detail-back" id="entityBackBtn">&larr; Back to results</button>
+    <div class="entity-detail">
+      <div class="entity-detail-head">
+        <span class="entity-type-badge" data-type="${e.type}">${e.type}</span>
+        <h3>${escapeHtml(e.text)}</h3>
+      </div>
+      <div class="entity-detail-stats">${countryList}</div>
+      <div class="entity-detail-stats">${sourceList}</div>
+      ${e.sampleArticles.map(s => `
+        <div class="feed-row">
+          <div>
+            <div class="feed-title">${s.url ? `<a href="${s.url}" target="_blank" rel="noopener">${escapeHtml(s.title)}</a>` : escapeHtml(s.title)}</div>
+            <div class="feed-sub">${escapeHtml(s.publisher)} &middot; ${escapeHtml(s.country)} &middot; <span class="badge" data-type="${s.entityType}" style="padding:2px 8px;font-size:10px;">${s.entityType}</span></div>
+            <div class="feed-date">${s.date || ''}</div>
+          </div>
+        </div>`).join('')}
+    </div>`;
+  document.getElementById('entityBackBtn').addEventListener('click', () => runEntitySearch(entitySearchInput.value));
+}
+
+const ENTITY_SUGGESTION_COUNT = 10;
+function topSuggestedEntities(){
+  // bias suggestions toward PERSON/ORG - PLACE entities here are mostly just country names,
+  // already covered by the country filters elsewhere on this page, so they're a less useful
+  // starting point for "who/what does this corpus talk about"
+  const preferred = ENTITY_INDEX.filter(e => e.type !== 'PLACE');
+  const pool = preferred.length >= ENTITY_SUGGESTION_COUNT ? preferred : ENTITY_INDEX;
+  return pool.slice(0, ENTITY_SUGGESTION_COUNT);
+}
+function entitySuggestionsHTML(){
+  const suggestions = topSuggestedEntities();
+  return `<p class="search-placeholder">Start typing to search the ~${ENTITY_INDEX.length} most-mentioned people, organisations and places across every source type &mdash; not just what's on this page today.</p>
+    <div class="entity-suggestions-label">Most mentioned</div>
+    <div class="entity-suggestions">${suggestions.map((e,i) => `
+      <button class="entity-suggestion-chip" data-idx="${i}">
+        <span class="entity-type-badge" data-type="${e.type}">${e.type}</span>${escapeHtml(e.text)}
+      </button>`).join('')}</div>`;
+}
+
+function runEntitySearch(q){
+  const query = q.trim();
+  if(!query){
+    entitySearchResults.innerHTML = entitySuggestionsHTML();
+    const suggestions = topSuggestedEntities();
+    entitySearchResults.querySelectorAll('.entity-suggestion-chip').forEach(el => {
+      el.addEventListener('click', () => renderEntityDetail(suggestions[+el.dataset.idx]));
+    });
+    return;
+  }
+  const ql = query.toLowerCase();
+  const matches = ENTITY_INDEX.filter(e => e.text.toLowerCase().includes(ql))
+    .sort((a,b) => b.count - a.count)
+    .slice(0, ENTITY_RESULT_LIMIT);
+  if(!matches.length){
+    entitySearchResults.innerHTML = `<p class="search-no-results">No entity in the top ${ENTITY_INDEX.length} most-mentioned names matches &ldquo;${escapeHtml(query)}&rdquo;. This index only covers entities substantial enough to be worth tracking - a one-off mention wouldn't clear the bar.</p>`;
+    return;
+  }
+  entitySearchResults.innerHTML = entityListHTML(matches, query);
+  entitySearchResults.querySelectorAll('.entity-item').forEach(el => {
+    el.addEventListener('click', () => renderEntityDetail(matches[+el.dataset.idx]));
+  });
+}
+entitySearchInput.addEventListener('input', () => runEntitySearch(entitySearchInput.value));
+runEntitySearch('');
 
 // ---- share the Weekly Signal chart as an image (with legend, logo and credits) ----
 function loadImage(src){

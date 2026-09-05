@@ -70,6 +70,14 @@
 
   /* ---------- HERO ---------- */
   .hero{border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
+  .hero .wrap{position:relative;}
+  /* ---------- header/panel mark: echoes the CfA logo's stacked, offset stepped-block geometry ---------- */
+  .header-mark{position:absolute;right:clamp(20px,5vw,56px);bottom:-24px;z-index:2;display:flex;flex-direction:column;align-items:flex-end;gap:3px;pointer-events:none;}
+  @media(max-width:720px){.header-mark{right:18px;}}
+  .header-mark span{display:block;height:9px;}
+  .header-mark .hm-row1 span{width:46px;background:var(--navy-deep);}
+  .header-mark .hm-row2 span{width:36px;background:var(--navy);}
+  .header-mark .hm-row3 span{width:26px;background:var(--red);}
   .eyebrow-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:32px;}
   .eyebrow-right{display:flex;align-items:center;gap:12px;}
   .eyebrow{
@@ -257,6 +265,13 @@
     border-radius:12px;padding:17px 20px 16px;
     display:flex;flex-direction:column;gap:8px;overflow:hidden;
     background:#fff;border:1px solid var(--line);border-top:3px solid var(--accent,var(--navy));
+  }
+  /* folded-corner affordance: a small white dog-ear signaling the card can be flipped */
+  .card-face::before{
+    content:'';position:absolute;right:0;bottom:0;width:0;height:0;pointer-events:none;
+    border-style:solid;border-width:0 16px 16px 0;
+    border-color:transparent #fff #fff transparent;
+    box-shadow:-1px -1px 3px rgba(27,35,64,0.12);
   }
   .card-back{transform:rotateY(180deg);}
   .flip-hint{display:flex;align-items:center;gap:4px;font-size:10.5px;color:var(--muted);white-space:nowrap;}
@@ -455,13 +470,28 @@
   .bar-fill{height:100%;border-radius:6px;}
 
   /* ---------- INFO STRIP ---------- */
-  .info-strip{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
-    background:var(--navy-deep);color:#EFE9DB;border-radius:18px;padding:36px 32px;
+  .info-strip-title{
+    font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 14px;border-top:1px solid var(--line);padding-top:22px;
   }
+  .info-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
   @media(max-width:780px){.info-strip{grid-template-columns:1fr;}}
-  .info-strip h3{font-size:14px;font-weight:700;margin:0 0 8px;color:#fff;}
-  .info-strip p{font-size:13px;line-height:1.6;color:#C7C2B4;margin:0;}
+  .info-strip h3{font-size:10.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin:0 0 6px;color:var(--muted);}
+  .info-strip p{font-size:11.5px;line-height:1.55;color:var(--muted);margin:0;}
+
+  /* ---------- DEVELOPMENT-SUPPORT CTA ---------- */
+  .dev-cta{
+    background:var(--navy-deep);border-radius:18px;padding:30px 34px;
+    display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+    margin-bottom:44px;
+  }
+  .dev-cta-title{font-size:1.05rem;font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-0.01em;}
+  .dev-cta p{font-size:13px;color:#B9C2DA;margin:0;max-width:52ch;line-height:1.55;}
+  .dev-cta-btn{
+    flex:0 0 auto;background:var(--red);color:#fff;font-weight:700;font-size:13.5px;
+    padding:13px 24px;border-radius:999px;text-decoration:none;white-space:nowrap;
+  }
+  .dev-cta-btn:hover{background:#c91b1f;}
 
   footer{border-top:1px solid var(--line);margin-top:70px;padding:28px 0;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
 
@@ -508,6 +538,11 @@
     <div class="hero-stats" id="heroStats"></div>
     <div class="source-mix" id="sourceMix"></div>
     <span class="share-note" id="pageShareNote" hidden></span>
+    <div class="header-mark" aria-hidden="true">
+      <div class="hm-row hm-row1"><span></span></div>
+      <div class="hm-row hm-row2"><span></span></div>
+      <div class="hm-row hm-row3"><span></span></div>
+    </div>
   </div>
 </header>
 
@@ -696,7 +731,16 @@
 
   </div>
 
+  <div class="dev-cta">
+    <div>
+      <div class="dev-cta-title">Does Wavelength resonate with you?</div>
+      <p>Digital-native publishers, creator-journalists and Push Media channels are already tracked continuously across the countries CivicSignal covers. Daily coverage across every market, earlier detection of emerging narratives, and continent-wide Push Media monitoring are a question of scope, not method. Organisations working on Africa's information ecosystem are welcome to discuss where this goes next.</p>
+    </div>
+    <a class="dev-cta-btn" href="mailto:saif@codeforafrica.org?subject=Wavelength%20-%20next%20phase">Talk to us about what's next</a>
+  </div>
+
   <section class="section" id="about">
+    <h4 class="info-strip-title">Some notes on methodology</h4>
     <div class="info-strip">
       <div>
         <h3>What this is</h3>

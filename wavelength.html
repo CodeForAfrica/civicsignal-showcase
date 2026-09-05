@@ -123,15 +123,7 @@
   .legend .rank{font-family:'Lato',sans-serif;font-weight:900;color:var(--muted);font-size:11px;}
   .legend .sw{width:9px;height:9px;border-radius:2px;display:inline-block;}
   .chart-box{height:320px;position:relative;margin-top:6px;}
-  .week-highlights{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);}
-  .week-highlights-title{font-size:12px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-  .spike-day{margin-bottom:12px;}
-  .spike-day:last-child{margin-bottom:0;}
-  .spike-day-head{display:flex;align-items:baseline;gap:8px;font-size:13px;margin-bottom:5px;}
-  .spike-day-head b{font-family:'Lato',sans-serif;font-weight:900;color:var(--navy-deep);}
-  .spike-headline{font-size:12.5px;color:var(--muted);line-height:1.5;}
-  .spike-headline b{color:var(--ink);font-weight:600;}
-  .no-spike{font-size:13px;color:var(--muted);}
+  .week-empty-note{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);}
   @media(max-width:720px){.chart-box{height:260px;}}
 
   /* ---------- FILTER BAR ---------- */
@@ -202,30 +194,46 @@
   .grid-stacked{display:block;}
   @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:620px){.grid{grid-template-columns:1fr;}}
-  .card{perspective:1600px;height:420px;}
-  .card:hover .flip-inner{box-shadow:0 10px 24px rgba(27,35,64,0.06);}
+  .card{perspective:1600px;height:452px;}
+  .card:hover .flip-inner{box-shadow:0 16px 32px rgba(27,35,64,0.12);transform:translateY(-2px);}
+  .card:hover .flip-inner.is-flipped{transform:translateY(-2px) rotateY(180deg);}
   .flip-inner{
     position:relative;width:100%;height:100%;cursor:pointer;
-    transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,.15,.2,1);
+    transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,.15,.2,1),box-shadow .25s ease;
+    box-shadow:0 1px 3px rgba(27,35,64,0.05);border-radius:16px;
   }
   .flip-inner.is-flipped{transform:rotateY(180deg);}
   .card-face{
     position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
-    background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;
-    display:flex;flex-direction:column;gap:12px;overflow:hidden;
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px 16px;
+    display:flex;flex-direction:column;gap:8px;overflow:hidden;
   }
-  .card-back{transform:rotateY(180deg);overflow-y:auto;}
+  .card-face::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:4px;
+    border-radius:16px 16px 0 0;background:var(--accent,var(--navy));
+  }
+  .card-back{transform:rotateY(180deg);}
   .flip-hint{display:flex;align-items:center;gap:4px;font-size:10.5px;color:var(--muted);white-space:nowrap;}
-  .back-title{font-weight:700;font-size:15px;}
-  .back-row{display:flex;align-items:baseline;gap:6px;font-size:12.5px;color:var(--ink);}
-  .back-row .k{color:var(--muted);min-width:78px;flex:none;}
-  .back-row a{color:var(--navy);text-decoration:underline;word-break:break-all;}
-  .back-section{border-top:1px solid var(--line);padding-top:10px;margin-top:2px;}
-  .back-section-label{font-size:10.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-  .social-chips{display:flex;flex-wrap:wrap;gap:8px;}
-  .social-chip{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--navy);background:var(--cream-2);border-radius:999px;padding:5px 10px;text-decoration:none;}
-  .tag-row{display:flex;flex-wrap:wrap;gap:6px;}
-  .tag{font-size:11px;color:var(--navy);background:var(--cream-2);border-radius:6px;padding:3px 8px;}
+  .back-title{font-weight:900;font-size:15px;color:var(--navy-deep);padding-right:4px;}
+  .back-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;}
+  .back-meta-item{min-width:0;}
+  .back-meta-item .k{display:block;font-size:9.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+  .back-meta-item .v{display:block;font-size:12.5px;color:var(--ink);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .back-meta-item .v a{color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(2,32,105,0.25);}
+  .back-meta-item .v a:hover{border-bottom-color:var(--navy);}
+  .back-meta-item.span2{grid-column:1/-1;}
+  .back-bio{
+    font-size:12px;color:var(--muted);line-height:1.5;margin:0;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .back-section{border-top:1px solid var(--line);padding-top:6px;margin-top:0;}
+  .back-section-label{font-size:9.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+  .social-chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .social-chip{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--navy);background:var(--cream-2);border-radius:999px;padding:3px 8px;text-decoration:none;white-space:nowrap;}
+  .social-chip.more{color:var(--muted);background:transparent;border:1px dashed var(--line);}
+  .tag-row{display:flex;flex-wrap:wrap;gap:5px;}
+  .tag{font-size:10.5px;color:var(--navy);background:var(--cream-2);border-radius:6px;padding:3px 7px;white-space:nowrap;}
+  .tag.more{color:var(--muted);background:transparent;border:1px dashed var(--line);}
   .back-empty{margin:auto 0;text-align:center;color:var(--muted);font-size:13px;}
   .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
   .card-name{font-weight:700;font-size:15.5px;line-height:1.25;}
@@ -235,8 +243,12 @@
   .badge[data-type="Digital-native publisher"]{background:rgba(43,58,103,0.1);color:var(--c-politics);}
   .meta-row{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);}
   .meta-row span{display:flex;align-items:center;gap:5px;}
-  .radar-box{height:190px;}
-  .card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;}
+  .radar-box{height:184px;position:relative;}
+  .radar-box::before{
+    content:'';position:absolute;inset:8%;border-radius:50%;
+    background:radial-gradient(circle,var(--accent,var(--navy)) 0%,transparent 72%);opacity:0.05;
+  }
+  .card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:9px;}
   .card-foot b{color:var(--navy-deep);font-size:14px;font-family:'Lato',sans-serif;font-weight:900;}
   .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);font-size:14px;}
   .load-more-wrap{display:flex;justify-content:center;margin-top:28px;}
@@ -266,6 +278,8 @@
   .feed-row:last-child{border-bottom:none;}
   .topic-dot{width:9px;height:9px;border-radius:50%;flex:none;}
   .feed-title{font-size:14px;font-weight:600;line-height:1.4;}
+  .feed-title a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(2,32,105,0.25);}
+  .feed-title a:hover{border-bottom-color:var(--navy);}
   .feed-sub{font-size:12px;color:var(--muted);margin-top:3px;}
   .feed-date{font-size:12px;color:var(--muted);white-space:nowrap;}
 
@@ -283,6 +297,26 @@
   .feed-col .feed-row{grid-template-columns:1fr;gap:2px;padding:10px 0;}
   .feed-col .feed-date{font-size:11px;}
   .feed-col-empty{font-size:12.5px;color:var(--muted);padding:8px 0;}
+
+  /* ---------- MAJOR EVENTS ---------- */
+  .events-list{display:flex;flex-direction:column;gap:14px;}
+  .event-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .event-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+  .event-badge{font-size:10.5px;font-weight:700;border-radius:999px;padding:4px 10px;color:#fff;white-space:nowrap;}
+  .event-daterange{font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace;white-space:nowrap;}
+  .event-headline{font-size:15.5px;font-weight:700;line-height:1.4;color:var(--ink);margin-bottom:8px;}
+  .event-stats{display:flex;flex-wrap:wrap;gap:6px;font-size:12.5px;color:var(--muted);margin-bottom:10px;}
+  .event-stats b{color:var(--navy-deep);}
+  .event-entities{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:2px;}
+  .event-entities-label{font-size:10.5px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--muted);margin-right:2px;}
+  .event-samples{margin-top:10px;border-top:1px solid var(--line);padding-top:10px;}
+  .event-samples summary{font-size:12px;font-weight:700;color:var(--navy);cursor:pointer;list-style:none;display:flex;align-items:center;gap:5px;}
+  .event-samples summary::-webkit-details-marker{display:none;}
+  .event-samples summary::before{content:'▸';font-size:10px;transition:transform .15s ease;}
+  .event-samples[open] summary::before{transform:rotate(90deg);}
+  .event-samples .feed-row{padding:10px 0;}
+  .event-samples .feed-row:first-of-type{padding-top:12px;}
+  .events-empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;}
 
   /* ---------- TOPIC TOTALS BARS ---------- */
   .bars{display:flex;flex-direction:column;gap:12px;}
@@ -315,7 +349,7 @@
       <span class="cs-wordmark">CivicSignal</span><span class="cs-pipe">|</span><span class="cs-orgname">Code for Africa</span>
     </a>
     <nav class="cs-navlinks">
-      <a href="civicsignalmediapulse.html" class="active">Wavelength</a>
+      <a href="wavelength.html" class="active">Wavelength</a>
       <a href="project-oasis.html">Digital Natives</a>
       <a href="cnti-creators.html">Creators</a>
       <a href="push-media.html">Push Media</a>
@@ -346,7 +380,7 @@
     <div class="section-head">
       <div>
         <h2>Weekly Signal</h2>
-        <p>One week of coverage at a time, broken down by topic. Step back with &lsaquo; to compare against earlier weeks; the legend re-ranks itself by that week's own volume, and any day that spiked well above the week's average gets called out below the chart with the real headlines behind it.</p>
+        <p>One week of coverage at a time, broken down by topic. Step back with &lsaquo; to compare against earlier weeks, or filter by country and language below; the legend re-ranks itself by whichever week and filter you're looking at.</p>
       </div>
       <div class="week-nav">
         <button class="week-btn" id="weekPrev" aria-label="Previous week">‹</button>
@@ -361,11 +395,43 @@
         <span class="share-note" id="shareNote" hidden></span>
       </div>
     </div>
+    <div class="filters">
+      <label>Country
+        <select id="fWeekCountry"><option value="all">All countries</option></select>
+      </label>
+      <label>Language
+        <select id="fWeekLang"><option value="all">All languages</option></select>
+      </label>
+    </div>
     <div class="panel">
       <div class="legend" id="legend"></div>
       <div class="chart-box"><canvas id="streamChart"></canvas></div>
-      <div id="weekHighlights"></div>
+      <div id="weekEmptyState"></div>
     </div>
+  </section>
+
+  <section class="section stepper-panel" id="major-events" data-panel-title="Major Events">
+    <div class="section-head">
+      <div>
+        <h2>Major Events</h2>
+        <p>Correlated coverage, not a single keyword hit &mdash; each card below is independent reporting from multiple publishers converging on the same real-world incident within a tight date window. Detected automatically from shared entities and timing; not hand-curated, so treat categories and entities as a strong signal, not a verified fact-check.</p>
+      </div>
+      <span class="count-pill" id="eventCount"></span>
+    </div>
+    <div class="filters">
+      <label>Category
+        <select id="fEventCategory"><option value="all">All categories</option></select>
+      </label>
+      <label>Sort by
+        <select id="fEventSort">
+          <option value="articles">Most coverage</option>
+          <option value="recent">Most recent</option>
+          <option value="publishers">Most publishers</option>
+        </select>
+      </label>
+    </div>
+    <div class="events-list" id="eventsList"></div>
+    <div class="load-more-wrap" id="eventsLoadMoreWrap"></div>
   </section>
 
   <section class="section stepper-panel" id="entities" data-panel-title="Fingerprints">
@@ -419,10 +485,10 @@
     </div>
     <div class="search-cta">
       <div>
-        <div class="search-cta-title">Want monitoring built around your topic?</div>
+        <div class="search-cta-title">Want tracking built around your topic?</div>
         <p>CivicSignal can stand up a customized tracking report &mdash; your keywords, your countries, your cadence.</p>
       </div>
-      <a class="search-cta-btn" id="searchCtaBtn" href="mailto:saif@codeforafrica.org?subject=Custom%20CivicSignal%20monitoring%20report">Request a custom monitoring report</a>
+      <a class="search-cta-btn" id="searchCtaBtn" href="mailto:saif@codeforafrica.org?subject=Custom%20CivicSignal%20tracking%20report">Request a custom tracking report</a>
     </div>
   </section>
 
@@ -594,32 +660,14 @@ function formatWeekRange(weekDays){
   return `${a.day} ${a.month} – ${b.day} ${b.month}, ${b.year}`;
 }
 
-// ---- notable-days panel: real headlines from days with unusually high volume that week -----
-// (grounded in this dataset's own numbers, not a claimed real-world cause - see
-// build_showcase_data.py's spike-detection comment for why)
-function renderHighlights(weekDays){
-  const el = document.getElementById('weekHighlights');
-  const dh = DATA.dailyHighlights || {};
-  const spikeDays = weekDays.filter(d => dh[d] && dh[d].isSpike);
-  if(!spikeDays.length){ el.innerHTML = ''; return; }
-  el.innerHTML = `<div class="week-highlights">
-    <div class="week-highlights-title">Notable this week</div>
-    ${spikeDays.map(d => {
-      const h = dh[d];
-      const { day, month } = formatDay(d);
-      const topicBit = h.topTopic
-        ? ` — driven largely by <span style="color:${COLORS[h.topTopic]||'inherit'};font-weight:600;">${LABELS[h.topTopic]}</span> coverage`
-        : '';
-      const pctBit = (h.pctAboveAvg!=null) ? `, ${h.pctAboveAvg}% above this week's daily average` : '';
-      const headlines = h.headlines.length
-        ? h.headlines.map(x => `<div class="spike-headline">— <b>${x.title}</b> (${x.publisher})</div>`).join('')
-        : `<div class="spike-headline">No substantial headlines captured for this day.</div>`;
-      return `<div class="spike-day">
-        <div class="spike-day-head"><b>${day} ${month}</b><span>${h.total.toLocaleString()} stories${pctBit}${topicBit}</span></div>
-        ${headlines}
-      </div>`;
-    }).join('')}
-  </div>`;
+// ---- empty-state: a country/language filter can legitimately zero out a given week (e.g.
+// the most recent week here is carried almost entirely by Push Media, which has no
+// per-article country) - say so plainly instead of leaving a blank-looking chart ----
+function renderWeekEmptyState(weekDays, hasFilter){
+  const el = document.getElementById('weekEmptyState');
+  if(!hasFilter){ el.innerHTML = ''; return; }
+  const total = weekDays.reduce((sum, d) => sum + CATS.reduce((s,c) => s + (activeDaily[d][c]||0), 0), 0);
+  el.innerHTML = total > 0 ? '' : `<div class="week-empty-note">No coverage matches this country/language filter in the displayed week &mdash; try an earlier week with &lsaquo;, or widen the filter.</div>`;
 }
 
 // ---- streamgraph (stacked area, one week at a time) ----
@@ -629,6 +677,33 @@ let weekOffset = 0; // 0 = most recent week; increasing steps back in time
 const weekPrevBtn = document.getElementById('weekPrev');
 const weekNextBtn = document.getElementById('weekNext');
 
+// ---- Weekly Signal country/language filters ----
+// DATA.daily stays the unfiltered, always-available total; a filter recomputes an
+// equivalent {date: {topic: count}} object from the sparse DATA.dailyRecords rows instead -
+// only the "all/all" case (the common one) skips that work and uses DATA.daily directly.
+const fWeekCountry = document.getElementById('fWeekCountry');
+const fWeekLang = document.getElementById('fWeekLang');
+(DATA.countries || []).forEach(c => { fWeekCountry.innerHTML += `<option value="${c}">${c}</option>`; });
+(DATA.topLanguages || []).forEach(l => { fWeekLang.innerHTML += `<option value="${l}">${l}</option>`; });
+
+function computeActiveDaily(){
+  const country = fWeekCountry.value, lang = fWeekLang.value;
+  if (country === 'all' && lang === 'all') return DATA.daily;
+  const out = {};
+  days.forEach(d => { out[d] = {}; CATS.forEach(c => { out[d][c] = 0; }); });
+  (DATA.dailyRecords || []).forEach(([d, c, l, t, n]) => {
+    if (!out[d]) return;
+    if (country !== 'all' && c !== country) return;
+    if (lang !== 'all' && l !== lang) return;
+    if (out[d][t] == null) out[d][t] = 0;
+    out[d][t] += n;
+  });
+  return out;
+}
+let activeDaily = DATA.daily;
+fWeekCountry.addEventListener('change', () => { activeDaily = computeActiveDaily(); updateChart(); });
+fWeekLang.addEventListener('change', () => { activeDaily = computeActiveDaily(); updateChart(); });
+
 function currentWeek(){
   const end = Math.max(0, days.length - weekOffset*WEEK_SIZE);
   const start = Math.max(0, end - WEEK_SIZE);
@@ -637,7 +712,7 @@ function currentWeek(){
 
 function rankTopicsForWeek(weekDays){
   const totals = {};
-  CATS.forEach(c => { totals[c] = weekDays.reduce((sum,d) => sum + (DATA.daily[d][c]||0), 0); });
+  CATS.forEach(c => { totals[c] = weekDays.reduce((sum,d) => sum + (activeDaily[d][c]||0), 0); });
   return [...CATS].sort((a,b) => totals[b]-totals[a]);
 }
 
@@ -646,7 +721,7 @@ let chart;
 function buildDatasets(weekDays, rankedCats){
   return rankedCats.filter(c=>!hidden.has(c)).map(c => ({
     label: LABELS[c],
-    data: weekDays.map(d => DATA.daily[d][c] || 0),
+    data: weekDays.map(d => activeDaily[d][c] || 0),
     backgroundColor: COLORS[c] + 'CC',
     borderColor: COLORS[c],
     borderWidth: 1,
@@ -663,7 +738,7 @@ function updateChart(){
 
   const rankedCats = rankTopicsForWeek(weekDays);
   renderLegend(rankedCats);
-  renderHighlights(weekDays);
+  renderWeekEmptyState(weekDays, fWeekCountry.value !== 'all' || fWeekLang.value !== 'all');
 
   if(!HAS_CHART) return;
   const datasets = buildDatasets(weekDays, rankedCats);
@@ -725,17 +800,23 @@ function renderCardBack(p){
   const e = p.enrichment;
   const rows = [];
   rows.push(`<div class="back-title">${p.name}</div>`);
-  if(p.url) rows.push(`<div class="back-row"><span class="k">Website</span><a href="${p.url}" target="_blank" rel="noopener">${p.url.replace(/^https?:\/\//,'')}</a></div>`);
-  rows.push(`<div class="back-row"><span class="k">Type</span><span>${p.entityType}</span></div>`);
-  if(e && e.hqCity) rows.push(`<div class="back-row"><span class="k">HQ</span><span>${e.hqCity}, ${p.country}</span></div>`);
-  else rows.push(`<div class="back-row"><span class="k">Country</span><span>${p.country}</span></div>`);
-  if(e && e.established) rows.push(`<div class="back-row"><span class="k">Founded</span><span>${e.established}</span></div>`);
-  if(e && e.coverageType) rows.push(`<div class="back-row"><span class="k">Coverage</span><span>${e.coverageType}</span></div>`);
-  if(e && e.bioShort) rows.push(`<div class="back-row" style="display:block;"><span class="k" style="display:block;margin-bottom:2px;">About</span><span>${e.bioShort}</span></div>`);
+
+  const meta = [];
+  if(p.url) meta.push(`<div class="back-meta-item span2"><span class="k">Website</span><span class="v"><a href="${p.url}" target="_blank" rel="noopener">${p.url.replace(/^https?:\/\//,'')}</a></span></div>`);
+  meta.push(`<div class="back-meta-item"><span class="k">Type</span><span class="v">${p.entityType}</span></div>`);
+  if(e && e.hqCity) meta.push(`<div class="back-meta-item"><span class="k">HQ</span><span class="v">${e.hqCity}, ${p.country}</span></div>`);
+  else meta.push(`<div class="back-meta-item"><span class="k">Country</span><span class="v">${p.country}</span></div>`);
+  if(e && e.established) meta.push(`<div class="back-meta-item"><span class="k">Founded</span><span class="v">${e.established}</span></div>`);
+  if(e && e.coverageType) meta.push(`<div class="back-meta-item"><span class="k">Coverage</span><span class="v">${e.coverageType}</span></div>`);
+  rows.push(`<div class="back-meta-grid">${meta.join('')}</div>`);
+
+  if(e && e.bioShort) rows.push(`<p class="back-bio">${e.bioShort}</p>`);
 
   if(e && e.contentType && e.contentType.length){
+    const shown = e.contentType.slice(0, 3);
+    const extra = e.contentType.length - shown.length;
     rows.push(`<div class="back-section"><div class="back-section-label">Editorial focus</div>
-      <div class="tag-row">${e.contentType.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`);
+      <div class="tag-row">${shown.map(t=>`<span class="tag">${t}</span>`).join('')}${extra > 0 ? `<span class="tag more">+${extra}</span>` : ''}</div></div>`);
   }
 
   if(e && e.staff){
@@ -748,7 +829,7 @@ function renderCardBack(p){
     if(s.volunteer) types.push('Volunteer');
     if(total > 0){
       const size = total <= 5 ? 'Small' : total <= 20 ? 'Medium' : 'Large';
-      rows.push(`<div class="back-section"><div class="back-section-label">Newsroom size</div><div>${size} newsroom${types.length ? ' · ' + types.join(', ') : ''}</div></div>`);
+      rows.push(`<div class="back-section"><div class="back-section-label">Newsroom size</div><div style="font-size:12.5px;">${size}${types.length ? ' · ' + types.join(', ') : ''}</div></div>`);
     }
   }
 
@@ -817,9 +898,10 @@ function groupByType(list){
 
 const radarCharts = {};
 function cardHTML(p, radarId){
+  const accent = COLORS[p.topTopic] || '#1B2340';
   return `
     <div class="card">
-      <div class="flip-inner" data-flipped="false" role="button" tabindex="0"
+      <div class="flip-inner" data-flipped="false" role="button" tabindex="0" style="--accent:${accent}"
            aria-label="${p.name} card. Press to see more detail.">
         <div class="card-face card-front">
           <div class="card-top">
@@ -827,7 +909,7 @@ function cardHTML(p, radarId){
             <span class="badge" data-type="${p.entityType}">${p.entityType}</span>
           </div>
           <div class="meta-row">
-            <span>${p.country}</span><span>·</span><span>${p.lang}</span>
+            <span>${p.country}</span><span>·</span><span>${p.lang}${p.lang2 ? ` + ${p.lang2}` : ''}</span>
           </div>
           <div class="radar-box"><canvas id="radar-${radarId}"></canvas></div>
           <div class="card-foot">
@@ -1010,7 +1092,7 @@ function renderFeedColumns(){
       ? items.map(f => `
         <div class="feed-row">
           <div>
-            <div class="feed-title">${f.title}</div>
+            <div class="feed-title">${f.url ? `<a href="${f.url}" target="_blank" rel="noopener">${f.title}</a>` : f.title}</div>
             <div class="feed-sub">${f.publisher} &middot; ${f.country}${f.entityType ? ` &middot; <span class="badge" data-type="${f.entityType}" style="padding:2px 8px;font-size:10px;">${f.entityType}</span>` : ''}</div>
             <div class="feed-date">${f.date}</div>
           </div>
@@ -1043,6 +1125,100 @@ feedPickerEl.innerHTML = [0, 1, 2].map(i => `
 const feedTopicSelects = Array.from(feedPickerEl.querySelectorAll('.feed-topic-select'));
 feedTopicSelects.forEach(s => s.addEventListener('change', renderFeedColumns));
 renderFeedColumns();
+
+// ---- major events ----
+const EVENTS = DATA.events || [];
+const EVENT_COLORS = DATA.eventCategoryColors || {};
+const fEventCategory = document.getElementById('fEventCategory');
+const fEventSort = document.getElementById('fEventSort');
+const eventCountEl = document.getElementById('eventCount');
+const eventsListEl = document.getElementById('eventsList');
+
+if (EVENTS.length) {
+  eventCountEl.textContent = `${EVENTS.length} detected`;
+  [...new Set(EVENTS.map(e => e.category))].sort().forEach(cat => {
+    fEventCategory.innerHTML += `<option value="${cat}">${cat}</option>`;
+  });
+} else {
+  eventCountEl.textContent = '0 detected';
+}
+
+function formatEventDateRange(e){
+  const opts = { month: 'short', day: 'numeric' };
+  const start = new Date(e.startDate + 'T00:00:00');
+  const end = new Date(e.endDate + 'T00:00:00');
+  const year = end.getFullYear();
+  if (e.startDate === e.endDate) return start.toLocaleDateString('en-US', { ...opts, year: 'numeric' });
+  return `${start.toLocaleDateString('en-US', opts)} – ${end.toLocaleDateString('en-US', opts)}, ${year}`;
+}
+
+function formatCountryList(countries){
+  const sorted = Object.entries(countries).sort((a, b) => b[1] - a[1]);
+  const shown = sorted.slice(0, 3).map(([c]) => c);
+  const extra = sorted.length - shown.length;
+  return shown.join(', ') + (extra > 0 ? ` +${extra} more` : '');
+}
+
+function eventCardHTML(e){
+  const color = EVENT_COLORS[e.category] || '#565A66';
+  const samples = e.sampleArticles && e.sampleArticles.length
+    ? `<details class="event-samples"><summary>Sample coverage (${e.sampleArticles.length})</summary>
+        ${e.sampleArticles.map(s => `
+          <div class="feed-row">
+            <div>
+              <div class="feed-title">${s.url ? `<a href="${s.url}" target="_blank" rel="noopener">${s.title}</a>` : s.title}</div>
+              <div class="feed-sub">${s.publisher} &middot; ${s.country}</div>
+              <div class="feed-date">${s.date}</div>
+            </div>
+          </div>`).join('')}
+      </details>`
+    : '';
+  return `
+    <div class="event-card">
+      <div class="event-card-top">
+        <span class="event-badge" style="background:${color}">${e.category}</span>
+        <span class="event-daterange">${formatEventDateRange(e)}</span>
+      </div>
+      <div class="event-headline">${e.headline || 'Untitled event'}</div>
+      <div class="event-stats">
+        <span><b>${e.articleCount}</b> articles</span><span>&middot;</span>
+        <span><b>${e.publisherCount}</b> publishers</span><span>&middot;</span>
+        <span>${formatCountryList(e.countries)}</span>
+      </div>
+      ${e.topEntities && e.topEntities.length
+        ? `<div class="event-entities"><span class="event-entities-label">Mentions</span>${e.topEntities.map(t => `<span class="tag">${t}</span>`).join('')}</div>`
+        : ''}
+      ${samples}
+    </div>`;
+}
+
+const EVENTS_PAGE_SIZE = 6;
+let eventsVisibleCount = EVENTS_PAGE_SIZE;
+const eventsLoadMoreWrap = document.getElementById('eventsLoadMoreWrap');
+
+function renderEvents(){
+  const cat = fEventCategory.value;
+  const sort = fEventSort.value;
+  let list = cat === 'all' ? EVENTS.slice() : EVENTS.filter(e => e.category === cat);
+  if (sort === 'recent') list.sort((a, b) => b.endDate.localeCompare(a.endDate));
+  else if (sort === 'publishers') list.sort((a, b) => b.publisherCount - a.publisherCount);
+  else list.sort((a, b) => b.articleCount - a.articleCount);
+
+  const visible = list.slice(0, eventsVisibleCount);
+  eventsListEl.innerHTML = visible.length
+    ? visible.map(eventCardHTML).join('')
+    : `<div class="events-empty">No major events detected in this category yet.</div>`;
+
+  const remaining = list.length - visible.length;
+  eventsLoadMoreWrap.innerHTML = remaining > 0
+    ? `<button class="load-more-btn" id="eventsLoadMoreBtn">Load more (${remaining} more)</button>`
+    : '';
+  const btn = document.getElementById('eventsLoadMoreBtn');
+  if (btn) btn.addEventListener('click', () => { eventsVisibleCount += EVENTS_PAGE_SIZE; renderEvents(); });
+}
+fEventCategory.addEventListener('change', () => { eventsVisibleCount = EVENTS_PAGE_SIZE; renderEvents(); });
+fEventSort.addEventListener('change', () => { eventsVisibleCount = EVENTS_PAGE_SIZE; renderEvents(); });
+renderEvents();
 
 // ---- corpus search (keyword, to start - entity search is next) ----
 const searchInput = document.getElementById('corpusSearch');

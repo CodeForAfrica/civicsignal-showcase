@@ -13,13 +13,14 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <style>
   :root{
-    --cream:#F4F3F0;
-    --cream-2:#E9E7E1;
+    --cream:#F1F4F8;
+    --cream-2:#E3E9F1;
     --ink:#16181C;
     --navy:#022069;
     --navy-deep:#051335;
     --red:#EB2227;
-    --line:#E2E0DA;
+    --line:#D7DFEA;
+    --cream-3:#D5DEEA;
     --muted:#565A66;
 
     --c-politics:#2b3a67;
@@ -64,11 +65,16 @@
 
   /* ---------- HERO ---------- */
   .hero{background:var(--cream-2);border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
+  .eyebrow-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:32px;}
   .eyebrow{
     font-family:'IBM Plex Mono',ui-monospace,monospace;
     font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
-    color:var(--muted);margin-bottom:32px;display:block;
+    color:var(--muted);display:block;
   line-height:1.2;}
+  .live-status{display:flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;color:var(--muted);letter-spacing:0.02em;}
+  .live-dot{width:7px;height:7px;border-radius:50%;background:var(--red);flex:0 0 auto;animation:live-pulse 2s ease-in-out infinite;}
+  @keyframes live-pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(235,34,39,0.4);}50%{opacity:0.6;box-shadow:0 0 0 4px rgba(235,34,39,0);}}
+  @media(prefers-reduced-motion:reduce){.live-dot{animation:none;}}
   h1.hero-title{
     font-size:clamp(2rem,5vw,3.3rem);
     line-height:1.1;
@@ -209,7 +215,7 @@
   /* ---------- PANEL STEPPER ---------- */
   .stepper-panel{border-radius:18px;padding:40px clamp(20px,4vw,44px);margin:0 0 28px;}
   .stepper-panel:nth-of-type(odd){background:var(--cream-2);}
-  .stepper-panel:nth-of-type(even){background:#DFDDD6;}
+  .stepper-panel:nth-of-type(even){background:var(--cream-3);}
 
   /* ---------- SECTION HEADS ---------- */
   .section{margin:64px 0;}
@@ -383,7 +389,7 @@
   .event-map-board{display:grid;grid-template-columns:minmax(280px,1.2fr) minmax(300px,0.9fr);gap:20px;align-items:start;}
   @media(max-width:860px){.event-map-board{grid-template-columns:1fr;}}
   .event-map-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;}
-  #eventsMap{width:100%;height:520px;border-radius:10px;background:#DCD9D1;}
+  #eventsMap{width:100%;height:520px;border-radius:10px;background:var(--cream-3);}
   .event-map-detail{
     background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;
     box-sizing:border-box;overflow-y:auto;
@@ -463,7 +469,10 @@
 
 <header class="hero" id="pulse">
   <div class="wrap">
-    <div class="eyebrow">Africa's emerging media ecosystem - in motion</div>
+    <div class="eyebrow-row">
+      <div class="eyebrow">Africa's emerging media ecosystem - in motion</div>
+      <div class="live-status" id="liveStatus"><span class="live-dot"></span><span id="liveStatusText"></span></div>
+    </div>
     <h1 class="hero-title">Wavelength</h1>
     <p class="hero-sub">CivicSignal listens in on independent digital publishers, creator-journalists, and newsletter/Telegram push-media channels across the continent — tracking what they cover, in which languages, and how coverage shifts week to week.</p>
     <div class="pulse-line" aria-hidden="true">
@@ -751,6 +760,7 @@ if(!HAS_CHART){
 }
 
 document.getElementById('genDate').textContent = 'Generated ' + DATA.generatedAt + ' · ' + DATA.totals.articles.toLocaleString() + ' articles classified';
+document.getElementById('liveStatusText').textContent = 'LIVE · UPDATED ' + DATA.generatedAt;
 
 // ---- hero stats ----
 const heroStats = document.getElementById('heroStats');
@@ -906,8 +916,8 @@ function updateChart(){
         backgroundColor:'#1B2340', padding:10, titleFont:{weight:700}, bodyFont:{size:11},
       }},
       scales:{
-        x:{ stacked:true, grid:{display:false}, ticks:{color:'#6b6455', font:{size:11}} },
-        y:{ stacked:true, grid:{color:'#EFE9DB'}, ticks:{color:'#6b6455', font:{size:11}} },
+        x:{ stacked:true, grid:{display:false}, ticks:{color:'#565A66', font:{size:11}} },
+        y:{ stacked:true, grid:{color:'#D7DFEA'}, ticks:{color:'#565A66', font:{size:11}} },
       }
     }
   });
@@ -1048,12 +1058,12 @@ function cardHTML(p, radarId){
           <div class="meta-row">
             <span>${p.country}</span><span>·</span><span>${p.lang}${p.lang2 ? ` + ${p.lang2}` : ''}</span>
           </div>
-          ${p.topEntities && p.topEntities.length ? `<div class="card-top-entities">${p.topEntities.map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
           <div class="radar-box"><canvas id="radar-${radarId}"></canvas></div>
           <div class="card-foot">
             <span>Top topic: <b style="font-size:12px;color:${COLORS[p.topTopic]||'#1B2340'}">${LABELS[p.topTopic]}</b></span>
             <span><b>${p.total}</b> stories</span>
           </div>
+          ${p.topEntities && p.topEntities.length ? `<div class="card-top-entities">${p.topEntities.map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
           <div class="flip-hint" style="justify-content:flex-end;">⟳ more detail</div>
         </div>
         <div class="card-face card-back">
@@ -1099,8 +1109,8 @@ function mountRadar(p, radarId){
       responsive:true, maintainAspectRatio:false,
       plugins:{legend:{display:false}, tooltip:{enabled:true, callbacks:{label:(ctx)=>ctx.formattedValue+'%'}}},
       scales:{ r:{
-        angleLines:{color:'#EFE9DB'}, grid:{color:'#EFE9DB'},
-        ticks:{display:false}, pointLabels:{font:{size:8.5}, color:'#6b6455'}
+        angleLines:{color:'#D7DFEA'}, grid:{color:'#D7DFEA'},
+        ticks:{display:false}, pointLabels:{font:{size:8.5}, color:'#565A66'}
       }}
     }
   });

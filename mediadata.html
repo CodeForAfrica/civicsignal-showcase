@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CivicSignal — Push Media Monitoring</title>
+<title>CivicSignal — MediaData</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=optional" rel="stylesheet">
 <style>
@@ -26,7 +26,7 @@
   .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
   @media(max-width:720px){.wrap{padding:0 18px;}}
   h1,h2,h3{font-family:var(--font-display);font-weight:900;text-wrap:balance;margin:0;letter-spacing:-0.01em;}
-  .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:14px;}
+  .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:14px;}
   section.block.sources-block{padding:0 0 32px;}
   .sources-note{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);letter-spacing:0.02em;line-height:1.7;max-width:80ch;}
   .sources-note a{color:var(--ink-faint);text-decoration:underline;}
@@ -50,16 +50,16 @@
   header.masthead{background:var(--bg-alt);border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
   .masthead-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;color:var(--ink-faint);text-transform:uppercase;line-height:1.2;}
   h1.headline{font-size:clamp(2rem,5vw,3.3rem);line-height:1.1;max-width:18ch;letter-spacing:-0.015em;}
-  h1.headline em{font-style:normal;color:var(--blue);}
-  .dek{margin-top:20px;max-width:60ch;font-size:1.1rem;color:var(--ink-dim);}
+  h1.headline em{font-style:normal;color:var(--navy);}
+  .dek{margin-top:20px;max-width:62ch;font-size:1.1rem;color:var(--ink-dim);}
 
   section.ticker{padding:34px 0 38px;border-bottom:1px solid var(--line);}
-  .ticker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+  .ticker-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
   .stat{padding:8px 20px;border-left:1px solid var(--line);}
   .stat:first-child{padding-left:0;border-left:none;}
-  .stat .num{display:block;font-size:clamp(1.4rem,2.4vw,2rem);font-weight:900;color:var(--blue);letter-spacing:-0.01em;}
+  .stat .num{display:block;font-size:clamp(1.4rem,2.4vw,2rem);font-weight:900;color:var(--navy);letter-spacing:-0.01em;}
   .stat .label{display:block;margin-top:6px;font-size:12px;color:var(--ink-dim);line-height:1.35;}
-  @media(max-width:800px){.ticker-grid{grid-template-columns:repeat(2,1fr);row-gap:24px;}.stat{border-left:none;padding-left:0;}}
+  @media(max-width:800px){.ticker-grid{grid-template-columns:1fr;row-gap:24px;}.stat{border-left:none;padding-left:0;}}
 
   section.block{padding:clamp(48px,8vw,84px) 0;border-bottom:1px solid var(--line);}
   section.block h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:16px;max-width:26ch;}
@@ -69,24 +69,11 @@
   .channels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   @media(max-width:800px){.channels{grid-template-columns:1fr;}}
   .channel{background:var(--bg-raised);border:1px solid var(--line);border-radius:8px;padding:22px;}
-  .channel .cn{font-family:var(--font-mono);font-size:11px;color:var(--blue);letter-spacing:0.05em;text-transform:uppercase;}
+  .channel .cn{font-family:var(--font-mono);font-size:11px;color:var(--navy);letter-spacing:0.05em;text-transform:uppercase;}
   .channel h3{font-size:1.1rem;margin:10px 0 8px;}
   .channel p{font-size:13.5px;color:var(--ink-dim);line-height:1.55;margin:0;}
 
-  .barlist{display:flex;flex-direction:column;gap:12px;}
-  .bar-row{display:grid;grid-template-columns:150px 1fr 90px;align-items:center;gap:12px;font-size:13px;}
-  .bar-track{background:var(--bg-alt);border:1px solid var(--line);border-radius:6px;height:10px;overflow:hidden;}
-  .bar-fill{height:100%;background:linear-gradient(90deg,#0F4E7A,var(--blue));border-radius:6px;}
-  .bar-val{font-family:var(--font-mono);font-size:12px;color:var(--ink-dim);text-align:right;}
-
-  .quote-row{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
-  @media(max-width:800px){.quote-row{grid-template-columns:1fr;}}
-  .quote-card{background:var(--bg-alt);border:1px solid var(--line);border-radius:8px;padding:20px 22px;}
-  .quote-card .src{font-family:var(--font-mono);font-size:11px;color:var(--red);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;}
-  .quote-card p{font-size:14px;color:var(--ink-dim);line-height:1.6;margin:0;}
-  .quote-card b{color:var(--ink);}
-
-  .note{background:var(--bg-alt);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 22px;font-size:13.5px;color:var(--ink-dim);max-width:72ch;}
+  .note{background:var(--bg-alt);border-left:4px solid var(--navy);border-radius:0 8px 8px 0;padding:18px 22px;font-size:13.5px;color:var(--ink-dim);max-width:72ch;}
   .note b{color:var(--ink);}
 
   footer.close{background:var(--navy);color:#EFE9E2;padding:clamp(48px,8vw,80px) 0 0;margin-top:0;}
@@ -123,6 +110,7 @@
   .cs-navdrop.open .cs-navdrop-menu{display:block;}
   .cs-navdrop-menu a{display:block;padding:8px 16px;color:#B9C2DA;font-family:inherit;font-weight:700;font-size:13px;text-decoration:none;letter-spacing:0.01em;white-space:nowrap;}
   .cs-navdrop-menu a:hover{color:#fff;background:rgba(255,255,255,0.06);}
+  .cs-navdrop-menu a.active{color:#fff;}
 </style>
 </head>
 <body>
@@ -136,7 +124,7 @@
       <div class="cs-navdrop">
         <button class="cs-navdrop-btn active" type="button" aria-expanded="false">Tools</button>
         <div class="cs-navdrop-menu">
-          <a href="mediadata.html">MediaData</a>
+          <a href="mediadata.html" class="active">MediaData</a>
           <a href="mediacloud.html">MediaCloud</a>
           <a href="mediascapes.html">MediaScapes</a>
           <a href="wavelength.html">Wavelength</a>
@@ -176,80 +164,48 @@ document.addEventListener('click', function(){
 <header class="masthead">
   <div class="wrap">
     <div class="masthead-top">
-      <span>CivicSignal &middot; Push Media</span>
-      <span>Newsletters &middot; Telegram &middot; Fediverse</span>
+      <span>CivicSignal &middot; MediaData</span>
+      <span>Registry &middot; Ownership &middot; Reach</span>
     </div>
-    <h1 class="headline">The news that never touches a <em>website</em>.</h1>
-    <p class="dek">A growing share of African news and commentary is published straight into inboxes, Telegram channels and messaging apps &mdash; content a normal web crawler never sees. Push Media is the CivicSignal component built specifically to watch that layer.</p>
+    <h1 class="headline">The registry behind every <em>outlet</em> on the map.</h1>
+    <p class="dek">MediaData is the underlying registry of Africa's licensed media houses &mdash; who owns what, what they reach, and how that changes over time. It's the foundation layer everything else on CivicSignal is mapped against.</p>
   </div>
 </header>
 
 <section class="ticker">
   <div class="wrap">
     <div class="ticker-grid">
-      <div class="stat"><span class="num">376</span><span class="label">distinct publishers monitored via newsletter, Telegram or fediverse</span></div>
-      <div class="stat"><span class="num">407</span><span class="label">individual endpoints tracked (a publisher can have more than one)</span></div>
-      <div class="stat"><span class="num">19,858</span><span class="label">items archived to date</span></div>
-      <div class="stat"><span class="num">2021&ndash;now</span><span class="label">ingestion history, continuously growing</span></div>
+      <div class="stat"><span class="num">9,037</span><span class="label">media outlets mapped</span></div>
+      <div class="stat"><span class="num">47</span><span class="label">countries mapped</span></div>
+      <div class="stat"><span class="num">60</span><span class="label">countries covered for FIMI monitoring</span></div>
     </div>
   </div>
 </section>
 
 <section class="block">
   <div class="wrap">
-    <span class="kicker">What it monitors</span>
-    <h2>Three channels a web-crawling pipeline can't reach on its own.</h2>
-    <p class="lede">CivicSignal's main discovery cascade (RSS &rarr; sitemap &rarr; homepage) finds what publishers put on the open web. Push Media exists for everything they publish somewhere else instead.</p>
+    <span class="kicker">What it is</span>
+    <h2>A registry, not a crawl.</h2>
+    <p class="lede">Where MediaCloud collects what outlets publish, MediaData records what an outlet <em>is</em>: its ownership structure, licensing status, and reach &mdash; mapped once by CfA's research teams and kept current rather than inferred from scraped content.</p>
     <div class="channels">
       <div class="channel">
-        <span class="cn">Newsletters</span>
-        <h3>Email-native publishing</h3>
-        <p>Newsletters and email bulletins from outlets ranging from major wires (Bloomberg, Financial Times) to independent African newsrooms &mdash; captured at the point of delivery, not scraped after the fact.</p>
+        <span class="cn">Coverage</span>
+        <h3>Licensed &amp; established media</h3>
+        <p>Broadcasters, newspapers, wire services and licensed digital outlets across Africa's established, regulated media industry.</p>
       </div>
       <div class="channel">
-        <span class="cn">Telegram</span>
-        <h3>Public channel monitoring</h3>
-        <p>Public Telegram channels, read via their own public preview pages &mdash; no login, no API key. A real and growing distribution channel across West and North Africa in particular.</p>
+        <span class="cn">Fields</span>
+        <h3>Ownership &amp; reach</h3>
+        <p>Who owns an outlet, how it's licensed, and independently sourced reach figures &mdash; the fields CivicSignal's other tools reference back to.</p>
       </div>
       <div class="channel">
-        <span class="cn">Fediverse</span>
-        <h3>Mastodon &amp; ActivityPub</h3>
-        <p>Public Mastodon accounts and other ActivityPub-based outlets, read via the same open, unauthenticated protocol the fediverse is built on.</p>
+        <span class="cn">Method</span>
+        <h3>Mapped once, kept current</h3>
+        <p>Built through direct research rather than automated discovery, then revisited on a maintenance cycle as ownership and status change.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="block">
-  <div class="wrap">
-    <span class="kicker">Why this layer matters</span>
-    <h2>The audience has already moved to messaging apps. Monitoring has to follow.</h2>
-    <p class="lede">This isn't a hypothetical. It's what the two largest studies of African news consumption and media ecosystems this year both independently found.</p>
-    <div class="quote-row">
-      <div class="quote-card">
-        <div class="src">Reuters Institute Digital News Report 2026 &mdash; Kenya</div>
-        <p>WhatsApp reach for news jumped to <b>62% (+16pp)</b> and TikTok to <b>58% (+20pp)</b> year-on-year. The report calls out Kenya specifically for the prominence of its "creator layer" on messaging and video platforms &mdash; not on news websites.</p>
-      </div>
-      <div class="quote-card">
-        <div class="src">Project Oasis 2025 Report &mdash; Platformisation</div>
-        <p>"News Verifier Africa in Nigeria and Newsghana24 in Ghana use WhatsApp as their <b>primary</b> news platform" &mdash; publishers whose main channel a standard website crawl would simply never see.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="block">
-  <div class="wrap">
-    <span class="kicker">Coverage by channel type</span>
-    <h2>Mostly newsletters today; Telegram and fediverse growing.</h2>
-    <div class="barlist">
-      <div class="bar-row"><span>Email / newsletter</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">326 sources</span></div>
-      <div class="bar-row"><span>Telegram</span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div><span class="bar-val">32 sources</span></div>
-      <div class="bar-row"><span>Fediverse</span><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><span class="bar-val">10 sources</span></div>
-      <div class="bar-row"><span>RSS-via-push</span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div><span class="bar-val">8 sources</span></div>
     </div>
     <div class="note" style="margin-top:28px;">
-      <b>An honest note on attribution.</b> Some Telegram channels aggregate content from many different publishers rather than belonging to one outlet &mdash; a single channel can carry bylines from a dozen unrelated newsrooms. CivicSignal only attributes a channel's own reach (subscriber counts, etc.) back to a specific publisher when that mapping is unambiguous. Everything else is still ingested and classified &mdash; it's just not credited to the wrong owner.
+      <b>This page is a placeholder.</b> Full methodology detail and a browsable view of the registry are pending &mdash; the figures above are CivicSignal's current mapped totals.
     </div>
   </div>
 </section>
@@ -257,7 +213,7 @@ document.addEventListener('click', function(){
 <section class="block sources-block" style="border-bottom:none;">
   <div class="wrap">
     <span class="kicker">Sources</span>
-    <p class="sources-note">Source counts and article totals reflect a snapshot of push_media.db at the time this page was last generated &mdash; not a live feed. DNR 2026 figures: Reuters Institute for the Study of Journalism, Digital News Report 2026, Kenya country chapter. Project Oasis figures: Project Oasis 2025 Report, Platformisation section.</p>
+    <p class="sources-note">Outlet and country totals reflect CivicSignal's MediaData registry as of this page's last update &mdash; not a live feed.</p>
   </div>
 </section>
 

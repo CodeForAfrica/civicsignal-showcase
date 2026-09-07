@@ -66,11 +66,19 @@
   @media(max-width:800px){.footprint-row{grid-template-columns:repeat(2,1fr);row-gap:24px;}.footprint-stat{border-left:none;padding-left:0;}}
   .footprint-note{margin-top:16px;font-size:12px;color:var(--ink-faint);}
 
-  .tool-teaser-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line);}
-  .tool-teaser-name{display:block;font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--navy);margin-bottom:6px;}
-  .tool-teaser p{margin:0;font-size:12.5px;line-height:1.55;color:var(--ink-dim);}
-  .tool-teaser-dummy{opacity:0.72;}
+  .tool-teaser-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;padding-top:28px;border-top:1px solid var(--line);}
+  .tool-teaser{position:relative;display:flex;flex-direction:column;background:var(--bg-raised);border:1px solid var(--line);border-radius:14px;padding:24px 22px 22px;text-decoration:none;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;}
+  a.tool-teaser:hover{border-color:var(--navy);box-shadow:0 14px 32px rgba(2,32,105,0.12);transform:translateY(-3px);}
+  a.tool-teaser:hover .tool-teaser-arrow{transform:translateX(3px);opacity:1;}
+  .tool-teaser-icon{width:38px;height:38px;color:var(--navy);margin-bottom:16px;}
+  .tool-teaser-icon svg{width:100%;height:100%;}
+  .tool-teaser-name{display:block;font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--navy);margin-bottom:8px;}
+  .tool-teaser p{margin:0;font-size:13px;line-height:1.6;color:var(--ink-dim);flex:1 1 auto;}
+  .tool-teaser-arrow{display:inline-block;margin-top:16px;font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:0.03em;color:var(--red);opacity:0.85;transition:transform .18s ease,opacity .18s ease;}
+  .tool-teaser-dummy{opacity:0.85;background:var(--bg-alt);}
+  .tool-teaser-dummy .tool-teaser-icon{color:var(--ink-faint);}
   .tool-teaser-dummy .tool-teaser-name{color:var(--ink-faint);}
+  .tool-teaser-dummy .tool-teaser-arrow{color:var(--ink-faint);}
   .tool-teaser-soon{display:inline-block;margin-left:8px;font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:0.05em;text-transform:none;color:var(--red);border:1px solid var(--red);border-radius:20px;padding:1px 8px;vertical-align:middle;}
   @media (max-width:720px){.tool-teaser-row{grid-template-columns:1fr;}}
   .footprint-row-3{grid-template-columns:repeat(3,1fr);}
@@ -312,8 +320,9 @@
       <div class="cs-navdrop">
         <button class="cs-navdrop-btn" type="button" aria-expanded="false">Tools</button>
         <div class="cs-navdrop-menu">
-          <a href="index.html#mediadata">MediaData</a>
-          <a href="index.html#mediacloud">MediaCloud</a>
+          <a href="mediadata.html">MediaData</a>
+          <a href="mediacloud.html">MediaCloud</a>
+          <a href="mediascapes.html">MediaScapes</a>
           <a href="wavelength.html">Wavelength</a>
           <a href="fingerprints.html">Fingerprints</a>
           <a href="push-media.html">Push Media</a>
@@ -363,18 +372,24 @@ document.addEventListener('click', function(){
     </div>
     <p class="footprint-note">CivicSignal's monitoring footprint across Africa's established, licensed media industry &mdash; from its own MediaData mapping and MediaCloud ingestion infrastructure.</p>
     <div class="tool-teaser-row">
-      <div class="tool-teaser" id="mediadata">
+      <a class="tool-teaser" href="mediadata.html" id="mediadata">
+        <span class="tool-teaser-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></span>
         <span class="tool-teaser-name">MediaData</span>
         <p>The underlying registry of Africa's licensed media houses &mdash; outlets, ownership and reach, mapped once and kept current.</p>
-      </div>
-      <div class="tool-teaser" id="mediacloud">
+        <span class="tool-teaser-arrow">Explore MediaData &rarr;</span>
+      </a>
+      <a class="tool-teaser" href="mediacloud.html" id="mediacloud">
+        <span class="tool-teaser-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-7.97A5.5 5.5 0 0 0 7.1 8.51 4.5 4.5 0 0 0 7 18Z"/></svg></span>
         <span class="tool-teaser-name">MediaCloud</span>
         <p>The ingestion infrastructure behind every article in this dataset &mdash; live collection at continental scale.</p>
-      </div>
-      <div class="tool-teaser tool-teaser-dummy">
+        <span class="tool-teaser-arrow">Explore MediaCloud &rarr;</span>
+      </a>
+      <a class="tool-teaser tool-teaser-dummy" href="mediascapes.html">
+        <span class="tool-teaser-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 3-4 6 6"/><circle cx="17" cy="6" r="2.2"/></svg></span>
         <span class="tool-teaser-name">MediaScapes <span class="tool-teaser-soon">Coming soon</span></span>
-        <p>Placeholder &mdash; description pending. Flag real copy for this product and this note can come out.</p>
-      </div>
+        <p>A new way of visualising Africa's media landscape as terrain, not a table. Details are still taking shape.</p>
+        <span class="tool-teaser-arrow">Preview MediaScapes &rarr;</span>
+      </a>
     </div>
   </div>
 </header>
@@ -443,12 +458,7 @@ document.addEventListener('click', function(){
       <span>Emerging layer &rarr;</span>
     </div>
 
-    <div class="footprint-row footprint-row-3">
-      <div class="footprint-stat"><span class="num">1,072</span><span class="label">Digital-native publishers mapped</span></div>
-      <div class="footprint-stat"><span class="num">55</span><span class="label">Creator-journalists surveyed</span></div>
-      <div class="footprint-stat"><span class="num">407</span><span class="label">Push Media sources &mdash; newsletters, Telegram and fediverse accounts</span></div>
-    </div>
-    <p class="footprint-note">1,074 sources actively tracked across all three types, out of 1,534 mapped so far &mdash; live in <a href="wavelength.html">Wavelength</a>.</p>
+    <p class="footprint-note">Close to 1,600 of these publishers were mapped and of these, over a 1,000 are actively tracked &mdash; live in <a href="wavelength.html">Wavelength</a>.</p>
   </div>
 </section>
 
@@ -1043,32 +1053,32 @@ const FP_DATA = [
   <div class="wrap">
     <span class="kicker">Our products</span>
     <h2>CivicSignal draws on a wider family of Code for Africa monitoring and research tools.</h2>
-    <p class="lede">Placeholder section &mdash; one-line descriptions below are sketched from internal shorthand, not final copy. Flag real descriptions and this note comes out.</p>
+    <p class="lede">Product names below are provisional &mdash; still being finalised internally &mdash; but the descriptions reflect real, discussed product scope, not placeholder text.</p>
     <div class="product-grid">
       <div class="product-card">
         <span class="product-name">Groundswell</span>
-        <p class="product-dummy-note">Placeholder</p>
-        <p>Supporting digital-native and creator-journalist publishers across Africa.</p>
+        <p class="product-dummy-note">Name provisional</p>
+        <p>Charts Africa's emergent media archetypes and creator segments as they evolve &mdash; digital-native versus legacy, using taxonomies drawn from the Reuters Institute's Digital News Report and FT Strategies.</p>
       </div>
       <div class="product-card">
         <span class="product-name">Tripwire</span>
-        <p class="product-dummy-note">Placeholder</p>
-        <p>Threat-intelligence monitoring for information manipulation, in the spirit of Particle.News.</p>
+        <p class="product-dummy-note">Name provisional</p>
+        <p>Clusters stories by time and shared entities to surface coordinated narrative shifts and information-manipulation attempts as they emerge, not after the fact.</p>
       </div>
       <div class="product-card">
         <span class="product-name">Current</span>
-        <p class="product-dummy-note">Placeholder</p>
-        <p>A toolkit for push-media publishers &mdash; newsletters, Telegram and fediverse channels.</p>
+        <p class="product-dummy-note">Name provisional</p>
+        <p>CivicSignal's monitoring of newsletters, Telegram channels and fediverse accounts &mdash; the news that never touches a crawlable website. <a href="push-media.html" style="color:#F0A0A2;">See it in Push Media &rarr;</a></p>
       </div>
       <div class="product-card">
         <span class="product-name">Toxicon</span>
-        <p class="product-dummy-note">Placeholder</p>
-        <p>Lexicons and codebooks for tracking weaponised language.</p>
+        <p class="product-dummy-note">Name provisional</p>
+        <p>Lexicons and codebooks for tracking weaponised and manipulative language across the corpus.</p>
       </div>
       <div class="product-card">
         <span class="product-name">SignalLab</span>
-        <p class="product-dummy-note">Placeholder</p>
-        <p>An experimental showcase for CivicSignal's research in progress, for prospective research partners.</p>
+        <p class="product-dummy-note">Name provisional</p>
+        <p>CivicSignal's open experiments &mdash; not shipped features &mdash; run against real data and open to research and pilot partners. <a href="lab-narrative-threads.html" style="color:#F0A0A2;">Visit the Lab &rarr;</a></p>
       </div>
       <div class="product-card product-card-waitlist">
         <span class="product-name">More in the works</span>

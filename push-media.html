@@ -27,9 +27,12 @@
   @media(max-width:720px){.wrap{padding:0 18px;}}
   h1,h2,h3{font-family:var(--font-display);font-weight:900;text-wrap:balance;margin:0;letter-spacing:-0.01em;}
   .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:14px;}
+  section.block.sources-block{padding:0 0 32px;}
+  .sources-note{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);letter-spacing:0.02em;line-height:1.7;max-width:80ch;}
+  .sources-note a{color:var(--ink-faint);text-decoration:underline;}
   .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;}
 
-  .cs-nav{background:var(--navy);border-bottom:3px solid var(--red);}
+  .cs-nav{background:var(--navy);border-bottom:3px solid var(--red);position:sticky;top:0;z-index:100;}
   .cs-nav-inner{max-width:1120px;margin:0 auto;padding:12px clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
   @media(max-width:720px){.cs-nav-inner{padding:12px 18px;}}
   .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
@@ -86,14 +89,40 @@
   .note{background:var(--bg-alt);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 22px;font-size:13.5px;color:var(--ink-dim);max-width:72ch;}
   .note b{color:var(--ink);}
 
-  footer.close{background:var(--navy);color:#EFE9E2;padding:clamp(48px,8vw,80px) 0 0;}
-  footer.close h2{color:#fff;font-size:clamp(1.4rem,3vw,1.9rem);max-width:24ch;}
+  footer.close{background:var(--navy);color:#EFE9E2;padding:clamp(48px,8vw,80px) 0 0;margin-top:0;}
+  footer.close h2{color:#fff;font-size:clamp(1.3rem,2.6vw,1.7rem);max-width:26ch;}
   footer.close .lede{margin-top:14px;max-width:60ch;color:#C7CEE0;font-size:1rem;}
-  .ctarow{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{font-family:var(--font-body);font-weight:700;font-size:14px;padding:12px 22px;border-radius:4px;text-decoration:none;display:inline-block;}
-  .btn-primary{background:var(--blue);color:#fff;}
-  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;}
-  .colophon{margin-top:36px;padding:20px 0 32px;border-top:1px solid rgba(255,255,255,0.15);font-family:var(--font-mono);font-size:11px;color:#8791AC;letter-spacing:0.03em;line-height:1.7;}
+  footer.close a{color:#F0A0A2;}
+  .footlinks{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px;font-size:13.5px;padding-bottom:40px;}
+  .tool-teaser-soon{display:inline-block;margin-left:8px;font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:0.05em;text-transform:none;color:var(--red);border:1px solid var(--red);border-radius:20px;padding:1px 8px;vertical-align:middle;}
+  .partner-logo-strips{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  @media(max-width:760px){.partner-logo-strips{grid-template-columns:1fr;}}
+  .partner-logo-strip-label{display:block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;}
+  .partner-logo-boxes{display:flex;gap:12px;flex-wrap:wrap;}
+  .partner-logo-box{width:72px;height:40px;border:1px dashed var(--line);border-radius:6px;}
+  .partner-logo-box-filled{background:var(--bg-alt);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:6px;}
+  .partner-logo-box-filled img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:0.75;transition:opacity .15s ease;}
+  .partner-logo-box-filled:hover img{filter:none;opacity:1;}
+  .footer-grid{display:grid;grid-template-columns:1fr minmax(220px,280px);gap:40px;padding-bottom:8px;}
+  @media(max-width:760px){.footer-grid{grid-template-columns:1fr;}}
+  .footer-brand-logos{display:flex;align-items:center;gap:20px;margin-bottom:18px;background:#fff;border-radius:12px;padding:16px 20px;}
+  .footer-brand-logos img{height:56px;width:auto;display:block;}
+  .footer-brand-logos .footer-plus{height:48px;}
+  .footer-brand-logos .divider{width:1px;height:44px;background:var(--line);}
+  .footer-brand-copy{font-size:12.5px;line-height:1.6;color:#9FA9C9;max-width:34ch;}
+  .footer-brand-copy b{color:#EFE9E2;}
+  .search-cta-btn{flex:0 0 auto;background:var(--red);color:#fff;font-weight:700;font-size:13.5px;padding:13px 24px;border-radius:999px;text-decoration:none;white-space:nowrap;}
+  .search-cta-btn:hover{background:#c91b1f;}
+
+  .cs-navdrop{position:relative;}
+  .cs-navdrop-btn{background:none;border:none;padding:0;margin:0;font-family:inherit;font-weight:700;font-size:13.5px;letter-spacing:0.01em;cursor:pointer;color:#B9C2DA;display:flex;align-items:center;gap:5px;}
+  .cs-navdrop-btn:hover,.cs-navdrop-btn.active,.cs-navdrop.open .cs-navdrop-btn{color:#fff;}
+  .cs-navdrop-btn::after{content:'';width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;margin-top:2px;transition:transform .15s ease;}
+  .cs-navdrop.open .cs-navdrop-btn::after{transform:rotate(180deg);}
+  .cs-navdrop-menu{display:none;position:absolute;top:100%;left:0;margin-top:14px;background:var(--navy-deep);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:8px 0;min-width:180px;box-shadow:0 12px 28px rgba(0,0,0,0.3);z-index:50;}
+  .cs-navdrop.open .cs-navdrop-menu{display:block;}
+  .cs-navdrop-menu a{display:block;padding:8px 16px;color:#B9C2DA;font-family:inherit;font-weight:700;font-size:13px;text-decoration:none;letter-spacing:0.01em;white-space:nowrap;}
+  .cs-navdrop-menu a:hover{color:#fff;background:rgba(255,255,255,0.06);}
 </style>
 </head>
 <body>
@@ -104,13 +133,44 @@
       <span class="cs-wordmark">CivicSignal</span><span class="cs-pipe">|</span><span class="cs-orgname">Code for Africa</span>
     </a>
     <nav class="cs-navlinks">
-      <a href="wavelength.html">Wavelength</a>
-      <a href="project-oasis.html">Digital Natives</a>
-      <a href="cnti-creators.html">Creators</a>
-      <a href="push-media.html" class="active">Push Media</a>
+      <div class="cs-navdrop">
+        <button class="cs-navdrop-btn active" type="button" aria-expanded="false">Tools</button>
+        <div class="cs-navdrop-menu">
+          <a href="index.html#mediadata">MediaData</a>
+          <a href="index.html#mediacloud">MediaCloud</a>
+          <a href="wavelength.html">Wavelength</a>
+          <a href="fingerprints.html">Fingerprints</a>
+          <a href="push-media.html">Push Media</a>
+        </div>
+      </div>
+      <div class="cs-navdrop">
+        <button class="cs-navdrop-btn" type="button" aria-expanded="false">Research</button>
+        <div class="cs-navdrop-menu">
+          <a href="project-oasis.html">Digital Natives</a>
+          <a href="cnti-creators.html">Creators</a>
+        </div>
+      </div>
+      <a href="lab-narrative-threads.html">Lab</a>
+      <a href="index.html#partnerships">About</a>
     </nav>
   </div>
 </header>
+
+<script>
+document.querySelectorAll('.cs-navdrop-btn').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var drop = btn.closest('.cs-navdrop');
+    var wasOpen = drop.classList.contains('open');
+    document.querySelectorAll('.cs-navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+    if(!wasOpen) drop.classList.add('open');
+  });
+});
+document.addEventListener('click', function(){
+  document.querySelectorAll('.cs-navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+});
+</script>
+
 
 <header class="masthead">
   <div class="wrap">
@@ -193,16 +253,57 @@
   </div>
 </section>
 
+<section class="block sources-block" style="border-bottom:none;">
+  <div class="wrap">
+    <span class="kicker">Sources</span>
+    <p class="sources-note">Source counts and article totals reflect a snapshot of push_media.db at the time this page was last generated &mdash; not a live feed. DNR 2026 figures: Reuters Institute for the Study of Journalism, Digital News Report 2026, Kenya country chapter. Project Oasis figures: Project Oasis 2025 Report, Platformisation section.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <span class="kicker">Partners</span>
+    <div class="partner-logo-strips">
+      <div class="partner-logo-strip">
+        <span class="partner-logo-strip-label">Editor &amp; publisher guilds <span class="tool-teaser-soon">Placeholder</span></span>
+        <div class="partner-logo-boxes">
+          <div class="partner-logo-box"></div>
+          <div class="partner-logo-box"></div>
+          <div class="partner-logo-box"></div>
+          <div class="partner-logo-box"></div>
+        </div>
+      </div>
+      <div class="partner-logo-strip">
+        <span class="partner-logo-strip-label">Donors &amp; funders <span class="tool-teaser-soon">Placeholder</span></span>
+        <div class="partner-logo-boxes">
+          <div class="partner-logo-box"></div>
+          <div class="partner-logo-box"></div>
+          <div class="partner-logo-box"></div>
+          <div class="partner-logo-box"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer class="close">
   <div class="wrap">
-    <h2>Push Media is one of three lenses. See them together.</h2>
-    <p class="lede">Digital-native publishers, creator-journalists and Push Media sources are unified into a single monitoring view &mdash; topic-classified the same way, filterable by source type &mdash; on Wavelength, CivicSignal's ecosystem monitor.</p>
-    <div class="ctarow">
-      <a class="btn btn-primary" href="wavelength.html">Open Wavelength</a>
-      <a class="btn btn-ghost" href="index.html">All CivicSignal pages</a>
-    </div>
-    <div class="colophon">
-      Source counts and article totals reflect a snapshot of push_media.db at the time this page was last generated &mdash; not a live feed. DNR 2026 figures: Reuters Institute for the Study of Journalism, Digital News Report 2026, Kenya country chapter. Project Oasis figures: Project Oasis 2025 Report, Platformisation section.
+    <div class="footer-grid">
+      <div>
+        <h2>The map is moving. CivicSignal is how you keep up with it.</h2>
+        <p class="lede">Investigate the full spectrum of Africa's media landscape &mdash; from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
+        <div class="footlinks">
+          <a class="search-cta-btn" href="mailto:saif@codeforafrica.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-brand-logos">
+          <img src="assets/cfa-logo.png" alt="Code for Africa">
+          <span class="divider"></span>
+          <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance">
+        </div>
+        <p class="footer-brand-copy">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
+      </div>
     </div>
   </div>
 </footer>

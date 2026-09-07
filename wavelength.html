@@ -53,7 +53,7 @@
   @media(max-width:720px){.wrap{padding:0 18px;}}
 
   /* ---------- shared site nav (all 5 pages) ---------- */
-  .cs-nav{background:var(--navy);border-bottom:3px solid var(--red);}
+  .cs-nav{background:var(--navy);border-bottom:3px solid var(--red);position:sticky;top:0;z-index:100;}
   .cs-nav-inner{max-width:1120px;margin:0 auto;padding:12px clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
   @media(max-width:720px){.cs-nav-inner{padding:12px 18px;}}
   .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
@@ -247,103 +247,18 @@
   .section-head p{font-size:14px;color:var(--muted);margin:6px 0 0;max-width:56ch;}
   .count-pill{font-size:12px;font-weight:700;color:var(--navy);background:var(--cream-2);border-radius:999px;padding:5px 12px;white-space:nowrap;}
 
-  /* ---------- ENTITY CARDS (click to flip) ---------- */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:620px){.grid{grid-template-columns:1fr;}}
-  .card{perspective:1600px;height:452px;}
-  .card:hover .flip-inner{box-shadow:0 16px 32px rgba(27,35,64,0.12);transform:translateY(-2px);}
-  .card:hover .flip-inner.is-flipped{transform:translateY(-2px) rotateY(180deg);}
-  .flip-inner{
-    position:relative;width:100%;height:100%;cursor:pointer;
-    transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,.15,.2,1),box-shadow .25s ease;
-    box-shadow:0 1px 3px rgba(27,35,64,0.05);border-radius:12px;
-  }
-  .flip-inner.is-flipped{transform:rotateY(180deg);}
-  .card-face{
-    position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
-    border-radius:12px;padding:17px 20px 16px;
-    display:flex;flex-direction:column;gap:8px;overflow:hidden;
-    background:#fff;border:1px solid var(--line);border-top:3px solid var(--accent,var(--navy));
-  }
-  /* folded-corner affordance: a small white dog-ear signaling the card can be flipped */
-  .card-face::before{
-    content:'';position:absolute;right:0;bottom:0;width:0;height:0;pointer-events:none;
-    border-style:solid;border-width:0 16px 16px 0;
-    border-color:transparent #fff #fff transparent;
-    box-shadow:-1px -1px 3px rgba(27,35,64,0.12);
-  }
-  .card-back{transform:rotateY(180deg);}
-  .flip-hint{display:flex;align-items:center;gap:4px;font-size:10.5px;color:var(--muted);white-space:nowrap;}
-  .back-title{font-weight:900;font-size:15px;color:var(--navy-deep);padding-right:4px;}
-  .back-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;}
-  .back-meta-item{min-width:0;}
-  .back-meta-item .k{display:block;font-size:9.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
-  .back-meta-item .v{display:block;font-size:12.5px;color:var(--ink);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .back-meta-item .v a{color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(2,32,105,0.25);}
-  .back-meta-item .v a:hover{border-bottom-color:var(--navy);}
-  .back-meta-item.span2{grid-column:1/-1;}
-  .back-bio{
-    font-size:12px;color:var(--muted);line-height:1.5;margin:0;
-    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
-  }
-  .back-section{border-top:1px solid var(--line);padding-top:6px;margin-top:0;}
-  .back-section-label{font-size:9.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
-  .social-chips{display:flex;flex-wrap:wrap;gap:6px;}
-  .social-chip{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--navy);background:var(--cream-2);border-radius:999px;padding:3px 8px;text-decoration:none;white-space:nowrap;}
-  .social-chip.more{color:var(--muted);background:transparent;border:1px dashed var(--line);}
-  .tag-row{display:flex;flex-wrap:wrap;gap:5px;}
   .tag{font-size:10.5px;color:var(--navy);background:var(--cream-2);border-radius:6px;padding:3px 7px;white-space:nowrap;}
   .tag.more{color:var(--muted);background:transparent;border:1px dashed var(--line);}
-  .back-empty{margin:auto 0;text-align:center;color:var(--muted);font-size:13px;}
-  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
-  .card-name{font-weight:700;font-size:15.5px;line-height:1.25;}
   .badge{font-size:10.5px;font-weight:700;background:var(--cream-2);color:var(--navy);border-radius:999px;padding:4px 9px;white-space:nowrap;}
   .badge[data-type="Push Media"]{background:rgba(240,101,61,0.14);color:var(--c-conflict);}
   .badge[data-type="Creator"]{background:rgba(0,184,169,0.14);color:var(--c-economy);}
   .badge[data-type="Digital-native publisher"]{background:rgba(59,76,202,0.1);color:var(--c-politics);}
-  .meta-row{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);}
-  .meta-row span{display:flex;align-items:center;gap:5px;}
-  .radar-box{height:158px;position:relative;}
-  .card-top-entities{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:2px;}
-  .card-top-entities-label{font-size:9px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--muted);margin-right:1px;}
-  .card-top-entities .tag{font-size:9.5px;padding:2px 7px;display:flex;align-items:center;gap:4px;}
-  .card-top-entities .tag .entity-type-icon{width:9px;height:9px;opacity:0.7;}
-  .card-top-entities .tag[data-etype="PERSON"] .entity-type-icon{color:var(--navy);}
-  .card-top-entities .tag[data-etype="ORG"] .entity-type-icon{color:var(--c-economy);}
-  .card-top-entities .tag[data-etype="PLACE"] .entity-type-icon{color:var(--c-technology);}
-  .radar-box::before{
-    content:'';position:absolute;inset:8%;border-radius:50%;
-    background:radial-gradient(circle,var(--accent,var(--navy)) 0%,transparent 72%);opacity:0.05;
-  }
-  .card-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:9px;}
-  .card-foot b{color:var(--navy-deep);font-size:14px;font-family:'Lato',sans-serif;font-weight:900;}
-  .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);font-size:14px;}
   .load-more-wrap{display:flex;justify-content:center;margin-top:28px;}
   .load-more-btn{
     background:#fff;border:1px solid var(--line);border-radius:999px;padding:12px 26px;
     font-family:inherit;font-weight:700;font-size:13.5px;color:var(--navy-deep);cursor:pointer;
   }
   .load-more-btn:hover{background:var(--cream-2);}
-
-  .type-carousel{margin-bottom:36px;}
-  .type-carousel:last-child{margin-bottom:0;}
-  .type-carousel .grid{margin-top:0;}
-  .type-carousel-head{
-    display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px;padding-bottom:10px;
-    border-bottom:1px solid var(--line);flex-wrap:wrap;
-  }
-  .type-carousel-title{display:flex;align-items:baseline;gap:10px;font-size:15px;font-weight:900;color:var(--navy-deep);}
-  .type-carousel-title .group-count{font-size:12px;font-weight:700;color:var(--muted);}
-  .carousel-arrows{display:flex;align-items:center;gap:10px;}
-  .carousel-arrow-btn{
-    width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:#fff;
-    font-size:16px;color:var(--navy-deep);cursor:pointer;display:flex;align-items:center;justify-content:center;
-    font-family:inherit;line-height:1;
-  }
-  .carousel-arrow-btn:hover:not(:disabled){background:var(--cream-2);}
-  .carousel-arrow-btn:disabled{opacity:0.3;cursor:default;}
-  .carousel-page-indicator{font-size:12px;font-weight:700;color:var(--muted);font-family:'IBM Plex Mono',monospace;min-width:44px;text-align:center;}
 
   /* ---------- FEED ---------- */
   .feed-list{display:flex;flex-direction:column;}
@@ -493,12 +408,43 @@
   }
   .dev-cta-btn:hover{background:#c91b1f;}
 
-  footer{border-top:1px solid var(--line);margin-top:70px;padding:28px 0;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer.close{background:var(--navy);color:#EFE9E2;padding:clamp(48px,8vw,80px) 0 0;margin-top:70px;}
+  footer.close h2{color:#fff;font-size:clamp(1.3rem,2.6vw,1.7rem);max-width:26ch;}
+  footer.close .lede{margin-top:14px;max-width:60ch;color:#C7CEE0;font-size:1rem;}
+  footer.close a{color:#F0A0A2;}
+  .footlinks{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px;font-size:13.5px;padding-bottom:40px;}
+  .tool-teaser-soon{display:inline-block;margin-left:8px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;font-weight:600;letter-spacing:0.05em;text-transform:none;color:var(--red);border:1px solid var(--red);border-radius:20px;padding:1px 8px;vertical-align:middle;}
+  .partner-logo-strips{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  @media(max-width:760px){.partner-logo-strips{grid-template-columns:1fr;}}
+  .partner-logo-strip-label{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;}
+  .partner-logo-boxes{display:flex;gap:12px;flex-wrap:wrap;}
+  .partner-logo-box{width:72px;height:40px;border:1px dashed var(--line);border-radius:6px;}
+  .partner-logo-box-filled{background:var(--bg-alt);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:6px;}
+  .partner-logo-box-filled img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:0.75;transition:opacity .15s ease;}
+  .partner-logo-box-filled:hover img{filter:none;opacity:1;}
+  .footer-grid{display:grid;grid-template-columns:1fr minmax(220px,280px);gap:40px;padding-bottom:8px;}
+  @media(max-width:760px){.footer-grid{grid-template-columns:1fr;}}
+  .footer-brand-logos{display:flex;align-items:center;gap:20px;margin-bottom:18px;background:#fff;border-radius:12px;padding:16px 20px;}
+  .footer-brand-logos img{height:56px;width:auto;display:block;}
+  .footer-brand-logos .footer-plus{height:48px;}
+  .footer-brand-logos .divider{width:1px;height:44px;background:var(--line);}
+  .footer-brand-copy{font-size:12.5px;line-height:1.6;color:#9FA9C9;max-width:34ch;}
+  .footer-brand-copy b{color:#EFE9E2;}
 
   /* ---------- STATUS BANNER (loading / data-fetch error) ---------- */
   .status-banner{padding:10px 24px;font-size:13px;font-weight:600;text-align:center;}
   .status-banner.loading{background:var(--navy-deep);color:#fff;}
   .status-banner.error{background:var(--c-conflict);color:#fff;}
+
+  .cs-navdrop{position:relative;}
+  .cs-navdrop-btn{background:none;border:none;padding:0;margin:0;font-family:inherit;font-weight:700;font-size:13.5px;letter-spacing:0.01em;cursor:pointer;color:#B9C2DA;display:flex;align-items:center;gap:5px;}
+  .cs-navdrop-btn:hover,.cs-navdrop-btn.active,.cs-navdrop.open .cs-navdrop-btn{color:#fff;}
+  .cs-navdrop-btn::after{content:'';width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;margin-top:2px;transition:transform .15s ease;}
+  .cs-navdrop.open .cs-navdrop-btn::after{transform:rotate(180deg);}
+  .cs-navdrop-menu{display:none;position:absolute;top:100%;left:0;margin-top:14px;background:var(--navy-deep);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:8px 0;min-width:180px;box-shadow:0 12px 28px rgba(0,0,0,0.3);z-index:50;}
+  .cs-navdrop.open .cs-navdrop-menu{display:block;}
+  .cs-navdrop-menu a{display:block;padding:8px 16px;color:#B9C2DA;font-family:inherit;font-weight:700;font-size:13px;text-decoration:none;letter-spacing:0.01em;white-space:nowrap;}
+  .cs-navdrop-menu a:hover{color:#fff;background:rgba(255,255,255,0.06);}
 </style>
 </head>
 <body>
@@ -509,13 +455,44 @@
       <span class="cs-wordmark">CivicSignal</span><span class="cs-pipe">|</span><span class="cs-orgname">Code for Africa</span>
     </a>
     <nav class="cs-navlinks">
-      <a href="wavelength.html" class="active">Wavelength</a>
-      <a href="project-oasis.html">Digital Natives</a>
-      <a href="cnti-creators.html">Creators</a>
-      <a href="push-media.html">Push Media</a>
+      <div class="cs-navdrop">
+        <button class="cs-navdrop-btn active" type="button" aria-expanded="false">Tools</button>
+        <div class="cs-navdrop-menu">
+          <a href="index.html#mediadata">MediaData</a>
+          <a href="index.html#mediacloud">MediaCloud</a>
+          <a href="wavelength.html">Wavelength</a>
+          <a href="fingerprints.html">Fingerprints</a>
+          <a href="push-media.html">Push Media</a>
+        </div>
+      </div>
+      <div class="cs-navdrop">
+        <button class="cs-navdrop-btn" type="button" aria-expanded="false">Research</button>
+        <div class="cs-navdrop-menu">
+          <a href="project-oasis.html">Digital Natives</a>
+          <a href="cnti-creators.html">Creators</a>
+        </div>
+      </div>
+      <a href="lab-narrative-threads.html">Lab</a>
+      <a href="index.html#partnerships">About</a>
     </nav>
   </div>
 </header>
+
+<script>
+document.querySelectorAll('.cs-navdrop-btn').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var drop = btn.closest('.cs-navdrop');
+    var wasOpen = drop.classList.contains('open');
+    document.querySelectorAll('.cs-navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+    if(!wasOpen) drop.classList.add('open');
+  });
+});
+document.addEventListener('click', function(){
+  document.querySelectorAll('.cs-navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+});
+</script>
+
 
 <header class="hero" id="pulse">
   <div class="wrap">
@@ -630,38 +607,6 @@
     </div>
   </section>
 
-  <section class="section stepper-panel" id="entities" data-panel-title="Fingerprints">
-    <div class="section-head">
-      <div>
-        <h2><span class="panel-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M8 3.2c-2.9 0-5 2.2-5 5.2 0 1.6.4 2.8 1 3.8"/><path d="M8 1.6c-3.9 0-6.8 3-6.8 6.8 0 1.9.5 3.4 1.2 4.6"/><path d="M8 4.8c-2 0-3.4 1.6-3.4 3.6 0 1.8.7 3 1.4 3.8"/><path d="M8 6.4c-1.1 0-2 .9-2 2.1 0 1.3.5 2.2 1.1 3"/><path d="M8 4.8v2"/><path d="M8 8v5.6"/></svg></span>Fingerprints</h2>
-        <p>Every publisher's topical fingerprint &mdash; the unique mix of subjects it covers, sized by how active it's been. Two outlets can publish the same volume of stories and look nothing alike here.</p>
-      </div>
-      <span class="count-pill" id="pubCount"></span>
-    </div>
-
-    <div class="filters">
-      <label>Country
-        <select id="fCountry"><option value="all">All countries</option></select>
-      </label>
-      <label>Language
-        <select id="fLang"><option value="all">All languages</option></select>
-      </label>
-      <label>Topic focus
-        <select id="fTopic"><option value="all">All topics</option></select>
-      </label>
-      <label>Sort by
-        <select id="fSort">
-          <option value="active">Most active</option>
-          <option value="diverse">Most topically diverse</option>
-          <option value="az">A&ndash;Z</option>
-        </select>
-      </label>
-      <button class="reset" id="resetBtn">Reset filters</button>
-    </div>
-
-    <div id="cardCarousels"></div>
-  </section>
-
   <section class="section stepper-panel" id="corpus-search" data-panel-title="Search the corpus">
     <div class="section-head">
       <div>
@@ -759,9 +704,52 @@
 
 </main>
 
-<footer class="wrap">
-  <span>CivicSignal · Code for Africa — working demo, not for distribution</span>
-  <span id="genDate"></span>
+<section class="block">
+  <div class="wrap">
+    <span class="kicker">Partners</span>
+    <div class="partner-logo-strips">
+      <div class="partner-logo-strip">
+        <span class="partner-logo-strip-label">Editor &amp; publisher guilds <span class="tool-teaser-soon">Placeholder</span></span>
+        <div class="partner-logo-boxes">
+          <div class="partner-logo-box"></div>
+          <div class="partner-logo-box"></div>
+          <div class="partner-logo-box"></div>
+          <div class="partner-logo-box"></div>
+        </div>
+      </div>
+      <div class="partner-logo-strip">
+        <span class="partner-logo-strip-label">Donors &amp; funders <span class="tool-teaser-soon">Placeholder</span></span>
+        <div class="partner-logo-boxes">
+          <div class="partner-logo-box"></div>
+          <div class="partner-logo-box"></div>
+          <div class="partner-logo-box"></div>
+          <div class="partner-logo-box"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="close">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>The map is moving. CivicSignal is how you keep up with it.</h2>
+        <p class="lede">Investigate the full spectrum of Africa's media landscape &mdash; from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
+        <div class="footlinks">
+          <a class="search-cta-btn" href="mailto:saif@codeforafrica.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-brand-logos">
+          <img src="assets/cfa-logo.png" alt="Code for Africa">
+          <span class="divider"></span>
+          <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance">
+        </div>
+        <p class="footer-brand-copy">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <div class="cs-footbar">
@@ -796,15 +784,12 @@ function hideBanner(){
   if(existing) existing.remove();
 }
 
-showBanner('Loading latest data…', 'loading');
-
 fetch(DATA_URL, { cache: 'no-store' })  // no-store: never show a browser-cached JSON after a refresh
   .then(res => {
     if(!res.ok) throw new Error('HTTP ' + res.status);
     return res.json();
   })
   .then(data => {
-    hideBanner();
     renderPage(data);
   })
   .catch(err => {
@@ -829,7 +814,6 @@ if(!HAS_CHART){
     + '</div>');
 }
 
-document.getElementById('genDate').textContent = 'Generated ' + DATA.generatedAt + ' · ' + DATA.totals.articles.toLocaleString() + ' articles classified';
 document.getElementById('liveStatusText').textContent = 'LIVE · UPDATED ' + DATA.generatedAt;
 
 // ---- header/panel banner: same footprint-row treatment as the index page's masthead stats ----
@@ -943,13 +927,33 @@ function computeActiveDaily(){
   return out;
 }
 let activeDaily = DATA.daily;
-fWeekCountry.addEventListener('change', () => { activeDaily = computeActiveDaily(); updateChart(); });
-fWeekLang.addEventListener('change', () => { activeDaily = computeActiveDaily(); updateChart(); });
+
+function weekDaysAt(offset){
+  const end = Math.max(0, days.length - offset*WEEK_SIZE);
+  const start = Math.max(0, end - WEEK_SIZE);
+  return days.slice(start, end);
+}
+function weekTotal(weekDays){
+  return weekDays.reduce((sum,d) => sum + CATS.reduce((s,c) => s + (activeDaily[d][c]||0), 0), 0);
+}
+// A country/language filter's own coverage often lags the unfiltered feed (e.g. Pan-African
+// Push Media keeps posting after a given country's tracked outlets go quiet for the week) -
+// so after applying a filter, jump to the most recent week that actually has matching data
+// instead of landing on a blank current week.
+function autoAdjustWeekOffset(){
+  const maxOffset = Math.max(0, Math.ceil(days.length / WEEK_SIZE) - 1);
+  for(let o=0; o<=maxOffset; o++){
+    if(weekTotal(weekDaysAt(o)) > 0){ weekOffset = o; return; }
+  }
+  weekOffset = 0;
+}
+fWeekCountry.addEventListener('change', () => { activeDaily = computeActiveDaily(); autoAdjustWeekOffset(); updateChart(); });
+fWeekLang.addEventListener('change', () => { activeDaily = computeActiveDaily(); autoAdjustWeekOffset(); updateChart(); });
 
 function currentWeek(){
-  const end = Math.max(0, days.length - weekOffset*WEEK_SIZE);
-  const start = Math.max(0, end - WEEK_SIZE);
-  return { start, weekDays: days.slice(start, end) };
+  const weekDays = weekDaysAt(weekOffset);
+  const start = weekDays.length ? days.indexOf(weekDays[0]) : 0;
+  return { start, weekDays };
 }
 
 function rankTopicsForWeek(weekDays){
@@ -1014,123 +1018,6 @@ weekPrevBtn.addEventListener('click', ()=>{ weekOffset++; updateChart(); });
 weekNextBtn.addEventListener('click', ()=>{ if(weekOffset>0){ weekOffset--; updateChart(); } });
 updateChart();
 
-// ---- filters ----
-const fCountry = document.getElementById('fCountry');
-const fLang = document.getElementById('fLang');
-const fTopic = document.getElementById('fTopic');
-const fSort = document.getElementById('fSort');
-[...new Set(DATA.publishers.map(p=>p.country))].sort().forEach(c=>{
-  fCountry.innerHTML += `<option value="${c}">${c}</option>`;
-});
-[...new Set(DATA.publishers.map(p=>p.lang))].sort().forEach(l=>{
-  fLang.innerHTML += `<option value="${l}">${l}</option>`;
-});
-CATS.forEach(c=>{ fTopic.innerHTML += `<option value="${c}">${LABELS[c]}</option>`; });
-
-const SOCIAL_LABELS = {facebook:'Facebook', twitter:'X / Twitter', instagram:'Instagram', linkedin:'LinkedIn', youtube:'YouTube', tiktok:'TikTok', telegram:'Telegram', fediverse:'Mastodon', mastodon:'Mastodon'};
-function formatFollowers(n){
-  if(n==null) return null;
-  if(n>=1000000) return (n/1000000).toFixed(1).replace(/\.0$/,'')+'M';
-  if(n>=1000) return (n/1000).toFixed(1).replace(/\.0$/,'')+'K';
-  return String(n);
-}
-function renderCardBack(p){
-  const e = p.enrichment;
-  const rows = [];
-  rows.push(`<div class="back-title">${p.name}</div>`);
-
-  const meta = [];
-  if(p.url) meta.push(`<div class="back-meta-item span2"><span class="k">Website</span><span class="v"><a href="${p.url}" target="_blank" rel="noopener">${p.url.replace(/^https?:\/\//,'')}</a></span></div>`);
-  meta.push(`<div class="back-meta-item"><span class="k">Type</span><span class="v">${p.entityType}</span></div>`);
-  if(e && e.hqCity) meta.push(`<div class="back-meta-item"><span class="k">HQ</span><span class="v">${e.hqCity}, ${p.country}</span></div>`);
-  else meta.push(`<div class="back-meta-item"><span class="k">Country</span><span class="v">${p.country}</span></div>`);
-  if(e && e.established) meta.push(`<div class="back-meta-item"><span class="k">Founded</span><span class="v">${e.established}</span></div>`);
-  if(e && e.coverageType) meta.push(`<div class="back-meta-item"><span class="k">Coverage</span><span class="v">${e.coverageType}</span></div>`);
-  rows.push(`<div class="back-meta-grid">${meta.join('')}</div>`);
-
-  if(e && e.bioShort) rows.push(`<p class="back-bio">${e.bioShort}</p>`);
-
-  if(e && e.contentType && e.contentType.length){
-    const shown = e.contentType.slice(0, 3);
-    const extra = e.contentType.length - shown.length;
-    rows.push(`<div class="back-section"><div class="back-section-label">Editorial focus</div>
-      <div class="tag-row">${shown.map(t=>`<span class="tag">${t}</span>`).join('')}${extra > 0 ? `<span class="tag more">+${extra}</span>` : ''}</div></div>`);
-  }
-
-  if(e && e.staff){
-    const s = e.staff;
-    const total = (s.full_time||0) + (s.part_time||0) + (s.freelance||0) + (s.volunteer||0);
-    const types = [];
-    if(s.full_time) types.push('Full-time');
-    if(s.part_time) types.push('Part-time');
-    if(s.freelance) types.push('Freelance');
-    if(s.volunteer) types.push('Volunteer');
-    if(total > 0){
-      const size = total <= 5 ? 'Small' : total <= 20 ? 'Medium' : 'Large';
-      rows.push(`<div class="back-section"><div class="back-section-label">Newsroom size</div><div style="font-size:12.5px;">${size}${types.length ? ' · ' + types.join(', ') : ''}</div></div>`);
-    }
-  }
-
-  if(e && e.social && e.social.length){
-    const chips = e.social.map(s => {
-      const label = SOCIAL_LABELS[s.platform] || s.platform;
-      const count = formatFollowers(s.followers);
-      const text = count ? `${label} · ${count}` : label;
-      return s.url
-        ? `<a class="social-chip" href="${s.url}" target="_blank" rel="noopener">${text}</a>`
-        : `<span class="social-chip">${text}</span>`;
-    }).join('');
-    rows.push(`<div class="back-section"><div class="back-section-label">Social reach</div><div class="social-chips">${chips}</div></div>`);
-  }
-
-  if(!e){
-    rows.push(`<div class="back-empty">No additional organizational detail available for this source.</div>`);
-  }
-
-  return rows.join('');
-}
-
-// Rendering all ~700 cards (each with its own live Chart.js radar) at once is what was
-// freezing the page - only ever build DOM/charts for the current carousel page of each type.
-const CAROUSEL_PAGE_SIZE = 3;
-let carouselPage = {}; // entityType -> current page index (0-based)
-
-function topicDiversity(p){
-  return CATS.filter(c => (p.radar[c]||0) > 0).length;
-}
-
-function sortPublishers(list){
-  const mode = fSort.value;
-  const arr = [...list];
-  if(mode === 'diverse'){
-    arr.sort((a,b) => topicDiversity(b) - topicDiversity(a) || b.total - a.total);
-  } else if(mode === 'az'){
-    arr.sort((a,b) => a.name.localeCompare(b.name));
-  } else { // 'active' - default: most articles first, since that's what the fingerprint is "sized by"
-    arr.sort((a,b) => b.total - a.total);
-  }
-  return arr;
-}
-
-function getFiltered(){
-  const cv = fCountry.value, lv = fLang.value, tv = fTopic.value;
-  const filtered = DATA.publishers.filter(p =>
-    (cv==='all'||p.country===cv) && (lv==='all'||p.lang===lv) && (tv==='all'||p.topTopic===tv)
-  );
-  return sortPublishers(filtered);
-}
-
-// When no source type is explicitly chosen, group cards by type instead of mixing them -
-// otherwise a handful of high-volume publisher types drown out smaller ones in one long list.
-const GROUP_ORDER = ['Digital-native publisher', 'Creator', 'Push Media'];
-function groupByType(list){
-  const groups = {};
-  list.forEach(p => { (groups[p.entityType] = groups[p.entityType] || []).push(p); });
-  return GROUP_ORDER.filter(t => groups[t] && groups[t].length)
-    .map(t => ({ type: t, items: groups[t] }))
-    .concat(Object.keys(groups).filter(t => !GROUP_ORDER.includes(t)).map(t => ({ type: t, items: groups[t] })));
-}
-
 // ---- shared iconography: minimal 1.5px-stroke inline SVGs, no icon font/CDN needed ----
 const ENTITY_ICONS = {
   PERSON: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5.2" r="2.7"/><path d="M2.6 14c0-3 2.4-5 5.4-5s5.4 2 5.4 5"/></svg>',
@@ -1142,142 +1029,6 @@ function entityTypeBadgeHTML(type){
   return `<span class="entity-type-badge" data-type="${type}"><span class="entity-type-icon">${entityIconSVG(type)}</span>${type}</span>`;
 }
 
-const radarCharts = {};
-function cardHTML(p, radarId){
-  const accent = COLORS[p.topTopic] || '#1B2340';
-  return `
-    <div class="card">
-      <div class="flip-inner" data-flipped="false" role="button" tabindex="0" style="--accent:${accent}"
-           aria-label="${p.name} card. Press to see more detail.">
-        <div class="card-face card-front">
-          <div class="card-top">
-            <div class="card-name">${p.name}</div>
-            <span class="badge" data-type="${p.entityType}">${p.entityType}</span>
-          </div>
-          <div class="meta-row">
-            <span>${p.country}</span><span>·</span><span>${p.lang}${p.lang2 ? ` + ${p.lang2}` : ''}</span>
-          </div>
-          <div class="radar-box"><canvas id="radar-${radarId}"></canvas></div>
-          <div class="card-foot">
-            <span>Top topic: <b style="font-size:12px;color:${COLORS[p.topTopic]||'#1B2340'}">${LABELS[p.topTopic]}</b></span>
-            <span><b>${p.total}</b> stories</span>
-          </div>
-          ${p.topEntities && p.topEntities.length ? `<div class="card-top-entities"><span class="card-top-entities-label">Top entities:</span>${p.topEntities.map(e=>`<span class="tag" data-etype="${e.type}"><span class="entity-type-icon">${entityIconSVG(e.type)}</span>${escapeHtml(e.text)}</span>`).join('')}</div>` : ''}
-          <div class="flip-hint" style="justify-content:flex-end;">⟳ more detail</div>
-        </div>
-        <div class="card-face card-back">
-          ${renderCardBack(p)}
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function wireCards(container){
-  container.querySelectorAll('.flip-inner').forEach(el => {
-    const toggle = () => {
-      const flipped = el.dataset.flipped === 'true';
-      el.dataset.flipped = String(!flipped);
-      el.classList.toggle('is-flipped', !flipped);
-    };
-    el.addEventListener('click', (e) => { if(e.target.closest('a')) return; toggle(); });
-    el.addEventListener('keydown', (e) => {
-      if((e.key==='Enter'||e.key===' ') && !e.target.closest('a')){ e.preventDefault(); toggle(); }
-    });
-  });
-}
-
-function mountRadar(p, radarId){
-  if(!HAS_CHART) return;
-  const el = document.getElementById(`radar-${radarId}`);
-  if(!el) return;
-  radarCharts[radarId] = new Chart(el.getContext('2d'), {
-    type:'radar',
-    data:{
-      labels: CATS.map(c=>LABELS[c]),
-      datasets:[{
-        data: CATS.map(c=>p.radar[c]||0),
-        backgroundColor:'rgba(235,34,39,0.14)',
-        borderColor:'#EB2227',
-        borderWidth:1.5,
-        pointRadius:2,
-        pointBackgroundColor:'#EB2227',
-      }]
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      plugins:{legend:{display:false}, tooltip:{enabled:true, callbacks:{label:(ctx)=>ctx.formattedValue+'%'}}},
-      scales:{ r:{
-        angleLines:{color:'#D7DFEA'}, grid:{color:'#D7DFEA'},
-        ticks:{display:false}, pointLabels:{font:{size:8.5}, color:'#565A66'}
-      }}
-    }
-  });
-}
-
-function renderCards(){
-  const filtered = getFiltered();
-  const container = document.getElementById('cardCarousels');
-  Object.values(radarCharts).forEach(rc=>rc.destroy());
-  Object.keys(radarCharts).forEach(k=>delete radarCharts[k]);
-
-  if(filtered.length===0){
-    document.getElementById('pubCount').textContent = `Showing 0 of 0 profiled`;
-    container.innerHTML = `<div class="empty">No publishers match these filters. Try resetting.</div>`;
-    return;
-  }
-
-  const groups = groupByType(filtered);
-  document.getElementById('pubCount').textContent =
-    `${filtered.length} profiled across ${groups.length} source type${groups.length===1?'':'s'}`;
-
-  let radarId = 0;
-  const pending = []; // {p, radarId} to mount after the whole carousel's HTML is in the DOM
-
-  container.innerHTML = groups.map(({type, items}) => {
-    const totalPages = Math.max(1, Math.ceil(items.length / CAROUSEL_PAGE_SIZE));
-    let page = carouselPage[type] || 0;
-    if(page >= totalPages) page = totalPages - 1;
-    carouselPage[type] = page;
-    const start = page * CAROUSEL_PAGE_SIZE;
-    const visibleItems = items.slice(start, start + CAROUSEL_PAGE_SIZE);
-    const cards = visibleItems.map(p => { const id = radarId++; pending.push({p, id}); return cardHTML(p, id); }).join('');
-    return `
-      <div class="type-carousel">
-        <div class="type-carousel-head">
-          <div class="type-carousel-title"><span>${type}</span><span class="group-count">${items.length}</span></div>
-          <div class="carousel-arrows">
-            <button class="carousel-arrow-btn" data-group="${type}" data-dir="-1" ${page<=0?'disabled':''} aria-label="Previous ${type} page">&lsaquo;</button>
-            <span class="carousel-page-indicator">${page+1} / ${totalPages}</span>
-            <button class="carousel-arrow-btn" data-group="${type}" data-dir="1" ${page>=totalPages-1?'disabled':''} aria-label="Next ${type} page">&rsaquo;</button>
-          </div>
-        </div>
-        <div class="grid type-carousel-track">${cards}</div>
-      </div>
-    `;
-  }).join('');
-
-  container.querySelectorAll('.type-carousel-track').forEach(g => wireCards(g));
-  container.querySelectorAll('.carousel-arrow-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const type = btn.dataset.group;
-      carouselPage[type] = (carouselPage[type] || 0) + Number(btn.dataset.dir);
-      renderCards();
-    });
-  });
-
-  if(HAS_CHART) pending.forEach(({p, id}) => mountRadar(p, id));
-}
-[fCountry,fLang,fTopic,fSort].forEach(el=>el.addEventListener('change', ()=>{
-  carouselPage = {};
-  renderCards();
-}));
-document.getElementById('resetBtn').addEventListener('click', ()=>{
-  fCountry.value='all'; fLang.value='all'; fTopic.value='all'; fSort.value='active';
-  carouselPage = {};
-  renderCards();
-});
-renderCards();
 
 // ---- topic totals bars ----
 const totalAll = Object.values(DATA.topicTotals).reduce((a,b)=>a+b,0);

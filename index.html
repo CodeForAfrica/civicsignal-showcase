@@ -155,6 +155,17 @@
   .fp-type-badge[data-type="Creator"]{background:rgba(0,184,169,0.14);color:#00877D;}
   .fp-type-badge[data-type="Digital-native publisher"]{background:var(--blue-wash);color:var(--blue);}
   .fp-meta-row{display:flex;gap:8px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-faint);}
+  .fp-ei-front{display:flex;align-items:center;gap:10px;padding:7px 0;margin-bottom:2px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .fp-ei-gauge-wrap{position:relative;flex:0 0 auto;width:34px;height:34px;display:flex;align-items:center;justify-content:center;}
+  .fp-ei-gauge-wrap .fp-ei-gauge-svg{position:absolute;top:0;left:0;}
+  .fp-ei-score{position:relative;font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--ink);}
+  .fp-ei-text{display:flex;flex-direction:column;gap:2px;min-width:0;}
+  .fp-ei-kicker{font-family:var(--font-mono);font-size:8.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);}
+  .fp-ei-category{font-size:11.5px;font-weight:700;}
+  .fp-ei-category.fp-cat-leading{color:#1f7a4d;}
+  .fp-ei-category.fp-cat-established{color:#125e8a;}
+  .fp-ei-category.fp-cat-emerging{color:#a15c00;}
+  .fp-ei-category.fp-cat-limited{color:var(--ink-faint);}
   .fp-radar-box{height:130px;position:relative;}
   .fp-top-entities{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:1px;}
   .fp-top-entities-label{font-size:9px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--ink-faint);margin-right:1px;}
@@ -286,6 +297,9 @@
   .footlinks{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px;font-size:13.5px;padding-bottom:40px;}
   .partner-logo-strips{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
   @media(max-width:760px){.partner-logo-strips{grid-template-columns:1fr;}}
+  .partner-logo-strips-single{grid-template-columns:1fr;max-width:440px;margin-left:auto;}
+  .partner-logo-strips-single .partner-logo-strip-label{text-align:right;}
+  .partner-logo-strips-single .partner-logo-boxes{justify-content:flex-end;}
   .partner-logo-strip-label{display:block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;}
   .partner-logo-boxes{display:flex;gap:12px;flex-wrap:wrap;}
   .partner-logo-box{width:72px;height:40px;border:1px dashed var(--line);border-radius:6px;}
@@ -398,7 +412,7 @@ document.addEventListener('click', function(){
       <a class="tool-teaser tool-teaser-dummy" href="mediascapes.html">
         <span class="tool-teaser-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 3-4 6 6"/><circle cx="17" cy="6" r="2.2"/></svg></span>
         <span class="tool-teaser-name">MediaScapes <span class="tool-teaser-soon">Coming soon</span></span>
-        <p>A new way of visualising Africa's media landscape as terrain, not a table. Details are still taking shape.</p>
+        <p>Country-by-country media-system dossiers, in the lineage of medialandscapes.org &mdash; reimagined for Africa. A v0.0 concept exists; the built product doesn't yet.</p>
         <span class="tool-teaser-arrow">Preview MediaScapes &rarr;</span>
       </a>
     </div>
@@ -603,6 +617,12 @@ const FP_DATA = [
         }
       ]
     },
+    "engagementIndex": {
+      "score": 71.0,
+      "breadthScore": 57.1,
+      "reachScore": 96.8,
+      "confidence": "high"
+    },
     "topEntities": [
       {
         "text": "APC",
@@ -702,6 +722,12 @@ const FP_DATA = [
         }
       ]
     },
+    "engagementIndex": {
+      "score": 90.3,
+      "breadthScore": 85.7,
+      "reachScore": 98.9,
+      "confidence": "high"
+    },
     "topEntities": [
       {
         "text": "Mzansi",
@@ -799,6 +825,12 @@ const FP_DATA = [
           "url": "https://www.youtube.com/@kahawatungu1205"
         }
       ]
+    },
+    "engagementIndex": {
+      "score": 71.6,
+      "breadthScore": 71.4,
+      "reachScore": 72.0,
+      "confidence": "high"
     },
     "topEntities": [
       {
@@ -999,6 +1031,42 @@ const FP_DATA = [
     return rows.join('');
   }
 
+  const FP_ENGAGEMENT_CATEGORIES = [
+    {min:70, label:'Leading reach', cls:'fp-cat-leading', color:'#3DBE6C'},
+    {min:45, label:'Established reach', cls:'fp-cat-established', color:'#1D78BE'},
+    {min:20, label:'Emerging reach', cls:'fp-cat-emerging', color:'#F0653D'},
+    {min:0, label:'Limited reach', cls:'fp-cat-limited', color:'#94A3B8'},
+  ];
+  function fpEngagementCategory(score){
+    return FP_ENGAGEMENT_CATEGORIES.find(c => score >= c.min);
+  }
+  function fpEngagementGaugeSVG(score, color){
+    const r = 13, stroke = 3.5, size = (r + stroke) * 2, c = size / 2;
+    const circumference = 2 * Math.PI * r;
+    const offset = circumference * (1 - Math.max(0, Math.min(100, score)) / 100);
+    return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" class="fp-ei-gauge-svg" aria-hidden="true">
+      <circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${stroke}"/>
+      <circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}" stroke-linecap="round"
+        stroke-dasharray="${circumference.toFixed(2)}" stroke-dashoffset="${offset.toFixed(2)}"
+        transform="rotate(-90 ${c} ${c})"/>
+    </svg>`;
+  }
+  function fpEngagementFrontHTML(p){
+    const ei = p.engagementIndex;
+    if(!ei || ei.confidence === 'not_available' || ei.score == null) return '';
+    const cat = fpEngagementCategory(ei.score);
+    return `<div class="fp-ei-front" title="CivicSignal's own derived metric">
+      <div class="fp-ei-gauge-wrap" style="color:${cat.color}">
+        ${fpEngagementGaugeSVG(ei.score, cat.color)}
+        <span class="fp-ei-score">${Math.round(ei.score)}</span>
+      </div>
+      <div class="fp-ei-text">
+        <span class="fp-ei-kicker">Engagement index</span>
+        <span class="fp-ei-category ${cat.cls}">${cat.label}</span>
+      </div>
+    </div>`;
+  }
+
   function cardHTML(p, id){
     const accent = COLORS[p.topTopic] || '#1B2340';
     return `
@@ -1010,6 +1078,7 @@ const FP_DATA = [
               <span class="fp-type-badge" data-type="${p.entityType}">${p.entityType}</span>
             </div>
             <div class="fp-meta-row"><span>${p.country}</span><span>&middot;</span><span>${p.lang}</span></div>
+            ${fpEngagementFrontHTML(p)}
             <div class="fp-radar-box"><canvas id="fp-radar-${id}"></canvas></div>
             <div class="fp-foot"><span>Top: <b style="font-size:12px;color:${accent}">${LABELS[p.topTopic]}</b></span><span>${p.total.toLocaleString()} stories</span></div>
             ${p.topEntities && p.topEntities.length ? `<div class="fp-top-entities"><span class="fp-top-entities-label">Top entities:</span>${p.topEntities.slice(0,2).map(e=>`<span class="fp-inline-tag"><span class="fp-entity-icon">${entityIconSVG(e.type)}</span>${escapeHtml(e.text)}</span>`).join('')}</div>` : ''}
@@ -1230,17 +1299,7 @@ const FP_DATA = [
 
 <section class="block">
   <div class="wrap">
-    <span class="kicker">Partners</span>
-    <div class="partner-logo-strips">
-      <div class="partner-logo-strip">
-        <span class="partner-logo-strip-label">Editor &amp; publisher guilds <span class="tool-teaser-soon">Placeholder</span></span>
-        <div class="partner-logo-boxes">
-          <div class="partner-logo-box"></div>
-          <div class="partner-logo-box"></div>
-          <div class="partner-logo-box"></div>
-          <div class="partner-logo-box"></div>
-        </div>
-      </div>
+    <div class="partner-logo-strips partner-logo-strips-single">
       <div class="partner-logo-strip">
         <span class="partner-logo-strip-label">Donors &amp; funders</span>
         <div class="partner-logo-boxes">
@@ -1248,6 +1307,7 @@ const FP_DATA = [
           <div class="partner-logo-box partner-logo-box-filled"><img src="assets/gic-logo.svg" alt="German Information Center"></div>
           <div class="partner-logo-box partner-logo-box-filled"><img src="assets/oif-logo.png" alt="Organisation internationale de la Francophonie"></div>
           <div class="partner-logo-box partner-logo-box-filled"><img src="assets/un-horn-of-africa-logo.png" alt="UN Horn of Africa"></div>
+          <div class="partner-logo-box partner-logo-box-filled"><img src="assets/thomson-reuters-foundation-logo.svg" alt="Thomson Reuters Foundation"></div>
         </div>
       </div>
     </div>

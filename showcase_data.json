@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-09-08",
+  "generatedAt": "2026-09-09",
   "totals": {
-    "articles": 247518,
-    "publishers": 859,
-    "mapped": 1534,
-    "tracked": 1074,
+    "articles": 248005,
+    "publishers": 865,
+    "mapped": 1544,
+    "tracked": 1081,
     "countries": 9,
     "languages": 62,
     "sourceTypes": {
       "Digital-native publisher": 227016,
       "Creator": 644,
-      "Push Media": 19858
+      "Push Media": 20345
     }
   },
   "categories": [
@@ -39,66 +39,6 @@
     "Other": "#94A3B8"
   },
   "daily": {
-    "2026-05-01": {
-      "Politics & Governance": 525,
-      "Economy": 168,
-      "Culture & Society": 118,
-      "Sports": 196,
-      "Education": 60,
-      "Technology": 87,
-      "Conflict & Security": 169,
-      "Health": 51,
-      "Gender & Rights": 31,
-      "Climate": 33
-    },
-    "2026-05-02": {
-      "Politics & Governance": 397,
-      "Economy": 95,
-      "Culture & Society": 129,
-      "Sports": 169,
-      "Education": 35,
-      "Technology": 48,
-      "Conflict & Security": 147,
-      "Health": 47,
-      "Gender & Rights": 27,
-      "Climate": 13
-    },
-    "2026-05-03": {
-      "Politics & Governance": 453,
-      "Economy": 108,
-      "Culture & Society": 117,
-      "Sports": 175,
-      "Education": 46,
-      "Technology": 60,
-      "Conflict & Security": 138,
-      "Health": 52,
-      "Gender & Rights": 25,
-      "Climate": 20
-    },
-    "2026-05-04": {
-      "Politics & Governance": 652,
-      "Economy": 173,
-      "Culture & Society": 177,
-      "Sports": 259,
-      "Education": 89,
-      "Technology": 149,
-      "Conflict & Security": 243,
-      "Health": 120,
-      "Gender & Rights": 35,
-      "Climate": 23
-    },
-    "2026-05-05": {
-      "Politics & Governance": 604,
-      "Economy": 218,
-      "Culture & Society": 173,
-      "Sports": 232,
-      "Education": 114,
-      "Technology": 166,
-      "Conflict & Security": 247,
-      "Health": 103,
-      "Gender & Rights": 34,
-      "Climate": 25
-    },
     "2026-05-06": {
       "Politics & Governance": 657,
       "Economy": 214,
@@ -1532,24 +1472,84 @@
       "Economy": 11,
       "Culture & Society": 6,
       "Sports": 9,
-      "Education": 5,
-      "Technology": 3,
-      "Conflict & Security": 5,
+      "Education": 6,
+      "Technology": 4,
+      "Conflict & Security": 6,
       "Health": 4,
       "Gender & Rights": 0,
       "Climate": 1
     },
     "2026-09-03": {
-      "Politics & Governance": 15,
-      "Economy": 9,
-      "Culture & Society": 2,
+      "Politics & Governance": 23,
+      "Economy": 12,
+      "Culture & Society": 5,
+      "Sports": 11,
+      "Education": 4,
+      "Technology": 7,
+      "Conflict & Security": 10,
+      "Health": 2,
+      "Gender & Rights": 4,
+      "Climate": 2
+    },
+    "2026-09-04": {
+      "Politics & Governance": 29,
+      "Economy": 11,
+      "Culture & Society": 13,
+      "Sports": 7,
+      "Education": 6,
+      "Technology": 5,
+      "Conflict & Security": 6,
+      "Health": 5,
+      "Gender & Rights": 2,
+      "Climate": 4
+    },
+    "2026-09-05": {
+      "Politics & Governance": 12,
+      "Economy": 5,
+      "Culture & Society": 9,
       "Sports": 10,
       "Education": 2,
-      "Technology": 5,
+      "Technology": 2,
+      "Conflict & Security": 3,
+      "Health": 1,
+      "Gender & Rights": 0,
+      "Climate": 3
+    },
+    "2026-09-06": {
+      "Politics & Governance": 13,
+      "Economy": 3,
+      "Culture & Society": 9,
+      "Sports": 3,
+      "Education": 1,
+      "Technology": 2,
       "Conflict & Security": 5,
       "Health": 1,
-      "Gender & Rights": 1,
-      "Climate": 0
+      "Gender & Rights": 0,
+      "Climate": 1
+    },
+    "2026-09-07": {
+      "Politics & Governance": 30,
+      "Economy": 17,
+      "Culture & Society": 8,
+      "Sports": 9,
+      "Education": 5,
+      "Technology": 3,
+      "Conflict & Security": 8,
+      "Health": 11,
+      "Gender & Rights": 4,
+      "Climate": 5
+    },
+    "2026-09-08": {
+      "Politics & Governance": 25,
+      "Economy": 10,
+      "Culture & Society": 11,
+      "Sports": 12,
+      "Education": 4,
+      "Technology": 4,
+      "Conflict & Security": 8,
+      "Health": 2,
+      "Gender & Rights": 2,
+      "Climate": 4
     }
   },
   "dailyRecords": [
@@ -2303,20 +2303,6 @@
       20
     ],
     [
-      "2026-05-03",
-      "Cote D Ivoire",
-      "French",
-      "Politics & Governance",
-      7
-    ],
-    [
-      "2026-05-03",
-      "Cote D Ivoire",
-      "French",
-      "Education",
-      2
-    ],
-    [
       "2026-08-25",
       "Cote D Ivoire",
       "French",
@@ -2721,13 +2707,6 @@
       "French",
       "Politics & Governance",
       13
-    ],
-    [
-      "2026-05-04",
-      "Cote D Ivoire",
-      "French",
-      "Conflict & Security",
-      5
     ],
     [
       "2026-08-04",
@@ -3241,13 +3220,6 @@
       1
     ],
     [
-      "2026-05-05",
-      "Cote D Ivoire",
-      "French",
-      "Conflict & Security",
-      4
-    ],
-    [
       "2026-08-01",
       "Cote D Ivoire",
       "French",
@@ -3680,13 +3652,6 @@
       "English",
       "Education",
       11
-    ],
-    [
-      "2026-05-04",
-      "Ghana",
-      "English",
-      "Health",
-      20
     ],
     [
       "2026-08-26",
@@ -4928,13 +4893,6 @@
       15
     ],
     [
-      "2026-05-03",
-      "Kenya",
-      "English",
-      "Culture & Society",
-      21
-    ],
-    [
       "2026-07-30",
       "Kenya",
       "English",
@@ -5073,13 +5031,6 @@
       "English",
       "Politics & Governance",
       74
-    ],
-    [
-      "2026-05-05",
-      "Kenya",
-      "English",
-      "Politics & Governance",
-      71
     ],
     [
       "2026-08-08",
@@ -5717,69 +5668,6 @@
       "English",
       "Economy",
       9
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "French",
-      "Sports",
-      1
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "French",
-      "Culture & Society",
-      1
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "French",
-      "Conflict & Security",
-      5
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "French",
-      "Gender & Rights",
-      1
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "French",
-      "Technology",
-      1
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "French",
-      "Politics & Governance",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Morocco",
-      "French",
-      "Politics & Governance",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Morocco",
-      "French",
-      "Sports",
-      2
-    ],
-    [
-      "2026-05-02",
-      "Morocco",
-      "French",
-      "Conflict & Security",
-      2
     ],
     [
       "2026-08-25",
@@ -6748,13 +6636,6 @@
       60
     ],
     [
-      "2026-05-01",
-      "Nigeria",
-      "English",
-      "Technology",
-      31
-    ],
-    [
       "2026-07-07",
       "Nigeria",
       "English",
@@ -7243,13 +7124,6 @@
       "English",
       "Culture & Society",
       66
-    ],
-    [
-      "2026-05-03",
-      "Nigeria",
-      "English",
-      "Culture & Society",
-      44
     ],
     [
       "2026-07-29",
@@ -9275,13 +9149,6 @@
       42
     ],
     [
-      "2026-05-05",
-      "South Africa",
-      "English",
-      "Technology",
-      36
-    ],
-    [
       "2026-07-24",
       "South Africa",
       "English",
@@ -10067,13 +9934,6 @@
     ],
     [
       "2026-07-21",
-      "South Africa",
-      "English",
-      "Education",
-      10
-    ],
-    [
-      "2026-05-04",
       "South Africa",
       "English",
       "Education",
@@ -17423,27 +17283,6 @@
       103
     ],
     [
-      "2026-05-01",
-      "Nigeria",
-      "English",
-      "Politics & Governance",
-      293
-    ],
-    [
-      "2026-05-01",
-      "Kenya",
-      "English",
-      "Conflict & Security",
-      29
-    ],
-    [
-      "2026-05-01",
-      "Nigeria",
-      "English",
-      "Education",
-      31
-    ],
-    [
       "2026-06-06",
       "Senegal",
       "French",
@@ -17451,25 +17290,11 @@
       18
     ],
     [
-      "2026-05-02",
-      "Nigeria",
-      "English",
-      "Conflict & Security",
-      56
-    ],
-    [
       "2026-07-13",
       "Kenya",
       "English",
       "Politics & Governance",
       78
-    ],
-    [
-      "2026-05-02",
-      "South Africa",
-      "English",
-      "Conflict & Security",
-      3
     ],
     [
       "2026-07-28",
@@ -17484,13 +17309,6 @@
       "French",
       "Culture & Society",
       57
-    ],
-    [
-      "2026-05-03",
-      "Senegal",
-      "French",
-      "Sports",
-      22
     ],
     [
       "2026-07-15",
@@ -17528,13 +17346,6 @@
       276
     ],
     [
-      "2026-05-01",
-      "Kenya",
-      "English",
-      "Economy",
-      31
-    ],
-    [
       "2026-07-20",
       "South Africa",
       "English",
@@ -17547,20 +17358,6 @@
       "French",
       "Technology",
       37
-    ],
-    [
-      "2026-05-02",
-      "South Africa",
-      "English",
-      "Politics & Governance",
-      5
-    ],
-    [
-      "2026-05-02",
-      "South Africa",
-      "English",
-      "Technology",
-      3
     ],
     [
       "2026-07-13",
@@ -17598,32 +17395,11 @@
       15
     ],
     [
-      "2026-05-04",
-      "Nigeria",
-      "English",
-      "Politics & Governance",
-      375
-    ],
-    [
       "2026-07-15",
       "Nigeria",
       "English",
       "Culture & Society",
       58
-    ],
-    [
-      "2026-05-04",
-      "Ghana",
-      "English",
-      "Economy",
-      44
-    ],
-    [
-      "2026-05-04",
-      "South Africa",
-      "English",
-      "Gender & Rights",
-      5
     ],
     [
       "2026-07-24",
@@ -17633,46 +17409,11 @@
       12
     ],
     [
-      "2026-05-05",
-      "Ghana",
-      "English",
-      "Politics & Governance",
-      40
-    ],
-    [
-      "2026-05-05",
-      "Kenya",
-      "English",
-      "Sports",
-      24
-    ],
-    [
       "2026-07-19",
       "Senegal",
       "French",
       "Sports",
       61
-    ],
-    [
-      "2026-05-05",
-      "Kenya",
-      "English",
-      "Health",
-      18
-    ],
-    [
-      "2026-05-05",
-      "Kenya",
-      "English",
-      "Conflict & Security",
-      39
-    ],
-    [
-      "2026-05-05",
-      "Ghana",
-      "English",
-      "Sports",
-      78
     ],
     [
       "2026-07-26",
@@ -17869,13 +17610,6 @@
       "English",
       "Conflict & Security",
       20
-    ],
-    [
-      "2026-05-04",
-      "Ghana",
-      "English",
-      "Politics & Governance",
-      37
     ],
     [
       "2026-05-06",
@@ -24780,27 +24514,6 @@
       64
     ],
     [
-      "2026-05-01",
-      "South Africa",
-      "Afrikaans",
-      "Politics & Governance",
-      1
-    ],
-    [
-      "2026-05-01",
-      "South Africa",
-      "English",
-      "Sports",
-      12
-    ],
-    [
-      "2026-05-02",
-      "Kenya",
-      "English",
-      "Economy",
-      17
-    ],
-    [
       "2026-06-06",
       "Ghana",
       "English",
@@ -24815,41 +24528,6 @@
       3
     ],
     [
-      "2026-05-02",
-      "Nigeria",
-      "English",
-      "Economy",
-      33
-    ],
-    [
-      "2026-05-02",
-      "Nigeria",
-      "English",
-      "Politics & Governance",
-      247
-    ],
-    [
-      "2026-05-02",
-      "South Africa",
-      "English",
-      "Economy",
-      5
-    ],
-    [
-      "2026-05-02",
-      "South Africa",
-      "English",
-      "Culture & Society",
-      6
-    ],
-    [
-      "2026-05-03",
-      "Kenya",
-      "English",
-      "Climate",
-      2
-    ],
-    [
       "2026-07-28",
       "Senegal",
       "French",
@@ -24862,34 +24540,6 @@
       "English",
       "Health",
       23
-    ],
-    [
-      "2026-05-03",
-      "Nigeria",
-      "English",
-      "Politics & Governance",
-      256
-    ],
-    [
-      "2026-05-03",
-      "South Africa",
-      "English",
-      "Sports",
-      6
-    ],
-    [
-      "2026-05-04",
-      "South Africa",
-      "English",
-      "Economy",
-      23
-    ],
-    [
-      "2026-05-04",
-      "South Africa",
-      "English",
-      "Sports",
-      14
     ],
     [
       "2026-07-15",
@@ -24911,27 +24561,6 @@
       "English",
       "Education",
       5
-    ],
-    [
-      "2026-05-05",
-      "Kenya",
-      "English",
-      "Climate",
-      4
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "English",
-      "Politics & Governance",
-      333
-    ],
-    [
-      "2026-05-04",
-      "Kenya",
-      "English",
-      "Economy",
-      24
     ],
     [
       "2026-08-18",
@@ -26775,102 +26404,11 @@
       26
     ],
     [
-      "2026-05-01",
-      "Kenya",
-      "English",
-      "Sports",
-      19
-    ],
-    [
-      "2026-05-01",
-      "Kenya",
-      "English",
-      "Politics & Governance",
-      70
-    ],
-    [
-      "2026-05-01",
-      "Kenya",
-      "English",
-      "Education",
-      15
-    ],
-    [
-      "2026-05-01",
-      "Morocco",
-      "English",
-      "Politics & Governance",
-      6
-    ],
-    [
-      "2026-05-01",
-      "Nigeria",
-      "English",
-      "Conflict & Security",
-      68
-    ],
-    [
-      "2026-05-02",
-      "Kenya",
-      "English",
-      "Culture & Society",
-      21
-    ],
-    [
-      "2026-05-03",
-      "Kenya",
-      "English",
-      "Sports",
-      17
-    ],
-    [
       "2026-07-13",
       "Kenya",
       "English",
       "Economy",
       40
-    ],
-    [
-      "2026-05-04",
-      "Kenya",
-      "English",
-      "Sports",
-      26
-    ],
-    [
-      "2026-05-04",
-      "Nigeria",
-      "English",
-      "Conflict & Security",
-      103
-    ],
-    [
-      "2026-05-04",
-      "Ghana",
-      "English",
-      "Conflict & Security",
-      16
-    ],
-    [
-      "2026-05-03",
-      "Cote D Ivoire",
-      "English",
-      "Technology",
-      1
-    ],
-    [
-      "2026-05-04",
-      "Nigeria",
-      "English",
-      "Economy",
-      61
-    ],
-    [
-      "2026-05-05",
-      "South Africa",
-      "English",
-      "Conflict & Security",
-      30
     ],
     [
       "2026-06-09",
@@ -28392,46 +27930,11 @@
       2
     ],
     [
-      "2026-05-04",
-      "Ghana",
-      "English",
-      "Sports",
-      64
-    ],
-    [
-      "2026-05-04",
-      "South Africa",
-      "English",
-      "Culture & Society",
-      26
-    ],
-    [
       "2026-07-31",
       "Senegal",
       "French",
       "Climate",
       4
-    ],
-    [
-      "2026-05-04",
-      "South Africa",
-      "English",
-      "Politics & Governance",
-      33
-    ],
-    [
-      "2026-05-05",
-      "Kenya",
-      "English",
-      "Technology",
-      25
-    ],
-    [
-      "2026-05-04",
-      "Kenya",
-      "English",
-      "Technology",
-      27
     ],
     [
       "2026-05-06",
@@ -39536,200 +39039,11 @@
       1
     ],
     [
-      "2026-05-01",
-      "Kenya",
-      "English",
-      "Health",
-      18
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "French",
-      "Politics & Governance",
-      88
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "French",
-      "Culture & Society",
-      16
-    ],
-    [
       "2026-07-02",
       "Ghana",
       "English",
       "Education",
       11
-    ],
-    [
-      "2026-05-01",
-      "Nigeria",
-      "English",
-      "Culture & Society",
-      42
-    ],
-    [
-      "2026-05-01",
-      "South Africa",
-      "English",
-      "Economy",
-      13
-    ],
-    [
-      "2026-05-01",
-      "South Africa",
-      "English",
-      "Politics & Governance",
-      13
-    ],
-    [
-      "2026-05-01",
-      "South Africa",
-      "English",
-      "Technology",
-      17
-    ],
-    [
-      "2026-05-01",
-      "Nigeria",
-      "English",
-      "Economy",
-      72
-    ],
-    [
-      "2026-05-01",
-      "South Africa",
-      "English",
-      "Gender & Rights",
-      3
-    ],
-    [
-      "2026-05-01",
-      "Nigeria",
-      "English",
-      "Health",
-      16
-    ],
-    [
-      "2026-05-01",
-      "Nigeria",
-      "English",
-      "Sports",
-      57
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "French",
-      "Sports",
-      28
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "French",
-      "Gender & Rights",
-      9
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "French",
-      "Technology",
-      18
-    ],
-    [
-      "2026-05-01",
-      "Kenya",
-      "English",
-      "Gender & Rights",
-      3
-    ],
-    [
-      "2026-05-01",
-      "Kenya",
-      "English",
-      "Technology",
-      9
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "French",
-      "Conflict & Security",
-      47
-    ],
-    [
-      "2026-05-01",
-      "Kenya",
-      "English",
-      "Climate",
-      19
-    ],
-    [
-      "2026-05-01",
-      "Ghana",
-      "English",
-      "Politics & Governance",
-      36
-    ],
-    [
-      "2026-05-01",
-      "Nigeria",
-      "English",
-      "Gender & Rights",
-      8
-    ],
-    [
-      "2026-05-01",
-      "South Africa",
-      "English",
-      "Culture & Society",
-      19
-    ],
-    [
-      "2026-05-01",
-      "South Africa",
-      "English",
-      "Health",
-      5
-    ],
-    [
-      "2026-05-01",
-      "Ghana",
-      "English",
-      "Sports",
-      63
-    ],
-    [
-      "2026-05-01",
-      "Ghana",
-      "English",
-      "Economy",
-      20
-    ],
-    [
-      "2026-05-01",
-      "Ghana",
-      "English",
-      "Conflict & Security",
-      10
-    ],
-    [
-      "2026-05-01",
-      "Ghana",
-      "English",
-      "Culture & Society",
-      18
-    ],
-    [
-      "2026-05-01",
-      "South Africa",
-      "English",
-      "Education",
-      5
     ],
     [
       "2026-07-02",
@@ -39739,641 +39053,11 @@
       15
     ],
     [
-      "2026-05-01",
-      "Ghana",
-      "pcm",
-      "Politics & Governance",
-      2
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "French",
-      "Health",
-      8
-    ],
-    [
-      "2026-05-01",
-      "Ghana",
-      "English",
-      "Technology",
-      6
-    ],
-    [
-      "2026-05-01",
-      "South Africa",
-      "English",
-      "Conflict & Security",
-      5
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "French",
-      "Economy",
-      17
-    ],
-    [
-      "2026-05-01",
-      "Kenya",
-      "English",
-      "Culture & Society",
-      16
-    ],
-    [
-      "2026-05-01",
-      "Cote D Ivoire",
-      "French",
-      "Technology",
-      2
-    ],
-    [
-      "2026-05-01",
-      "Cote D Ivoire",
-      "French",
-      "Culture & Society",
-      3
-    ],
-    [
-      "2026-05-01",
-      "Nigeria",
-      "English",
-      "Climate",
-      8
-    ],
-    [
-      "2026-05-01",
-      "Ghana",
-      "English",
-      "Education",
-      8
-    ],
-    [
-      "2026-05-01",
-      "Ghana",
-      "English",
-      "Gender & Rights",
-      4
-    ],
-    [
-      "2026-05-01",
-      "Ghana",
-      "English",
-      "Health",
-      3
-    ],
-    [
-      "2026-05-01",
-      "Cote D Ivoire",
-      "French",
-      "Economy",
-      6
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "tr",
-      "Politics & Governance",
-      1
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "tr",
-      "Sports",
-      2
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "French",
-      "Education",
-      1
-    ],
-    [
-      "2026-05-01",
-      "Cote D Ivoire",
-      "French",
-      "Politics & Governance",
-      9
-    ],
-    [
-      "2026-05-01",
-      "Morocco",
-      "English",
-      "Economy",
-      4
-    ],
-    [
-      "2026-05-01",
-      "Morocco",
-      "English",
-      "Gender & Rights",
-      1
-    ],
-    [
-      "2026-05-01",
-      "Morocco",
-      "English",
-      "Culture & Society",
-      2
-    ],
-    [
-      "2026-05-01",
-      "Morocco",
-      "English",
-      "Sports",
-      6
-    ],
-    [
-      "2026-05-01",
-      "Morocco",
-      "English",
-      "Conflict & Security",
-      3
-    ],
-    [
-      "2026-05-01",
-      "South Africa",
-      "English",
-      "Climate",
-      3
-    ],
-    [
-      "2026-05-01",
-      "Cote D Ivoire",
-      "French",
-      "Gender & Rights",
-      3
-    ],
-    [
-      "2026-05-01",
-      "Cote D Ivoire",
-      "French",
-      "Climate",
-      1
-    ],
-    [
-      "2026-05-01",
-      "Ghana",
-      "English",
-      "Climate",
-      1
-    ],
-    [
-      "2026-05-01",
-      "South Africa",
-      "Afrikaans",
-      "Culture & Society",
-      1
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "French",
-      "Climate",
-      1
-    ],
-    [
-      "2026-05-01",
-      "Cote D Ivoire",
-      "French",
-      "Conflict & Security",
-      4
-    ],
-    [
-      "2026-05-01",
-      "Cote D Ivoire",
-      "French",
-      "Sports",
-      9
-    ],
-    [
-      "2026-05-01",
-      "Senegal",
-      "tr",
-      "Conflict & Security",
-      2
-    ],
-    [
-      "2026-05-01",
-      "Morocco",
-      "English",
-      "Technology",
-      2
-    ],
-    [
-      "2026-05-01",
-      "Morocco",
-      "English",
-      "Health",
-      1
-    ],
-    [
       "2026-07-02",
       "South Africa",
       "English",
       "Education",
       2
-    ],
-    [
-      "2026-05-02",
-      "Kenya",
-      "English",
-      "Technology",
-      11
-    ],
-    [
-      "2026-05-02",
-      "Kenya",
-      "English",
-      "Politics & Governance",
-      28
-    ],
-    [
-      "2026-05-01",
-      "Cote D Ivoire",
-      "it",
-      "Technology",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Kenya",
-      "English",
-      "Conflict & Security",
-      21
-    ],
-    [
-      "2026-05-02",
-      "Nigeria",
-      "English",
-      "Culture & Society",
-      56
-    ],
-    [
-      "2026-05-02",
-      "Nigeria",
-      "English",
-      "Sports",
-      58
-    ],
-    [
-      "2026-05-02",
-      "Nigeria",
-      "English",
-      "Health",
-      13
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "French",
-      "Conflict & Security",
-      36
-    ],
-    [
-      "2026-05-02",
-      "Kenya",
-      "English",
-      "Gender & Rights",
-      5
-    ],
-    [
-      "2026-05-02",
-      "Kenya",
-      "English",
-      "Education",
-      7
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "French",
-      "Politics & Governance",
-      83
-    ],
-    [
-      "2026-05-02",
-      "Kenya",
-      "English",
-      "Health",
-      10
-    ],
-    [
-      "2026-05-02",
-      "Ghana",
-      "English",
-      "Sports",
-      55
-    ],
-    [
-      "2026-05-02",
-      "Nigeria",
-      "English",
-      "Technology",
-      18
-    ],
-    [
-      "2026-05-02",
-      "South Africa",
-      "Afrikaans",
-      "Politics & Governance",
-      2
-    ],
-    [
-      "2026-05-02",
-      "South Africa",
-      "Afrikaans",
-      "Economy",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Nigeria",
-      "English",
-      "Education",
-      17
-    ],
-    [
-      "2026-05-02",
-      "South Africa",
-      "English",
-      "Health",
-      10
-    ],
-    [
-      "2026-05-02",
-      "South Africa",
-      "English",
-      "Education",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Nigeria",
-      "English",
-      "Gender & Rights",
-      11
-    ],
-    [
-      "2026-05-02",
-      "Cote D Ivoire",
-      "French",
-      "Gender & Rights",
-      5
-    ],
-    [
-      "2026-05-02",
-      "Cote D Ivoire",
-      "French",
-      "Conflict & Security",
-      2
-    ],
-    [
-      "2026-05-02",
-      "Cote D Ivoire",
-      "French",
-      "Sports",
-      3
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "French",
-      "Culture & Society",
-      19
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "French",
-      "Economy",
-      16
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "French",
-      "Sports",
-      24
-    ],
-    [
-      "2026-05-02",
-      "Ghana",
-      "English",
-      "Conflict & Security",
-      19
-    ],
-    [
-      "2026-05-02",
-      "Ghana",
-      "English",
-      "Economy",
-      18
-    ],
-    [
-      "2026-05-02",
-      "Ghana",
-      "English",
-      "Culture & Society",
-      16
-    ],
-    [
-      "2026-05-02",
-      "Ghana",
-      "English",
-      "Politics & Governance",
-      19
-    ],
-    [
-      "2026-05-02",
-      "Ghana",
-      "English",
-      "Health",
-      5
-    ],
-    [
-      "2026-05-02",
-      "Ghana",
-      "English",
-      "Climate",
-      2
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "French",
-      "Technology",
-      13
-    ],
-    [
-      "2026-05-02",
-      "South Africa",
-      "Afrikaans",
-      "Education",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Kenya",
-      "English",
-      "Sports",
-      16
-    ],
-    [
-      "2026-05-02",
-      "Nigeria",
-      "English",
-      "Climate",
-      6
-    ],
-    [
-      "2026-05-02",
-      "Cote D Ivoire",
-      "French",
-      "Culture & Society",
-      4
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "French",
-      "Climate",
-      2
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "French",
-      "Health",
-      9
-    ],
-    [
-      "2026-05-02",
-      "Cote D Ivoire",
-      "French",
-      "Climate",
-      2
-    ],
-    [
-      "2026-05-02",
-      "Ghana",
-      "English",
-      "Technology",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Cote D Ivoire",
-      "French",
-      "Politics & Governance",
-      5
-    ],
-    [
-      "2026-05-02",
-      "Ghana",
-      "English",
-      "Education",
-      5
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "French",
-      "Gender & Rights",
-      4
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "tr",
-      "Economy",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "French",
-      "Education",
-      3
-    ],
-    [
-      "2026-05-02",
-      "South Africa",
-      "Afrikaans",
-      "Culture & Society",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "English",
-      "Technology",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Morocco",
-      "English",
-      "Economy",
-      2
-    ],
-    [
-      "2026-05-02",
-      "Morocco",
-      "English",
-      "Conflict & Security",
-      5
-    ],
-    [
-      "2026-05-02",
-      "Morocco",
-      "English",
-      "Sports",
-      7
-    ],
-    [
-      "2026-05-02",
-      "Morocco",
-      "English",
-      "Politics & Governance",
-      2
-    ],
-    [
-      "2026-05-02",
-      "Morocco",
-      "English",
-      "Culture & Society",
-      4
-    ],
-    [
-      "2026-05-02",
-      "Ghana",
-      "English",
-      "Gender & Rights",
-      2
-    ],
-    [
-      "2026-05-02",
-      "Nigeria",
-      "pcm",
-      "Politics & Governance",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Nigeria",
-      "pcm",
-      "Economy",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Senegal",
-      "tr",
-      "Politics & Governance",
-      1
     ],
     [
       "2026-07-02",
@@ -40383,249 +39067,11 @@
       9
     ],
     [
-      "2026-05-02",
-      "South Africa",
-      "English",
-      "Sports",
-      4
-    ],
-    [
-      "2026-05-03",
-      "Kenya",
-      "English",
-      "Conflict & Security",
-      16
-    ],
-    [
-      "2026-05-03",
-      "Nigeria",
-      "English",
-      "Sports",
-      65
-    ],
-    [
-      "2026-05-03",
-      "Ghana",
-      "English",
-      "Politics & Governance",
-      42
-    ],
-    [
-      "2026-05-03",
-      "Ghana",
-      "English",
-      "Economy",
-      43
-    ],
-    [
-      "2026-05-03",
-      "Ghana",
-      "English",
-      "Technology",
-      16
-    ],
-    [
-      "2026-05-03",
-      "Ghana",
-      "English",
-      "Health",
-      7
-    ],
-    [
-      "2026-05-03",
-      "Nigeria",
-      "English",
-      "Conflict & Security",
-      47
-    ],
-    [
-      "2026-05-03",
-      "Kenya",
-      "English",
-      "Politics & Governance",
-      44
-    ],
-    [
-      "2026-05-03",
-      "Nigeria",
-      "English",
-      "Health",
-      19
-    ],
-    [
-      "2026-05-03",
-      "Ghana",
-      "English",
-      "Sports",
-      43
-    ],
-    [
-      "2026-05-03",
-      "Kenya",
-      "English",
-      "Health",
-      8
-    ],
-    [
-      "2026-05-03",
-      "Kenya",
-      "English",
-      "Education",
-      5
-    ],
-    [
-      "2026-05-03",
-      "Kenya",
-      "English",
-      "Technology",
-      9
-    ],
-    [
-      "2026-05-03",
-      "Nigeria",
-      "English",
-      "Gender & Rights",
-      14
-    ],
-    [
-      "2026-05-03",
-      "Senegal",
-      "French",
-      "Politics & Governance",
-      89
-    ],
-    [
-      "2026-05-03",
-      "Senegal",
-      "French",
-      "Economy",
-      6
-    ],
-    [
-      "2026-05-03",
-      "Nigeria",
-      "English",
-      "Economy",
-      33
-    ],
-    [
-      "2026-05-03",
-      "Nigeria",
-      "English",
-      "Technology",
-      18
-    ],
-    [
-      "2026-05-03",
-      "Nigeria",
-      "English",
-      "Education",
-      22
-    ],
-    [
-      "2026-05-03",
-      "South Africa",
-      "Afrikaans",
-      "Politics & Governance",
-      3
-    ],
-    [
-      "2026-05-03",
-      "Senegal",
-      "French",
-      "Culture & Society",
-      12
-    ],
-    [
-      "2026-05-03",
-      "Senegal",
-      "French",
-      "Conflict & Security",
-      30
-    ],
-    [
-      "2026-05-03",
-      "South Africa",
-      "English",
-      "Technology",
-      5
-    ],
-    [
-      "2026-05-03",
-      "Nigeria",
-      "pcm",
-      "Politics & Governance",
-      1
-    ],
-    [
       "2026-07-02",
       "Cote D Ivoire",
       "French",
       "Politics & Governance",
       7
-    ],
-    [
-      "2026-05-02",
-      "Cote D Ivoire",
-      "French",
-      "Education",
-      1
-    ],
-    [
-      "2026-05-03",
-      "Kenya",
-      "English",
-      "Gender & Rights",
-      1
-    ],
-    [
-      "2026-05-03",
-      "Kenya",
-      "English",
-      "Economy",
-      9
-    ],
-    [
-      "2026-05-03",
-      "Nigeria",
-      "English",
-      "Climate",
-      4
-    ],
-    [
-      "2026-05-03",
-      "Senegal",
-      "French",
-      "Health",
-      8
-    ],
-    [
-      "2026-05-03",
-      "Ghana",
-      "English",
-      "Conflict & Security",
-      23
-    ],
-    [
-      "2026-05-03",
-      "Senegal",
-      "French",
-      "Technology",
-      7
-    ],
-    [
-      "2026-05-03",
-      "Ghana",
-      "English",
-      "Culture & Society",
-      15
-    ],
-    [
-      "2026-05-03",
-      "Senegal",
-      "French",
-      "Gender & Rights",
-      4
     ],
     [
       "2026-07-02",
@@ -40635,214 +39081,11 @@
       4
     ],
     [
-      "2026-05-03",
-      "South Africa",
-      "English",
-      "Conflict & Security",
-      10
-    ],
-    [
-      "2026-05-03",
-      "South Africa",
-      "Afrikaans",
-      "Climate",
-      1
-    ],
-    [
-      "2026-05-03",
-      "Ghana",
-      "English",
-      "Education",
-      12
-    ],
-    [
-      "2026-05-03",
-      "Cote D Ivoire",
-      "French",
-      "Sports",
-      11
-    ],
-    [
-      "2026-05-03",
-      "Cote D Ivoire",
-      "French",
-      "Gender & Rights",
-      1
-    ],
-    [
-      "2026-05-03",
-      "Cote D Ivoire",
-      "French",
-      "Conflict & Security",
-      3
-    ],
-    [
-      "2026-05-03",
-      "Ghana",
-      "English",
-      "Climate",
-      6
-    ],
-    [
-      "2026-05-03",
-      "South Africa",
-      "English",
-      "Culture & Society",
-      17
-    ],
-    [
-      "2026-05-03",
-      "South Africa",
-      "English",
-      "Health",
-      4
-    ],
-    [
-      "2026-05-03",
-      "South Africa",
-      "English",
-      "Politics & Governance",
-      6
-    ],
-    [
-      "2026-05-03",
-      "South Africa",
-      "English",
-      "Economy",
-      11
-    ],
-    [
-      "2026-05-03",
-      "Senegal",
-      "French",
-      "Education",
-      1
-    ],
-    [
-      "2026-05-03",
-      "Senegal",
-      "French",
-      "Climate",
-      2
-    ],
-    [
-      "2026-05-03",
-      "Senegal",
-      "tr",
-      "Conflict & Security",
-      1
-    ],
-    [
-      "2026-05-04",
-      "Nigeria",
-      "English",
-      "Culture & Society",
-      57
-    ],
-    [
-      "2026-05-04",
-      "Nigeria",
-      "English",
-      "Health",
-      42
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "English",
-      "Sports",
-      10
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "English",
-      "Economy",
-      2
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "English",
-      "Politics & Governance",
-      1
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "English",
-      "Conflict & Security",
-      3
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "English",
-      "Health",
-      2
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "English",
-      "Culture & Society",
-      4
-    ],
-    [
-      "2026-05-03",
-      "Cote D Ivoire",
-      "French",
-      "Health",
-      1
-    ],
-    [
-      "2026-05-03",
-      "South Africa",
-      "English",
-      "Climate",
-      4
-    ],
-    [
-      "2026-05-03",
-      "South Africa",
-      "English",
-      "Education",
-      3
-    ],
-    [
       "2026-07-02",
       "South Africa",
       "Afrikaans",
       "Health",
       1
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "English",
-      "Gender & Rights",
-      1
-    ],
-    [
-      "2026-05-03",
-      "Morocco",
-      "English",
-      "Technology",
-      2
-    ],
-    [
-      "2026-05-03",
-      "Cote D Ivoire",
-      "French",
-      "Culture & Society",
-      3
-    ],
-    [
-      "2026-05-03",
-      "Cote D Ivoire",
-      "French",
-      "Economy",
-      2
     ],
     [
       "2026-07-26",
@@ -40852,13 +39095,6 @@
       1
     ],
     [
-      "2026-05-03",
-      "Ghana",
-      "English",
-      "Gender & Rights",
-      3
-    ],
-    [
       "2026-07-02",
       "Nigeria",
       "pcm",
@@ -40866,312 +39102,11 @@
       1
     ],
     [
-      "2026-05-03",
-      "Ghana",
-      "pcm",
-      "Health",
-      1
-    ],
-    [
-      "2026-05-03",
-      "Ghana",
-      "pcm",
-      "Politics & Governance",
-      1
-    ],
-    [
-      "2026-05-04",
-      "Nigeria",
-      "English",
-      "Sports",
-      98
-    ],
-    [
-      "2026-05-04",
-      "Kenya",
-      "English",
-      "Conflict & Security",
-      38
-    ],
-    [
-      "2026-05-04",
-      "Nigeria",
-      "English",
-      "Climate",
-      7
-    ],
-    [
-      "2026-05-04",
-      "Senegal",
-      "French",
-      "Sports",
-      38
-    ],
-    [
-      "2026-05-04",
-      "Senegal",
-      "French",
-      "Politics & Governance",
-      109
-    ],
-    [
       "2026-07-02",
       "Nigeria",
       "pcm",
       "Conflict & Security",
       2
-    ],
-    [
-      "2026-05-04",
-      "South Africa",
-      "English",
-      "Health",
-      19
-    ],
-    [
-      "2026-05-04",
-      "Nigeria",
-      "English",
-      "Gender & Rights",
-      15
-    ],
-    [
-      "2026-05-04",
-      "Ghana",
-      "English",
-      "Culture & Society",
-      29
-    ],
-    [
-      "2026-05-04",
-      "Kenya",
-      "English",
-      "Culture & Society",
-      35
-    ],
-    [
-      "2026-05-04",
-      "Nigeria",
-      "English",
-      "Technology",
-      61
-    ],
-    [
-      "2026-05-04",
-      "South Africa",
-      "English",
-      "Conflict & Security",
-      31
-    ],
-    [
-      "2026-05-04",
-      "Kenya",
-      "English",
-      "Health",
-      21
-    ],
-    [
-      "2026-05-04",
-      "Kenya",
-      "English",
-      "Politics & Governance",
-      60
-    ],
-    [
-      "2026-05-04",
-      "Nigeria",
-      "English",
-      "Education",
-      36
-    ],
-    [
-      "2026-05-04",
-      "Senegal",
-      "French",
-      "Culture & Society",
-      20
-    ],
-    [
-      "2026-05-04",
-      "Senegal",
-      "French",
-      "Conflict & Security",
-      42
-    ],
-    [
-      "2026-05-04",
-      "Ghana",
-      "English",
-      "Education",
-      20
-    ],
-    [
-      "2026-05-04",
-      "Senegal",
-      "French",
-      "Gender & Rights",
-      6
-    ],
-    [
-      "2026-05-04",
-      "Ghana",
-      "English",
-      "Technology",
-      6
-    ],
-    [
-      "2026-05-04",
-      "South Africa",
-      "Afrikaans",
-      "Politics & Governance",
-      6
-    ],
-    [
-      "2026-05-04",
-      "Senegal",
-      "French",
-      "Technology",
-      20
-    ],
-    [
-      "2026-05-04",
-      "Senegal",
-      "French",
-      "Education",
-      7
-    ],
-    [
-      "2026-05-04",
-      "South Africa",
-      "English",
-      "Technology",
-      27
-    ],
-    [
-      "2026-05-04",
-      "Senegal",
-      "French",
-      "Climate",
-      8
-    ],
-    [
-      "2026-05-04",
-      "Senegal",
-      "French",
-      "Economy",
-      12
-    ],
-    [
-      "2026-05-04",
-      "Cote D Ivoire",
-      "French",
-      "Politics & Governance",
-      19
-    ],
-    [
-      "2026-05-04",
-      "Senegal",
-      "tr",
-      "Sports",
-      1
-    ],
-    [
-      "2026-05-04",
-      "Senegal",
-      "French",
-      "Health",
-      15
-    ],
-    [
-      "2026-05-04",
-      "Kenya",
-      "English",
-      "Gender & Rights",
-      2
-    ],
-    [
-      "2026-05-04",
-      "Kenya",
-      "English",
-      "Education",
-      14
-    ],
-    [
-      "2026-05-04",
-      "Cote D Ivoire",
-      "French",
-      "Gender & Rights",
-      2
-    ],
-    [
-      "2026-05-04",
-      "Kenya",
-      "English",
-      "Climate",
-      3
-    ],
-    [
-      "2026-05-04",
-      "Cote D Ivoire",
-      "French",
-      "Education",
-      1
-    ],
-    [
-      "2026-05-04",
-      "Cote D Ivoire",
-      "French",
-      "Sports",
-      14
-    ],
-    [
-      "2026-05-04",
-      "Cote D Ivoire",
-      "French",
-      "Climate",
-      2
-    ],
-    [
-      "2026-05-04",
-      "Morocco",
-      "English",
-      "Culture & Society",
-      5
-    ],
-    [
-      "2026-05-04",
-      "Morocco",
-      "English",
-      "Politics & Governance",
-      6
-    ],
-    [
-      "2026-05-04",
-      "Morocco",
-      "English",
-      "Technology",
-      2
-    ],
-    [
-      "2026-05-04",
-      "Morocco",
-      "English",
-      "Conflict & Security",
-      2
-    ],
-    [
-      "2026-05-04",
-      "Morocco",
-      "English",
-      "Health",
-      2
-    ],
-    [
-      "2026-05-04",
-      "South Africa",
-      "Afrikaans",
-      "Health",
-      1
     ],
     [
       "2026-07-12",
@@ -41181,319 +39116,11 @@
       10
     ],
     [
-      "2026-05-04",
-      "Nigeria",
-      "pcm",
-      "Conflict & Security",
-      2
-    ],
-    [
-      "2026-05-04",
-      "Ghana",
-      "English",
-      "Gender & Rights",
-      4
-    ],
-    [
-      "2026-05-04",
-      "South Africa",
-      "English",
-      "Climate",
-      2
-    ],
-    [
-      "2026-05-04",
-      "Cote D Ivoire",
-      "French",
-      "Economy",
-      3
-    ],
-    [
-      "2026-05-04",
-      "Morocco",
-      "English",
-      "Sports",
-      2
-    ],
-    [
-      "2026-05-04",
-      "Morocco",
-      "English",
-      "Economy",
-      1
-    ],
-    [
-      "2026-05-04",
-      "Ghana",
-      "English",
-      "Climate",
-      1
-    ],
-    [
-      "2026-05-05",
-      "Ghana",
-      "English",
-      "Conflict & Security",
-      20
-    ],
-    [
-      "2026-05-05",
-      "Ghana",
-      "English",
-      "Economy",
-      40
-    ],
-    [
-      "2026-05-04",
-      "Ghana",
-      "pcm",
-      "Culture & Society",
-      1
-    ],
-    [
-      "2026-05-04",
-      "Cote D Ivoire",
-      "French",
-      "Technology",
-      1
-    ],
-    [
-      "2026-05-05",
-      "South Africa",
-      "Afrikaans",
-      "Politics & Governance",
-      8
-    ],
-    [
-      "2026-05-04",
-      "Cote D Ivoire",
-      "French",
-      "Culture & Society",
-      1
-    ],
-    [
-      "2026-05-05",
-      "South Africa",
-      "English",
-      "Politics & Governance",
-      24
-    ],
-    [
-      "2026-05-05",
-      "South Africa",
-      "English",
-      "Health",
-      21
-    ],
-    [
-      "2026-05-05",
-      "Senegal",
-      "French",
-      "Politics & Governance",
-      98
-    ],
-    [
-      "2026-05-05",
-      "South Africa",
-      "English",
-      "Economy",
-      42
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "English",
-      "Technology",
-      51
-    ],
-    [
-      "2026-05-05",
-      "Kenya",
-      "English",
-      "Economy",
-      32
-    ],
-    [
-      "2026-05-05",
-      "South Africa",
-      "English",
-      "Education",
-      11
-    ],
-    [
-      "2026-05-05",
-      "South Africa",
-      "English",
-      "Culture & Society",
-      31
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "English",
-      "Sports",
-      74
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "English",
-      "Culture & Society",
-      73
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "English",
-      "Economy",
-      63
-    ],
-    [
-      "2026-05-05",
-      "Senegal",
-      "French",
-      "Conflict & Security",
-      58
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "English",
-      "Health",
-      33
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "English",
-      "Conflict & Security",
-      92
-    ],
-    [
-      "2026-05-05",
-      "Kenya",
-      "English",
-      "Education",
-      21
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "es",
-      "Technology",
-      1
-    ],
-    [
-      "2026-05-05",
-      "Senegal",
-      "French",
-      "Sports",
-      35
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "English",
-      "Education",
-      41
-    ],
-    [
       "2026-05-06",
       "Senegal",
       "French",
       "Technology",
       26
-    ],
-    [
-      "2026-05-05",
-      "South Africa",
-      "English",
-      "Climate",
-      6
-    ],
-    [
-      "2026-05-05",
-      "South Africa",
-      "English",
-      "Sports",
-      13
-    ],
-    [
-      "2026-05-05",
-      "Ghana",
-      "English",
-      "Technology",
-      18
-    ],
-    [
-      "2026-05-05",
-      "Senegal",
-      "French",
-      "Technology",
-      26
-    ],
-    [
-      "2026-05-05",
-      "Cote D Ivoire",
-      "French",
-      "Gender & Rights",
-      1
-    ],
-    [
-      "2026-05-05",
-      "Senegal",
-      "French",
-      "Health",
-      18
-    ],
-    [
-      "2026-05-05",
-      "Kenya",
-      "English",
-      "Culture & Society",
-      23
-    ],
-    [
-      "2026-05-05",
-      "Senegal",
-      "French",
-      "Education",
-      15
-    ],
-    [
-      "2026-05-05",
-      "Senegal",
-      "French",
-      "Climate",
-      4
-    ],
-    [
-      "2026-05-05",
-      "Senegal",
-      "French",
-      "Economy",
-      25
-    ],
-    [
-      "2026-05-05",
-      "Ghana",
-      "English",
-      "Health",
-      7
-    ],
-    [
-      "2026-05-05",
-      "Ghana",
-      "English",
-      "Climate",
-      2
-    ],
-    [
-      "2026-05-05",
-      "Ghana",
-      "English",
-      "Culture & Society",
-      17
     ],
     [
       "2026-08-17",
@@ -41503,153 +39130,6 @@
       10
     ],
     [
-      "2026-05-05",
-      "Ghana",
-      "English",
-      "Education",
-      24
-    ],
-    [
-      "2026-05-05",
-      "Cote D Ivoire",
-      "French",
-      "Culture & Society",
-      7
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "French",
-      "Technology",
-      2
-    ],
-    [
-      "2026-05-05",
-      "Ghana",
-      "English",
-      "Gender & Rights",
-      3
-    ],
-    [
-      "2026-05-05",
-      "Senegal",
-      "French",
-      "Culture & Society",
-      19
-    ],
-    [
-      "2026-05-05",
-      "Cote D Ivoire",
-      "French",
-      "Sports",
-      5
-    ],
-    [
-      "2026-05-05",
-      "Cote D Ivoire",
-      "French",
-      "Politics & Governance",
-      15
-    ],
-    [
-      "2026-05-05",
-      "Cote D Ivoire",
-      "French",
-      "Technology",
-      2
-    ],
-    [
-      "2026-05-05",
-      "Senegal",
-      "French",
-      "Gender & Rights",
-      10
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "pcm",
-      "Politics & Governance",
-      3
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "English",
-      "Climate",
-      5
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "French",
-      "Economy",
-      1
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "English",
-      "Gender & Rights",
-      10
-    ],
-    [
-      "2026-05-05",
-      "Kenya",
-      "English",
-      "Gender & Rights",
-      5
-    ],
-    [
-      "2026-05-05",
-      "Cote D Ivoire",
-      "French",
-      "Economy",
-      3
-    ],
-    [
-      "2026-05-05",
-      "Cote D Ivoire",
-      "French",
-      "Climate",
-      1
-    ],
-    [
-      "2026-05-04",
-      "Morocco",
-      "Arabic",
-      "Education",
-      1
-    ],
-    [
-      "2026-05-05",
-      "Nigeria",
-      "Portuguese",
-      "Technology",
-      1
-    ],
-    [
-      "2026-05-05",
-      "South Africa",
-      "Afrikaans",
-      "Technology",
-      1
-    ],
-    [
-      "2026-05-05",
-      "South Africa",
-      "English",
-      "Gender & Rights",
-      4
-    ],
-    [
-      "2026-05-05",
-      "Cote D Ivoire",
-      "French",
-      "Health",
-      3
-    ],
-    [
       "2026-07-03",
       "Senegal",
       "French",
@@ -41657,20 +39137,6 @@
       73
     ],
     [
-      "2026-05-05",
-      "Senegal",
-      "tr",
-      "Politics & Governance",
-      1
-    ],
-    [
-      "2026-05-05",
-      "Morocco",
-      "French",
-      "Gender & Rights",
-      1
-    ],
-    [
       "2026-07-02",
       "Senegal",
       "French",
@@ -41682,13 +39148,6 @@
       "Kenya",
       "pcm",
       "Climate",
-      1
-    ],
-    [
-      "2026-05-05",
-      "Cote D Ivoire",
-      "French",
-      "Education",
       1
     ],
     [
@@ -42859,13 +40318,6 @@
       "French",
       "Climate",
       2
-    ],
-    [
-      "2026-05-05",
-      "Kenya",
-      "pcm",
-      "Climate",
-      1
     ],
     [
       "2026-05-08",
@@ -56515,7 +53967,7 @@
       "Pan-African",
       "English",
       "Economy",
-      8
+      11
     ],
     [
       "2026-09-03",
@@ -56529,7 +53981,7 @@
       "Pan-African",
       "English",
       "Conflict & Security",
-      1
+      3
     ],
     [
       "2026-09-03",
@@ -56543,7 +53995,7 @@
       "Pan-African",
       "Zulu",
       "Conflict & Security",
-      2
+      4
     ],
     [
       "2026-09-03",
@@ -56564,7 +54016,7 @@
       "Pan-African",
       "English",
       "Politics & Governance",
-      9
+      13
     ],
     [
       "2026-09-03",
@@ -56578,7 +54030,7 @@
       "Pan-African",
       "French",
       "Technology",
-      1
+      3
     ],
     [
       "2026-09-03",
@@ -56592,21 +54044,21 @@
       "Pan-African",
       "French",
       "Health",
-      1
+      2
     ],
     [
       "2026-09-03",
       "Pan-African",
       "French",
       "Politics & Governance",
-      5
+      8
     ],
     [
       "2026-09-03",
       "Pan-African",
       "English",
       "Education",
-      1
+      2
     ],
     [
       "2026-09-03",
@@ -56620,7 +54072,7 @@
       "Pan-African",
       "French",
       "Education",
-      1
+      2
     ],
     [
       "2026-09-03",
@@ -56634,7 +54086,7 @@
       "Pan-African",
       "English",
       "Sports",
-      1
+      2
     ],
     [
       "2026-09-03",
@@ -56648,7 +54100,7 @@
       "Pan-African",
       "Afrikaans",
       "Politics & Governance",
-      1
+      2
     ],
     [
       "2026-09-03",
@@ -56676,14 +54128,14 @@
       "Pan-African",
       "French",
       "Conflict & Security",
-      1
+      2
     ],
     [
       "2026-09-02",
       "Pan-African",
       "English",
       "Technology",
-      2
+      3
     ],
     [
       "2026-09-02",
@@ -69951,234 +67403,983 @@
       4
     ],
     [
-      "2026-05-05",
+      "2026-09-08",
+      "Pan-African",
+      "French",
+      "Gender & Rights",
+      2
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "English",
+      "Technology",
+      1
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "English",
+      "Politics & Governance",
+      12
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "English",
+      "Conflict & Security",
+      3
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "Afrikaans",
+      "Conflict & Security",
+      1
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "French",
+      "Politics & Governance",
+      6
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "English",
+      "Sports",
+      4
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "English",
+      "Culture & Society",
+      5
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "French",
+      "Sports",
+      1
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "Zulu",
+      "Culture & Society",
+      5
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "Zulu",
+      "Sports",
+      5
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "Zulu",
+      "Conflict & Security",
+      2
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "Zulu",
+      "Politics & Governance",
+      4
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "Xhosa",
+      "Sports",
+      1
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "English",
+      "Health",
+      2
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "Zulu",
+      "Technology",
+      1
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "Arabic",
+      "Politics & Governance",
+      1
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "Afrikaans",
+      "Politics & Governance",
+      2
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "English",
+      "Climate",
+      3
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "English",
+      "Economy",
+      7
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "French",
+      "Climate",
+      1
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "French",
+      "Education",
+      2
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "Afrikaans",
+      "Culture & Society",
+      1
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "French",
+      "Technology",
+      2
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "Afrikaans",
+      "Economy",
+      2
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "French",
+      "Conflict & Security",
+      2
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "English",
+      "Education",
+      2
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "French",
+      "Economy",
+      1
+    ],
+    [
+      "2026-09-08",
+      "Pan-African",
+      "de",
+      "Sports",
+      1
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "English",
+      "Climate",
+      5
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "French",
+      "Education",
+      2
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "French",
+      "Politics & Governance",
+      12
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "French",
+      "Conflict & Security",
+      2
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "English",
+      "Politics & Governance",
+      14
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "French",
+      "Gender & Rights",
+      3
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "English",
+      "Health",
+      6
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "English",
+      "Sports",
+      2
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "French",
+      "Sports",
+      1
+    ],
+    [
+      "2026-09-07",
       "Pan-African",
       "English",
       "Economy",
       12
     ],
     [
-      "2026-05-05",
+      "2026-09-07",
       "Pan-African",
-      "English",
-      "Culture & Society",
-      3
-    ],
-    [
-      "2026-05-05",
-      "Pan-African",
-      "English",
-      "Politics & Governance",
-      11
-    ],
-    [
-      "2026-05-05",
-      "Pan-African",
-      "English",
-      "Climate",
+      "French",
+      "Economy",
       2
     ],
     [
-      "2026-05-05",
+      "2026-09-07",
       "Pan-African",
-      "English",
-      "Conflict & Security",
-      4
+      "Portuguese",
+      "Economy",
+      1
     ],
     [
-      "2026-05-05",
+      "2026-09-07",
       "Pan-African",
       "English",
       "Technology",
+      2
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "Zulu",
+      "Economy",
+      1
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "Zulu",
+      "Politics & Governance",
       3
     ],
     [
-      "2026-05-05",
+      "2026-09-07",
       "Pan-African",
-      "English",
+      "Zulu",
+      "Culture & Society",
+      2
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "Zulu",
+      "Sports",
+      2
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "Zulu",
+      "Conflict & Security",
+      2
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "Xhosa",
+      "Sports",
+      2
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "Xhosa",
       "Health",
       3
     ],
     [
-      "2026-05-05",
+      "2026-09-07",
+      "Pan-African",
+      "French",
+      "Culture & Society",
+      2
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "Afrikaans",
+      "Economy",
+      1
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "Afrikaans",
+      "Culture & Society",
+      2
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "French",
+      "Health",
+      2
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "Zulu",
+      "Education",
+      1
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "Xhosa",
+      "Culture & Society",
+      1
+    ],
+    [
+      "2026-09-07",
       "Pan-African",
       "English",
-      "Sports",
+      "Culture & Society",
+      1
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "English",
+      "Conflict & Security",
       3
     ],
     [
-      "2026-05-05",
+      "2026-09-07",
+      "Pan-African",
+      "Afrikaans",
+      "Conflict & Security",
+      1
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "French",
+      "Technology",
+      1
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "Afrikaans",
+      "Sports",
+      1
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "Afrikaans",
+      "Education",
+      1
+    ],
+    [
+      "2026-09-07",
+      "Pan-African",
+      "de",
+      "Sports",
+      1
+    ],
+    [
+      "2026-09-07",
       "Pan-African",
       "English",
       "Education",
       1
     ],
     [
-      "2026-05-04",
+      "2026-09-07",
       "Pan-African",
-      "English",
-      "Culture & Society",
-      3
-    ],
-    [
-      "2026-05-04",
-      "Pan-African",
-      "English",
-      "Economy",
-      5
-    ],
-    [
-      "2026-05-04",
-      "Pan-African",
-      "English",
-      "Technology",
-      5
-    ],
-    [
-      "2026-05-04",
-      "Pan-African",
-      "English",
-      "Conflict & Security",
-      4
-    ],
-    [
-      "2026-05-04",
-      "Pan-African",
-      "English",
+      "Afrikaans",
       "Politics & Governance",
-      7
+      1
     ],
     [
-      "2026-05-04",
+      "2026-09-07",
       "Pan-African",
-      "English",
-      "Sports",
-      2
-    ],
-    [
-      "2026-05-04",
-      "Pan-African",
-      "English",
+      "Zulu",
       "Gender & Rights",
       1
     ],
     [
-      "2026-05-03",
+      "2026-09-06",
+      "Pan-African",
+      "French",
+      "Culture & Society",
+      5
+    ],
+    [
+      "2026-09-06",
+      "Pan-African",
+      "French",
+      "Politics & Governance",
+      8
+    ],
+    [
+      "2026-09-06",
       "Pan-African",
       "English",
-      "Politics & Governance",
+      "Conflict & Security",
       2
     ],
     [
-      "2026-05-03",
+      "2026-09-06",
+      "Pan-African",
+      "French",
+      "Conflict & Security",
+      1
+    ],
+    [
+      "2026-09-06",
+      "Pan-African",
+      "English",
+      "Politics & Governance",
+      4
+    ],
+    [
+      "2026-09-06",
+      "Pan-African",
+      "French",
+      "Technology",
+      2
+    ],
+    [
+      "2026-09-06",
+      "Pan-African",
+      "French",
+      "Sports",
+      1
+    ],
+    [
+      "2026-09-06",
+      "Pan-African",
+      "Zulu",
+      "Culture & Society",
+      3
+    ],
+    [
+      "2026-09-06",
+      "Pan-African",
+      "Zulu",
+      "Conflict & Security",
+      2
+    ],
+    [
+      "2026-09-06",
+      "Pan-African",
+      "Zulu",
+      "Politics & Governance",
+      1
+    ],
+    [
+      "2026-09-06",
       "Pan-African",
       "English",
       "Climate",
       1
     ],
     [
-      "2026-05-03",
+      "2026-09-06",
+      "Pan-African",
+      "Afrikaans",
+      "Economy",
+      1
+    ],
+    [
+      "2026-09-06",
       "Pan-African",
       "English",
       "Economy",
       2
     ],
     [
-      "2026-05-03",
-      "Pan-African",
-      "English",
-      "Health",
-      2
-    ],
-    [
-      "2026-05-03",
-      "Pan-African",
-      "English",
-      "Technology",
-      1
-    ],
-    [
-      "2026-05-03",
+      "2026-09-06",
       "Pan-African",
       "English",
       "Education",
       1
     ],
     [
-      "2026-05-02",
+      "2026-09-06",
       "Pan-African",
-      "English",
-      "Conflict & Security",
-      3
-    ],
-    [
-      "2026-05-02",
-      "Pan-African",
-      "English",
-      "Politics & Governance",
-      3
-    ],
-    [
-      "2026-05-02",
-      "Pan-African",
-      "English",
-      "Climate",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Pan-African",
-      "English",
-      "Economy",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Pan-African",
-      "English",
-      "Technology",
-      1
-    ],
-    [
-      "2026-05-02",
-      "Pan-African",
-      "English",
+      "Afrikaans",
       "Culture & Society",
+      1
+    ],
+    [
+      "2026-09-06",
+      "Pan-African",
+      "English",
+      "Sports",
+      1
+    ],
+    [
+      "2026-09-06",
+      "Pan-African",
+      "Afrikaans",
+      "Health",
+      1
+    ],
+    [
+      "2026-09-06",
+      "Pan-African",
+      "Xhosa",
+      "Sports",
+      1
+    ],
+    [
+      "2026-09-05",
+      "Pan-African",
+      "French",
+      "Politics & Governance",
+      6
+    ],
+    [
+      "2026-09-05",
+      "Pan-African",
+      "French",
+      "Economy",
       2
     ],
     [
-      "2026-05-01",
+      "2026-09-05",
+      "Pan-African",
+      "French",
+      "Sports",
+      6
+    ],
+    [
+      "2026-09-05",
+      "Pan-African",
+      "French",
+      "Culture & Society",
+      6
+    ],
+    [
+      "2026-09-05",
+      "Pan-African",
+      "French",
+      "Health",
+      1
+    ],
+    [
+      "2026-09-05",
       "Pan-African",
       "English",
       "Politics & Governance",
       6
     ],
     [
-      "2026-05-01",
+      "2026-09-05",
       "Pan-African",
-      "English",
-      "Economy",
-      5
+      "French",
+      "Conflict & Security",
+      2
     ],
     [
-      "2026-05-01",
+      "2026-09-05",
       "Pan-African",
-      "English",
-      "Conflict & Security",
+      "French",
+      "Climate",
       1
     ],
     [
-      "2026-05-01",
+      "2026-09-05",
+      "Pan-African",
+      "English",
+      "Climate",
+      2
+    ],
+    [
+      "2026-09-05",
+      "Pan-African",
+      "English",
+      "Economy",
+      3
+    ],
+    [
+      "2026-09-05",
+      "Pan-African",
+      "French",
+      "Education",
+      2
+    ],
+    [
+      "2026-09-05",
+      "Pan-African",
+      "Afrikaans",
+      "Culture & Society",
+      1
+    ],
+    [
+      "2026-09-05",
       "Pan-African",
       "English",
       "Culture & Society",
       1
     ],
     [
-      "2026-05-01",
+      "2026-09-05",
+      "Pan-African",
+      "French",
+      "Technology",
+      1
+    ],
+    [
+      "2026-09-05",
       "Pan-African",
       "English",
       "Technology",
+      1
+    ],
+    [
+      "2026-09-05",
+      "Pan-African",
+      "English",
+      "Sports",
+      2
+    ],
+    [
+      "2026-09-05",
+      "Pan-African",
+      "Zulu",
+      "Culture & Society",
+      1
+    ],
+    [
+      "2026-09-05",
+      "Pan-African",
+      "Afrikaans",
+      "Conflict & Security",
+      1
+    ],
+    [
+      "2026-09-05",
+      "Pan-African",
+      "Zulu",
+      "Sports",
+      2
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "English",
+      "Climate",
+      3
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "English",
+      "Technology",
+      2
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "French",
+      "Politics & Governance",
+      8
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "French",
+      "Technology",
+      2
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "French",
+      "Gender & Rights",
+      1
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "French",
+      "Education",
+      3
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "English",
+      "Economy",
+      9
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "Zulu",
+      "Culture & Society",
+      2
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "French",
+      "Conflict & Security",
+      3
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "French",
+      "Culture & Society",
+      4
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "French",
+      "Economy",
+      2
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "French",
+      "Health",
+      4
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "English",
+      "Politics & Governance",
+      16
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "French",
+      "Sports",
+      2
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "English",
+      "Sports",
+      3
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "English",
+      "Culture & Society",
+      3
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "Afrikaans",
+      "Technology",
+      1
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "Afrikaans",
+      "Culture & Society",
+      3
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "Zulu",
+      "Politics & Governance",
+      3
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "Zulu",
+      "Health",
+      1
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "Zulu",
+      "Conflict & Security",
+      2
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "Afrikaans",
+      "Politics & Governance",
+      2
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "English",
+      "Gender & Rights",
+      1
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "English",
+      "Education",
+      2
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "French",
+      "Climate",
+      1
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "English",
+      "Conflict & Security",
+      1
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "de",
+      "Sports",
+      1
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "Afrikaans",
+      "Education",
+      1
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "Xhosa",
+      "Sports",
+      1
+    ],
+    [
+      "2026-09-04",
+      "Pan-African",
+      "Xhosa",
+      "Culture & Society",
+      1
+    ],
+    [
+      "2026-09-03",
+      "Pan-African",
+      "French",
+      "Conflict & Security",
+      1
+    ],
+    [
+      "2026-09-03",
+      "Pan-African",
+      "French",
+      "Climate",
+      1
+    ],
+    [
+      "2026-09-03",
+      "Pan-African",
+      "French",
+      "Culture & Society",
+      2
+    ],
+    [
+      "2026-09-03",
+      "Pan-African",
+      "English",
+      "Gender & Rights",
+      1
+    ],
+    [
+      "2026-09-03",
+      "Pan-African",
+      "French",
+      "Gender & Rights",
+      2
+    ],
+    [
+      "2026-09-03",
+      "Pan-African",
+      "English",
+      "Climate",
+      1
+    ],
+    [
+      "2026-09-03",
+      "Pan-African",
+      "Afrikaans",
+      "Culture & Society",
+      1
+    ],
+    [
+      "2026-09-02",
+      "Pan-African",
+      "Zulu",
+      "Education",
       1
     ]
   ],
@@ -70205,24 +68406,24 @@
     "Mali": 9
   },
   "langCounts": {
-    "French": 49911,
+    "French": 50073,
     "la": 3,
-    "English": 190108,
+    "English": 190292,
     "es": 29,
     "it": 15,
-    "de": 91,
+    "de": 94,
     "az": 11,
     "ru": 73,
     "ja": 2,
     "id": 3,
-    "Arabic": 3220,
+    "Arabic": 3221,
     "Yoruba": 16,
     "th": 6,
     "pcm": 504,
     "no": 4,
     "uk": 2,
-    "Afrikaans": 2163,
-    "Portuguese": 14,
+    "Afrikaans": 2191,
+    "Portuguese": 15,
     "zxx": 27,
     "fuv": 6,
     "an": 2,
@@ -70251,7 +68452,7 @@
     "da": 1,
     "ln": 3,
     "Sesotho": 3,
-    "Zulu": 618,
+    "Zulu": 702,
     "sk": 1,
     "uz": 1,
     "hr": 1,
@@ -70263,7 +68464,7 @@
     "cy": 1,
     "ht": 1,
     "ga": 1,
-    "Xhosa": 252,
+    "Xhosa": 276,
     "is": 17,
     "wo": 1,
     "sr": 1
@@ -70282,17 +68483,17 @@
     "Sesotho"
   ],
   "topicTotals": {
-    "Other": 19797,
-    "Gender & Rights": 4729,
-    "Politics & Governance": 72286,
-    "Culture & Society": 22405,
-    "Economy": 27835,
-    "Climate": 4842,
-    "Health": 11038,
-    "Sports": 30182,
-    "Education": 11131,
-    "Technology": 20317,
-    "Conflict & Security": 22956
+    "Other": 19896,
+    "Gender & Rights": 4740,
+    "Politics & Governance": 72403,
+    "Culture & Society": 22458,
+    "Economy": 27884,
+    "Climate": 4861,
+    "Health": 11059,
+    "Sports": 30224,
+    "Education": 11152,
+    "Technology": 20336,
+    "Conflict & Security": 22992
   },
   "publishers": [
     {
@@ -72573,18 +70774,18 @@
       "country": "Pan-African",
       "lang": "English",
       "lang2": null,
-      "total": 2262,
+      "total": 2287,
       "radar": {
-        "Politics & Governance": 33.7,
-        "Economy": 28.7,
-        "Culture & Society": 6.6,
+        "Politics & Governance": 33.6,
+        "Economy": 28.8,
+        "Culture & Society": 6.5,
         "Sports": 1.8,
         "Education": 1.1,
-        "Technology": 6.3,
+        "Technology": 6.2,
         "Conflict & Security": 8.2,
-        "Health": 2.1,
+        "Health": 2.0,
         "Gender & Rights": 0.2,
-        "Climate": 11.4
+        "Climate": 11.6
       },
       "topTopic": "Politics & Governance",
       "entityType": "Push Media",
@@ -72881,15 +71082,15 @@
       "country": "Pan-African",
       "lang": "English",
       "lang2": null,
-      "total": 1649,
+      "total": 1670,
       "radar": {
-        "Politics & Governance": 45.0,
-        "Economy": 26.8,
+        "Politics & Governance": 45.3,
+        "Economy": 26.6,
         "Culture & Society": 3.8,
         "Sports": 1.4,
         "Education": 0.7,
         "Technology": 6.6,
-        "Conflict & Security": 12.5,
+        "Conflict & Security": 12.6,
         "Health": 0.8,
         "Gender & Rights": 0.3,
         "Climate": 2.0
@@ -72924,17 +71125,17 @@
       "country": "Pan-African",
       "lang": "English",
       "lang2": null,
-      "total": 1647,
+      "total": 1666,
       "radar": {
         "Politics & Governance": 32.5,
-        "Economy": 7.4,
-        "Culture & Society": 14.7,
-        "Sports": 15.4,
-        "Education": 4.6,
-        "Technology": 3.9,
-        "Conflict & Security": 12.9,
+        "Economy": 7.3,
+        "Culture & Society": 14.6,
+        "Sports": 15.7,
+        "Education": 4.7,
+        "Technology": 3.8,
+        "Conflict & Security": 12.7,
         "Health": 4.6,
-        "Gender & Rights": 1.6,
+        "Gender & Rights": 1.7,
         "Climate": 2.5
       },
       "topTopic": "Politics & Governance",
@@ -73039,18 +71240,18 @@
       "country": "Pan-African",
       "lang": "English",
       "lang2": null,
-      "total": 1522,
+      "total": 1533,
       "radar": {
         "Politics & Governance": 33.3,
-        "Economy": 45.6,
+        "Economy": 45.4,
         "Culture & Society": 2.5,
         "Sports": 0.2,
         "Education": 1.0,
-        "Technology": 4.7,
-        "Conflict & Security": 3.2,
+        "Technology": 4.6,
+        "Conflict & Security": 3.3,
         "Health": 2.0,
         "Gender & Rights": 0.9,
-        "Climate": 6.7
+        "Climate": 6.9
       },
       "topTopic": "Economy",
       "entityType": "Push Media",
@@ -73585,18 +71786,18 @@
       "country": "Pan-African",
       "lang": "English",
       "lang2": null,
-      "total": 1203,
+      "total": 1217,
       "radar": {
-        "Politics & Governance": 41.2,
+        "Politics & Governance": 41.0,
         "Economy": 16.1,
-        "Culture & Society": 10.2,
+        "Culture & Society": 10.1,
         "Sports": 6.0,
-        "Education": 4.3,
+        "Education": 4.6,
         "Technology": 3.7,
-        "Conflict & Security": 12.6,
-        "Health": 3.6,
-        "Gender & Rights": 1.2,
-        "Climate": 1.0
+        "Conflict & Security": 12.5,
+        "Health": 3.7,
+        "Gender & Rights": 1.3,
+        "Climate": 1.1
       },
       "topTopic": "Politics & Governance",
       "entityType": "Push Media",
@@ -74093,6 +72294,49 @@
       }
     },
     {
+      "name": "Alwihda Info",
+      "country": "Pan-African",
+      "lang": "French",
+      "lang2": null,
+      "total": 916,
+      "radar": {
+        "Politics & Governance": 26.6,
+        "Economy": 10.2,
+        "Culture & Society": 10.6,
+        "Sports": 4.2,
+        "Education": 7.3,
+        "Technology": 6.1,
+        "Conflict & Security": 9.9,
+        "Health": 8.4,
+        "Gender & Rights": 7.3,
+        "Climate": 9.4
+      },
+      "topTopic": "Politics & Governance",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "This",
+          "type": "PERSON"
+        },
+        {
+          "text": "N’Djamena",
+          "type": "PERSON"
+        },
+        {
+          "text": "August",
+          "type": "PERSON"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "Le retour de Gbagbo « un sujet de crispation » (de la nécessité de désarmer les paroles) en Côte-d'Ivoire - Connectionivoirienne",
       "country": "Cote D Ivoire",
       "lang": "French",
@@ -74245,18 +72489,18 @@
       "country": "Pan-African",
       "lang": "English",
       "lang2": null,
-      "total": 860,
+      "total": 877,
       "radar": {
-        "Politics & Governance": 10.4,
-        "Economy": 37.5,
+        "Politics & Governance": 10.2,
+        "Economy": 37.8,
         "Culture & Society": 10.4,
         "Sports": 0.8,
         "Education": 3.2,
         "Technology": 12.6,
         "Conflict & Security": 2.7,
-        "Health": 9.8,
+        "Health": 9.7,
         "Gender & Rights": 3.7,
-        "Climate": 8.8
+        "Climate": 8.9
       },
       "topTopic": "Other",
       "entityType": "Push Media",
@@ -74274,49 +72518,6 @@
         {
           "text": "Google",
           "type": "ORG"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
-      "name": "Alwihda Info",
-      "country": "Pan-African",
-      "lang": "French",
-      "lang2": null,
-      "total": 851,
-      "radar": {
-        "Politics & Governance": 26.5,
-        "Economy": 10.4,
-        "Culture & Society": 10.4,
-        "Sports": 4.1,
-        "Education": 7.1,
-        "Technology": 6.2,
-        "Conflict & Security": 10.0,
-        "Health": 8.5,
-        "Gender & Rights": 7.0,
-        "Climate": 9.7
-      },
-      "topTopic": "Politics & Governance",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "This",
-          "type": "PERSON"
-        },
-        {
-          "text": "N’Djamena",
-          "type": "PERSON"
-        },
-        {
-          "text": "August",
-          "type": "PERSON"
         }
       ],
       "engagementIndex": {
@@ -75601,6 +73802,49 @@
       }
     },
     {
+      "name": "BusinessTech",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 594,
+      "radar": {
+        "Politics & Governance": 23.5,
+        "Economy": 39.5,
+        "Culture & Society": 2.2,
+        "Sports": 1.0,
+        "Education": 13.6,
+        "Technology": 11.7,
+        "Conflict & Security": 3.4,
+        "Health": 3.0,
+        "Gender & Rights": 1.4,
+        "Climate": 0.8
+      },
+      "topTopic": "Economy",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Ramaphosa",
+          "type": "PERSON"
+        },
+        {
+          "text": "Eskom",
+          "type": "PERSON"
+        },
+        {
+          "text": "DStv",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "Ripples Nigeria",
       "country": "Nigeria",
       "lang": "English",
@@ -75689,41 +73933,28 @@
       }
     },
     {
-      "name": "BusinessTech",
+      "name": "Isolezwe",
       "country": "Pan-African",
-      "lang": "English",
+      "lang": "Zulu",
       "lang2": null,
-      "total": 589,
+      "total": 557,
       "radar": {
-        "Politics & Governance": 23.2,
-        "Economy": 39.7,
-        "Culture & Society": 2.2,
-        "Sports": 1.0,
-        "Education": 13.6,
-        "Technology": 11.8,
-        "Conflict & Security": 3.4,
-        "Health": 3.0,
-        "Gender & Rights": 1.4,
-        "Climate": 0.8
+        "Politics & Governance": 17.6,
+        "Economy": 5.9,
+        "Culture & Society": 18.8,
+        "Sports": 28.1,
+        "Education": 4.0,
+        "Technology": 1.5,
+        "Conflict & Security": 13.3,
+        "Health": 5.2,
+        "Gender & Rights": 4.6,
+        "Climate": 0.9
       },
-      "topTopic": "Economy",
+      "topTopic": "Other",
       "entityType": "Push Media",
       "url": null,
       "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Ramaphosa",
-          "type": "PERSON"
-        },
-        {
-          "text": "Eskom",
-          "type": "PERSON"
-        },
-        {
-          "text": "DStv",
-          "type": "ORG"
-        }
-      ],
+      "topEntities": [],
       "engagementIndex": {
         "score": null,
         "breadthScore": null,
@@ -75972,36 +74203,6 @@
           "type": "ORG"
         }
       ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
-      "name": "Isolezwe",
-      "country": "Pan-African",
-      "lang": "Zulu",
-      "lang2": null,
-      "total": 492,
-      "radar": {
-        "Politics & Governance": 17.0,
-        "Economy": 6.2,
-        "Culture & Society": 18.3,
-        "Sports": 28.4,
-        "Education": 4.2,
-        "Technology": 1.7,
-        "Conflict & Security": 12.8,
-        "Health": 5.5,
-        "Gender & Rights": 4.8,
-        "Climate": 1.0
-      },
-      "topTopic": "Other",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [],
       "engagementIndex": {
         "score": null,
         "breadthScore": null,
@@ -76549,6 +74750,49 @@
       }
     },
     {
+      "name": "The Citizen",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 383,
+      "radar": {
+        "Politics & Governance": 33.0,
+        "Economy": 9.4,
+        "Culture & Society": 23.9,
+        "Sports": 10.1,
+        "Education": 3.4,
+        "Technology": 4.0,
+        "Conflict & Security": 8.4,
+        "Health": 4.4,
+        "Gender & Rights": 2.7,
+        "Climate": 0.7
+      },
+      "topTopic": "Politics & Governance",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "ANC",
+          "type": "ORG"
+        },
+        {
+          "text": "Ramaphosa",
+          "type": "PERSON"
+        },
+        {
+          "text": "Gauteng",
+          "type": "PERSON"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "Bloomberg News",
       "country": "Pan-African",
       "lang": "English",
@@ -76582,49 +74826,6 @@
         {
           "text": "Federal Reserve",
           "type": "ORG"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
-      "name": "The Citizen",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 379,
-      "radar": {
-        "Politics & Governance": 32.8,
-        "Economy": 9.6,
-        "Culture & Society": 23.9,
-        "Sports": 9.9,
-        "Education": 3.4,
-        "Technology": 4.1,
-        "Conflict & Security": 8.5,
-        "Health": 4.4,
-        "Gender & Rights": 2.7,
-        "Climate": 0.7
-      },
-      "topTopic": "Politics & Governance",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "ANC",
-          "type": "ORG"
-        },
-        {
-          "text": "Ramaphosa",
-          "type": "PERSON"
-        },
-        {
-          "text": "Gauteng",
-          "type": "PERSON"
         }
       ],
       "engagementIndex": {
@@ -77028,6 +75229,49 @@
       }
     },
     {
+      "name": "Le Monde",
+      "country": "Pan-African",
+      "lang": "French",
+      "lang2": null,
+      "total": 322,
+      "radar": {
+        "Politics & Governance": 20.7,
+        "Economy": 1.9,
+        "Culture & Society": 14.6,
+        "Sports": 12.1,
+        "Education": 3.2,
+        "Technology": 28.0,
+        "Conflict & Security": 12.7,
+        "Health": 1.0,
+        "Gender & Rights": 0.3,
+        "Climate": 5.4
+      },
+      "topTopic": "Technology",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Donald Trump",
+          "type": "PERSON"
+        },
+        {
+          "text": "French",
+          "type": "PERSON"
+        },
+        {
+          "text": "United States",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "OujdaCity : portail d'actualité Marocain | موقع وجدة ، أخبار المغرب على مدار الساعة",
       "country": "Morocco",
       "lang": "Arabic",
@@ -77094,49 +75338,6 @@
         "breadthScore": 42.9,
         "reachScore": 14.6,
         "confidence": "high"
-      }
-    },
-    {
-      "name": "Le Monde",
-      "country": "Pan-African",
-      "lang": "French",
-      "lang2": null,
-      "total": 305,
-      "radar": {
-        "Politics & Governance": 20.9,
-        "Economy": 1.7,
-        "Culture & Society": 14.1,
-        "Sports": 12.5,
-        "Education": 3.0,
-        "Technology": 28.6,
-        "Conflict & Security": 12.5,
-        "Health": 1.0,
-        "Gender & Rights": 0.3,
-        "Climate": 5.4
-      },
-      "topTopic": "Technology",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Donald Trump",
-          "type": "PERSON"
-        },
-        {
-          "text": "French",
-          "type": "PERSON"
-        },
-        {
-          "text": "United States",
-          "type": "ORG"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
       }
     },
     {
@@ -77314,6 +75515,36 @@
         "breadthScore": 28.6,
         "reachScore": 36.5,
         "confidence": "partial"
+      }
+    },
+    {
+      "name": "Isolezwe lesiXhosa",
+      "country": "Pan-African",
+      "lang": "Xhosa",
+      "lang2": null,
+      "total": 247,
+      "radar": {
+        "Politics & Governance": 8.1,
+        "Economy": 8.1,
+        "Culture & Society": 18.9,
+        "Sports": 33.3,
+        "Education": 1.8,
+        "Technology": 0.9,
+        "Conflict & Security": 17.1,
+        "Health": 6.3,
+        "Gender & Rights": 5.4,
+        "Climate": 0.0
+      },
+      "topTopic": "Other",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
       }
     },
     {
@@ -77497,36 +75728,6 @@
         "breadthScore": 42.9,
         "reachScore": 71.2,
         "confidence": "high"
-      }
-    },
-    {
-      "name": "Isolezwe lesiXhosa",
-      "country": "Pan-African",
-      "lang": "Xhosa",
-      "lang2": null,
-      "total": 223,
-      "radar": {
-        "Politics & Governance": 8.9,
-        "Economy": 8.9,
-        "Culture & Society": 18.8,
-        "Sports": 31.7,
-        "Education": 2.0,
-        "Technology": 1.0,
-        "Conflict & Security": 18.8,
-        "Health": 4.0,
-        "Gender & Rights": 5.9,
-        "Climate": 0.0
-      },
-      "topTopic": "Other",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
       }
     },
     {
@@ -77819,6 +76020,49 @@
       }
     },
     {
+      "name": "ActuInternationale",
+      "country": "Pan-African",
+      "lang": "French",
+      "lang2": null,
+      "total": 198,
+      "radar": {
+        "Politics & Governance": 54.7,
+        "Economy": 8.6,
+        "Culture & Society": 0.0,
+        "Sports": 7.0,
+        "Education": 1.6,
+        "Technology": 8.6,
+        "Conflict & Security": 13.3,
+        "Health": 3.9,
+        "Gender & Rights": 2.3,
+        "Climate": 0.0
+      },
+      "topTopic": "Politics & Governance",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Telegram Post",
+          "type": "PERSON"
+        },
+        {
+          "text": "Donald Trump",
+          "type": "PERSON"
+        },
+        {
+          "text": "This",
+          "type": "PERSON"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "Toute l'info d'Abidjan",
       "country": "Cote D Ivoire",
       "lang": "French",
@@ -77886,6 +76130,36 @@
         "breadthScore": 28.6,
         "reachScore": 71.4,
         "confidence": "partial"
+      }
+    },
+    {
+      "name": "Netwerk24",
+      "country": "Pan-African",
+      "lang": "Afrikaans",
+      "lang2": null,
+      "total": 191,
+      "radar": {
+        "Politics & Governance": 29.3,
+        "Economy": 8.8,
+        "Culture & Society": 12.2,
+        "Sports": 17.7,
+        "Education": 7.2,
+        "Technology": 7.2,
+        "Conflict & Security": 12.7,
+        "Health": 3.3,
+        "Gender & Rights": 0.6,
+        "Climate": 1.1
+      },
+      "topTopic": "Politics & Governance",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
       }
     },
     {
@@ -78171,16 +76445,16 @@
       "country": "Pan-African",
       "lang": "English",
       "lang2": null,
-      "total": 179,
+      "total": 182,
       "radar": {
-        "Politics & Governance": 16.8,
-        "Economy": 59.4,
-        "Culture & Society": 7.1,
+        "Politics & Governance": 16.5,
+        "Economy": 60.1,
+        "Culture & Society": 7.0,
         "Sports": 0.6,
         "Education": 0.6,
-        "Technology": 7.1,
-        "Conflict & Security": 3.9,
-        "Health": 3.9,
+        "Technology": 7.0,
+        "Conflict & Security": 3.8,
+        "Health": 3.8,
         "Gender & Rights": 0.0,
         "Climate": 0.6
       },
@@ -78391,79 +76665,6 @@
         },
         {
           "text": "Richard Yasseu",
-          "type": "PERSON"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
-      "name": "Netwerk24",
-      "country": "Pan-African",
-      "lang": "Afrikaans",
-      "lang2": null,
-      "total": 175,
-      "radar": {
-        "Politics & Governance": 28.9,
-        "Economy": 7.8,
-        "Culture & Society": 11.4,
-        "Sports": 18.7,
-        "Education": 7.2,
-        "Technology": 7.2,
-        "Conflict & Security": 13.3,
-        "Health": 3.6,
-        "Gender & Rights": 0.6,
-        "Climate": 1.2
-      },
-      "topTopic": "Politics & Governance",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
-      "name": "ActuInternationale",
-      "country": "Pan-African",
-      "lang": "French",
-      "lang2": null,
-      "total": 171,
-      "radar": {
-        "Politics & Governance": 56.2,
-        "Economy": 8.9,
-        "Culture & Society": 0.0,
-        "Sports": 6.2,
-        "Education": 0.9,
-        "Technology": 7.1,
-        "Conflict & Security": 13.4,
-        "Health": 4.5,
-        "Gender & Rights": 2.7,
-        "Climate": 0.0
-      },
-      "topTopic": "Politics & Governance",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Telegram Post",
-          "type": "PERSON"
-        },
-        {
-          "text": "Donald Trump",
-          "type": "PERSON"
-        },
-        {
-          "text": "This",
           "type": "PERSON"
         }
       ],
@@ -78956,17 +77157,17 @@
       "country": "Pan-African",
       "lang": "Afrikaans",
       "lang2": null,
-      "total": 129,
+      "total": 136,
       "radar": {
-        "Politics & Governance": 39.8,
-        "Economy": 5.7,
-        "Culture & Society": 25.2,
-        "Sports": 4.1,
-        "Education": 5.7,
+        "Politics & Governance": 38.5,
+        "Economy": 6.2,
+        "Culture & Society": 25.4,
+        "Sports": 3.8,
+        "Education": 6.2,
         "Technology": 0.8,
-        "Conflict & Security": 13.0,
-        "Health": 3.3,
-        "Gender & Rights": 1.6,
+        "Conflict & Security": 13.1,
+        "Health": 3.8,
+        "Gender & Rights": 1.5,
         "Climate": 0.8
       },
       "topTopic": "Politics & Governance",
@@ -78999,10 +77200,10 @@
       "country": "Pan-African",
       "lang": "English",
       "lang2": null,
-      "total": 128,
+      "total": 135,
       "radar": {
-        "Politics & Governance": 56.3,
-        "Economy": 30.2,
+        "Politics & Governance": 57.9,
+        "Economy": 28.6,
         "Culture & Society": 0.0,
         "Sports": 0.0,
         "Education": 0.0,
@@ -79028,6 +77229,79 @@
         {
           "text": "KGL Resources",
           "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
+      "name": "Ilanga",
+      "country": "Pan-African",
+      "lang": "Zulu",
+      "lang2": null,
+      "total": 130,
+      "radar": {
+        "Politics & Governance": 35.1,
+        "Economy": 3.2,
+        "Culture & Society": 22.3,
+        "Sports": 5.3,
+        "Education": 4.3,
+        "Technology": 2.1,
+        "Conflict & Security": 19.1,
+        "Health": 5.3,
+        "Gender & Rights": 3.2,
+        "Climate": 0.0
+      },
+      "topTopic": "Other",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
+      "name": "SENEGAL_ACTU",
+      "country": "Pan-African",
+      "lang": "French",
+      "lang2": null,
+      "total": 121,
+      "radar": {
+        "Politics & Governance": 24.6,
+        "Economy": 10.1,
+        "Culture & Society": 7.2,
+        "Sports": 36.2,
+        "Education": 2.9,
+        "Technology": 1.4,
+        "Conflict & Security": 4.3,
+        "Health": 13.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Other",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Telegram Post",
+          "type": "PERSON"
+        },
+        {
+          "text": "August",
+          "type": "PERSON"
+        },
+        {
+          "text": "Nicolas Jackson",
+          "type": "PERSON"
         }
       ],
       "engagementIndex": {
@@ -79658,79 +77932,6 @@
         "breadthScore": 42.9,
         "reachScore": 80.4,
         "confidence": "high"
-      }
-    },
-    {
-      "name": "Ilanga",
-      "country": "Pan-African",
-      "lang": "Zulu",
-      "lang2": null,
-      "total": 114,
-      "radar": {
-        "Politics & Governance": 36.1,
-        "Economy": 3.6,
-        "Culture & Society": 20.5,
-        "Sports": 6.0,
-        "Education": 4.8,
-        "Technology": 1.2,
-        "Conflict & Security": 18.1,
-        "Health": 6.0,
-        "Gender & Rights": 3.6,
-        "Climate": 0.0
-      },
-      "topTopic": "Other",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
-      "name": "SENEGAL_ACTU",
-      "country": "Pan-African",
-      "lang": "French",
-      "lang2": null,
-      "total": 113,
-      "radar": {
-        "Politics & Governance": 25.0,
-        "Economy": 10.9,
-        "Culture & Society": 7.8,
-        "Sports": 34.4,
-        "Education": 3.1,
-        "Technology": 1.6,
-        "Conflict & Security": 4.7,
-        "Health": 12.5,
-        "Gender & Rights": 0.0,
-        "Climate": 0.0
-      },
-      "topTopic": "Other",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Telegram Post",
-          "type": "PERSON"
-        },
-        {
-          "text": "August",
-          "type": "PERSON"
-        },
-        {
-          "text": "Nicolas Jackson",
-          "type": "PERSON"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
       }
     },
     {
@@ -80513,6 +78714,49 @@
       }
     },
     {
+      "name": "Substack",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 108,
+      "radar": {
+        "Politics & Governance": 15.2,
+        "Economy": 8.9,
+        "Culture & Society": 5.1,
+        "Sports": 2.5,
+        "Education": 3.8,
+        "Technology": 17.7,
+        "Conflict & Security": 41.8,
+        "Health": 2.5,
+        "Gender & Rights": 1.3,
+        "Climate": 1.3
+      },
+      "topTopic": "Conflict & Security",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Ryan McBeth",
+          "type": "PERSON"
+        },
+        {
+          "text": "Johan Fourie",
+          "type": "PERSON"
+        },
+        {
+          "text": "Benjamin Strick",
+          "type": "PERSON"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "The Ghana Report",
       "country": "Ghana",
       "lang": "English",
@@ -80920,6 +79164,49 @@
       }
     },
     {
+      "name": "Bloomberg Businessweek",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 106,
+      "radar": {
+        "Politics & Governance": 15.2,
+        "Economy": 34.8,
+        "Culture & Society": 18.5,
+        "Sports": 4.3,
+        "Education": 1.1,
+        "Technology": 13.0,
+        "Conflict & Security": 6.5,
+        "Health": 3.3,
+        "Gender & Rights": 0.0,
+        "Climate": 3.3
+      },
+      "topTopic": "Economy",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Trump",
+          "type": "PERSON"
+        },
+        {
+          "text": "Donald Trump",
+          "type": "PERSON"
+        },
+        {
+          "text": "Businessweek Daily",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "The Elephant",
       "country": "Kenya",
       "lang": "English",
@@ -81186,49 +79473,6 @@
       }
     },
     {
-      "name": "Bloomberg Businessweek",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 105,
-      "radar": {
-        "Politics & Governance": 15.4,
-        "Economy": 34.1,
-        "Culture & Society": 18.7,
-        "Sports": 4.4,
-        "Education": 1.1,
-        "Technology": 13.2,
-        "Conflict & Security": 6.6,
-        "Health": 3.3,
-        "Gender & Rights": 0.0,
-        "Climate": 3.3
-      },
-      "topTopic": "Economy",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Trump",
-          "type": "PERSON"
-        },
-        {
-          "text": "Donald Trump",
-          "type": "PERSON"
-        },
-        {
-          "text": "Businessweek Daily",
-          "type": "ORG"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
       "name": "METROWATCH ONLINE",
       "country": "Nigeria",
       "lang": "English",
@@ -81369,49 +79613,6 @@
         "breadthScore": 42.9,
         "reachScore": 10.9,
         "confidence": "high"
-      }
-    },
-    {
-      "name": "Substack",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 104,
-      "radar": {
-        "Politics & Governance": 16.0,
-        "Economy": 8.0,
-        "Culture & Society": 5.3,
-        "Sports": 2.7,
-        "Education": 4.0,
-        "Technology": 17.3,
-        "Conflict & Security": 41.3,
-        "Health": 2.7,
-        "Gender & Rights": 1.3,
-        "Climate": 1.3
-      },
-      "topTopic": "Conflict & Security",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Ryan McBeth",
-          "type": "PERSON"
-        },
-        {
-          "text": "Johan Fourie",
-          "type": "PERSON"
-        },
-        {
-          "text": "Benjamin Strick",
-          "type": "PERSON"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
       }
     },
     {
@@ -89704,6 +87905,49 @@
       }
     },
     {
+      "name": "IOL",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 77,
+      "radar": {
+        "Politics & Governance": 30.3,
+        "Economy": 10.5,
+        "Culture & Society": 13.2,
+        "Sports": 39.5,
+        "Education": 2.6,
+        "Technology": 0.0,
+        "Conflict & Security": 3.9,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Sports",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "The Madlanga Commission",
+          "type": "ORG"
+        },
+        {
+          "text": "Club",
+          "type": "ORG"
+        },
+        {
+          "text": "Cyril Ramaphosa",
+          "type": "PERSON"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "Prestiges Thies",
       "country": "Senegal",
       "lang": "French",
@@ -90523,49 +88767,6 @@
       }
     },
     {
-      "name": "IOL",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 74,
-      "radar": {
-        "Politics & Governance": 31.5,
-        "Economy": 9.6,
-        "Culture & Society": 13.7,
-        "Sports": 38.4,
-        "Education": 2.7,
-        "Technology": 0.0,
-        "Conflict & Security": 4.1,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 0.0
-      },
-      "topTopic": "Sports",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "The Madlanga Commission",
-          "type": "ORG"
-        },
-        {
-          "text": "Club",
-          "type": "ORG"
-        },
-        {
-          "text": "Cyril Ramaphosa",
-          "type": "PERSON"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
       "name": "AgroNigeria",
       "country": "Nigeria",
       "lang": "English",
@@ -90647,6 +88848,49 @@
         "breadthScore": 71.4,
         "reachScore": 80.1,
         "confidence": "high"
+      }
+    },
+    {
+      "name": "Zitamar News",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 73,
+      "radar": {
+        "Politics & Governance": 43.1,
+        "Economy": 23.6,
+        "Culture & Society": 0.0,
+        "Sports": 1.4,
+        "Education": 0.0,
+        "Technology": 0.0,
+        "Conflict & Security": 29.2,
+        "Health": 0.0,
+        "Gender & Rights": 2.8,
+        "Climate": 0.0
+      },
+      "topTopic": "Politics & Governance",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Mozambique",
+          "type": "ORG"
+        },
+        {
+          "text": "Daniel Chapo",
+          "type": "PERSON"
+        },
+        {
+          "text": "LNG",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
       }
     },
     {
@@ -90812,49 +89056,6 @@
         "breadthScore": 28.6,
         "reachScore": 65.9,
         "confidence": "partial"
-      }
-    },
-    {
-      "name": "Zitamar News",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 71,
-      "radar": {
-        "Politics & Governance": 44.3,
-        "Economy": 24.3,
-        "Culture & Society": 0.0,
-        "Sports": 0.0,
-        "Education": 0.0,
-        "Technology": 0.0,
-        "Conflict & Security": 28.6,
-        "Health": 0.0,
-        "Gender & Rights": 2.9,
-        "Climate": 0.0
-      },
-      "topTopic": "Politics & Governance",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Mozambique",
-          "type": "ORG"
-        },
-        {
-          "text": "Daniel Chapo",
-          "type": "PERSON"
-        },
-        {
-          "text": "LNG",
-          "type": "ORG"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
       }
     },
     {
@@ -91104,6 +89305,65 @@
         "breadthScore": 71.4,
         "reachScore": 58.8,
         "confidence": "high"
+      }
+    },
+    {
+      "name": "Senegal24",
+      "country": "Pan-African",
+      "lang": "French",
+      "lang2": null,
+      "total": 70,
+      "radar": {
+        "Politics & Governance": 61.7,
+        "Economy": 8.5,
+        "Culture & Society": 4.3,
+        "Sports": 8.5,
+        "Education": 4.3,
+        "Technology": 4.3,
+        "Conflict & Security": 2.1,
+        "Health": 4.3,
+        "Gender & Rights": 0.0,
+        "Climate": 2.1
+      },
+      "topTopic": "Politics & Governance",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": {
+        "hqCity": null,
+        "established": null,
+        "bioShort": "Restez informé sur les dernières nouvelles du Sénégal. Recevez des mises à jour en temps réel sur la politique, l'économie, la culture et bien plus encore.",
+        "coverageType": null,
+        "editorialFocus": null,
+        "contentType": [],
+        "primaryPlatform": "telegram",
+        "staff": null,
+        "social": [
+          {
+            "platform": "telegram",
+            "followers": 23800,
+            "url": "https://t.me/senegal24"
+          }
+        ]
+      },
+      "topEntities": [
+        {
+          "text": "Telegram Post",
+          "type": "PERSON"
+        },
+        {
+          "text": "August",
+          "type": "PERSON"
+        },
+        {
+          "text": "National Assembly",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": 32.6,
+        "breadthScore": 14.3,
+        "reachScore": 66.7,
+        "confidence": "partial"
       }
     },
     {
@@ -91699,6 +89959,49 @@
         "breadthScore": 57.1,
         "reachScore": 26.9,
         "confidence": "high"
+      }
+    },
+    {
+      "name": "Le Nouvel Obs",
+      "country": "Pan-African",
+      "lang": "French",
+      "lang2": null,
+      "total": 65,
+      "radar": {
+        "Politics & Governance": 39.7,
+        "Economy": 1.6,
+        "Culture & Society": 33.3,
+        "Sports": 1.6,
+        "Education": 6.3,
+        "Technology": 3.2,
+        "Conflict & Security": 4.8,
+        "Health": 3.2,
+        "Gender & Rights": 6.3,
+        "Climate": 0.0
+      },
+      "topTopic": "Politics & Governance",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "TF1",
+          "type": "ORG"
+        },
+        {
+          "text": "France 3",
+          "type": "ORG"
+        },
+        {
+          "text": "France 4",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
       }
     },
     {
@@ -92851,65 +91154,6 @@
       }
     },
     {
-      "name": "Senegal24",
-      "country": "Pan-African",
-      "lang": "French",
-      "lang2": null,
-      "total": 58,
-      "radar": {
-        "Politics & Governance": 67.5,
-        "Economy": 10.0,
-        "Culture & Society": 5.0,
-        "Sports": 5.0,
-        "Education": 5.0,
-        "Technology": 2.5,
-        "Conflict & Security": 2.5,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 2.5
-      },
-      "topTopic": "Politics & Governance",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": {
-        "hqCity": null,
-        "established": null,
-        "bioShort": "Restez informé sur les dernières nouvelles du Sénégal. Recevez des mises à jour en temps réel sur la politique, l'économie, la culture et bien plus encore.",
-        "coverageType": null,
-        "editorialFocus": null,
-        "contentType": [],
-        "primaryPlatform": "telegram",
-        "staff": null,
-        "social": [
-          {
-            "platform": "telegram",
-            "followers": 23800,
-            "url": "https://t.me/senegal24"
-          }
-        ]
-      },
-      "topEntities": [
-        {
-          "text": "Telegram Post",
-          "type": "PERSON"
-        },
-        {
-          "text": "August",
-          "type": "PERSON"
-        },
-        {
-          "text": "National Assembly",
-          "type": "ORG"
-        }
-      ],
-      "engagementIndex": {
-        "score": 32.6,
-        "breadthScore": 14.3,
-        "reachScore": 66.7,
-        "confidence": "partial"
-      }
-    },
-    {
       "name": "Bizcommunity Daily",
       "country": "Pan-African",
       "lang": "English",
@@ -93560,6 +91804,92 @@
       }
     },
     {
+      "name": "Eyethu",
+      "country": "Pan-African",
+      "lang": "Zulu",
+      "lang2": "is",
+      "total": 55,
+      "radar": {
+        "Politics & Governance": 8.3,
+        "Economy": 8.3,
+        "Culture & Society": 25.0,
+        "Sports": 11.1,
+        "Education": 13.9,
+        "Technology": 5.6,
+        "Conflict & Security": 5.6,
+        "Health": 2.8,
+        "Gender & Rights": 11.1,
+        "Climate": 8.3
+      },
+      "topTopic": "Other",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Samsung",
+          "type": "ORG"
+        },
+        {
+          "text": "Xiaomi",
+          "type": "PERSON"
+        },
+        {
+          "text": "Dis-Chem Foundation",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
+      "name": "The OSINT Newsletter",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 55,
+      "radar": {
+        "Politics & Governance": 6.2,
+        "Economy": 12.5,
+        "Culture & Society": 15.6,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 59.4,
+        "Conflict & Security": 6.2,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Other",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "CTF",
+          "type": "ORG"
+        },
+        {
+          "text": "Jake Creps",
+          "type": "PERSON"
+        },
+        {
+          "text": "DNS",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "African Couch Potato",
       "country": "South Africa",
       "lang": "English",
@@ -93592,49 +91922,6 @@
         },
         {
           "text": "Apple Podcasts",
-          "type": "ORG"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
-      "name": "The OSINT Newsletter",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 54,
-      "radar": {
-        "Politics & Governance": 6.2,
-        "Economy": 12.5,
-        "Culture & Society": 15.6,
-        "Sports": 0.0,
-        "Education": 0.0,
-        "Technology": 59.4,
-        "Conflict & Security": 6.2,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 0.0
-      },
-      "topTopic": "Other",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "CTF",
-          "type": "ORG"
-        },
-        {
-          "text": "Jake Creps",
-          "type": "PERSON"
-        },
-        {
-          "text": "DNS",
           "type": "ORG"
         }
       ],
@@ -94121,49 +92408,6 @@
         "breadthScore": 85.7,
         "reachScore": 80.0,
         "confidence": "high"
-      }
-    },
-    {
-      "name": "Eyethu",
-      "country": "Pan-African",
-      "lang": "Zulu",
-      "lang2": "is",
-      "total": 52,
-      "radar": {
-        "Politics & Governance": 9.1,
-        "Economy": 9.1,
-        "Culture & Society": 24.2,
-        "Sports": 12.1,
-        "Education": 12.1,
-        "Technology": 6.1,
-        "Conflict & Security": 3.0,
-        "Health": 3.0,
-        "Gender & Rights": 12.1,
-        "Climate": 9.1
-      },
-      "topTopic": "Other",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Samsung",
-          "type": "ORG"
-        },
-        {
-          "text": "Xiaomi",
-          "type": "PERSON"
-        },
-        {
-          "text": "Dis-Chem Foundation",
-          "type": "ORG"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
       }
     },
     {
@@ -94891,49 +93135,6 @@
         "breadthScore": 85.7,
         "reachScore": 81.5,
         "confidence": "high"
-      }
-    },
-    {
-      "name": "Le Nouvel Obs",
-      "country": "Pan-African",
-      "lang": "French",
-      "lang2": null,
-      "total": 46,
-      "radar": {
-        "Politics & Governance": 40.9,
-        "Economy": 2.3,
-        "Culture & Society": 29.5,
-        "Sports": 2.3,
-        "Education": 4.5,
-        "Technology": 2.3,
-        "Conflict & Security": 6.8,
-        "Health": 4.5,
-        "Gender & Rights": 6.8,
-        "Climate": 0.0
-      },
-      "topTopic": "Politics & Governance",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "TF1",
-          "type": "ORG"
-        },
-        {
-          "text": "France 3",
-          "type": "ORG"
-        },
-        {
-          "text": "France 4",
-          "type": "ORG"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
       }
     },
     {
@@ -96758,6 +94959,49 @@
       }
     },
     {
+      "name": "GCIS",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 40,
+      "radar": {
+        "Politics & Governance": 97.5,
+        "Economy": 0.0,
+        "Culture & Society": 0.0,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 0.0,
+        "Conflict & Security": 2.5,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Politics & Governance",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Cyril Ramaphosa",
+          "type": "PERSON"
+        },
+        {
+          "text": "Dean Macpherson",
+          "type": "PERSON"
+        },
+        {
+          "text": "Blade Nzimande",
+          "type": "PERSON"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "City Press",
       "country": "Pan-African",
       "lang": "English",
@@ -97513,49 +95757,6 @@
       }
     },
     {
-      "name": "GCIS",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 38,
-      "radar": {
-        "Politics & Governance": 97.4,
-        "Economy": 0.0,
-        "Culture & Society": 0.0,
-        "Sports": 0.0,
-        "Education": 0.0,
-        "Technology": 0.0,
-        "Conflict & Security": 2.6,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 0.0
-      },
-      "topTopic": "Politics & Governance",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Cyril Ramaphosa",
-          "type": "PERSON"
-        },
-        {
-          "text": "Dean Macpherson",
-          "type": "PERSON"
-        },
-        {
-          "text": "Blade Nzimande",
-          "type": "PERSON"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
       "name": "SA Money Daily",
       "country": "Pan-African",
       "lang": "English",
@@ -98019,6 +96220,92 @@
       }
     },
     {
+      "name": "Our Long Walk",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 36,
+      "radar": {
+        "Politics & Governance": 5.7,
+        "Economy": 20.0,
+        "Culture & Society": 42.9,
+        "Sports": 2.9,
+        "Education": 5.7,
+        "Technology": 14.3,
+        "Conflict & Security": 2.9,
+        "Health": 2.9,
+        "Gender & Rights": 2.9,
+        "Climate": 0.0
+      },
+      "topTopic": "Culture & Society",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Johan Fourie",
+          "type": "PERSON"
+        },
+        {
+          "text": "Artificial Intelligence",
+          "type": "ORG"
+        },
+        {
+          "text": "Botmaskop",
+          "type": "PERSON"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
+      "name": "GCIS (Government Communications and Information System)",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 36,
+      "radar": {
+        "Politics & Governance": 100.0,
+        "Economy": 0.0,
+        "Culture & Society": 0.0,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 0.0,
+        "Conflict & Security": 0.0,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Politics & Governance",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Cyril Ramaphosa",
+          "type": "PERSON"
+        },
+        {
+          "text": "Paul Mashatile",
+          "type": "PERSON"
+        },
+        {
+          "text": "Blade Nzimande",
+          "type": "PERSON"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "Al3omk",
       "country": "Morocco",
       "lang": "Arabic",
@@ -98183,92 +96470,6 @@
         "breadthScore": 85.7,
         "reachScore": 34.3,
         "confidence": "high"
-      }
-    },
-    {
-      "name": "Our Long Walk",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 35,
-      "radar": {
-        "Politics & Governance": 5.9,
-        "Economy": 20.6,
-        "Culture & Society": 44.1,
-        "Sports": 2.9,
-        "Education": 5.9,
-        "Technology": 11.8,
-        "Conflict & Security": 2.9,
-        "Health": 2.9,
-        "Gender & Rights": 2.9,
-        "Climate": 0.0
-      },
-      "topTopic": "Culture & Society",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Johan Fourie",
-          "type": "PERSON"
-        },
-        {
-          "text": "Artificial Intelligence",
-          "type": "ORG"
-        },
-        {
-          "text": "Botmaskop",
-          "type": "PERSON"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
-      "name": "GCIS (Government Communications and Information System)",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 35,
-      "radar": {
-        "Politics & Governance": 100.0,
-        "Economy": 0.0,
-        "Culture & Society": 0.0,
-        "Sports": 0.0,
-        "Education": 0.0,
-        "Technology": 0.0,
-        "Conflict & Security": 0.0,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 0.0
-      },
-      "topTopic": "Politics & Governance",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Cyril Ramaphosa",
-          "type": "PERSON"
-        },
-        {
-          "text": "Paul Mashatile",
-          "type": "PERSON"
-        },
-        {
-          "text": "Blade Nzimande",
-          "type": "PERSON"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
       }
     },
     {
@@ -99216,6 +97417,49 @@
       }
     },
     {
+      "name": "Engineering News",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 32,
+      "radar": {
+        "Politics & Governance": 20.7,
+        "Economy": 20.7,
+        "Culture & Society": 0.0,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 6.9,
+        "Conflict & Security": 0.0,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 51.7
+      },
+      "topTopic": "Climate",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Eskom",
+          "type": "ORG"
+        },
+        {
+          "text": "LNG",
+          "type": "ORG"
+        },
+        {
+          "text": "the Risk Mitigation Independent Power Producer Procurement Programme",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "Justeinfos.net",
       "country": "Cote D Ivoire",
       "lang": "French",
@@ -99266,49 +97510,6 @@
         {
           "text": "Alassane Ouattara",
           "type": "PERSON"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
-      "name": "Engineering News",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 31,
-      "radar": {
-        "Politics & Governance": 21.4,
-        "Economy": 21.4,
-        "Culture & Society": 0.0,
-        "Sports": 0.0,
-        "Education": 0.0,
-        "Technology": 7.1,
-        "Conflict & Security": 0.0,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 50.0
-      },
-      "topTopic": "Climate",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Eskom",
-          "type": "ORG"
-        },
-        {
-          "text": "LNG",
-          "type": "ORG"
-        },
-        {
-          "text": "the Risk Mitigation Independent Power Producer Procurement Programme",
-          "type": "ORG"
         }
       ],
       "engagementIndex": {
@@ -101296,6 +99497,36 @@
       }
     },
     {
+      "name": "Allgemeine Zeitung",
+      "country": "Pan-African",
+      "lang": "de",
+      "lang2": null,
+      "total": 27,
+      "radar": {
+        "Politics & Governance": 0.0,
+        "Economy": 0.0,
+        "Culture & Society": 0.0,
+        "Sports": 100.0,
+        "Education": 0.0,
+        "Technology": 0.0,
+        "Conflict & Security": 0.0,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Sports",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "FT Briefing",
       "country": "Pan-African",
       "lang": "English",
@@ -102615,36 +100846,6 @@
       }
     },
     {
-      "name": "Allgemeine Zeitung",
-      "country": "Pan-African",
-      "lang": "de",
-      "lang2": null,
-      "total": 24,
-      "radar": {
-        "Politics & Governance": 0.0,
-        "Economy": 0.0,
-        "Culture & Society": 0.0,
-        "Sports": 100.0,
-        "Education": 0.0,
-        "Technology": 0.0,
-        "Conflict & Security": 0.0,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 0.0
-      },
-      "topTopic": "Sports",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
       "name": "Government Communications",
       "country": "Pan-African",
       "lang": "English",
@@ -103452,6 +101653,36 @@
         "breadthScore": 14.3,
         "reachScore": 31.9,
         "confidence": "partial"
+      }
+    },
+    {
+      "name": "Huisgenoot",
+      "country": "Pan-African",
+      "lang": "Afrikaans",
+      "lang2": null,
+      "total": 22,
+      "radar": {
+        "Politics & Governance": 10.0,
+        "Economy": 5.0,
+        "Culture & Society": 55.0,
+        "Sports": 15.0,
+        "Education": 5.0,
+        "Technology": 0.0,
+        "Conflict & Security": 5.0,
+        "Health": 0.0,
+        "Gender & Rights": 5.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Culture & Society",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
       }
     },
     {
@@ -105915,6 +104146,49 @@
       }
     },
     {
+      "name": "Ryan McBeth Substack",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 19,
+      "radar": {
+        "Politics & Governance": 7.7,
+        "Economy": 0.0,
+        "Culture & Society": 15.4,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 7.7,
+        "Conflict & Security": 69.2,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Conflict & Security",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Hezbollah",
+          "type": "ORG"
+        },
+        {
+          "text": "The Armalite &",
+          "type": "ORG"
+        },
+        {
+          "text": "CIA",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "M&G Media Ltd",
       "country": "Pan-African",
       "lang": "English",
@@ -106541,79 +104815,6 @@
         "breadthScore": 85.7,
         "reachScore": 85.9,
         "confidence": "high"
-      }
-    },
-    {
-      "name": "Huisgenoot",
-      "country": "Pan-African",
-      "lang": "Afrikaans",
-      "lang2": null,
-      "total": 18,
-      "radar": {
-        "Politics & Governance": 12.5,
-        "Economy": 6.2,
-        "Culture & Society": 50.0,
-        "Sports": 18.8,
-        "Education": 6.2,
-        "Technology": 0.0,
-        "Conflict & Security": 0.0,
-        "Health": 0.0,
-        "Gender & Rights": 6.2,
-        "Climate": 0.0
-      },
-      "topTopic": "Culture & Society",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
-      "name": "Ryan McBeth Substack",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 18,
-      "radar": {
-        "Politics & Governance": 8.3,
-        "Economy": 0.0,
-        "Culture & Society": 8.3,
-        "Sports": 0.0,
-        "Education": 0.0,
-        "Technology": 8.3,
-        "Conflict & Security": 75.0,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 0.0
-      },
-      "topTopic": "Conflict & Security",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Hezbollah",
-          "type": "ORG"
-        },
-        {
-          "text": "The Armalite &",
-          "type": "ORG"
-        },
-        {
-          "text": "CIA",
-          "type": "ORG"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
       }
     },
     {
@@ -112785,6 +110986,49 @@
       }
     },
     {
+      "name": "Podchaser",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 15,
+      "radar": {
+        "Politics & Governance": 0.0,
+        "Economy": 100.0,
+        "Culture & Society": 0.0,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 0.0,
+        "Conflict & Security": 0.0,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Other",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Magic",
+          "type": "ORG"
+        },
+        {
+          "text": "Dave - Pick Your Top 8",
+          "type": "ORG"
+        },
+        {
+          "text": "Dave - Start",
+          "type": "PERSON"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "THE FINANCIAL TIMES",
       "country": "Pan-African",
       "lang": "English",
@@ -113635,49 +111879,6 @@
       }
     },
     {
-      "name": "Podchaser",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 14,
-      "radar": {
-        "Politics & Governance": 0.0,
-        "Economy": 100.0,
-        "Culture & Society": 0.0,
-        "Sports": 0.0,
-        "Education": 0.0,
-        "Technology": 0.0,
-        "Conflict & Security": 0.0,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 0.0
-      },
-      "topTopic": "Other",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Magic",
-          "type": "ORG"
-        },
-        {
-          "text": "Dave - Pick Your Top 8",
-          "type": "ORG"
-        },
-        {
-          "text": "Dave - Start",
-          "type": "PERSON"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
       "name": "senegal24",
       "country": "Pan-African",
       "lang": "French",
@@ -113928,6 +112129,66 @@
           "type": "PERSON"
         }
       ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
+      "name": "BBC",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 14,
+      "radar": {
+        "Politics & Governance": 18.2,
+        "Economy": 9.1,
+        "Culture & Society": 18.2,
+        "Sports": 9.1,
+        "Education": 0.0,
+        "Technology": 9.1,
+        "Conflict & Security": 0.0,
+        "Health": 18.2,
+        "Gender & Rights": 0.0,
+        "Climate": 18.2
+      },
+      "topTopic": "Other",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
+      "name": "APO Newsroom",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": "French",
+      "total": 14,
+      "radar": {
+        "Politics & Governance": 28.6,
+        "Economy": 21.4,
+        "Culture & Society": 0.0,
+        "Sports": 0.0,
+        "Education": 7.1,
+        "Technology": 0.0,
+        "Conflict & Security": 0.0,
+        "Health": 35.7,
+        "Gender & Rights": 7.1,
+        "Climate": 0.0
+      },
+      "topTopic": "Health",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [],
       "engagementIndex": {
         "score": null,
         "breadthScore": null,
@@ -115100,6 +113361,92 @@
       }
     },
     {
+      "name": "Mail Guardian",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 13,
+      "radar": {
+        "Politics & Governance": 16.7,
+        "Economy": 16.7,
+        "Culture & Society": 0.0,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 16.7,
+        "Conflict & Security": 33.3,
+        "Health": 0.0,
+        "Gender & Rights": 16.7,
+        "Climate": 0.0
+      },
+      "topTopic": "Other",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "FEROZ KHAN'S SICK NOTE",
+          "type": "PERSON"
+        },
+        {
+          "text": "LAPSE",
+          "type": "ORG"
+        },
+        {
+          "text": "Feroz Khan",
+          "type": "PERSON"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
+      "name": "Ryan McBeth",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 13,
+      "radar": {
+        "Politics & Governance": 18.2,
+        "Economy": 18.2,
+        "Culture & Society": 9.1,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 18.2,
+        "Conflict & Security": 36.4,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Conflict & Security",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "the Civilian Protection Center of Excellence",
+          "type": "ORG"
+        },
+        {
+          "text": "Pete Hegseth",
+          "type": "PERSON"
+        },
+        {
+          "text": "COIN",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "Government Communication and Information Service",
       "country": "Pan-African",
       "lang": "English",
@@ -116230,49 +114577,6 @@
       }
     },
     {
-      "name": "Mail Guardian",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 12,
-      "radar": {
-        "Politics & Governance": 16.7,
-        "Economy": 16.7,
-        "Culture & Society": 0.0,
-        "Sports": 0.0,
-        "Education": 0.0,
-        "Technology": 16.7,
-        "Conflict & Security": 33.3,
-        "Health": 0.0,
-        "Gender & Rights": 16.7,
-        "Climate": 0.0
-      },
-      "topTopic": "Other",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "FEROZ KHAN'S SICK NOTE",
-          "type": "PERSON"
-        },
-        {
-          "text": "LAPSE",
-          "type": "ORG"
-        },
-        {
-          "text": "Feroz Khan",
-          "type": "PERSON"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
       "name": "Daily Investor Newsletter",
       "country": "Pan-African",
       "lang": "English",
@@ -117180,6 +115484,79 @@
         "breadthScore": 57.1,
         "reachScore": 88.2,
         "confidence": "high"
+      }
+    },
+    {
+      "name": "Rapport",
+      "country": "Pan-African",
+      "lang": "Afrikaans",
+      "lang2": null,
+      "total": 11,
+      "radar": {
+        "Politics & Governance": 9.1,
+        "Economy": 0.0,
+        "Culture & Society": 36.4,
+        "Sports": 54.5,
+        "Education": 0.0,
+        "Technology": 0.0,
+        "Conflict & Security": 0.0,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Sports",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
+      "name": "Namibia Media Holdings",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 11,
+      "radar": {
+        "Politics & Governance": 0.0,
+        "Economy": 100.0,
+        "Culture & Society": 0.0,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 0.0,
+        "Conflict & Security": 0.0,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Economy",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Namibian Sun Newsletter",
+          "type": "ORG"
+        },
+        {
+          "text": "Business, Sport",
+          "type": "ORG"
+        },
+        {
+          "text": "Retail Specials",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
       }
     },
     {
@@ -124595,36 +122972,6 @@
       }
     },
     {
-      "name": "Rapport",
-      "country": "Pan-African",
-      "lang": "Afrikaans",
-      "lang2": null,
-      "total": 10,
-      "radar": {
-        "Politics & Governance": 10.0,
-        "Economy": 0.0,
-        "Culture & Society": 30.0,
-        "Sports": 60.0,
-        "Education": 0.0,
-        "Technology": 0.0,
-        "Conflict & Security": 0.0,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 0.0
-      },
-      "topTopic": "Sports",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
       "name": "Google",
       "country": "Pan-African",
       "lang": "English",
@@ -124657,49 +123004,6 @@
         },
         {
           "text": "the European Economic Area",
-          "type": "ORG"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
-      "name": "Ryan McBeth",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 10,
-      "radar": {
-        "Politics & Governance": 25.0,
-        "Economy": 12.5,
-        "Culture & Society": 12.5,
-        "Sports": 0.0,
-        "Education": 0.0,
-        "Technology": 12.5,
-        "Conflict & Security": 37.5,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 0.0
-      },
-      "topTopic": "Conflict & Security",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "the Civilian Protection Center of Excellence",
-          "type": "ORG"
-        },
-        {
-          "text": "Pete Hegseth",
-          "type": "PERSON"
-        },
-        {
-          "text": "COIN",
           "type": "ORG"
         }
       ],
@@ -126079,49 +124383,6 @@
       }
     },
     {
-      "name": "Namibia Media Holdings",
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": null,
-      "total": 8,
-      "radar": {
-        "Politics & Governance": 0.0,
-        "Economy": 100.0,
-        "Culture & Society": 0.0,
-        "Sports": 0.0,
-        "Education": 0.0,
-        "Technology": 0.0,
-        "Conflict & Security": 0.0,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 0.0
-      },
-      "topTopic": "Economy",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [
-        {
-          "text": "Namibian Sun Newsletter",
-          "type": "ORG"
-        },
-        {
-          "text": "Business, Sport",
-          "type": "ORG"
-        },
-        {
-          "text": "Retail Specials",
-          "type": "ORG"
-        }
-      ],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
       "name": "Investec Limited",
       "country": "Pan-African",
       "lang": "English",
@@ -127334,6 +125595,36 @@
       }
     },
     {
+      "name": null,
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": "Afrikaans",
+      "total": 6,
+      "radar": {
+        "Politics & Governance": 25.0,
+        "Economy": 25.0,
+        "Culture & Society": 0.0,
+        "Sports": 25.0,
+        "Education": 0.0,
+        "Technology": 0.0,
+        "Conflict & Security": 0.0,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 25.0
+      },
+      "topTopic": "Other",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "Walf Quotidien",
       "country": "Pan-African",
       "lang": "French",
@@ -127795,6 +126086,36 @@
           "type": "PERSON"
         }
       ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
+      "name": "APO Group",
+      "country": "Pan-African",
+      "lang": "English",
+      "lang2": null,
+      "total": 6,
+      "radar": {
+        "Politics & Governance": 66.7,
+        "Economy": 16.7,
+        "Culture & Society": 16.7,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 0.0,
+        "Conflict & Security": 0.0,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Politics & Governance",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [],
       "engagementIndex": {
         "score": null,
         "breadthScore": null,
@@ -128351,36 +126672,6 @@
       }
     },
     {
-      "name": null,
-      "country": "Pan-African",
-      "lang": "English",
-      "lang2": "Afrikaans",
-      "total": 5,
-      "radar": {
-        "Politics & Governance": 33.3,
-        "Economy": 0.0,
-        "Culture & Society": 0.0,
-        "Sports": 33.3,
-        "Education": 0.0,
-        "Technology": 0.0,
-        "Conflict & Security": 0.0,
-        "Health": 0.0,
-        "Gender & Rights": 0.0,
-        "Climate": 33.3
-      },
-      "topTopic": "Other",
-      "entityType": "Push Media",
-      "url": null,
-      "enrichment": null,
-      "topEntities": [],
-      "engagementIndex": {
-        "score": null,
-        "breadthScore": null,
-        "reachScore": null,
-        "confidence": "not_available"
-      }
-    },
-    {
       "name": "GCIS (Government Communication and Information System)",
       "country": "Pan-African",
       "lang": "English",
@@ -128846,6 +127137,36 @@
           "type": "ORG"
         }
       ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
+      "name": "laguepequipique",
+      "country": "Pan-African",
+      "lang": "French",
+      "lang2": "English",
+      "total": 5,
+      "radar": {
+        "Politics & Governance": 0.0,
+        "Economy": 0.0,
+        "Culture & Society": 0.0,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 0.0,
+        "Conflict & Security": 100.0,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Other",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [],
       "engagementIndex": {
         "score": null,
         "breadthScore": null,
@@ -129511,6 +127832,49 @@
       }
     },
     {
+      "name": "Yoor-Yoor Bi",
+      "country": "Pan-African",
+      "lang": "French",
+      "lang2": null,
+      "total": 4,
+      "radar": {
+        "Politics & Governance": 100.0,
+        "Economy": 0.0,
+        "Culture & Society": 0.0,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 0.0,
+        "Conflict & Security": 0.0,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Politics & Governance",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Telegram Post",
+          "type": "PERSON"
+        },
+        {
+          "text": "Amadou Ba",
+          "type": "PERSON"
+        },
+        {
+          "text": "The National Assembly is launching",
+          "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
       "name": "Creamer Media / Polity",
       "country": "Pan-African",
       "lang": "English",
@@ -129544,6 +127908,49 @@
         {
           "text": "the South African National Defence Force",
           "type": "ORG"
+        }
+      ],
+      "engagementIndex": {
+        "score": null,
+        "breadthScore": null,
+        "reachScore": null,
+        "confidence": "not_available"
+      }
+    },
+    {
+      "name": "Point Actu",
+      "country": "Pan-African",
+      "lang": "French",
+      "lang2": null,
+      "total": 4,
+      "radar": {
+        "Politics & Governance": 100.0,
+        "Economy": 0.0,
+        "Culture & Society": 0.0,
+        "Sports": 0.0,
+        "Education": 0.0,
+        "Technology": 0.0,
+        "Conflict & Security": 0.0,
+        "Health": 0.0,
+        "Gender & Rights": 0.0,
+        "Climate": 0.0
+      },
+      "topTopic": "Politics & Governance",
+      "entityType": "Push Media",
+      "url": null,
+      "enrichment": null,
+      "topEntities": [
+        {
+          "text": "Telegram Post",
+          "type": "PERSON"
+        },
+        {
+          "text": "Barthélémy Dias",
+          "type": "PERSON"
+        },
+        {
+          "text": "Abdoulaye Diouf Sarr",
+          "type": "PERSON"
         }
       ],
       "engagementIndex": {
@@ -130242,38 +128649,38 @@
       }
     },
     {
-      "name": "Yoor-Yoor Bi",
+      "name": "Global Warning",
       "country": "Pan-African",
-      "lang": "French",
+      "lang": "English",
       "lang2": null,
       "total": 3,
       "radar": {
-        "Politics & Governance": 100.0,
+        "Politics & Governance": 0.0,
         "Economy": 0.0,
         "Culture & Society": 0.0,
         "Sports": 0.0,
         "Education": 0.0,
-        "Technology": 0.0,
-        "Conflict & Security": 0.0,
+        "Technology": 33.3,
+        "Conflict & Security": 33.3,
         "Health": 0.0,
         "Gender & Rights": 0.0,
-        "Climate": 0.0
+        "Climate": 33.3
       },
-      "topTopic": "Politics & Governance",
+      "topTopic": "Climate",
       "entityType": "Push Media",
       "url": null,
       "enrichment": null,
       "topEntities": [
         {
-          "text": "Telegram Post",
-          "type": "PERSON"
+          "text": "Fighters, Firewalls & Fiascos",
+          "type": "ORG"
         },
         {
-          "text": "Amadou Ba",
-          "type": "PERSON"
+          "text": "Pentagon",
+          "type": "ORG"
         },
         {
-          "text": "The National Assembly is launching",
+          "text": "The Marine Corps",
           "type": "ORG"
         }
       ],
@@ -131104,202 +129511,202 @@
   ],
   "feed": [
     {
-      "title": "Effie SA grand jury | Publicis takes PepsiCo",
-      "topic": "Economy",
+      "title": "Tchad : Kélo entre projets structurants et célébration religieuse pour le développement et la cohésion",
+      "topic": "Gender & Rights",
+      "publisher": "Alwihda Info",
+      "country": "Pan-African",
+      "lang": "French",
+      "date": "2026-09-08",
+      "entityType": "Push Media",
+      "url": null
+    },
+    {
+      "title": "AI incubator backs African edtech founders | Egypt opens market to SA red meat",
+      "topic": "Technology",
       "publisher": "Bizcommunity",
       "country": "Pan-African",
       "lang": "English",
-      "date": "2026-09-03",
+      "date": "2026-09-08",
       "entityType": "Push Media",
       "url": null
     },
     {
-      "title": "Breaking News: Nvidia Agrees to $13 Billion Deal for AI Platform Hugging Face",
-      "topic": "Technology",
-      "publisher": "Bloomberg",
-      "country": "Pan-African",
-      "lang": "English",
-      "date": "2026-09-03",
-      "entityType": "Push Media",
-      "url": null
-    },
-    {
-      "title": "A new toolkit for SA postgrads",
-      "topic": "Conflict & Security",
-      "publisher": "Daily Maverick",
-      "country": "Pan-African",
-      "lang": "English",
-      "date": "2026-09-03",
-      "entityType": "Push Media",
-      "url": null
-    },
-    {
-      "title": "Nvidia to buy Hugging Face for $13bn",
-      "topic": "Technology",
-      "publisher": "Financial Times",
-      "country": "Pan-African",
-      "lang": "English",
-      "date": "2026-09-03",
-      "entityType": "Push Media",
-      "url": null
-    },
-    {
-      "title": "UMosimane uhlalelwe wumqansa kwiBafana",
+      "title": "The OSINT Newsletter - Issue #121",
       "topic": "Other",
-      "publisher": "Isolezwe",
+      "publisher": "The OSINT Newsletter",
       "country": "Pan-African",
-      "lang": "Zulu",
-      "date": "2026-09-03",
+      "lang": "English",
+      "date": "2026-09-08",
       "entityType": "Push Media",
       "url": null
     },
     {
-      "title": "ICity ikhiphe eshisiwe ikhanda isikwati esisha",
-      "topic": "Sports",
-      "publisher": "Isolezwe",
-      "country": "Pan-African",
-      "lang": "Zulu",
-      "date": "2026-09-03",
-      "entityType": "Push Media",
-      "url": null
-    },
-    {
-      "title": "Uxoshiwe esiphoyiseni uFeroz Khan",
-      "topic": "Conflict & Security",
-      "publisher": "Isolezwe",
-      "country": "Pan-African",
-      "lang": "Zulu",
-      "date": "2026-09-03",
-      "entityType": "Push Media",
-      "url": null
-    },
-    {
-      "title": "IDowns ethubeni lezinye izishaqane kweyeCaf neFifa",
-      "topic": "Economy",
-      "publisher": "Isolezwe",
-      "country": "Pan-African",
-      "lang": "Zulu",
-      "date": "2026-09-03",
-      "entityType": "Push Media",
-      "url": null
-    },
-    {
-      "title": "Indida ngowaduka eya enkambini yamasosha okuvikela",
-      "topic": "Conflict & Security",
-      "publisher": "Isolezwe",
-      "country": "Pan-African",
-      "lang": "Zulu",
-      "date": "2026-09-03",
-      "entityType": "Push Media",
-      "url": null
-    },
-    {
-      "title": "Ama-All Blacks alindele noma yini kumaBokke eSoweto",
-      "topic": "Sports",
-      "publisher": "Isolezwe",
-      "country": "Pan-African",
-      "lang": "Zulu",
-      "date": "2026-09-03",
-      "entityType": "Push Media",
-      "url": null
-    },
-    {
-      "title": "IDowns iqede inkululeko yeBucs kwiPremiership",
-      "topic": "Other",
-      "publisher": "Isolezwe",
-      "country": "Pan-African",
-      "lang": "Zulu",
-      "date": "2026-09-03",
-      "entityType": "Push Media",
-      "url": null
-    },
-    {
-      "title": "UZandie uyazingca ngokuvula amathuba kumakhosikazi kumculo kaMaskandi",
-      "topic": "Gender & Rights",
-      "publisher": "Isolezwe lesiXhosa",
-      "country": "Pan-African",
-      "lang": "Xhosa",
-      "date": "2026-09-03",
-      "entityType": "Push Media",
-      "url": null
-    },
-    {
-      "title": "Electra Mining Africa Newsletter",
+      "title": "Mining Weekly International Daily News Roundup",
       "topic": "Politics & Governance",
       "publisher": "Mining Weekly",
       "country": "Pan-African",
       "lang": "English",
-      "date": "2026-09-03",
+      "date": "2026-09-08",
       "entityType": "Push Media",
       "url": null
     },
     {
-      "title": "Hier is JOU Netwerk24",
+      "title": "Next Africa: A risky pivot",
       "topic": "Conflict & Security",
-      "publisher": "Netwerk24",
+      "publisher": "Bloomberg",
+      "country": "Pan-African",
+      "lang": "English",
+      "date": "2026-09-08",
+      "entityType": "Push Media",
+      "url": null
+    },
+    {
+      "title": "DHL, Absa boost African trade | Fuel hike pressures road freight",
+      "topic": "Other",
+      "publisher": "Bizcommunity",
+      "country": "Pan-African",
+      "lang": "English",
+      "date": "2026-09-08",
+      "entityType": "Push Media",
+      "url": null
+    },
+    {
+      "title": "HG Vandag. Die tenk se baba van Bo + Skok en ongeloof ná bekende musiekagent se dood: ‘Dit voel steeds só onwerklik’",
+      "topic": "Conflict & Security",
+      "publisher": "Huisgenoot",
       "country": "Pan-African",
       "lang": "Afrikaans",
-      "date": "2026-09-03",
+      "date": "2026-09-08",
       "entityType": "Push Media",
       "url": null
     },
     {
-      "title": "Useqalile emsebenzini uPitso Mosimane",
-      "topic": "Sports",
-      "publisher": "Ilanga",
+      "title": "Potentially \"strongest in living memory\" El Nino to bring the heat",
+      "topic": "Other",
+      "publisher": "Bizcommunity",
       "country": "Pan-African",
-      "lang": "Zulu",
-      "date": "2026-09-03",
+      "lang": "English",
+      "date": "2026-09-08",
       "entityType": "Push Media",
       "url": null
     },
     {
-      "title": "Journal numérique - Ukraine-Russie, la vie quotidienne ciblée",
-      "topic": "Technology",
-      "publisher": "Le Monde",
+      "title": "Exxaro opens R36m agri facility | El Nino puts farmers on alert",
+      "topic": "Other",
+      "publisher": "Bizcommunity",
+      "country": "Pan-African",
+      "lang": "English",
+      "date": "2026-09-08",
+      "entityType": "Push Media",
+      "url": null
+    },
+    {
+      "title": "Inside the V&A Waterfront's Bower: Where retirement living meets the future |",
+      "topic": "Other",
+      "publisher": "Bizcommunity",
+      "country": "Pan-African",
+      "lang": "English",
+      "date": "2026-09-08",
+      "entityType": "Push Media",
+      "url": null
+    },
+    {
+      "title": "Tchad : le MAEP relance l’évaluation de la gouvernance pour un rapport final attendu fin 2026",
+      "topic": "Politics & Governance",
+      "publisher": "Alwihda Info",
       "country": "Pan-African",
       "lang": "French",
-      "date": "2026-09-03",
+      "date": "2026-09-08",
       "entityType": "Push Media",
       "url": null
     },
     {
-      "title": "‘Waar’s die wit ouens in die koshuis?’",
+      "title": "John van de Ruit’s Spud returns",
       "topic": "Sports",
-      "publisher": "Rapport",
-      "country": "Pan-African",
-      "lang": "Afrikaans",
-      "date": "2026-09-03",
-      "entityType": "Push Media",
-      "url": null
-    },
-    {
-      "title": "Et sinon vous, vous parlez le « poink » ?",
-      "topic": "Health",
-      "publisher": "Le Nouvel Obs",
-      "country": "Pan-African",
-      "lang": "French",
-      "date": "2026-09-03",
-      "entityType": "Push Media",
-      "url": null
-    },
-    {
-      "title": "Why we battle to sleep",
-      "topic": "Economy",
       "publisher": "Daily Maverick",
       "country": "Pan-African",
       "lang": "English",
-      "date": "2026-09-03",
+      "date": "2026-09-08",
       "entityType": "Push Media",
       "url": null
     },
     {
-      "title": "Le dossier de la semaine | Bolloré, main basse sur la présidentielle",
-      "topic": "Politics & Governance",
-      "publisher": "Le Nouvel Obs",
+      "title": "Why you never really get over school",
+      "topic": "Culture & Society",
+      "publisher": "BBC",
+      "country": "Pan-African",
+      "lang": "English",
+      "date": "2026-09-08",
+      "entityType": "Push Media",
+      "url": null
+    },
+    {
+      "title": "Telegram Post - @senegal24",
+      "topic": "Sports",
+      "publisher": "Senegal24",
       "country": "Pan-African",
       "lang": "French",
-      "date": "2026-09-03",
+      "date": "2026-09-08",
+      "entityType": "Push Media",
+      "url": null
+    },
+    {
+      "title": "Abadingeki emkhulekweni wasempophomeni abazozitika ngocansi",
+      "topic": "Culture & Society",
+      "publisher": "Isolezwe",
+      "country": "Pan-African",
+      "lang": "Zulu",
+      "date": "2026-09-08",
+      "entityType": "Push Media",
+      "url": null
+    },
+    {
+      "title": "UMere uthipha iDowns ngokuqeda ukucanasa weBucs kwiMTN8",
+      "topic": "Sports",
+      "publisher": "Isolezwe",
+      "country": "Pan-African",
+      "lang": "Zulu",
+      "date": "2026-09-08",
+      "entityType": "Push Media",
+      "url": null
+    },
+    {
+      "title": "Umsakazi usale dengwane ebanjwa inkunzi",
+      "topic": "Conflict & Security",
+      "publisher": "Isolezwe",
+      "country": "Pan-African",
+      "lang": "Zulu",
+      "date": "2026-09-08",
+      "entityType": "Push Media",
+      "url": null
+    },
+    {
+      "title": "Umculi uphumela obala ngobuhlungu bokungathandwa uyise",
+      "topic": "Culture & Society",
+      "publisher": "Isolezwe",
+      "country": "Pan-African",
+      "lang": "Zulu",
+      "date": "2026-09-08",
+      "entityType": "Push Media",
+      "url": null
+    },
+    {
+      "title": "UKabelo ugqugquzela abanye egubha iminyaka ewu-24 ayeka izidakamizwa",
+      "topic": "Culture & Society",
+      "publisher": "Isolezwe",
+      "country": "Pan-African",
+      "lang": "Zulu",
+      "date": "2026-09-08",
+      "entityType": "Push Media",
+      "url": null
+    },
+    {
+      "title": "Ibophele osaziwayo iNtenga Foundation Race ezonikelela abahlwempu ngenzuzo",
+      "topic": "Sports",
+      "publisher": "Isolezwe",
+      "country": "Pan-African",
+      "lang": "Zulu",
+      "date": "2026-09-08",
       "entityType": "Push Media",
       "url": null
     },

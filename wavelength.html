@@ -60,10 +60,13 @@
   .cs-wordmark{font-family:'Lato',sans-serif;font-weight:900;font-size:17px;color:#fff;letter-spacing:0.01em;}
   .cs-pipe{color:var(--red);font-weight:700;font-size:16px;margin:0 2px;}
   .cs-orgname{font-family:'Lato',sans-serif;font-weight:700;font-size:13px;color:#B9C2DA;letter-spacing:0.02em;}
-  .cs-navlinks{display:flex;gap:22px;flex-wrap:wrap;}
+  .cs-navlinks{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
   .cs-nav-inner{line-height:1;}
   .cs-navlinks a{color:#B9C2DA;font-family:'Lato',sans-serif;font-weight:700;font-size:13.5px;text-decoration:none;letter-spacing:0.01em;}
   .cs-navlinks a:hover,.cs-navlinks a.active{color:#fff;}
+  .cs-navdrop-divider{height:1px;background:rgba(255,255,255,0.12);margin:6px 12px;}
+  .cs-login-btn{display:inline-flex;align-items:center;justify-content:center;line-height:1;border:1px solid rgba(255,255,255,0.35);border-radius:999px;padding:7px 16px;color:#fff !important;font-weight:700;font-size:13px;transition:background .15s ease,border-color .15s ease;}
+  .cs-login-btn:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.6);}
   .cs-footbar{background:var(--navy-deep);}
   .cs-footbar-inner{max-width:1120px;margin:0 auto;padding:16px clamp(20px,5vw,56px);font-family:'Lato',sans-serif;font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .cs-footbar-inner a{color:#8791AC;}
@@ -444,7 +447,7 @@
 <header class="cs-nav">
   <div class="cs-nav-inner">
     <a href="index.html" class="cs-brand">
-      <span class="cs-wordmark">CivicSignal</span><span class="cs-pipe">|</span><span class="cs-orgname">Code for Africa</span>
+      <span class="cs-wordmark">CivicSignal</span>
     </a>
     <nav class="cs-navlinks">
       <div class="cs-navdrop">
@@ -453,6 +456,7 @@
           <a href="mediadata.html">MediaData</a>
           <a href="mediacloud.html">MediaCloud</a>
           <a href="mediascapes.html">MediaScapes</a>
+          <div class="cs-navdrop-divider"></div>
           <a href="wavelength.html">Wavelength</a>
           <a href="fingerprints.html">Fingerprints</a>
           <a href="push-media.html">Push Media</a>
@@ -467,6 +471,7 @@
       </div>
       <a href="lab-narrative-threads.html">Lab</a>
       <a href="index.html#partnerships">About</a>
+      <a href="#" class="cs-login-btn">Log in</a>
     </nav>
   </div>
 </header>
@@ -686,7 +691,7 @@ document.addEventListener('click', function(){
       </div>
       <div>
         <h3>How topics are assigned</h3>
-        <p>Each article is scored against bilingual (English/French) keyword sets across eight topics; the highest-scoring topic wins. Articles matching nothing are left as "Other" and excluded from the charts above.</p>
+        <p>Each article is scored against bilingual (English/French) keyword sets across ten topics; the highest-scoring topic wins. Articles matching nothing are left as "Other" and excluded from the charts above.</p>
       </div>
       <div>
         <h3>Known limits</h3>

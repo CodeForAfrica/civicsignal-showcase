@@ -37,32 +37,34 @@
   @media(max-width:720px){.cs-nav-inner{padding:12px 18px;}}
   .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
   .cs-wordmark{font-family:var(--font-display);font-weight:900;font-size:17px;color:#fff;letter-spacing:0.01em;}
-  .cs-pipe{color:var(--red);font-weight:700;font-size:16px;margin:0 2px;}
-  .cs-orgname{font-family:'Lato',sans-serif;font-weight:700;font-size:13px;color:#B9C2DA;letter-spacing:0.02em;}
-  .cs-navlinks{display:flex;gap:22px;flex-wrap:wrap;}
+  .cs-navlinks{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
   .cs-nav-inner{line-height:1;}
   .cs-navlinks a{color:#B9C2DA;font-family:var(--font-body);font-weight:700;font-size:13.5px;text-decoration:none;letter-spacing:0.01em;}
   .cs-navlinks a:hover,.cs-navlinks a.active{color:#fff;}
+  .cs-login-btn{display:inline-flex;align-items:center;justify-content:center;line-height:1;border:1px solid rgba(255,255,255,0.35);border-radius:999px;padding:7px 16px;color:#fff !important;font-weight:700;font-size:13px;transition:background .15s ease,border-color .15s ease;}
+  .cs-login-btn:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.6);}
   .cs-footbar{background:var(--navy-deep);}
   .cs-footbar-inner{max-width:1120px;margin:0 auto;padding:16px clamp(20px,5vw,56px);font-family:var(--font-body);font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .cs-footbar-inner a{color:#8791AC;}
 
   header.masthead{background:var(--bg-alt);border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
   .masthead-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;color:var(--ink-faint);text-transform:uppercase;line-height:1.2;}
-  h1.headline{font-size:clamp(2rem,5vw,3.3rem);line-height:1.1;max-width:18ch;letter-spacing:-0.015em;}
+  h1.headline{font-size:clamp(2rem,5vw,3.3rem);line-height:1.1;max-width:20ch;letter-spacing:-0.015em;}
   h1.headline em{font-style:normal;color:var(--blue);}
-  .dek{margin-top:20px;max-width:62ch;font-size:1.1rem;color:var(--ink-dim);}
+  .dek{margin-top:20px;max-width:64ch;font-size:1.1rem;color:var(--ink-dim);}
+  .masthead-cred{margin-top:22px;font-size:13px;color:var(--ink-faint);}
+  .masthead-cred b{color:var(--ink-dim);}
 
   section.ticker{padding:34px 0 38px;border-bottom:1px solid var(--line);}
-  .ticker-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+  .ticker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
   .stat{padding:8px 20px;border-left:1px solid var(--line);}
   .stat:first-child{padding-left:0;border-left:none;}
-  .stat .num{display:block;font-size:clamp(1.4rem,2.4vw,2rem);font-weight:900;color:var(--blue);letter-spacing:-0.01em;}
-  .stat .label{display:block;margin-top:6px;font-size:12px;color:var(--ink-dim);line-height:1.35;}
-  @media(max-width:800px){.ticker-grid{grid-template-columns:1fr;row-gap:24px;}.stat{border-left:none;padding-left:0;}}
+  .stat .num{display:block;font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:900;color:var(--blue);letter-spacing:-0.01em;}
+  .stat .label{display:block;margin-top:6px;font-size:11.5px;color:var(--ink-dim);line-height:1.35;}
+  @media(max-width:800px){.ticker-grid{grid-template-columns:1fr 1fr;row-gap:24px;}.stat{border-left:none;padding-left:0;}}
 
   section.block{padding:clamp(48px,8vw,84px) 0;border-bottom:1px solid var(--line);}
-  section.block h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:16px;max-width:26ch;}
+  section.block h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:16px;max-width:30ch;}
   section.block .lede{font-size:1.03rem;color:var(--ink-dim);max-width:68ch;margin-bottom:28px;}
   section.block .lede strong{color:var(--ink);font-weight:700;}
 
@@ -76,12 +78,34 @@
   .note{background:var(--bg-alt);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:18px 22px;font-size:13.5px;color:var(--ink-dim);max-width:72ch;}
   .note b{color:var(--ink);}
 
+  /* Feature showcase: alternating text + real product screenshot */
+  .tool-showcase-hero{border-radius:10px;overflow:hidden;border:1px solid var(--line);margin-bottom:36px;}
+  .tool-showcase-hero img{display:block;width:100%;}
+  .feature-row{display:grid;grid-template-columns:1fr 1.15fr;gap:36px;align-items:center;padding:32px 0;border-top:1px solid var(--line);}
+  .feature-row:first-of-type{border-top:none;padding-top:0;}
+  @media(max-width:840px){.feature-row{grid-template-columns:1fr;gap:18px;}}
+  .feature-row.reverse .feature-copy{order:2;}
+  .feature-row.reverse .feature-shot{order:1;}
+  @media(max-width:840px){.feature-row.reverse .feature-copy,.feature-row.reverse .feature-shot{order:initial;}}
+  .feature-copy h3{font-size:1.15rem;margin-bottom:10px;}
+  .feature-copy p{font-size:13.5px;color:var(--ink-dim);line-height:1.65;margin:0;}
+  .feature-shot{background:var(--bg-alt);border:1px solid var(--line);border-radius:8px;padding:14px;}
+  .feature-shot img{display:block;width:100%;border-radius:4px;}
+  .feature-shot .cap{display:block;margin-top:10px;font-family:var(--font-mono);font-size:10.5px;color:var(--ink-faint);}
+
+  .toolstat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0 0;}
+  @media(max-width:760px){.toolstat-row{grid-template-columns:1fr 1fr;}}
+  .toolstat-card{background:var(--bg-raised);border:1px solid var(--line);border-radius:8px;padding:14px 16px;text-align:center;}
+  .toolstat-card .num{display:block;font-family:var(--font-mono);font-size:1.3rem;font-weight:900;color:var(--navy-deep);}
+  .toolstat-card .label{display:block;margin-top:4px;font-size:11px;color:var(--ink-faint);}
+
+  .toolname-badge{display:inline-block;font-family:var(--font-mono);font-size:10.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--blue);background:var(--blue-wash);border-radius:999px;padding:4px 12px;margin-bottom:14px;}
+
   footer.close{background:var(--navy);color:#EFE9E2;padding:clamp(48px,8vw,80px) 0 0;margin-top:0;}
   footer.close h2{color:#fff;font-size:clamp(1.3rem,2.6vw,1.7rem);max-width:26ch;}
   footer.close .lede{margin-top:14px;max-width:60ch;color:#C7CEE0;font-size:1rem;}
   footer.close a{color:#F0A0A2;}
   .footlinks{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px;font-size:13.5px;padding-bottom:40px;}
-  .tool-teaser-soon{display:inline-block;margin-left:8px;font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:0.05em;text-transform:none;color:var(--red);border:1px solid var(--red);border-radius:20px;padding:1px 8px;vertical-align:middle;}
   .footer-grid{display:grid;grid-template-columns:1fr minmax(220px,280px);gap:40px;padding-bottom:8px;}
   @media(max-width:760px){.footer-grid{grid-template-columns:1fr;}}
   .footer-brand-logos{display:flex;align-items:center;gap:20px;margin-bottom:18px;background:#fff;border-radius:12px;padding:16px 20px;}
@@ -103,6 +127,7 @@
   .cs-navdrop-menu a{display:block;padding:8px 16px;color:#B9C2DA;font-family:inherit;font-weight:700;font-size:13px;text-decoration:none;letter-spacing:0.01em;white-space:nowrap;}
   .cs-navdrop-menu a:hover{color:#fff;background:rgba(255,255,255,0.06);}
   .cs-navdrop-menu a.active{color:#fff;}
+  .cs-navdrop-divider{height:1px;background:rgba(255,255,255,0.12);margin:6px 12px;}
 </style>
 </head>
 <body>
@@ -110,7 +135,7 @@
 <header class="cs-nav">
   <div class="cs-nav-inner">
     <a href="index.html" class="cs-brand">
-      <span class="cs-wordmark">CivicSignal</span><span class="cs-pipe">|</span><span class="cs-orgname">Code for Africa</span>
+      <span class="cs-wordmark">CivicSignal</span>
     </a>
     <nav class="cs-navlinks">
       <div class="cs-navdrop">
@@ -119,6 +144,7 @@
           <a href="mediadata.html">MediaData</a>
           <a href="mediacloud.html" class="active">MediaCloud</a>
           <a href="mediascapes.html">MediaScapes</a>
+          <div class="cs-navdrop-divider"></div>
           <a href="wavelength.html">Wavelength</a>
           <a href="fingerprints.html">Fingerprints</a>
           <a href="push-media.html">Push Media</a>
@@ -133,6 +159,7 @@
       </div>
       <a href="lab-narrative-threads.html">Lab</a>
       <a href="index.html#partnerships">About</a>
+      <a href="#" class="cs-login-btn">Log in</a>
     </nav>
   </div>
 </header>
@@ -157,19 +184,21 @@ document.addEventListener('click', function(){
   <div class="wrap">
     <div class="masthead-top">
       <span>CivicSignal &middot; MediaCloud</span>
-      <span>Ingestion &middot; Continental Scale</span>
+      <span>Ingestion &middot; Analysis &middot; Continental Scale</span>
     </div>
-    <h1 class="headline">The infrastructure behind every <em>article</em>.</h1>
-    <p class="dek">MediaCloud is the ingestion infrastructure that pulls articles into CivicSignal's dataset continuously, at continental scale &mdash; the pipeline underneath the numbers, not a product you browse directly.</p>
+    <h1 class="headline">The infrastructure behind every <em>article</em> CivicSignal sees.</h1>
+    <p class="dek">MediaCloud is the ingestion and analysis layer underneath CivicSignal &mdash; the discovery pipeline that pulls articles from thousands of African digital sources, and the research tools (Explorer and Topic Mapper) that turn that archive into evidence: attention over time, competing narratives, and networks of influence.</p>
+    <p class="masthead-cred">Built on <b>Media Cloud</b>, the open-source platform originally developed at Harvard's Berkman Klein Center and incubated at the MIT Media Lab &mdash; the same academic infrastructure used by newsroom and academic researchers worldwide, run here as CivicSignal's own instance for Africa.</p>
   </div>
 </header>
 
 <section class="ticker">
   <div class="wrap">
     <div class="ticker-grid">
-      <div class="stat"><span class="num">4,000+</span><span class="label">digital sources monitored live</span></div>
-      <div class="stat"><span class="num">53.7M+</span><span class="label">articles archived to date</span></div>
-      <div class="stat"><span class="num">~20,000</span><span class="label">articles added daily, across 54 countries</span></div>
+      <div class="stat"><span class="num">56.9M+</span><span class="label">stories in CivicSignal's MediaCloud archive</span></div>
+      <div class="stat"><span class="num">56</span><span class="label">source collections curated for African media</span></div>
+      <div class="stat"><span class="num">2,000+</span><span class="label">media sources crawled daily</span></div>
+      <div class="stat"><span class="num">14,400+</span><span class="label">new stories added daily</span></div>
     </div>
   </div>
 </section>
@@ -177,27 +206,131 @@ document.addEventListener('click', function(){
 <section class="block">
   <div class="wrap">
     <span class="kicker">What it is</span>
-    <h2>Collection, not curation.</h2>
-    <p class="lede">MediaCloud runs the discovery-and-extraction cascade &mdash; RSS, sitemap, homepage fallback &mdash; that pulls articles from thousands of sources into a continuously growing archive. Everything downstream on CivicSignal, from Wavelength to Fingerprints, is built on top of what MediaCloud collects.</p>
+    <h2>Two research tools, one continuously growing archive.</h2>
+    <p class="lede">MediaCloud runs the discovery-and-extraction cascade &mdash; RSS, sitemap, homepage fallback &mdash; that pulls articles from thousands of sources into a shared archive. On top of that archive sit two research tools built for exactly this kind of investigation: <b>Explorer</b>, for a fast first read on how an issue is covered, and <b>Topic Mapper</b>, for going deep on one story until the network of who's citing whom becomes visible.</p>
     <div class="channels">
       <div class="channel">
         <span class="cn">Scale</span>
         <h3>Continental coverage</h3>
-        <p>Monitoring thousands of digital sources across dozens of countries, added to daily rather than pulled in one-off snapshots.</p>
+        <p>Thousands of digital sources monitored across dozens of countries, organised into curated collections, added to daily rather than pulled in one-off snapshots.</p>
       </div>
       <div class="channel">
-        <span class="cn">Method</span>
-        <h3>Discovery cascade</h3>
-        <p>RSS/feed first, sitemap fallback, then homepage-link crawl-through &mdash; the same cascade used across CivicSignal's data-gathering pipeline.</p>
+        <span class="cn">Languages</span>
+        <h3>English, French, Arabic</h3>
+        <p>Search and analysis support across CivicSignal's three most-covered languages, with more African-language coverage growing as the archive does.</p>
       </div>
       <div class="channel">
         <span class="cn">Output</span>
         <h3>The shared archive</h3>
-        <p>A continuously growing article archive that every other CivicSignal tool &mdash; Wavelength, Fingerprints, Major Events &mdash; reads from.</p>
+        <p>Every other CivicSignal tool &mdash; Wavelength, Fingerprints, Major Events &mdash; reads from what MediaCloud collects. It's the foundation layer, not a separate product.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <span class="toolname-badge">Tool 01 &middot; Explorer</span>
+    <h2>A fast first read on how a story is covered.</h2>
+    <p class="lede">Use Explorer to search half a billion stories from more than 50,000 sources including online news and blogs &mdash; individually or as curated collections of Africa's top media sources &mdash; and get a quick overview of attention, language, and the entities involved.</p>
+
+    <div class="tool-showcase-hero">
+      <img src="assets/mediacloud-explorer-hero.png" alt="CivicSignal MediaCloud Explorer tool interface">
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-copy">
+        <h3>Track attention over time</h3>
+        <p>See how much an issue is covered, week by week. Spikes reveal the events that drove a conversation; plateaus reveal the "normal" baseline of attention to measure everything else against. Every chart and its underlying aggregated data is downloadable.</p>
+      </div>
+      <div class="feature-shot">
+        <img src="assets/mediacloud-attention-chart.png" alt="Attention-over-time line chart from CivicSignal MediaCloud Explorer, showing coverage volume across outlets of different political leanings">
+        <span class="cap">Real CivicSignal MediaCloud Explorer output &mdash; explorer.civicsignal.africa</span>
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-copy">
+        <h3>Identify how an issue is talked about</h3>
+        <p>Which words do outlets actually use to describe an issue? Word clouds, word counts, bi-grams, word trees and word embeddings surface the differing narratives at a glance &mdash; before anyone has to read a single article.</p>
+      </div>
+      <div class="feature-shot">
+        <img src="assets/mediacloud-wordcloud.png" alt="Word cloud output from CivicSignal MediaCloud Explorer showing frequently used terms in coverage of an issue">
+        <span class="cap">Real CivicSignal MediaCloud Explorer output &mdash; explorer.civicsignal.africa</span>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-copy">
+        <h3>Map geographic coverage</h3>
+        <p>Every story is geocoded to the countries and places it's actually about. That makes it possible to see exactly where an issue is being covered most &mdash; and just as usefully, to spot the "issue deserts" where it isn't being talked about at all.</p>
+      </div>
+      <div class="feature-shot">
+        <img src="assets/mediacloud-geo-map.png" alt="World map showing geographic distribution of story coverage in CivicSignal MediaCloud Explorer">
+        <span class="cap">Real CivicSignal MediaCloud Explorer output &mdash; explorer.civicsignal.africa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <span class="toolname-badge">Tool 02 &middot; Topic Mapper</span>
+    <h2>Go deep on one story until the network becomes visible.</h2>
+    <p class="lede">Once Explorer has narrowed a query down to the sources and time period worth investigating, Topic Mapper turns that starting point into a proper research corpus &mdash; collecting more stories, measuring influence, and slicing the results into comparable subtopics.</p>
+
+    <div class="tool-showcase-hero">
+      <img src="assets/mediacloud-topics-hero.png" alt="CivicSignal MediaCloud Topic Mapper tool interface">
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-copy">
+        <h3>Discover more content automatically</h3>
+        <p>A Topic starts seeded with stories already in the archive. From there, a web crawler follows the links inside those stories to find more matching coverage &mdash; a process called <b>spidering</b>, repeated 15 times to build out a bigger corpus, with rigorous de-duplication of stories that appear at more than one URL.</p>
+      </div>
+      <div class="feature-shot">
+        <img src="assets/mediacloud-topic-dashboard.png" alt="Topic Mapper dashboard showing total stories, media sources, story links and media links, plus a sentence-volume chart">
+        <span class="cap">Real CivicSignal MediaCloud Topic Mapper output &mdash; topics.civicsignal.africa</span>
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-copy">
+        <h3>Measure influence, not just volume</h3>
+        <p>Every story in a Topic is processed for inlinks and outlinks, so citation and cross-linking between sources becomes measurable &mdash; alongside Facebook share counts per story, as a second, independent read on influence. Full network maps are downloadable for further analysis in tools like Gephi.</p>
+      </div>
+      <div class="feature-shot">
+        <img src="assets/mediacloud-influence-table.png" alt="Table of top stories in a Topic Mapper topic, with media inlinks, outlinks and Facebook share counts per story">
+        <span class="cap">Real CivicSignal MediaCloud Topic Mapper output &mdash; topics.civicsignal.africa</span>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-copy">
+        <h3>Slice and dice with subtopics</h3>
+        <p>Split a Topic into subtopics for real comparative analysis &mdash; automatically by week or month for time-based or key-event analysis, or by a growing list of techniques: boolean keyword queries, country of focus, audience partnership, dominant themes, or media type.</p>
+      </div>
+      <div class="feature-shot">
+        <img src="assets/mediacloud-subtopic-picker.png" alt="Topic Mapper's subtopic-creation screen, showing techniques including keyword search, audience partnership, top countries, top themes and media type">
+        <span class="cap">Real CivicSignal MediaCloud Topic Mapper output &mdash; topics.civicsignal.africa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="border-bottom:none;">
+  <div class="wrap">
+    <span class="kicker">Why it matters for CivicSignal</span>
+    <h2>The foundation everything else on this site is built on.</h2>
+    <p class="lede">Wavelength's streamgraph, Fingerprints' publisher profiles, Major Events' clustering &mdash; none of it exists without MediaCloud's ingestion running underneath. It's the least visible part of CivicSignal, and the part that makes everything visible possible.</p>
+    <div class="toolstat-row">
+      <div class="toolstat-card"><span class="num">56.9M+</span><span class="label">total stories archived</span></div>
+      <div class="toolstat-card"><span class="num">56</span><span class="label">curated source collections</span></div>
+      <div class="toolstat-card"><span class="num">2K</span><span class="label">sources crawled every day</span></div>
+      <div class="toolstat-card"><span class="num">14.4K</span><span class="label">stories added every day</span></div>
+    </div>
     <div class="note" style="margin-top:28px;">
-      <b>This page is a placeholder.</b> A fuller technical writeup of the ingestion pipeline is pending &mdash; the figures above are CivicSignal's current archive totals.
+      <b>Research partners.</b> CivicSignal's MediaCloud analysis draws on the same open infrastructure used by academic and newsroom researchers worldwide, with research partners including the Reuters Institute for Journalism and the Global Disinformation Index.
     </div>
   </div>
 </section>
@@ -205,7 +338,7 @@ document.addEventListener('click', function(){
 <section class="block sources-block" style="border-bottom:none;">
   <div class="wrap">
     <span class="kicker">Sources</span>
-    <p class="sources-note">Source and article totals reflect CivicSignal's MediaCloud archive as of this page's last update &mdash; not a live feed.</p>
+    <p class="sources-note">Tool descriptions and screenshots drawn directly from CivicSignal's own MediaCloud deployment &mdash; <a href="https://explorer.civicsignal.africa" target="_blank" rel="noopener">explorer.civicsignal.africa</a> and <a href="https://topics.civicsignal.africa" target="_blank" rel="noopener">topics.civicsignal.africa</a> &mdash; plus <a href="https://www.mediacloud.org/media-cloud-search" target="_blank" rel="noopener">mediacloud.org</a>'s description of the underlying open-source platform. Live stats (stories archived, collections, daily crawl volume) captured at time of writing and not auto-refreshed on this page.</p>
   </div>
 </section>
 

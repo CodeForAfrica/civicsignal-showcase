@@ -33,7 +33,7 @@
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background-color:var(--cream);
+    background-color:#FFFFFF;
     background-image:
       radial-gradient(circle at 92% -6%, rgba(2,32,105,0.11) 0%, rgba(2,32,105,0) 40%),
       radial-gradient(rgba(213,222,234,0.55) 1.1px, transparent 1.1px);
@@ -248,6 +248,24 @@
   /* ---------- SECTION HEADS ---------- */
   .section{margin:64px 0;}
   .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px;gap:16px;flex-wrap:wrap;}
+  .method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+  @media(max-width:860px){.method-grid{grid-template-columns:1fr;}}
+  .method-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
+  .method-label{display:block;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--navy);margin-bottom:10px;}
+  .method-card p{margin:0;font-size:13px;color:var(--muted);line-height:1.6;}
+  .methodology-note{margin-top:16px;background:var(--cream-2);border-left:4px solid var(--red);border-radius:0 10px 10px 0;padding:18px 22px;font-size:13.5px;color:var(--muted);line-height:1.65;max-width:80ch;}
+  .methodology-note b{color:var(--ink);}
+  .method-availability{margin-top:16px;background:#F0F1F3;border-radius:10px;padding:18px 22px;}
+  .method-availability p{margin:0;font-size:13px;color:var(--muted);line-height:1.6;max-width:80ch;}
+
+  /* Engagement Index methodology: same small, muted scale as the "notes on methodology"
+     info-strip used elsewhere on the site, not the section's default heading/body sizes. */
+  #methodology .section-head h2{font-size:1.05rem;}
+  #methodology .section-head p{font-size:11.5px;color:var(--muted);}
+  #methodology .method-label{font-size:10.5px;}
+  #methodology .method-card p{font-size:11.5px;}
+  #methodology .method-availability p{font-size:11.5px;}
+  #methodology .methodology-note{font-size:11.5px;}
   .section-head h2{font-size:26px;font-weight:600;margin:0;color:var(--navy-deep);display:flex;align-items:center;gap:12px;}
   .panel-icon{width:22px;height:22px;flex:0 0 auto;color:var(--red);}
   .panel-icon svg{width:100%;height:100%;}
@@ -302,6 +320,23 @@
   .tag-row{display:flex;flex-wrap:wrap;gap:5px;}
   .tag{font-size:10.5px;color:var(--navy);background:var(--cream-2);border-radius:6px;padding:3px 7px;white-space:nowrap;}
   .tag.more{color:var(--muted);background:transparent;border:1px dashed var(--line);}
+  .ei-front{display:flex;align-items:center;gap:10px;padding:8px 0;margin-bottom:2px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .ei-front-gauge-wrap{position:relative;flex:0 0 auto;width:38px;height:38px;display:flex;align-items:center;justify-content:center;}
+  .ei-front-gauge-wrap .ei-gauge-svg{position:absolute;top:0;left:0;}
+  .ei-front-score{position:relative;font-family:var(--font-mono);font-size:12px;font-weight:700;color:var(--ink);}
+  .ei-front-text{display:flex;flex-direction:column;gap:2px;min-width:0;}
+  .ei-front-kicker{font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);}
+  .ei-front-category{font-size:12px;font-weight:700;}
+  .ei-front-category.ei-cat-leading{color:#1f7a4d;}
+  .ei-front-category.ei-cat-established{color:#125e8a;}
+  .ei-front-category.ei-cat-emerging{color:#a15c00;}
+  .ei-front-category.ei-cat-limited{color:var(--muted);}
+  .engagement-index-bars{display:flex;flex-direction:column;gap:6px;margin-bottom:6px;}
+  .ei-bar-row{display:grid;grid-template-columns:100px 1fr;align-items:center;gap:8px;}
+  .ei-bar-label{font-size:10px;color:var(--muted);}
+  .ei-bar-track{background:var(--cream-2);border-radius:4px;height:6px;overflow:hidden;}
+  .ei-bar-fill{height:100%;background:var(--navy);border-radius:4px;}
+  .engagement-index-note{display:inline-block;font-size:10.5px;font-weight:600;color:var(--red);text-decoration:none;}
   .back-empty{margin:auto 0;text-align:center;color:var(--muted);font-size:13px;}
   .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
   .card-name{font-weight:700;font-size:15.5px;line-height:1.25;}
@@ -584,7 +619,7 @@ document.addEventListener('click', function(){
     <div class="fp-head-row">
       <div class="fp-head-copy">
         <div class="eyebrow-row">
-          <div class="eyebrow">Every publisher, reduced to its own signature</div>
+          <div class="eyebrow">Every publisher, with its unique topical signature</div>
         </div>
         <h1 class="hero-title">Fingerprints</h1>
         <p class="hero-sub">Every publisher's topical fingerprint &mdash; the unique mix of subjects it covers, sized by how active it's been. Two outlets can publish the same volume of stories and look nothing alike here. Filter by country, language and topic, or flip a card for ownership, reach and social detail.</p>
@@ -660,6 +695,38 @@ document.addEventListener('click', function(){
     </div>
 
     <div id="cardCarousels"></div>
+  </section>
+
+  <section class="section" id="methodology">
+    <div class="section-head">
+      <div>
+        <h2>How the Engagement Index is calculated</h2>
+        <p>Shown on each publisher card, wherever social data is available. A CivicSignal-derived metric, built entirely from data already in the corpus.</p>
+      </div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card">
+        <span class="method-label">Platform breadth &middot; 65% weight</span>
+        <p>How many of the tracked platforms (Facebook, X, Instagram, LinkedIn, YouTube, TikTok, Mastodon) a publisher has any followers on, as a share of the total tracked. This reflects Project Oasis's own finding that platform breadth is the strongest predictor of a publisher's influence (Spearman &rho;=0.90).</p>
+      </div>
+      <div class="method-card">
+        <span class="method-label">Reach vs. peers &middot; 35% weight</span>
+        <p>Total followers across all platforms, log-scaled since raw counts are extremely skewed, then ranked against peers of the <b>same source type in the same country</b> &mdash; a Creator is only compared to other Creators, a digital-native publisher only to other digital-native publishers, and each is measured against its own market, not Nigeria's or Kenya's ceiling. Where a country's pool of that type is too small to rank against meaningfully, we compare against that type across all countries instead, rather than fall back to a mixed pool of different source types.</p>
+      </div>
+    </div>
+
+    <div class="method-availability">
+      <span class="method-label">Data availability</span>
+      <p>Social data exists for 70.2% of tracked publishers overall (603 of 859) &mdash; but coverage isn't even across source types: 90.5% of digital-native publishers have it, versus 64.3% of Creators and just 2.1% of Push Media sources (newsletters, Telegram, fediverse). Wherever it's missing, the card shows no score and no badge &mdash; never a silent zero.</p>
+    </div>
+
+    <div class="methodology-note">
+      <b>Why not comments, likes or shares.</b> We looked closely at this first. Across a random sample of 105 tracked publishers, we checked each site's actual comment records directly, not just what's visible on the page: 87 had comments technically enabled on a recent story &mdash; and none had a single real comment on it. Share buttons, wherever they appeared, only opened a share dialog; they didn't display a running count, since that kind of public count disappeared from most platforms years ago. In short, per-article "likes, reads and shares" aren't something any outlet in this dataset actually exposes &mdash; so rather than fabricate a metric no one can see, this index is built entirely from reach signals that are genuinely public and verifiable.
+    </div>
+
+    <div class="methodology-note">
+      <b>Comparing apples to apples.</b> Reach is ranked only against peers of the same source type in the same country &mdash; a Creator against other Creators, a digital-native publisher against other digital-native publishers &mdash; never against each other. An individual Creator and a national newsroom operate at completely different scales, so measuring one against the other would say nothing meaningful about either.
+    </div>
   </section>
 
 </main>
@@ -819,6 +886,17 @@ function renderCardBack(p){
     rows.push(`<div class="back-section"><div class="back-section-label">Social reach</div><div class="social-chips">${chips}</div></div>`);
   }
 
+  const ei = p.engagementIndex;
+  if(ei && ei.confidence !== 'not_available' && ei.score != null){
+    rows.push(`<div class="back-section"><div class="back-section-label">Engagement index breakdown</div>
+      <div class="engagement-index-bars">
+        <div class="ei-bar-row"><span class="ei-bar-label">Platform breadth</span><div class="ei-bar-track"><div class="ei-bar-fill" style="width:${ei.breadthScore}%"></div></div></div>
+        <div class="ei-bar-row"><span class="ei-bar-label">Reach vs. country</span><div class="ei-bar-track"><div class="ei-bar-fill" style="width:${ei.reachScore}%"></div></div></div>
+      </div>
+      <a class="engagement-index-note" href="#methodology">How this is calculated &rarr;</a>
+    </div>`);
+  }
+
   if(!e){
     rows.push(`<div class="back-empty">No additional organizational detail available for this source.</div>`);
   }
@@ -867,6 +945,42 @@ function groupByType(list){
     .concat(Object.keys(groups).filter(t => !GROUP_ORDER.includes(t)).map(t => ({ type: t, items: groups[t] })));
 }
 
+const ENGAGEMENT_CATEGORIES = [
+  {min:70, label:'Leading reach', cls:'ei-cat-leading', color:'#3DBE6C'},
+  {min:45, label:'Established reach', cls:'ei-cat-established', color:'#1D78BE'},
+  {min:20, label:'Emerging reach', cls:'ei-cat-emerging', color:'#F0653D'},
+  {min:0, label:'Limited reach', cls:'ei-cat-limited', color:'#94A3B8'},
+];
+function engagementCategory(score){
+  return ENGAGEMENT_CATEGORIES.find(c => score >= c.min);
+}
+function engagementGaugeSVG(score, color){
+  const r = 15, stroke = 4, size = (r + stroke) * 2, c = size / 2;
+  const circumference = 2 * Math.PI * r;
+  const offset = circumference * (1 - Math.max(0, Math.min(100, score)) / 100);
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" class="ei-gauge-svg" aria-hidden="true">
+    <circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${stroke}"/>
+    <circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}" stroke-linecap="round"
+      stroke-dasharray="${circumference.toFixed(2)}" stroke-dashoffset="${offset.toFixed(2)}"
+      transform="rotate(-90 ${c} ${c})"/>
+  </svg>`;
+}
+function engagementFrontHTML(p){
+  const ei = p.engagementIndex;
+  if(!ei || ei.confidence === 'not_available' || ei.score == null) return '';
+  const cat = engagementCategory(ei.score);
+  return `<div class="ei-front" title="CivicSignal's own derived metric &mdash; see methodology">
+    <div class="ei-front-gauge-wrap" style="color:${cat.color}">
+      ${engagementGaugeSVG(ei.score, cat.color)}
+      <span class="ei-front-score">${Math.round(ei.score)}</span>
+    </div>
+    <div class="ei-front-text">
+      <span class="ei-front-kicker">Engagement index</span>
+      <span class="ei-front-category ${cat.cls}">${cat.label}</span>
+    </div>
+  </div>`;
+}
+
 const radarCharts = {};
 function cardHTML(p, radarId){
   const accent = COLORS[p.topTopic] || '#1B2340';
@@ -882,6 +996,7 @@ function cardHTML(p, radarId){
           <div class="meta-row">
             <span>${p.country}</span><span>·</span><span>${p.lang}${p.lang2 ? ` + ${p.lang2}` : ''}</span>
           </div>
+          ${engagementFrontHTML(p)}
           <div class="radar-box"><canvas id="radar-${radarId}"></canvas></div>
           <div class="card-foot">
             <span>Top topic: <b style="font-size:12px;color:${COLORS[p.topTopic]||'#1B2340'}">${LABELS[p.topTopic]}</b></span>

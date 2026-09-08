@@ -57,12 +57,27 @@
   .dek{margin-top:20px;max-width:62ch;font-size:1.1rem;color:var(--ink-dim);}
 
   section.ticker{padding:34px 0 38px;border-bottom:1px solid var(--line);}
-  .ticker-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+  .ticker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
   .stat{padding:8px 20px;border-left:1px solid var(--line);}
   .stat:first-child{padding-left:0;border-left:none;}
   .stat .num{display:block;font-size:clamp(1.4rem,2.4vw,2rem);font-weight:900;color:var(--navy);letter-spacing:-0.01em;}
   .stat .label{display:block;margin-top:6px;font-size:12px;color:var(--ink-dim);line-height:1.35;}
-  @media(max-width:800px){.ticker-grid{grid-template-columns:1fr;row-gap:24px;}.stat{border-left:none;padding-left:0;}}
+  @media(max-width:800px){.ticker-grid{grid-template-columns:repeat(2,1fr);row-gap:24px;}.stat{border-left:none;padding-left:0;}}
+
+  .barlist{display:flex;flex-direction:column;gap:12px;}
+  .bar-row{display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:12px;font-size:13px;}
+  .bar-track{background:var(--bg-alt);border:1px solid var(--line);border-radius:6px;height:10px;overflow:hidden;}
+  .bar-fill{height:100%;background:linear-gradient(90deg,#0F4E7A,var(--navy));border-radius:6px;}
+  .bar-val{font-family:var(--font-mono);font-size:12px;color:var(--ink-dim);text-align:right;}
+  .stat-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  @media(max-width:800px){.stat-grid-2{grid-template-columns:1fr;gap:36px;}.bar-row{grid-template-columns:110px 1fr 60px;}}
+
+  .medium-stackbar{display:flex;width:100%;height:28px;border-radius:6px;overflow:hidden;}
+  .medium-stackbar span{display:block;height:100%;}
+  .medium-legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:14px;}
+  .medium-legend .lg-item{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-dim);}
+  .medium-legend .lg-dot{width:9px;height:9px;border-radius:2px;flex:0 0 auto;}
+  .medium-legend b{color:var(--ink);font-family:var(--font-mono);font-weight:700;}
 
   section.block{padding:clamp(48px,8vw,84px) 0;border-bottom:1px solid var(--line);}
   section.block h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:16px;max-width:26ch;}
@@ -94,6 +109,8 @@
   .footer-brand-copy{font-size:12.5px;line-height:1.6;color:#9FA9C9;max-width:34ch;}
   .footer-brand-copy b{color:#EFE9E2;}
   .search-cta-btn{flex:0 0 auto;background:var(--red);color:#fff;font-weight:700;font-size:13.5px;padding:13px 24px;border-radius:999px;text-decoration:none;white-space:nowrap;}
+  .cta-row{display:flex;}
+  .cta-row .search-cta-btn:hover{background:#c91b1f;}
   .search-cta-btn:hover{background:#c91b1f;}
 
   .cs-navdrop{position:relative;}
@@ -137,7 +154,7 @@
       </div>
       <a href="lab-narrative-threads.html">Lab</a>
       <a href="index.html#partnerships">About</a>
-      <a href="#" class="cs-login-btn">Log in</a>
+      <a href="https://civicsignal.africa/#/login" class="cs-login-btn">Log in</a>
     </nav>
   </div>
 </header>
@@ -165,16 +182,17 @@ document.addEventListener('click', function(){
       <span>Registry &middot; Ownership &middot; Reach</span>
     </div>
     <h1 class="headline">The registry behind every <em>outlet</em> on the map.</h1>
-    <p class="dek">MediaData is the underlying registry of Africa's licensed media houses &mdash; who owns what, what they reach, and how that changes over time. It's the foundation layer everything else on CivicSignal is mapped against.</p>
+    <p class="dek">MediaData is the underlying registry of Africa's licensed media houses &mdash; who owns what, what they reach, and how that changes over time. It's the foundation layer everything else on CivicSignal is mapped against, and the base CfA builds custom, partner-facing dashboards on top of for specific countries and programmes.</p>
   </div>
 </header>
 
 <section class="ticker">
   <div class="wrap">
     <div class="ticker-grid">
-      <div class="stat"><span class="num">9,037</span><span class="label">media outlets mapped</span></div>
-      <div class="stat"><span class="num">47</span><span class="label">countries mapped</span></div>
-      <div class="stat"><span class="num">60</span><span class="label">countries covered for FIMI monitoring</span></div>
+      <div class="stat"><span class="num">9,177</span><span class="label">media outlets mapped</span></div>
+      <div class="stat"><span class="num">581</span><span class="label">parent media houses identified</span></div>
+      <div class="stat"><span class="num">7,952</span><span class="label">journalists &amp; media workers mapped</span></div>
+      <div class="stat"><span class="num">61</span><span class="label">countries represented by HQ location</span></div>
     </div>
   </div>
 </section>
@@ -202,7 +220,87 @@ document.addEventListener('click', function(){
       </div>
     </div>
     <div class="note" style="margin-top:28px;">
-      <b>This page is a placeholder.</b> Full methodology detail and a browsable view of the registry are pending &mdash; the figures above are CivicSignal's current mapped totals.
+      <b>The continental figures above are a registry snapshot.</b> A full browsable view of the continental registry is pending &mdash; but for individual programmes, MediaData already ships as a live, partner-facing dashboard. Mali, below, is a working example.
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <span class="kicker">By the numbers</span>
+    <h2>Where the outlets are, and what kind they are.</h2>
+    <p class="lede">Pulled live from CfA's continental MediaData dashboard: 9,177 outlets across 61 countries of HQ origin, broken down by medium and ownership structure.</p>
+    <h3 style="font-size:1rem;margin-bottom:16px;">Top 10 countries by outlet HQ</h3>
+    <div class="barlist" style="margin-bottom:36px;">
+      <div class="bar-row"><span>South Africa</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">1,408 &middot; 15.6%</span></div>
+      <div class="bar-row"><span>Kenya</span><div class="bar-track"><div class="bar-fill" style="width:76%"></div></div><span class="bar-val">1,069 &middot; 11.9%</span></div>
+      <div class="bar-row"><span>Ghana</span><div class="bar-track"><div class="bar-fill" style="width:48%"></div></div><span class="bar-val">677 &middot; 7.5%</span></div>
+      <div class="bar-row"><span>Nigeria</span><div class="bar-track"><div class="bar-fill" style="width:48%"></div></div><span class="bar-val">673 &middot; 7.5%</span></div>
+      <div class="bar-row"><span>Mali</span><div class="bar-track"><div class="bar-fill" style="width:46%"></div></div><span class="bar-val">641 &middot; 7.1%</span></div>
+      <div class="bar-row"><span>C&ocirc;te d'Ivoire</span><div class="bar-track"><div class="bar-fill" style="width:42%"></div></div><span class="bar-val">590 &middot; 6.5%</span></div>
+      <div class="bar-row"><span>Senegal</span><div class="bar-track"><div class="bar-fill" style="width:26%"></div></div><span class="bar-val">373 &middot; 4.1%</span></div>
+      <div class="bar-row"><span>DRC</span><div class="bar-track"><div class="bar-fill" style="width:24%"></div></div><span class="bar-val">342 &middot; 3.8%</span></div>
+      <div class="bar-row"><span>Burkina Faso</span><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div><span class="bar-val">313 &middot; 3.5%</span></div>
+      <div class="bar-row"><span>Ethiopia</span><div class="bar-track"><div class="bar-fill" style="width:20%"></div></div><span class="bar-val">281 &middot; 3.1%</span></div>
+    </div>
+    <div class="stat-grid-2">
+      <div>
+        <h3 style="font-size:1rem;margin-bottom:16px;">Primary medium</h3>
+        <div class="barlist">
+          <div class="bar-row"><span>Radio</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">52.1%</span></div>
+          <div class="bar-row"><span>Online</span><div class="bar-track"><div class="bar-fill" style="width:39%"></div></div><span class="bar-val">20.3%</span></div>
+          <div class="bar-row"><span>Television</span><div class="bar-track"><div class="bar-fill" style="width:27%"></div></div><span class="bar-val">13.8%</span></div>
+          <div class="bar-row"><span>Print</span><div class="bar-track"><div class="bar-fill" style="width:24%"></div></div><span class="bar-val">12.4%</span></div>
+          <div class="bar-row"><span>Other<br><span style="font-size:11px;color:var(--ink-faint);">podcast, social, app, streaming, newsletter</span></span><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><span class="bar-val">1.4%</span></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:1rem;margin-bottom:16px;">Organisation type</h3>
+        <div class="barlist">
+          <div class="bar-row"><span>For-profit</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">75.9%</span></div>
+          <div class="bar-row"><span>Non-profit</span><div class="bar-track"><div class="bar-fill" style="width:13%"></div></div><span class="bar-val">9.8%</span></div>
+          <div class="bar-row"><span>Faith-based</span><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><span class="bar-val">8.8%</span></div>
+          <div class="bar-row"><span>State-affiliated</span><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><span class="bar-val">2.3%</span></div>
+          <div class="bar-row"><span>Academic &amp; public-entity</span><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div><span class="bar-val">2.8%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <span class="kicker">A dashboard built on it: Mali</span>
+    <h2>What a MediaData dashboard actually looks like, once it's built for a country.</h2>
+    <p class="lede">For the <b>USAID Basiki ni Tagne Kunafoni</b> programme &mdash; a consortium of Pact, Code for Africa and Accountability Lab Mali &mdash; MediaData was built out into a live dashboard mapping Mali's entire media ecosystem: outlets, ownership, industry bodies, and the people who staff them, refreshed on a quarterly audit cycle.</p>
+    <div class="ticker-grid" style="margin-bottom:28px;">
+      <div class="stat"><span class="num">745</span><span class="label">media outlets serving Mali-based audiences</span></div>
+      <div class="stat"><span class="num">641</span><span class="label">of them Mali-owned/operated (indigenous media)</span></div>
+      <div class="stat"><span class="num">16</span><span class="label">parent media houses identified</span></div>
+      <div class="stat"><span class="num">90</span><span class="label">journalists, editors and media workers mapped</span></div>
+    </div>
+    <div class="channels">
+      <div class="channel">
+        <span class="cn">Structure</span>
+        <h3>Ownership, medium &amp; reach</h3>
+        <p>Every outlet's governance model, primary editorial medium, publication frequency and geographic reach &mdash; radio still dominates Mali's ~400 licensed stations, but the dashboard tracks online, print, TV and social-first outlets in the same registry.</p>
+      </div>
+      <div class="channel">
+        <span class="cn">Language</span>
+        <h3>French, Bambara &amp; beyond</h3>
+        <p>Primary and secondary editorial languages down to the outlet level &mdash; Bambara, Tamasheq, Songhai, Peulh and more alongside French &mdash; the same granularity the baseline research found existing datasets lacked.</p>
+      </div>
+      <div class="channel">
+        <span class="cn">Spotlight</span>
+        <h3>Mapping the fact-checkers</h3>
+        <p>A dedicated Fact-Checking Newsrooms table inside the dashboard &mdash; AFP Fact Check, Africa Check, Benbere Verif, DjeliCheck, MaliCheck, Mopti Check and more &mdash; tracking accreditation (AFCA, IFCN, Meta's 3PFC) and editorial focus for each.</p>
+      </div>
+    </div>
+    <div class="note" style="margin-top:28px;">
+      <b>Why Mali.</b> A CfA/Pact baseline analysis for the same programme found Mali to be the most-targeted country on the continent for coordinated influence operations &mdash; more than 70 documented campaigns over three years &mdash; running through an information ecosystem that is 96% mobile-reachable but only 9% on social media. The registry above and the fact-checker map that sits inside it are part of the response: strengthening the 11 fact-checking initiatives already working in-country (7 of them Malian-led) rather than starting from zero. <i>Cheboi, Warrag, Ngnie, Boli, Manessong &amp; Arenstein, "The Landscape: Information Manipulation &amp; Interference in Mali", Code for Africa / ADDO, 2024.</i>
+    </div>
+    <div class="cta-row" style="margin-top:24px;">
+      <a class="search-cta-btn" href="https://airtable.com/appTyWKogIc1w5jIU/paglPXKWcCqNn7naT" target="_blank" rel="noopener">Open the live Mali dashboard &rarr;</a>
     </div>
   </div>
 </section>
@@ -210,7 +308,7 @@ document.addEventListener('click', function(){
 <section class="block sources-block" style="border-bottom:none;">
   <div class="wrap">
     <span class="kicker">Sources</span>
-    <p class="sources-note">Outlet and country totals reflect CivicSignal's MediaData registry as of this page's last update &mdash; not a live feed.</p>
+    <p class="sources-note">Continental figures and breakdowns are a snapshot of CfA's MediaData dashboard (Airtable) as of this page's last update &mdash; not a live feed. Mali dashboard figures are pulled from CfA's separate MediaData Mali dashboard (Airtable), audited quarterly under the USAID Basiki ni Tagne Kunafoni programme. Baseline report findings: Code for Africa / ADDO, "The Landscape: Information Manipulation &amp; Interference in Mali" (2024) &mdash; <a href="mailto:saif@codeforafrica.org?subject=Mali%20baseline%20report%20request">request a copy</a>.</p>
   </div>
 </section>
 

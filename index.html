@@ -221,7 +221,7 @@
   .pub-findings{margin:18px 0 0;padding-left:20px;}
   .pub-findings li{font-size:13.5px;color:var(--ink-dim);line-height:1.6;margin-bottom:10px;max-width:75ch;}
 
-  .lit-block{margin-top:40px;padding-top:32px;border-top:1px solid var(--line);}
+  .lit-block{margin-top:28px;}
   .lit-heading{font-size:1.05rem;font-weight:900;color:var(--navy-deep);margin:0 0 8px;}
   .lit-lede{font-size:13.5px;color:var(--ink-dim);margin:0 0 20px;max-width:75ch;}
   .lit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
@@ -235,6 +235,12 @@
     background:var(--red);
     clip-path:polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
   }
+  .lit-card.lit-cfa::before{background:var(--navy);}
+  .lit-legend{display:flex;gap:20px;flex-wrap:wrap;margin:14px 0 18px;}
+  .lit-legend-item{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink-faint);}
+  .lit-legend-swatch{display:inline-block;width:9px;height:14px;flex:0 0 auto;clip-path:polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);}
+  .lit-legend-swatch.ribbon-cfa{background:var(--navy);}
+  .lit-legend-swatch.ribbon-external{background:var(--red);}
   .lit-card h4{font-size:15px;font-weight:900;color:var(--ink);margin:10px 0 0;line-height:1.3;}
   .lit-card h4 a{color:var(--navy-deep);text-decoration:none;border-bottom:1px solid rgba(2,32,105,0.25);}
   .lit-card h4 a:hover{border-bottom-color:var(--navy);}
@@ -1144,28 +1150,45 @@ const FP_DATA = [
 <section class="block">
   <div class="wrap">
     <span class="kicker">Reports &amp; publications</span>
-    <h2>Research built on CivicSignal's own mapping and tracking infrastructure.</h2>
+    <h2>Research built on CivicSignal's infrastructure.</h2>
     <p class="lede">The same monitoring capability behind Wavelength also powers investigative research &mdash; identifying outlets, tracking their publication patterns over time, and cross-referencing coverage against known actors and narratives.</p>
     <div class="lit-block">
-      <h3 class="lit-heading">Selected research on this ground</h3>
-      <p class="lit-lede">Scholarship on the same terrain CivicSignal watches &mdash; disinformation response, AI and journalism, and media coverage of public-health issues in Africa.</p>
+      <div class="lit-legend">
+        <span class="lit-legend-item"><span class="lit-legend-swatch ribbon-cfa"></span>CivicSignal / CfA staff-authored</span>
+        <span class="lit-legend-item"><span class="lit-legend-swatch ribbon-external"></span>External research</span>
+      </div>
       <div class="lit-grid" id="litGrid">
+        <div class="lit-card lit-cfa">
+          <h4><a href="mailto:saif@codeforafrica.org?subject=Media%20Capture%20report%20request">Media Capture: How foreign states infiltrate media in francophone West Africa</a></h4>
+          <p class="lit-authors">CivicSignal &middot; GIZ SRIEWA partnership (2026 report)</p>
+          <p class="lit-explainer">Traces how state-linked entities in C&ocirc;te d'Ivoire, Senegal and Niger drew outlets and journalists into relationships that embedded foreign narratives and distorted editorial practice.</p>
+        </div>
+        <div class="lit-card lit-cfa">
+          <h4><a href="https://ajic.wits.ac.za/article/view/20161" target="_blank" rel="noopener">Healthcare R&amp;D as reflected in digital news: Kenya, Nigeria &amp; South Africa</a></h4>
+          <p class="lit-authors">Emily Boardman Ndulue, Sandra Roberts &amp; Praise Ocheanya Abraham &middot; AJIC, No. 34 (2024)</p>
+          <p class="lit-explainer">Filtered 5M+ articles down to 2,917 relevant pieces using CivicSignal's MediaCloud infrastructure to examine how healthcare R&amp;D is covered in African digital news.</p>
+        </div>
+        <div class="lit-card lit-cfa">
+          <h4><a href="mediameltdown.html">MediaMeltdown</a></h4>
+          <p class="lit-authors">CivicSignal Research &middot; #MediaMeltdown series (2025)</p>
+          <p class="lit-explainer">A four-part series tracking how funding shocks &mdash; the pandemic, then US aid cuts &mdash; have reshaped Africa's community media, and how newsrooms are adapting.</p>
+        </div>
         <div class="lit-card">
           <h4><a href="https://jp.toda.org/wp-content/uploads/files/resources/policy-briefs/t-pb-38_lisa-schirch_mapping-responses-to-social-media-threats.pdf" target="_blank" rel="noopener">Mapping Responses to Social Media Threats</a></h4>
           <p class="lit-authors">Lisa Schirch &middot; Toda Peace Institute, Policy Brief No. 38 (2019)</p>
           <p class="lit-explainer">Surveys the threats social media poses to peace and democracy &mdash; surveillance, addiction, disinformation, hate speech, polarisation &mdash; and maps civic-tech and policy responses to each.</p>
         </div>
-        <div class="lit-card">
+        <div class="lit-card lit-more">
           <h4><a href="https://doi.org/10.1080/21670811.2025.2528052" target="_blank" rel="noopener">AI Hype Through an African Lens</a></h4>
           <p class="lit-authors">Sisanda Nkoala, Trust Matsilele, Musawenkosi Ndlovu &amp; Tanja Bosch &middot; Digital Journalism (2025)</p>
           <p class="lit-explainer">A critical analysis of how African online news publications use language to frame AI, treating that framing itself as a form of symbolic action.</p>
         </div>
-        <div class="lit-card">
+        <div class="lit-card lit-more">
           <h4><a href="https://www.researchgate.net/profile/Elza-Lama/publication/372852271_Wake_up_and_think_of_the_children_The_ambivalent_relationship_between_motherhood_femininity_and_anti-vaccination/links/64ca649ad394182ab39a8fa0/Wake-up-and-think-of-the-children-The-ambivalent-relationship-between-motherhood-femininity-and-anti-vaccination.pdf" target="_blank" rel="noopener">&ldquo;Wake up and Think of the Children!&rdquo;</a></h4>
           <p class="lit-authors">M. Zitmane &amp; E. L&#257;ma &middot; in <em>The New Communication Revolution</em> (2023)</p>
           <p class="lit-explainer">Examines the ambivalent relationship between motherhood, femininity and anti-vaccination sentiment in online discourse.</p>
         </div>
-        <div class="lit-card">
+        <div class="lit-card lit-more">
           <h4><a href="https://doi.org/10.1201/9781003594185-9" target="_blank" rel="noopener">AI Solutions for Election Integrity</a></h4>
           <p class="lit-authors">Nicholas Sesugh Iwokwagh &amp; Paul Uko Obagwu &middot; in <em>AI and the Future of Democracy</em> (2025)</p>
           <p class="lit-explainer">Assesses how AI-based tools can help detect and counter election-related disinformation and safeguard democratic processes.</p>
@@ -1174,21 +1197,6 @@ const FP_DATA = [
           <h4><a href="https://methods.sagepub.com/case/combining-content-analysis-to-maternal-and-child-health-issues" target="_blank" rel="noopener">Combining Content Analysis With In-Depth Interviews</a></h4>
           <p class="lit-authors">Raheemat Adeniran &middot; SAGE Research Methods Cases (2026)</p>
           <p class="lit-explainer">A methods case study on mixing content analysis with editor interviews to examine Nigerian newspaper coverage of maternal and child health.</p>
-        </div>
-        <div class="lit-card lit-more">
-          <h4><a href="mailto:saif@codeforafrica.org?subject=Media%20Capture%20report%20request">Media Capture: How foreign states infiltrate media in francophone West Africa</a></h4>
-          <p class="lit-authors">CivicSignal &middot; GIZ SRIEWA partnership (2026 report)</p>
-          <p class="lit-explainer">Traces how state-linked entities in C&ocirc;te d'Ivoire, Senegal and Niger drew outlets and journalists into relationships that embedded foreign narratives and distorted editorial practice.</p>
-        </div>
-        <div class="lit-card lit-more">
-          <h4><a href="https://ajic.wits.ac.za/article/view/20161" target="_blank" rel="noopener">Healthcare R&amp;D as reflected in digital news: Kenya, Nigeria &amp; South Africa</a></h4>
-          <p class="lit-authors">Emily Boardman Ndulue, Sandra Roberts &amp; Praise Ocheanya Abraham &middot; AJIC, No. 34 (2024)</p>
-          <p class="lit-explainer">Filtered 5M+ articles down to 2,917 relevant pieces using CivicSignal's MediaCloud infrastructure to examine how healthcare R&amp;D is covered in African digital news.</p>
-        </div>
-        <div class="lit-card lit-more">
-          <h4>MediaMeltdown</h4>
-          <p class="lit-authors">CivicSignal &middot; report not yet published</p>
-          <p class="lit-explainer">Placeholder entry &mdash; real summary and findings pending. Flag details and this card can be written up properly.</p>
         </div>
       </div>
       <button class="lit-load-more" id="litLoadMore">Load more</button>

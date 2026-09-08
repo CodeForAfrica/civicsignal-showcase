@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CivicSignal — MediaCloud</title>
+<title>CivicSignal — MediaMeltdown</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=optional" rel="stylesheet">
 <style>
   :root{
     --navy:#022069; --navy-deep:#051335;
     --red:#EB2227; --red-wash:rgba(235,34,39,0.08);
-    --blue:#1D78BE; --blue-wash:rgba(29,120,190,0.08);
+    --blue:#1D78BE;
     --bg:#FFFFFF; --bg-alt:#F4F3F0; --bg-raised:#FFFFFF;
     --line:#E2E0DA;
     --ink:#16181C; --ink-dim:#565A66; --ink-faint:#8A8E99;
@@ -26,7 +26,7 @@
   .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
   @media(max-width:720px){.wrap{padding:0 18px;}}
   h1,h2,h3{font-family:var(--font-display);font-weight:900;text-wrap:balance;margin:0;letter-spacing:-0.01em;}
-  .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:14px;}
+  .kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:14px;}
   section.block.sources-block{padding:0 0 32px;}
   .sources-note{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);letter-spacing:0.02em;line-height:1.7;max-width:80ch;}
   .sources-note a{color:var(--ink-faint);text-decoration:underline;}
@@ -50,30 +50,33 @@
   header.masthead{background:var(--bg-alt);border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
   .masthead-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;color:var(--ink-faint);text-transform:uppercase;line-height:1.2;}
   h1.headline{font-size:clamp(2rem,5vw,3.3rem);line-height:1.1;max-width:18ch;letter-spacing:-0.015em;}
-  h1.headline em{font-style:normal;color:var(--blue);}
-  .dek{margin-top:20px;max-width:62ch;font-size:1.1rem;color:var(--ink-dim);}
-
-  section.ticker{padding:34px 0 38px;border-bottom:1px solid var(--line);}
-  .ticker-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
-  .stat{padding:8px 20px;border-left:1px solid var(--line);}
-  .stat:first-child{padding-left:0;border-left:none;}
-  .stat .num{display:block;font-size:clamp(1.4rem,2.4vw,2rem);font-weight:900;color:var(--blue);letter-spacing:-0.01em;}
-  .stat .label{display:block;margin-top:6px;font-size:12px;color:var(--ink-dim);line-height:1.35;}
-  @media(max-width:800px){.ticker-grid{grid-template-columns:1fr;row-gap:24px;}.stat{border-left:none;padding-left:0;}}
+  h1.headline em{font-style:normal;color:var(--navy);}
+  .dek{margin-top:20px;max-width:64ch;font-size:1.1rem;color:var(--ink-dim);}
 
   section.block{padding:clamp(48px,8vw,84px) 0;border-bottom:1px solid var(--line);}
-  section.block h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:16px;max-width:26ch;}
-  section.block .lede{font-size:1.03rem;color:var(--ink-dim);max-width:68ch;margin-bottom:28px;}
+  section.block h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:16px;max-width:28ch;}
+  section.block .lede{font-size:1.03rem;color:var(--ink-dim);max-width:70ch;margin-bottom:28px;}
   section.block .lede strong{color:var(--ink);font-weight:700;}
 
-  .channels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  @media(max-width:800px){.channels{grid-template-columns:1fr;}}
-  .channel{background:var(--bg-raised);border:1px solid var(--line);border-radius:8px;padding:22px;}
-  .channel .cn{font-family:var(--font-mono);font-size:11px;color:var(--blue);letter-spacing:0.05em;text-transform:uppercase;}
-  .channel h3{font-size:1.1rem;margin:10px 0 8px;}
-  .channel p{font-size:13.5px;color:var(--ink-dim);line-height:1.55;margin:0;}
+  .post-list{display:flex;flex-direction:column;gap:0;}
+  .post-card{position:relative;padding:28px 0 28px 24px;border-bottom:1px solid var(--line);}
+  .post-card:first-child{padding-top:0;}
+  .post-card::before{
+    content:'';
+    position:absolute;top:28px;left:0;width:11px;height:18px;
+    background:var(--navy);
+    clip-path:polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+  }
+  .post-card:first-child::before{top:0;}
+  .post-meta{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;}
+  .post-card h3{font-size:1.2rem;margin-bottom:10px;}
+  .post-card h3 a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(2,32,105,0.25);}
+  .post-card h3 a:hover{border-bottom-color:var(--navy);}
+  .post-card p{font-size:14.5px;color:var(--ink-dim);line-height:1.65;max-width:75ch;margin:0 0 12px;}
+  .post-read{display:inline-block;font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:0.03em;color:var(--red);text-decoration:none;border-bottom:1px solid var(--red);}
+  .post-read:hover{color:#c91b1f;border-bottom-color:#c91b1f;}
 
-  .note{background:var(--bg-alt);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:18px 22px;font-size:13.5px;color:var(--ink-dim);max-width:72ch;}
+  .note{background:var(--bg-alt);border-left:4px solid var(--navy);border-radius:0 8px 8px 0;padding:18px 22px;font-size:13.5px;color:var(--ink-dim);max-width:72ch;}
   .note b{color:var(--ink);}
 
   footer.close{background:var(--navy);color:#EFE9E2;padding:clamp(48px,8vw,80px) 0 0;margin-top:0;}
@@ -102,7 +105,6 @@
   .cs-navdrop.open .cs-navdrop-menu{display:block;}
   .cs-navdrop-menu a{display:block;padding:8px 16px;color:#B9C2DA;font-family:inherit;font-weight:700;font-size:13px;text-decoration:none;letter-spacing:0.01em;white-space:nowrap;}
   .cs-navdrop-menu a:hover{color:#fff;background:rgba(255,255,255,0.06);}
-  .cs-navdrop-menu a.active{color:#fff;}
 </style>
 </head>
 <body>
@@ -114,10 +116,10 @@
     </a>
     <nav class="cs-navlinks">
       <div class="cs-navdrop">
-        <button class="cs-navdrop-btn active" type="button" aria-expanded="false">Tools</button>
+        <button class="cs-navdrop-btn" type="button" aria-expanded="false">Tools</button>
         <div class="cs-navdrop-menu">
           <a href="mediadata.html">MediaData</a>
-          <a href="mediacloud.html" class="active">MediaCloud</a>
+          <a href="mediacloud.html">MediaCloud</a>
           <a href="mediascapes.html">MediaScapes</a>
           <a href="wavelength.html">Wavelength</a>
           <a href="fingerprints.html">Fingerprints</a>
@@ -125,7 +127,7 @@
         </div>
       </div>
       <div class="cs-navdrop">
-        <button class="cs-navdrop-btn" type="button" aria-expanded="false">Research</button>
+        <button class="cs-navdrop-btn active" type="button" aria-expanded="false">Research</button>
         <div class="cs-navdrop-menu">
           <a href="project-oasis.html">Digital Natives</a>
           <a href="cnti-creators.html">Creators</a>
@@ -156,48 +158,52 @@ document.addEventListener('click', function(){
 <header class="masthead">
   <div class="wrap">
     <div class="masthead-top">
-      <span>CivicSignal &middot; MediaCloud</span>
-      <span>Ingestion &middot; Continental Scale</span>
+      <span>CivicSignal Research &middot; #MediaMeltdown</span>
+      <span>42&ndash;51 orgs &middot; 11&ndash;12 countries</span>
     </div>
-    <h1 class="headline">The infrastructure behind every <em>article</em>.</h1>
-    <p class="dek">MediaCloud is the ingestion infrastructure that pulls articles into CivicSignal's dataset continuously, at continental scale &mdash; the pipeline underneath the numbers, not a product you browse directly.</p>
+    <h1 class="headline">What happens when the <em>funding</em> disappears.</h1>
+    <p class="dek">#MediaMeltdown is CivicSignal Research's ongoing series tracking how community media across Africa is coping with a decade of shrinking advertising, donor and grant revenue &mdash; and now, sudden US foreign-assistance cuts. Four posts published so far, summarised below with links to the originals.</p>
   </div>
 </header>
 
-<section class="ticker">
-  <div class="wrap">
-    <div class="ticker-grid">
-      <div class="stat"><span class="num">4,000+</span><span class="label">digital sources monitored live</span></div>
-      <div class="stat"><span class="num">53.7M+</span><span class="label">articles archived to date</span></div>
-      <div class="stat"><span class="num">~20,000</span><span class="label">articles added daily, across 54 countries</span></div>
-    </div>
-  </div>
-</section>
-
 <section class="block">
   <div class="wrap">
-    <span class="kicker">What it is</span>
-    <h2>Collection, not curation.</h2>
-    <p class="lede">MediaCloud runs the discovery-and-extraction cascade &mdash; RSS, sitemap, homepage fallback &mdash; that pulls articles from thousands of sources into a continuously growing archive. Everything downstream on CivicSignal, from Wavelength to Fingerprints, is built on top of what MediaCloud collects.</p>
-    <div class="channels">
-      <div class="channel">
-        <span class="cn">Scale</span>
-        <h3>Continental coverage</h3>
-        <p>Monitoring thousands of digital sources across dozens of countries, added to daily rather than pulled in one-off snapshots.</p>
+    <span class="kicker">The series</span>
+    <h2>Four posts, one continuing story.</h2>
+    <p class="lede">Each post draws on the same #MediaMeltdown survey work &mdash; community media organisations across Africa, surveyed directly about their finances, staffing and strategy.</p>
+    <div class="post-list">
+
+      <div class="post-card">
+        <div class="post-meta">18 August 2025 &middot; Sandra Roberts</div>
+        <h3><a href="https://research.civicsignal.africa/posts/stories/mediameltdown-us-funding-cuts-shake-entire-media-and-information-ecosystems" target="_blank" rel="noopener">US funding cuts shake entire media and information ecosystems</a></h3>
+        <p>A #MediaMeltdown survey of 51 organisations across 12 African countries found 31 had experienced disruptions after US foreign-assistance freezes &mdash; fact-checkers and support intermediaries hit hardest. The 26 affected organisations reported 85 distinct impacts between them: project timeline disruptions (22 orgs), cancelled projects (16 orgs), and abandoned training programmes (12 orgs). The loss of an estimated $268 million in annual USAID media-development funding has weakened reporting infrastructure and knowledge networks continent-wide, creating conditions for disinformation to spread further.</p>
+        <a class="post-read" href="https://research.civicsignal.africa/posts/stories/mediameltdown-us-funding-cuts-shake-entire-media-and-information-ecosystems" target="_blank" rel="noopener">Read the full post &rarr;</a>
       </div>
-      <div class="channel">
-        <span class="cn">Method</span>
-        <h3>Discovery cascade</h3>
-        <p>RSS/feed first, sitemap fallback, then homepage-link crawl-through &mdash; the same cascade used across CivicSignal's data-gathering pipeline.</p>
+
+      <div class="post-card">
+        <div class="post-meta">7 August 2025 &middot; Nomshado Lubisi</div>
+        <h3><a href="https://research.civicsignal.africa/posts/stories/mediameltdown-how-community-media-is-reinventing-itself" target="_blank" rel="noopener">How community media is reinventing itself</a></h3>
+        <p>Drawing on the same 2025 survey of 42 organisations across 11 countries, this post examines how African community media is shifting from geographically-bound, general-interest outlets into mission-driven digital platforms &mdash; specialising in themes like gender justice and climate change. Radio and websites are now tied as the primary channel at 45% each, with outlets increasingly running hybrid models that combine FM broadcasts with podcasts and social media. Participation remains central to community media's identity, but sustainability now depends on collaboration and new monetisation approaches that close persistent digital-skills gaps.</p>
+        <a class="post-read" href="https://research.civicsignal.africa/posts/stories/mediameltdown-how-community-media-is-reinventing-itself" target="_blank" rel="noopener">Read the full post &rarr;</a>
       </div>
-      <div class="channel">
-        <span class="cn">Output</span>
-        <h3>The shared archive</h3>
-        <p>A continuously growing article archive that every other CivicSignal tool &mdash; Wavelength, Fingerprints, Major Events &mdash; reads from.</p>
+
+      <div class="post-card">
+        <div class="post-meta">1 August 2025 &middot; Sandra Roberts</div>
+        <h3><a href="https://research.civicsignal.africa/posts/stories/mediameltdown-qa-how-radio-nfm-builds-community-on-a-limited-budget" target="_blank" rel="noopener">Q&amp;A: How Radio NFM builds community on a limited budget</a></h3>
+        <p>A case-study conversation with Radio NFM 98.1, a community station serving 150,000 people across South Africa's Namakwa region on the Northern Cape, broadcasting in four languages (70% Afrikaans, 15% Nama, 10% isiXhosa, 5% English). With no donor funding, the station relies on advertising, community fundraising and service initiatives &mdash; soup drives, back-to-school programmes &mdash; plus creative low-cost engagement like WhatsApp voice notes and face-to-face outreach weeks that remote broadcasting can't replicate. Programmes Manager Rose Giko: "community members bake cakes, share challenges" during those outreaches.</p>
+        <a class="post-read" href="https://research.civicsignal.africa/posts/stories/mediameltdown-qa-how-radio-nfm-builds-community-on-a-limited-budget" target="_blank" rel="noopener">Read the full post &rarr;</a>
       </div>
+
+      <div class="post-card">
+        <div class="post-meta">18 July 2025 &middot; CivicSignal Team</div>
+        <h3><a href="https://research.civicsignal.africa/posts/stories/pandemic-still-disrupts-african-news-media-in-2025" target="_blank" rel="noopener">Pandemic still disrupts African news media in 2025</a></h3>
+        <p>The post that opened the #MediaMeltdown series: a survey of 42 community media outlets across 11 African countries found the pandemic's economic damage still unresolved five years on. Over a third of outlets saw advertising revenue fall more than 20%, and half of grant-dependent organisations lost more than 20% of their funding since 2020. Despite diversifying into training, events and commissioned content, many outlets report they still haven't recovered pre-2020 financial stability, or the ability to fund essential equipment and staffing.</p>
+        <a class="post-read" href="https://research.civicsignal.africa/posts/stories/pandemic-still-disrupts-african-news-media-in-2025" target="_blank" rel="noopener">Read the full post &rarr;</a>
+      </div>
+
     </div>
-    <div class="note" style="margin-top:28px;">
-      <b>This page is a placeholder.</b> A fuller technical writeup of the ingestion pipeline is pending &mdash; the figures above are CivicSignal's current archive totals.
+    <div class="note" style="margin-top:8px;">
+      <b>About the survey.</b> Sample sizes differ slightly between posts (42 organisations/11 countries for the pandemic and reinvention pieces, 51 organisations/12 countries for the US funding-cuts piece) &mdash; each reflects the specific survey wave that post draws on, not one fixed corpus.
     </div>
   </div>
 </section>
@@ -205,7 +211,7 @@ document.addEventListener('click', function(){
 <section class="block sources-block" style="border-bottom:none;">
   <div class="wrap">
     <span class="kicker">Sources</span>
-    <p class="sources-note">Source and article totals reflect CivicSignal's MediaCloud archive as of this page's last update &mdash; not a live feed.</p>
+    <p class="sources-note">All four posts originally published on <a href="https://research.civicsignal.africa" target="_blank" rel="noopener">research.civicsignal.africa</a>, CivicSignal's research blog. Peer review by Dr Sandra Roberts and Nomshado Lubisi; editing by Amanda Strydom and Kiprotich Koros.</p>
   </div>
 </section>
 

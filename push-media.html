@@ -92,6 +92,15 @@
   .note{background:var(--bg-alt);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 22px;font-size:13.5px;color:var(--ink-dim);max-width:72ch;}
   .note b{color:var(--ink);}
 
+  .story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:840px){.story-grid{grid-template-columns:1fr;}}
+  .story-card{background:var(--bg-raised);border:1px solid var(--line);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:10px;}
+  .story-card .story-src{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-family:var(--font-mono);font-size:10.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;}
+  .story-card .story-src b{color:var(--blue);font-weight:700;}
+  .story-card h3{font-size:0.98rem;line-height:1.35;margin:0;color:var(--ink);}
+  .story-card .story-topics{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
+  .story-card .story-topics span{font-family:var(--font-mono);font-size:9.5px;background:var(--bg-alt);color:var(--ink-dim);border-radius:4px;padding:3px 7px;text-transform:uppercase;letter-spacing:0.02em;}
+
   footer.close{background:var(--navy);color:#EFE9E2;padding:clamp(48px,8vw,80px) 0 0;margin-top:0;}
   footer.close h2{color:#fff;font-size:clamp(1.3rem,2.6vw,1.7rem);max-width:26ch;}
   footer.close .lede{margin-top:14px;max-width:60ch;color:#C7CEE0;font-size:1rem;}
@@ -187,7 +196,7 @@ document.addEventListener('click', function(){
     <div class="ticker-grid">
       <div class="stat"><span class="num">376</span><span class="label">distinct publishers monitored via newsletter, Telegram or fediverse</span></div>
       <div class="stat"><span class="num">407</span><span class="label">individual endpoints tracked (a publisher can have more than one)</span></div>
-      <div class="stat"><span class="num">19,858</span><span class="label">items archived to date</span></div>
+      <div class="stat"><span class="num">20,362</span><span class="label">items archived to date, 101,453 entities extracted</span></div>
       <div class="stat"><span class="num">2021&ndash;now</span><span class="label">ingestion history, continuously growing</span></div>
     </div>
   </div>
@@ -215,6 +224,32 @@ document.addEventListener('click', function(){
         <p>Public Mastodon accounts and other ActivityPub-based outlets, read via the same open, unauthenticated protocol the fediverse is built on.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <span class="kicker">Pulled live from the tool</span>
+    <h2>Semantic search across the whole ingested corpus.</h2>
+    <p class="lede">A real query &mdash; "disinformation" &mdash; run against the live Push Media index just now. Results span major wires and independent African newsrooms alike, each auto-tagged by topic and named entity as it's ingested, not after the fact.</p>
+    <div class="story-grid">
+      <div class="story-card">
+        <div class="story-src"><b>Daily Maverick</b><span>19 May 2025</span></div>
+        <h3>Misinformation drives Afrikaner refugee claims</h3>
+        <div class="story-topics"><span>Political Misinformation</span><span>Social Media Influence</span></div>
+      </div>
+      <div class="story-card">
+        <div class="story-src"><b>Bloomberg</b><span>24 Sep 2025</span></div>
+        <h3>Trump's blizzard of misinformation</h3>
+        <div class="story-topics"><span>Climate Change</span><span>Political Rhetoric</span></div>
+      </div>
+      <div class="story-card">
+        <div class="story-src"><b>News24</b><span>7 Nov 2025</span></div>
+        <h3>The fake news factory: how a single line of code exposed an Indian disinformation network</h3>
+        <div class="story-topics"><span>Disinformation Campaigns</span><span>Digital Security</span></div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-faint);margin-top:18px;">Topic pills and named-entity tags shown are the tool's own output for these documents, unedited.</p>
   </div>
 </section>
 
@@ -255,7 +290,7 @@ document.addEventListener('click', function(){
 <section class="block sources-block" style="border-bottom:none;">
   <div class="wrap">
     <span class="kicker">Sources</span>
-    <p class="sources-note">Source counts and article totals reflect a snapshot of push_media.db at the time this page was last generated &mdash; not a live feed. DNR 2026 figures: Reuters Institute for the Study of Journalism, Digital News Report 2026, Kenya country chapter. Project Oasis figures: Project Oasis 2025 Report, Platformisation section.</p>
+    <p class="sources-note">Publisher/endpoint counts reflect a snapshot of push_media.db at the time this page was last generated &mdash; not a live feed. Document/entity totals and the example stories above were pulled live from push-media.civicsignal.africa on 2026-09-09. DNR 2026 figures: Reuters Institute for the Study of Journalism, Digital News Report 2026, Kenya country chapter. Project Oasis figures: Project Oasis 2025 Report, Platformisation section.</p>
   </div>
 </section>
 
@@ -266,7 +301,7 @@ document.addEventListener('click', function(){
         <h2>The map is moving. CivicSignal is how you keep up with it.</h2>
         <p class="lede">Investigate the full spectrum of Africa's media landscape &mdash; from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
         <div class="footlinks">
-          <a class="search-cta-btn" href="mailto:hey@codeforafrica.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
+          <a class="search-cta-btn" href="mailto:hey.civicsignal@codeforafrica.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
         </div>
       </div>
       <div>

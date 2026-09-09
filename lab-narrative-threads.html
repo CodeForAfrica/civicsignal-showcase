@@ -35,7 +35,7 @@
   .cs-navlinks{display:flex;gap:26px;align-items:stretch;flex-wrap:wrap;}
   .cs-navlinks a,.cs-navdrop-btn{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B9C2DA;padding:15px 0 13px;border:none;border-bottom:3px solid transparent;background:none;text-decoration:none;cursor:pointer;white-space:nowrap;margin-bottom:-2px;}
   .cs-navlinks a:hover,.cs-navdrop-btn:hover{color:#fff;}
-  .cs-navlinks a.active,.cs-navdrop-btn.active{color:#fff;border-bottom-color:var(--red);}
+  .cs-navlinks a.active,.cs-navdrop-btn.active{color:var(--red);border-bottom-color:transparent;}
   .closing-banner{background:var(--red);padding:clamp(48px,8vw,76px) 0;}
   .closing-banner h2{color:#fff;font-size:clamp(1.8rem,5vw,3.25rem);line-height:1.05;letter-spacing:-0.02em;margin:0;max-width:24ch;}
   .closing-banner p{margin:22px 0 32px;font-size:1.05rem;line-height:1.55;color:#fff;max-width:62ch;}
@@ -59,7 +59,8 @@
 
   /* ---- lab-specific look: mono annotations, dashed frames ---- */
   header.masthead{background:#F4F3F0;border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
-  .masthead-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase;line-height:1.2;}
+  .masthead-top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px;padding-left:32px;font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:0.08em;color:var(--navy);text-transform:uppercase;line-height:1.2;}
+  .masthead-top::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:22px;height:3px;background:var(--red);}
   h1.headline{font-size:clamp(2rem,5vw,3.3rem);line-height:1.1;max-width:20ch;letter-spacing:-0.015em;}
   h1.headline em{font-style:normal;color:var(--amber);}
   .dek{margin-top:20px;max-width:60ch;font-size:1.1rem;color:var(--muted);}

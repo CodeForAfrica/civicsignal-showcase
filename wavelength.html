@@ -61,7 +61,7 @@
   .cs-navlinks{display:flex;gap:26px;align-items:stretch;flex-wrap:wrap;}
   .cs-navlinks a,.cs-navdrop-btn{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B9C2DA;padding:15px 0 13px;border:none;border-bottom:3px solid transparent;background:none;text-decoration:none;cursor:pointer;white-space:nowrap;margin-bottom:-2px;}
   .cs-navlinks a:hover,.cs-navdrop-btn:hover{color:#fff;}
-  .cs-navlinks a.active,.cs-navdrop-btn.active{color:#fff;border-bottom-color:var(--red);}
+  .cs-navlinks a.active,.cs-navdrop-btn.active{color:var(--red);border-bottom-color:transparent;}
   .cs-footbar{background:var(--navy-deep);}
   .cs-footbar-inner{max-width:1120px;margin:0 auto;padding:16px clamp(20px,5vw,56px);font-family:'Lato',sans-serif;font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .cs-footbar-inner a{color:#8791AC;}
@@ -79,10 +79,12 @@
   .eyebrow-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:32px;}
   .eyebrow-right{display:flex;align-items:center;gap:12px;}
   .eyebrow{
+    position:relative;
     font-family:'IBM Plex Mono',ui-monospace,monospace;
-    font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
-    color:var(--muted);display:block;
+    font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--navy);display:block;padding-left:32px;
   line-height:1.2;}
+  .eyebrow::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:22px;height:3px;background:var(--red);}
   .live-status{display:flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;color:var(--muted);letter-spacing:0.02em;}
   .live-dot{width:7px;height:7px;border-radius:50%;background:var(--red);flex:0 0 auto;animation:live-pulse 2s ease-in-out infinite;}
   @keyframes live-pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(235,34,39,0.4);}50%{opacity:0.6;box-shadow:0 0 0 4px rgba(235,34,39,0);}}

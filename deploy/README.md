@@ -28,9 +28,12 @@ change IAM, update SSM documents, or edit domains. IAM GetCommandInvocation uses
 Resource `*` because AWS does not offer per-instance resource scoping for that
 read operation; do not place sensitive output in other command logs.
 
-## One-time setup (not applied by this code change)
+## One-time setup
 
-This existing manually-managed host has no instance profile/SSM registration.
+Installed on 9 September 2026; see [SETUP.md](SETUP.md). The following
+steps document the bootstrap procedure; do not repeat resource creation.
+
+Before this setup, the existing manually-managed host had no instance profile/SSM registration.
 The app-specific CloudFormation template owns only the new IAM roles/profile and
 SSM document. It does not import, replace or manage the EC2 instance, Dokku apps,
 networking, databases, DNS, or existing Pulumi stacks.
@@ -114,8 +117,7 @@ Manual dispatch only: no push, PR, schedule, or workflow_run trigger. One native
 deployment runner (45-minute limit); no matrix, QEMU or multi-architecture fanout.
 No GitHub artifact upload or build cache is configured. Each successful build
 adds one image tag to Docker Hub; retain known-good release digests and manage
-old tags separately. SSM polling consumes deployment-runner minutes. No live
-workflow has been triggered by this code change.
+old tags separately. SSM polling consumes deployment-runner minutes. The first observed workflow run is recorded in SETUP.md.
 
 Only CivicSignal's website deployment is automated. Existing portal, tools,
 certificate renewal and DNS stay as configured. The action does not renew or
@@ -123,3 +125,9 @@ transfer domains. For fallback instructions see ../MANUAL_DEPLOY.md.
 
 References: [AWS ENV_VAR parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-syntax-data-elements-parameters.html),
 [GitHub OIDC on AWS](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws).
+
+The trust policy uses this repository’s immutable subject prefix, obtained from
+GitHub’s OIDC API: `repo:CodeForAfrica@2786364/civicsignal-showcase@1362711974`.
+Its suffix is `:environment:production`. Do not replace this with the older
+name-only subject or a wildcard. Repository transfer/recreation requires
+rechecking the subject and updating the trust policy through CloudFormation.

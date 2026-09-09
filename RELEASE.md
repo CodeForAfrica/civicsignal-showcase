@@ -3,7 +3,16 @@
 The rendered website is live at https://civicsignal.africa and
 https://www.civicsignal.africa. Preview: https://preview.civicsignal.africa.
 
-## Artifact and host
+## Current automated release
+
+The first [deploy_to_prod run](https://github.com/CodeForAfrica/civicsignal-showcase/actions/runs/34388337811)
+succeeded on 9 September 2026. It deployed commit `096c717` as
+`codeforafrica/civicsignal-web@sha256:de578ae15fefccc6d8520b254194cbea41aa9a2ed6aa28d2e066082a0fbdc7c1`
+through AWS OIDC, SSM and Dokku. Setup and verification details are in
+[deploy/SETUP.md](deploy/SETUP.md). Routine releases now use that manual-dispatch
+GitHub Action. The following sections record the initial manual cutover.
+
+## Initial manual artifact and host
 
 - Rendered source and container implementation: commit `b3d49a9`.
 - Docker Hub tag: `codeforafrica/civicsignal-web:2026-09-09-02`.
@@ -14,8 +23,7 @@ https://www.civicsignal.africa. Preview: https://preview.civicsignal.africa.
 - Container: `civicsignal-web.web.1`; Docker health status healthy.
 
 Docker Hub publishing and Dokku `git:from-image` were executed manually.
-No automated release pipeline was added. Subsequent documentation/test-only
-commits do not change this published image.
+At that initial cutover, no automated release pipeline had been added.
 
 ## DNS and TLS
 

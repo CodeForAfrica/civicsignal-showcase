@@ -1,0 +1,83 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: App-specific OIDC and restricted SSM deployment for the existing CivicSignal Dokku host
+Parameters:
+  GitHubOIDCProviderArn:
+    Type: String
+    Description: Existing token.actions.githubusercontent.com OIDC provider ARN in this account; do not create a duplicate
+    AllowedPattern: '^arn:aws:iam::499665620971:oidc-provider/token.actions.githubusercontent.com$'
+Resources:
+  InstanceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: ec2.amazonaws.com}
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+  InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles: [!Ref InstanceRole]
+  DeployDocument:
+    Type: AWS::SSM::Document
+    Properties:
+      Name: civicsignal-web-deploy
+      DocumentType: Command
+      DocumentFormat: YAML
+      Content:
+        schemaVersion: '2.2'
+        description: Deploy only a pinned CivicSignal website image using the root-owned helper
+        parameters:
+          ImageDigest:
+            type: String
+            allowedPattern: '^sha256:[a-f0-9]{64}$'
+            interpolationType: ENV_VAR
+        mainSteps:
+          - action: aws:runShellScript
+            name: deployWebsite
+            precondition:
+              StringEquals: [platformType, Linux]
+            inputs:
+              timeoutSeconds: '3600'
+              runCommand:
+                - 'set -eu'
+                - 'test -n "${SSM_ImageDigest:-}"'
+                - 'exec /usr/local/libexec/civicsignal-deploy server "$SSM_ImageDigest"'
+  GitHubDeployRole:
+    Type: AWS::IAM::Role
+    Properties:
+      MaxSessionDuration: 3600
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: !Ref GitHubOIDCProviderArn
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+                token.actions.githubusercontent.com:sub: repo:CodeForAfrica/civicsignal-showcase:environment:production
+      Policies:
+        - PolicyName: SendOnlyWebsiteDeployment
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: ssm:SendCommand
+                Resource:
+                  - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:document/${DeployDocument}'
+                  - arn:aws:ec2:eu-west-1:499665620971:instance/i-046fe9e345ae1424e
+              - Effect: Allow
+                Action: ssm:GetCommandInvocation
+                Resource: '*'
+Outputs:
+  DeployRoleArn:
+    Value: !GetAtt GitHubDeployRole.Arn
+  InstanceProfileName:
+    Value: !Ref InstanceProfile
+  DocumentName:
+    Value: !Ref DeployDocument

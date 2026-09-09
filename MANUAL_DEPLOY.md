@@ -1,3 +1,7 @@
+> A manual GitHub Action using AWS OIDC/SSM is available in code.
+> Complete the [one-time setup](deploy/README.md) before using it.
+> This document remains the operator fallback and domain-cutover reference.
+
 # CivicSignal website: manual deployment and rollback
 
 Prepared 9 September 2026 for Dokku 0.37.6 on `34.250.120.147`

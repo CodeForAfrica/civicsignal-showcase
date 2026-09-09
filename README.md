@@ -9,3 +9,5 @@ source is [CodeForAfrica/civicsignal-web](https://github.com/CodeForAfrica/civic
 Images are built from this repository, then pushed to Docker Hub and explicitly
 deployed by an operator. Git pushes do not automatically deploy the website.
 The live Media Cloud portal is a separate app and stays unchanged.
+
+- [Manual GitHub Action via AWS OIDC/SSM: setup and operation](deploy/README.md)

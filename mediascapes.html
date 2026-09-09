@@ -116,6 +116,11 @@
   .footer-brand-copy b{color:#EFE9E2;}
   .search-cta-btn{flex:0 0 auto;background:var(--red);color:#fff;font-weight:700;font-size:13.5px;padding:13px 24px;border-radius:0;text-decoration:none;white-space:nowrap;}
   .search-cta-btn:hover{background:#c91b1f;}
+  .closing-banner.simple{background:var(--bg,#FFFFFF);padding:clamp(40px,7vw,56px) 0;border-top:2px solid var(--ink);}
+  .closing-banner.simple h2{color:var(--ink);font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.25;letter-spacing:-0.01em;max-width:32ch;}
+  .closing-banner.simple p{margin:14px 0 24px;color:var(--ink-dim,var(--muted));font-size:1rem;max-width:62ch;}
+  .closing-banner.simple .closing-banner-cta{background:var(--red);color:#fff;padding:14px 26px;font-size:14px;}
+  .closing-banner.simple .closing-banner-cta:hover{background:#c91b1f;}
 </style>
 </head>
 <body>
@@ -270,7 +275,7 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
   </div>
 </section>
 
-<section class="closing-banner">
+<section class="closing-banner simple">
   <div class="wrap">
     <h2>The map is moving. CivicSignal is how you keep up with it.</h2>
     <p>Investigate the full spectrum of Africa's media landscape &mdash; from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>

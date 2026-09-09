@@ -276,7 +276,7 @@
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:620px){.grid{grid-template-columns:1fr;}}
-  .card{perspective:1600px;height:452px;}
+  .card{perspective:1600px;height:560px;}
   .card:hover .flip-inner{box-shadow:0 16px 32px rgba(27,35,64,0.12);transform:translateY(-2px);}
   .card:hover .flip-inner.is-flipped{transform:translateY(-2px) rotateY(180deg);}
   .flip-inner{
@@ -309,8 +309,8 @@
   .card-back .ei-bar-fill{background:#fff;}
   .card-back .engagement-index-note{color:#fff;text-decoration:underline;}
   .card-back .back-empty{color:rgba(255,255,255,0.65);}
-  .flip-icon{position:absolute;bottom:0;right:0;width:20px;height:20px;border-radius:50%;background:var(--cream-2);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1;pointer-events:none;}
-  .card-back .flip-icon{background:rgba(255,255,255,0.16);color:#fff;position:absolute;bottom:16px;right:20px;}
+  .flip-icon{position:absolute;top:16px;right:16px;width:22px;height:22px;border-radius:50%;background:var(--cream-2);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1;pointer-events:none;}
+  .card-back .flip-icon{background:rgba(255,255,255,0.16);color:#fff;position:absolute;top:16px;right:16px;}
   .back-title{font-weight:900;font-size:15px;color:var(--navy-deep);padding-right:4px;}
   .back-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;}
   .back-meta-item{min-width:0;}
@@ -331,9 +331,9 @@
   .tag-row{display:flex;flex-wrap:wrap;gap:5px;}
   .tag{font-size:10.5px;color:var(--navy);background:var(--cream-2);border-radius:0;padding:3px 7px;white-space:nowrap;}
   .tag.more{color:var(--muted);background:transparent;border:1px dashed var(--line);}
-  .ei-front-gauge-wrap{position:relative;flex:0 0 auto;width:30px;height:30px;display:flex;align-items:center;justify-content:center;}
+  .ei-front-gauge-wrap{position:relative;flex:0 0 auto;width:44px;height:44px;display:flex;align-items:center;justify-content:center;}
   .ei-front-gauge-wrap .ei-gauge-svg{position:absolute;top:0;left:0;}
-  .ei-front-score{position:relative;font-family:var(--font-mono);font-size:10px;font-weight:700;color:var(--ink);}
+  .ei-front-score{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:700;}
   .ei-front-category{font-family:var(--font-mono);font-size:9.5px;font-weight:700;}
   .ei-front-category.ei-cat-leading{color:#1f7a4d;}
   .ei-front-category.ei-cat-established{color:#125e8a;}
@@ -356,10 +356,10 @@
   .meta-row{display:flex;gap:6px;flex-wrap:wrap;align-items:baseline;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);}
   .meta-row .lang{font-weight:700;color:var(--ink);font-size:11.5px;letter-spacing:0.01em;}
   .card-body{position:relative;border-top:2px solid var(--ink);padding-top:14px;padding-bottom:22px;margin-top:12px;display:flex;flex-direction:column;gap:14px;flex:1;}
-  .radar-box{height:158px;position:relative;}
-  .radar-box::before{
+  .radar-box{height:190px;position:relative;}
+  .radar-box-unused-before{
     content:'';position:absolute;inset:8%;border-radius:50%;
-    background:radial-gradient(circle,var(--accent,var(--navy)) 0%,transparent 72%);opacity:0.05;
+    background:radial-gradient(circle,var(--accent,var(--navy)) 0%,transparent 72%);opacity:0;
   }
   .card-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;}
   .card-row-label{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);}
@@ -375,7 +375,7 @@
   .card-foot{display:flex;align-items:center;border-top:2px solid var(--ink);margin-top:auto;}
   .card-foot-cell{flex:1 1 0;padding:10px 14px;}
   .card-foot-cell:first-child{border-right:1px solid var(--line);}
-  .foot-num{display:block;line-height:1.2;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;font-size:15px;color:var(--navy);font-variant-numeric:tabular-nums;}
+  .foot-num{display:block;line-height:1.2;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;font-size:19px;color:var(--navy);font-variant-numeric:tabular-nums;}
   .foot-label{display:block;line-height:1.2;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8px;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);}
   .foot-ei{display:flex;align-items:center;gap:8px;}
   .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);font-size:14px;}
@@ -599,14 +599,14 @@
     <nav class="cs-navlinks">
       <a href="index.html">Overview</a>
       <div class="cs-navdrop">
-        <button class="cs-navdrop-btn active" type="button" aria-expanded="false">Tools</button>
+        <button class="cs-navdrop-btn" type="button" aria-expanded="false">Tools</button>
         <div class="cs-navdrop-menu">
           <a href="mediadata.html">MediaData</a>
           <a href="mediacloud.html">MediaCloud</a>
           <a href="mediascapes.html">MediaScapes</a>
           <div class="cs-navdrop-divider"></div>
           <a href="wavelength.html">Wavelength</a>
-          <a href="fingerprints.html" class="active">Fingerprints</a>
+          <a href="fingerprints.html">Fingerprints</a>
           <a href="push-media.html">Push Media</a>
         </div>
       </div>
@@ -620,7 +620,7 @@
       </div>
       <a href="lab-narrative-threads.html">Lab</a>
       <a href="about.html">About</a>
-      <a href="https://tools.civicsignal.africa/#/login" class="cs-login-btn">Log in</a>
+      <a href="login.html" class="cs-login-btn">Log in</a>
     </nav>
   </div>
 </header>
@@ -644,7 +644,6 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
   }
 });
 </script>
-
 
 <header class="hero" id="pulse">
   <div class="wrap">
@@ -763,34 +762,27 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
 
 </main>
 
-<section class="closing-banner simple">
-  <div class="wrap">
-    <h2>The map is moving. CivicSignal is how you keep up with it.</h2>
-    <p>Investigate the full spectrum of Africa's media landscape &mdash; from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
-    <a class="closing-banner-cta" href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
-  </div>
-</section>
-
-<footer class="close">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand-logos">
-        <img src="assets/cfa-logo.png" alt="Code for Africa">
-        <span class="divider"></span>
-        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance">
+<section class="footer-merged" style="background:var(--navy-deep);padding:56px 0 0;">
+  <div class="wrap" style="display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12);">
+    <div>
+      <h2 style="color:#fff;font-family:'Lato',sans-serif;font-weight:900;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.08;letter-spacing:-.02em;margin:0;max-width:24ch;">The map is moving. CivicSignal is how you keep up with it.</h2>
+      <p style="color:#C7CEE0;font-size:1rem;line-height:1.55;max-width:56ch;margin:18px 0 26px;">Investigate the full spectrum of Africa's media landscape — from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
+      <a href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates" style="display:inline-block;font-family:'Lato',sans-serif;font-weight:700;font-size:14px;color:#fff;background:var(--red);padding:15px 26px;text-decoration:none;">Connect to CivicSignal</a>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:22px;background:#fff;padding:16px 20px;margin-bottom:16px;">
+        <img src="assets/cfa-logo.png" alt="Code for Africa" style="height:52px;width:auto;">
+        <span style="width:1px;height:42px;background:var(--line);"></span>
+        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance" style="height:44px;width:auto;">
       </div>
-      <p class="footer-brand-copy">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
+      <p style="font-size:12.5px;line-height:1.65;color:#9FA9C9;margin:0;">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
     </div>
   </div>
-</footer>
-
-<div class="cs-footbar">
-  <div class="cs-footbar-inner">
-    <span>CivicSignal &middot; Code for Africa</span>
-    <a href="index.html">&larr; All CivicSignal pages</a>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:24px;padding:16px 0;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:#8791AC;">
+    <span>CivicSignal &middot; Code for Africa &mdash; working showcase, not for distribution</span>
+    <a href="index.html" style="color:#8791AC;">&larr; All CivicSignal pages</a>
   </div>
-</div>
-
+</section>
 <script>
 const DATA_URL = 'showcase_data.json';
 
@@ -987,7 +979,7 @@ function engagementCategory(score){
   return ENGAGEMENT_CATEGORIES.find(c => score >= c.min);
 }
 function engagementGaugeSVG(score, color){
-  const r = 12, stroke = 3, size = (r + stroke) * 2, c = size / 2;
+  const r = 18, stroke = 4, size = (r + stroke) * 2, c = size / 2;
   const circumference = 2 * Math.PI * r;
   const offset = circumference * (1 - Math.max(0, Math.min(100, score)) / 100);
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" class="ei-gauge-svg" aria-hidden="true">
@@ -1004,9 +996,49 @@ function engagementFootHTML(p){
   return `<div class="card-foot-cell foot-ei" style="color:${cat.color}">
     <div class="ei-front-gauge-wrap">
       ${engagementGaugeSVG(ei.score, cat.color)}
-      <span class="ei-front-score">${Math.round(ei.score)}</span>
+      <span class="ei-front-score" style="color:${cat.color}">${Math.round(ei.score)}</span>
     </div>
     <span class="ei-front-category ${cat.cls}">${cat.label}</span>
+  </div>`;
+}
+function shortLabelFor(name){
+  const map = {'Politics & Governance':'Politics','Economy':'Economy','Culture & Society':'Culture','Technology':'Tech','Conflict & Security':'Conflict','Health':'Health','Gender & Rights':'Gender','Climate':'Climate'};
+  return map[name] || (name||'').split(' ')[0];
+}
+function radarSVG(p){
+  const maxV = Math.max(...CATS.map(c=>p.radar[c]||0), 1);
+  const n = CATS.length;
+  const dots = CATS.map((name,i)=>{
+    const ang=-90+i*(360/n), rad=ang*Math.PI/180;
+    const v=p.radar[name]||0, r=20+(v/maxV)*60;
+    return {x:(100+r*Math.cos(rad)).toFixed(1), y:(100+r*Math.sin(rad)).toFixed(1), color:COLORS[name]||'#8A8E99'};
+  });
+  const polygon = dots.map(d=>d.x+','+d.y).join(' ');
+  const labels = CATS.map((name,i)=>{
+    const ang=-90+i*(360/n), rad=ang*Math.PI/180;
+    const cos=Math.cos(rad), sin=Math.sin(rad), lr=82;
+    const x=100+lr*cos, y=100+lr*sin;
+    const px=(x/200*100).toFixed(2)+'%', py=(y/200*100).toFixed(2)+'%';
+    const tx = cos>0.35?'0%':cos<-0.35?'-100%':'-50%', ty = sin>0.35?'0%':sin<-0.35?'-100%':'-50%';
+    return `<span style="position:absolute;left:${px};top:${py};transform:translate(${tx},${ty});font-family:var(--font-mono);font-size:9px;font-weight:700;color:var(--ink);white-space:nowrap;">${shortLabelFor(name)}</span>`;
+  }).join('');
+  return `<div style="position:relative;width:100%;height:100%;">
+    <svg viewBox="0 0 200 200" style="position:absolute;inset:0;width:100%;height:100%;">
+      <polygon points="100.0,70.0 121.2,78.8 130.0,100.0 121.2,121.2 100.0,130.0 78.8,121.2 70.0,100.0 78.8,78.8" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+      <polygon points="100.0,45.0 138.9,61.1 155.0,100.0 138.9,138.9 100.0,155.0 61.1,138.9 45.0,100.0 61.1,61.1" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+      <polygon points="100.0,20.0 156.6,43.4 180.0,100.0 156.6,156.6 100.0,180.0 43.4,156.6 20.0,100.0 43.4,43.4" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+      <line x1="100" y1="100" x2="100.0" y2="20.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="156.6" y2="43.4" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="180.0" y2="100.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="156.6" y2="156.6" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="100.0" y2="180.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="43.4" y2="156.6" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="20.0" y2="100.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="43.4" y2="43.4" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <polygon points="${polygon}" fill="rgba(2,32,105,0.08)" stroke="#022069" stroke-width="1.8" stroke-linejoin="round"/>
+      ${dots.map(d=>`<circle cx="${d.x}" cy="${d.y}" r="3.4" fill="${d.color}"/>`).join('')}
+    </svg>
+    ${labels}
   </div>`;
 }
 function topTopicsHTML(p){
@@ -1047,7 +1079,7 @@ function cardHTML(p, radarId){
             </div>
           </div>
           <div class="card-body">
-            <div class="radar-box"><canvas id="radar-${radarId}"></canvas></div>
+            <div class="radar-box">${radarSVG(p)}</div>
             ${topTopicsHTML(p)}
             ${entitiesHTML(p)}
             <span class="flip-icon">&#8635;</span>
@@ -1160,7 +1192,7 @@ function renderCards(){
     });
   });
 
-  if(HAS_CHART) pending.forEach(({p, id}) => mountRadar(p, id));
+  // radar now rendered inline as SVG in cardHTML; no chart mounting needed
   container.querySelectorAll('.topics-row, .card-top-entities').forEach(clampRowToTwoLines);
 }
 [fCountry,fLang,fTopic,fSort].forEach(el=>el.addEventListener('change', ()=>{

@@ -4,6 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CivicSignal — Wavelength</title>
+<meta name="description" content="A live view of Africa's emerging media ecosystem &mdash; digital-native publishers, creator-journalists and push media, tracked continuously.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CivicSignal">
+<meta property="og:title" content="CivicSignal — Wavelength">
+<meta property="og:description" content="A live view of Africa's emerging media ecosystem — digital-native publishers, creator-journalists and push media, tracked continuously.">
+<meta property="og:image" content="https://civicsignal.africa/assets/wavelength-social.jpg">
+<meta property="og:url" content="https://civicsignal.africa/wavelength.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CivicSignal — Wavelength">
+<meta name="twitter:description" content="A live view of Africa's emerging media ecosystem — digital-native publishers, creator-journalists and push media, tracked continuously.">
+<meta name="twitter:image" content="https://civicsignal.africa/assets/wavelength-social.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=optional" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
@@ -458,13 +469,13 @@
     <nav class="cs-navlinks">
       <a href="index.html">Overview</a>
       <div class="cs-navdrop">
-        <button class="cs-navdrop-btn active" type="button" aria-expanded="false">Tools</button>
+        <button class="cs-navdrop-btn" type="button" aria-expanded="false">Tools</button>
         <div class="cs-navdrop-menu">
           <a href="mediadata.html">MediaData</a>
           <a href="mediacloud.html">MediaCloud</a>
           <a href="mediascapes.html">MediaScapes</a>
           <div class="cs-navdrop-divider"></div>
-          <a href="wavelength.html" class="active">Wavelength</a>
+          <a href="wavelength.html">Wavelength</a>
           <a href="fingerprints.html">Fingerprints</a>
           <a href="push-media.html">Push Media</a>
         </div>
@@ -479,7 +490,7 @@
       </div>
       <a href="lab-narrative-threads.html">Lab</a>
       <a href="about.html">About</a>
-      <a href="https://tools.civicsignal.africa/#/login" class="cs-login-btn">Log in</a>
+      <a href="login.html" class="cs-login-btn">Log in</a>
     </nav>
   </div>
 </header>
@@ -503,7 +514,6 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
   }
 });
 </script>
-
 
 <header class="hero" id="pulse">
   <div class="wrap">
@@ -723,34 +733,27 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
 
 </main>
 
-<section class="closing-banner simple">
-  <div class="wrap">
-    <h2>The map is moving. CivicSignal is how you keep up with it.</h2>
-    <p>Investigate the full spectrum of Africa's media landscape &mdash; from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
-    <a class="closing-banner-cta" href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
-  </div>
-</section>
-
-<footer class="close">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand-logos">
-        <img src="assets/cfa-logo.png" alt="Code for Africa">
-        <span class="divider"></span>
-        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance">
+<section class="footer-merged" style="background:var(--navy-deep);padding:56px 0 0;">
+  <div class="wrap" style="display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12);">
+    <div>
+      <h2 style="color:#fff;font-family:'Lato',sans-serif;font-weight:900;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.08;letter-spacing:-.02em;margin:0;max-width:24ch;">The map is moving. CivicSignal is how you keep up with it.</h2>
+      <p style="color:#C7CEE0;font-size:1rem;line-height:1.55;max-width:56ch;margin:18px 0 26px;">Investigate the full spectrum of Africa's media landscape — from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
+      <a href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates" style="display:inline-block;font-family:'Lato',sans-serif;font-weight:700;font-size:14px;color:#fff;background:var(--red);padding:15px 26px;text-decoration:none;">Connect to CivicSignal</a>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:22px;background:#fff;padding:16px 20px;margin-bottom:16px;">
+        <img src="assets/cfa-logo.png" alt="Code for Africa" style="height:52px;width:auto;">
+        <span style="width:1px;height:42px;background:var(--line);"></span>
+        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance" style="height:44px;width:auto;">
       </div>
-      <p class="footer-brand-copy">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
+      <p style="font-size:12.5px;line-height:1.65;color:#9FA9C9;margin:0;">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
     </div>
   </div>
-</footer>
-
-<div class="cs-footbar">
-  <div class="cs-footbar-inner">
-    <span>CivicSignal &middot; Code for Africa</span>
-    <a href="index.html">&larr; All CivicSignal pages</a>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:24px;padding:16px 0;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:#8791AC;">
+    <span>CivicSignal &middot; Code for Africa &mdash; working showcase, not for distribution</span>
+    <a href="index.html" style="color:#8791AC;">&larr; All CivicSignal pages</a>
   </div>
-</div>
-
+</section>
 <script>
 // This page holds no data of its own - every number, chart and list below comes from
 // showcase_data.json, fetched fresh each time the page loads. Refreshing that JSON file

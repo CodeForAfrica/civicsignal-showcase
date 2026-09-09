@@ -381,6 +381,10 @@
   .bar-row{display:grid;grid-template-columns:170px 1fr 50px;align-items:center;gap:12px;font-size:13px;}
   .bar-track{background:var(--cream-2);border-radius:6px;height:10px;overflow:hidden;}
   .bar-fill{height:100%;border-radius:6px;}
+  .mix-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .mix-grid .panel h3{font-size:13px;font-weight:900;color:var(--navy);margin:0 0 16px;text-transform:uppercase;letter-spacing:0.04em;}
+  .mix-grid .bar-row{grid-template-columns:110px 1fr 44px;}
+  @media(max-width:780px){.mix-grid{grid-template-columns:1fr;}}
 
   /* ---------- INFO STRIP ---------- */
   .info-strip-title{
@@ -629,20 +633,28 @@ document.addEventListener('click', function(){
         <div class="search-cta-title">What's most important for your investigation?</div>
         <p>CivicSignal can stand up a customized tracking report &mdash; your keywords, your countries, your cadence.</p>
       </div>
-      <a class="search-cta-btn" id="searchCtaBtn" href="mailto:hey.civicsignal@codeforafrica.org?subject=Custom%20CivicSignal%20tracking%20report">Your wavelength.</a>
+      <a class="search-cta-btn" id="searchCtaBtn" href="mailto:civicsignal@theplusalliance.org?subject=Custom%20CivicSignal%20tracking%20report">Your wavelength.</a>
     </div>
   </section>
 
-  <section class="section stepper-panel" data-panel-title="Topic mix, whole corpus">
+  <section class="section stepper-panel" data-panel-title="Topic &amp; language mix, whole corpus">
     <div class="section-head">
       <div>
-        <h2><span class="panel-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 2a6 6 0 0 1 5.2 9L8 8z"/></svg></span>Topic mix, whole corpus</h2>
-        <p>Share of all classified articles by topic, across every publisher and country in this dataset.</p>
+        <h2><span class="panel-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 2a6 6 0 0 1 5.2 9L8 8z"/></svg></span>Topic &amp; language mix, whole corpus</h2>
+        <p>Share of all classified articles by topic and by detected language, across every publisher and country in this dataset.</p>
       </div>
     </div>
-    <div class="panel">
-      <div class="bars" id="topicBars"></div>
+    <div class="mix-grid">
+      <div class="panel">
+        <h3>Topic mix</h3>
+        <div class="bars" id="topicBars"></div>
+      </div>
+      <div class="panel">
+        <h3>Language mix</h3>
+        <div class="bars" id="langBars"></div>
+      </div>
     </div>
+    <p class="panel-note" style="margin-top:14px;">Language mix reflects article-level detection, not self-declaration &mdash; a language can show 0% here and still be one a publisher self-reports covering. A quiet share of the corpus, not confirmed absence.</p>
   </section>
 
   <section class="section stepper-panel" id="feed" data-panel-title="Recent coverage">
@@ -675,7 +687,7 @@ document.addEventListener('click', function(){
       <div class="dev-cta-title">Does Wavelength resonate with you?</div>
       <p>If it does, you're looking at something with real room to grow. Digital-native publishers, creator-journalists and Push Media channels are already tracked continuously across the countries CivicSignal covers &mdash; daily coverage across every market, earlier detection of emerging narratives, and continent-wide Push Media monitoring are within reach. We'd welcome a conversation with anyone who sees the same potential.</p>
     </div>
-    <a class="dev-cta-btn" href="mailto:hey.civicsignal@codeforafrica.org?subject=Wavelength%20-%20next%20phase">Talk to us about what's next</a>
+    <a class="dev-cta-btn" href="mailto:civicsignal@theplusalliance.org?subject=Wavelength%20-%20next%20phase">Talk to us about what's next</a>
   </div>
 
   <section class="section" id="about">
@@ -705,7 +717,7 @@ document.addEventListener('click', function(){
         <h2>The map is moving. CivicSignal is how you keep up with it.</h2>
         <p class="lede">Investigate the full spectrum of Africa's media landscape &mdash; from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
         <div class="footlinks">
-          <a class="search-cta-btn" href="mailto:hey.civicsignal@codeforafrica.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
+          <a class="search-cta-btn" href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
         </div>
       </div>
       <div>
@@ -1007,6 +1019,30 @@ barsEl.innerHTML = sortedTopics.map(([topic,count]) => {
   return `<div class="bar-row">
     <span>${LABELS[topic]||topic}</span>
     <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${COLORS[topic]}"></div></div>
+    <span>${pct}%</span>
+  </div>`;
+}).join('');
+
+// ---- language totals bars (whole corpus, same treatment as topic mix) ----
+const LANG_COLORS = {
+  English:'#1D78BE', French:'#EB2227', Arabic:'#022069', Afrikaans:'#3DBE6C', Zulu:'#F4A100',
+  Xhosa:'#9B5DE5', Yoruba:'#F0653D', Portuguese:'#00B8A9', Swahili:'#E5489B', Hausa:'#3AA0FF',
+  Sesotho:'#C08A28', Other:'#94A3B8'
+};
+const langCounts = DATA.langCounts || {};
+const totalLangAll = Object.values(langCounts).reduce((a,b)=>a+b,0);
+const topLangSet = new Set(DATA.topLanguages || []);
+const topLangEntries = (DATA.topLanguages || []).map(l => [l, langCounts[l] || 0]);
+const otherLangTotal = Object.entries(langCounts)
+  .filter(([l]) => !topLangSet.has(l))
+  .reduce((sum,[,c]) => sum + c, 0);
+const sortedLangs = [...topLangEntries, ['Other', otherLangTotal]].sort((a,b)=>b[1]-a[1]);
+const langBarsEl = document.getElementById('langBars');
+langBarsEl.innerHTML = sortedLangs.map(([lang,count]) => {
+  const pct = (100*count/totalLangAll).toFixed(1);
+  return `<div class="bar-row">
+    <span>${lang}</span>
+    <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${LANG_COLORS[lang]||'#94A3B8'}"></div></div>
     <span>${pct}%</span>
   </div>`;
 }).join('');
@@ -1361,7 +1397,7 @@ function highlight(text, q){
 
 function runSearch(q){
   const query = q.trim();
-  searchCtaBtn.href = 'mailto:hey.civicsignal@codeforafrica.org?subject=Custom%20CivicSignal%20tracking%20report'
+  searchCtaBtn.href = 'mailto:civicsignal@theplusalliance.org?subject=Custom%20CivicSignal%20tracking%20report'
     + (query ? '&body=' + encodeURIComponent(`Topic/keyword I'd like monitored: "${query}"\n\n`) : '');
 
   if(!query){

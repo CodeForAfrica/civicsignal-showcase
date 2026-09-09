@@ -51,13 +51,9 @@
 
   header.masthead{padding:clamp(48px,8vw,80px) 0 48px;background:var(--bg-alt);border-bottom:1px solid var(--line);}
   header.masthead .wrap{position:relative;}
-  .masthead-bg{position:absolute;top:50%;right:-40px;transform:translateY(-50%);height:min(60vw,360px);width:auto;z-index:0;pointer-events:none;}
+  .masthead-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
   @media(max-width:900px){.masthead-bg{display:none;}}
-  .masthead-bg-continent{fill:var(--navy);opacity:0.05;}
-  .masthead-bg-nodes .pulse-dot{fill:var(--red);opacity:0.5;}
-  .masthead-bg-nodes .pulse-ring{fill:none;stroke:var(--red);stroke-width:1.5;opacity:0;transform-origin:center;transform-box:fill-box;animation:masthead-pulse 3.6s ease-out infinite;}
-  @keyframes masthead-pulse{0%{transform:scale(0.4);opacity:0.55;}100%{transform:scale(2.2);opacity:0;}}
-  @media (prefers-reduced-motion: reduce){.masthead-bg-nodes .pulse-ring{animation:none;opacity:0.3;}}
+  .masthead-bg-chevron{fill:none;stroke-width:22;}
   .masthead-top{display:flex;align-items:center;gap:10px;margin-bottom:22px;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.16em;color:var(--navy);text-transform:uppercase;line-height:1.2;}
   .masthead-top::before{content:'';display:block;flex:0 0 auto;width:22px;height:3px;background:var(--red);}
   .masthead-graphic{position:absolute;top:0;right:0;height:clamp(52px,8vw,84px);width:auto;display:block;}
@@ -442,20 +438,15 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
       <span>CivicSignal &middot; Code for Africa</span>
     </div>
     <div class="masthead-grid">
-      <svg class="masthead-bg" viewBox="0 0 500 520" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" focusable="false">
-        <polygon class="masthead-bg-continent" points="120,40 95,110 80,150 60,175 75,205 95,225 130,235 160,240 185,235 200,255 205,280 195,320 190,345 200,390 195,430 200,460 215,490 250,485 280,460 300,420 310,370 315,330 330,300 390,265 360,230 345,205 340,170 350,120 340,90 300,70 250,55 230,45 190,50 150,45"/>
-        <g class="masthead-bg-nodes">
-          <circle class="pulse-ring" cx="190" cy="245" r="14" style="animation-delay:0s"/>
-          <circle class="pulse-dot" cx="190" cy="245" r="3"/>
-          <circle class="pulse-ring" cx="300" cy="290" r="14" style="animation-delay:0.7s"/>
-          <circle class="pulse-dot" cx="300" cy="290" r="3"/>
-          <circle class="pulse-ring" cx="310" cy="95" r="14" style="animation-delay:1.4s"/>
-          <circle class="pulse-dot" cx="310" cy="95" r="3"/>
-          <circle class="pulse-ring" cx="240" cy="445" r="14" style="animation-delay:2.1s"/>
-          <circle class="pulse-dot" cx="240" cy="445" r="3"/>
-          <circle class="pulse-ring" cx="55" cy="178" r="14" style="animation-delay:2.8s"/>
-          <circle class="pulse-dot" cx="55" cy="178" r="3"/>
-        </g>
+      <svg class="masthead-bg" viewBox="0 0 1000 460" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
+        <polyline class="masthead-bg-chevron" points="560,-60 660,40 760,-60 860,40 960,-60 1060,40" stroke="var(--navy)" opacity="0.07"/>
+        <polyline class="masthead-bg-chevron" points="560,10 660,110 760,10 860,110 960,10 1060,110" stroke="var(--red)" opacity="0.06"/>
+        <polyline class="masthead-bg-chevron" points="560,80 660,180 760,80 860,180 960,80 1060,180" stroke="var(--blue)" opacity="0.055"/>
+        <polyline class="masthead-bg-chevron" points="560,150 660,250 760,150 860,250 960,150 1060,250" stroke="var(--navy)" opacity="0.05"/>
+        <polyline class="masthead-bg-chevron" points="560,220 660,320 760,220 860,320 960,220 1060,320" stroke="var(--red)" opacity="0.045"/>
+        <polyline class="masthead-bg-chevron" points="560,290 660,390 760,290 860,390 960,290 1060,390" stroke="var(--blue)" opacity="0.04"/>
+        <polyline class="masthead-bg-chevron" points="560,360 660,460 760,360 860,460 960,360 1060,460" stroke="var(--navy)" opacity="0.035"/>
+        <polyline class="masthead-bg-chevron" points="560,430 660,530 760,430 860,530 960,430 1060,530" stroke="var(--red)" opacity="0.03"/>
       </svg>
       <div class="masthead-copy">
         <h1 class="headline">Map, track and analyze Africa's <em>evolving media landscape.</em></h1>

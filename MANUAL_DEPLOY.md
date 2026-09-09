@@ -1,18 +1,23 @@
 # CivicSignal website: manual deployment and rollback
 
 Prepared 9 September 2026 for Dokku 0.37.6 on `34.250.120.147`
-(`i-046fe9e345ae1424e`, eu-west-1). Commands below are instructions, not an
-executed deployment. Run each stage separately and check its result.
+(`i-046fe9e345ae1424e`, eu-west-1). The first production deployment completed on 9 September 2026.
+See [RELEASE.md](RELEASE.md) for the current image and verification record.
+Stages 2–4 describe first-time setup: do not recreate the app or repeat the
+domain transfer for ordinary revisions. Run each required stage separately.
 
 ## Release status
 
-- Local candidate: `codeforafrica/civicsignal-web:2026-09-09-02`, linux/arm64.
-- Source: showcase upstream `f66d27b` plus local container, portal and layout changes.
+- Deployed release: `codeforafrica/civicsignal-web:2026-09-09-02`, linux/arm64.
+- Source: showcase commit `b3d49a9` (rendered upstream plus container and portal fixes).
 - Candidate has passed local static-page/browser checks.
 - The rendered repository includes `showcase_data.json`, dated 9 September 2026.
   Use this repository as the image build context; do not build from the source
   repository’s incomplete `page/` output.
-- No image has been pushed, no new Dokku app created, and no DNS changed.
+- Live domains: `civicsignal.africa`, `www.civicsignal.africa` and
+  `preview.civicsignal.africa`, served by `civicsignal-web`.
+- Portal remains on `civicsignal-tools`. The new preview DNS record is the only
+  DNS addition. Apex and www DNS targets were unchanged.
 
 ## Boundaries and rollback baseline
 
@@ -38,8 +43,9 @@ Recheck these facts at execution time.
 Rebuild and recreate the local preview as described in
 CONTAINER.md. Run the browser suite and confirm exit 0. Successful HTML responses
 alone do not establish that the data-dependent pages work; inspect their charts
-and controls with the real dataset. Verify a real portal login with an authorized
-test account; automated redirect checks do not authenticate.
+and controls with the real dataset. If an authorized test account is available, verify a real portal login;
+automated redirect checks do not authenticate. The initial release verified
+unchanged portal HTML and container identity, not an authenticated session.
 
 Save the source changes in version control before the final release build. Use a
 new tag if this candidate changes; do not silently overwrite a published tag.
@@ -78,8 +84,7 @@ environment variables or TLS private keys into the release notes.
 ## 3. Deploy a separate app for preview — on the server
 
 Create a DNS-only A record `preview.civicsignal.africa` -> `34.250.120.147` in
-Cloudflare after checking the hostname is unused. This is a proposed new record,
-not an existing preview. Keep existing records unchanged.
+Cloudflare after checking the hostname is unused. This record now exists; do not recreate it. Keep existing records unchanged.
 
 ```sh
 sudo dokku apps:create civicsignal-web

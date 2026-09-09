@@ -20,13 +20,14 @@ With Node and Playwright installed:
 
 ```sh
 BROWSER_CHANNEL=chrome node tests/local-smoke.cjs
+BROWSER_CHANNEL=chrome node tests/data-smoke.cjs
 ```
 
 This uses installed Chrome; omit BROWSER_CHANNEL for Playwright Chromium.
 TEST_OUTPUT controls report/screenshot destination (default /tmp/civicsignal-web-tests).
 
 See [MANUAL_DEPLOY.md](MANUAL_DEPLOY.md) for image publishing, preview, domain
-cutover, HTTPS and rollback. No production deployment has been performed.
+cutover, HTTPS and rollback. The initial production deployment completed on 9 September 2026; see RELEASE.md.
 
 Upstream rendered HTML refreshes may overwrite local portal/link fixes: preserve
 those changes when merging and rerun browser tests before publishing each image.

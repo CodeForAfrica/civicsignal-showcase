@@ -1829,7 +1829,12 @@ async function buildPageShareImage(){
   const gapWordmarkToTitle = Math.round(pad * 0.9);
   const gapTitleToSub = Math.round(pad * 0.35);
   const gapSubToPulse = Math.round(pad * 0.7);
-  const pulseH = Math.round(w * 0.028);
+  const chartCanvas = document.getElementById('streamChart');
+  const chartDrawW = w - pad * 2;
+  const chartDrawH = chartCanvas
+    ? Math.min(Math.round(chartDrawW * (chartCanvas.height / chartCanvas.width)), Math.round(w * 0.5))
+    : Math.round(w * 0.028);
+  const pulseH = chartDrawH;
   const gapPulseToStats = Math.round(pad * 0.6);
   const statsH = statValFont + Math.round(statLabelFont * 1.6);
   const gapStatsToFooter = Math.round(pad * 0.8);
@@ -1884,20 +1889,25 @@ async function buildPageShareImage(){
   cursorY += (subLines.length - 1) * subLineH;
 
   cursorY += gapSubToPulse;
-  // decorative pulse line, same zigzag shape as the hero's, scaled to fit
-  const pulseW = Math.round(w * 0.3);
-  const pulsePts = [[0,17],[40,17],[52,4],[64,30],[76,17],[110,17],[122,10],[134,24],[146,17],[360,17]];
-  const psx = pulseW / 360, psy = pulseH / 34;
-  ctx.strokeStyle = '#EB2227';
-  ctx.lineWidth = Math.max(1.5, w * 0.0013);
-  ctx.lineCap = 'round';
-  ctx.lineJoin = 'round';
-  ctx.beginPath();
-  pulsePts.forEach(([px, py], i) => {
-    const cx = pad + px * psx, cy = cursorY + py * psy;
-    if(i === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
-  });
-  ctx.stroke();
+  // live streamgraph thumbnail, so the shared card actually shows what Wavelength tracks
+  if(chartCanvas){
+    ctx.drawImage(chartCanvas, pad, cursorY, chartDrawW, chartDrawH);
+  } else {
+    // fallback: decorative pulse line, same zigzag shape as the hero's, scaled to fit
+    const pulseW = Math.round(w * 0.3);
+    const pulsePts = [[0,17],[40,17],[52,4],[64,30],[76,17],[110,17],[122,10],[134,24],[146,17],[360,17]];
+    const psx = pulseW / 360, psy = pulseH / 34;
+    ctx.strokeStyle = '#EB2227';
+    ctx.lineWidth = Math.max(1.5, w * 0.0013);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    pulsePts.forEach(([px, py], i) => {
+      const cx = pad + px * psx, cy = cursorY + py * psy;
+      if(i === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+    });
+    ctx.stroke();
+  }
 
   cursorY += pulseH + gapPulseToStats;
   let statX = pad;

@@ -99,6 +99,7 @@
   .callout b{color:var(--navy-deep);}
   .callout.no-llm{border-left-color:var(--navy);}
 
+  .table-scroll{max-width:100%;overflow-x:auto;}
   .fail-table{width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:12.5px;margin:18px 0;background:#fff;border:1px solid var(--line);border-radius:0;overflow:hidden;}
   .fail-table th,.fail-table td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);}
   .fail-table th{background:var(--cream-2);color:var(--muted);font-weight:700;text-transform:uppercase;font-size:10.5px;letter-spacing:0.04em;}
@@ -191,7 +192,7 @@
       </div>
       <a href="lab-narrative-threads.html" class="active">Lab</a>
       <a href="about.html">About</a>
-      <a href="login.html" class="cs-login-btn">Log in</a>
+      <a href="https://tools.civicsignal.africa/#/login" class="cs-login-btn">Log in</a>
     </nav>
   </div>
 </header>
@@ -266,12 +267,14 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
     <span class="lab-eyebrow">03 &middot; What happens without guardrails</span>
     <h2>The first version linked almost everything together.</h2>
     <p class="lede">Run against 1,075 real "Conflict &amp; Security" articles from Nigeria (three weeks, Aug 2026) with loose settings &mdash; any 2 shared entities, a 10-day window, a weak frequency cutoff &mdash; one single connected component swallowed 649 of the 1,075 articles. Not a narrative graph, just a blob: everything touches everything eventually once "the Nigeria Police Force" or "Abuja" counts as a real link.</p>
+    <div class="table-scroll" role="region" aria-label="Entity matching settings comparison" tabindex="0">
     <table class="fail-table">
       <tr><th>Setting</th><th>Max entity freq.</th><th>Min shared entities</th><th>Day window</th><th>Result</th></tr>
       <tr><td>Too loose</td><td>&gt;3% of corpus</td><td>2</td><td>10 days</td><td class="hero">one 649-article blob</td></tr>
       <tr><td>Tightened</td><td>&gt;1.5%</td><td>3</td><td>7 days</td><td>140 components, largest 31</td></tr>
       <tr><td>Used below</td><td>&gt;1%</td><td>3</td><td>5 days</td><td class="good">157 components, largest 10</td></tr>
     </table>
+    </div>
     <p>This is the same anti-chaining problem CivicSignal's Major Events detector already solves in production (<code style="font-family:var(--font-mono);background:var(--cream-2);padding:1px 6px;border-radius:4px;">detect_events.py</code>'s <code style="font-family:var(--font-mono);background:var(--cream-2);padding:1px 6px;border-radius:4px;">MAX_ENTITY_DF</code> / <code style="font-family:var(--font-mono);background:var(--cream-2);padding:1px 6px;border-radius:4px;">MIN_SHARED_ENTITIES</code> safeguards) &mdash; this experiment just re-discovered why those exist by hitting the same wall first.</p>
   </div>
 </section>

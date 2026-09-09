@@ -78,7 +78,7 @@
   .field-error{display:none;font-size:12px;color:var(--red);margin-top:6px;}
   .field.invalid .field-error{display:block;}
   .field.invalid input{border-color:var(--red);}
-  .login-submit{width:100%;background:var(--red);color:#fff;border:0;border-radius:0;padding:13px 20px;font-weight:700;font-size:14px;cursor:pointer;margin-top:6px;}
+  .login-submit{display:flex;justify-content:center;text-align:center;text-decoration:none;width:100%;background:var(--red);color:#fff;border:0;border-radius:0;padding:13px 20px;font-weight:700;font-size:14px;cursor:pointer;margin-top:6px;}
   .login-submit:hover{background:#c91b1f;}
   .login-links{display:flex;flex-direction:column;gap:10px;align-items:center;margin-top:22px;font-size:13px;}
   .login-links a{color:var(--ink-dim);text-decoration:none;font-weight:700;}
@@ -138,7 +138,7 @@
       </div>
       <a href="lab-narrative-threads.html">Lab</a>
       <a href="about.html">About</a>
-      <a href="login.html" class="cs-login-btn active">Log in</a>
+      <a href="https://tools.civicsignal.africa/#/login" class="cs-login-btn active">Log in</a>
     </nav>
   </div>
 </header>
@@ -182,22 +182,11 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
   <div class="wrap">
     <div class="login-card">
       <h2>Login</h2>
-      <form onsubmit="event.preventDefault(); window.location.href='https://civicsignal.africa/#/login';">
-        <div class="field">
-          <label for="login-email">Email</label>
-          <input id="login-email" type="text" name="email" autocomplete="email">
-          <p class="field-error">You need to enter your email address.</p>
-        </div>
-        <div class="field">
-          <label for="login-password">Password</label>
-          <input id="login-password" type="password" name="password" autocomplete="current-password">
-          <p class="field-error">You need to enter your password.</p>
-        </div>
-        <button class="login-submit" type="submit">Login</button>
-      </form>
+      <p>Sign in to the existing CivicSignal Media Cloud portal.</p>
+      <a class="login-submit" href="https://tools.civicsignal.africa/#/login">Continue to Media Cloud</a>
       <div class="login-links">
-        <a href="https://civicsignal.africa/#/user/signup" target="_blank" rel="noopener">No account? Register now!</a>
-        <a href="https://civicsignal.africa/#/user/request-password-reset" target="_blank" rel="noopener">Forgot your password?</a>
+        <a href="https://tools.civicsignal.africa/#/user/signup" target="_blank" rel="noopener">No account? Register now!</a>
+        <a href="https://tools.civicsignal.africa/#/user/request-password-reset" target="_blank" rel="noopener">Forgot your password?</a>
       </div>
     </div>
   </div>

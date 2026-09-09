@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script src="assets/legacy-routes.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CivicSignal — Code for Africa</title>
@@ -77,13 +76,14 @@
   .tool-teaser-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;padding-top:0;border-top:2px solid var(--ink);}
   .tool-teaser{position:relative;display:flex;flex-direction:column;background:transparent;border:none;border-left:1px solid var(--line);border-radius:0;padding:26px 26px 30px;text-decoration:none;transition:background .15s ease;}
   .tool-teaser:first-child{border-left:none;}
-  a.tool-teaser:hover{background:var(--bg-alt);box-shadow:none;transform:none;}
-  a.tool-teaser:hover .tool-teaser-arrow{transform:translateX(3px);opacity:1;}
-  .tool-teaser-icon{width:38px;height:38px;color:var(--navy);margin-bottom:16px;}
+  a.tool-teaser:hover{background:#EDECE8;box-shadow:none;transform:none;}
+  a.tool-teaser:hover .tool-teaser-arrow{transform:none;opacity:1;}
+  .tool-teaser-icon{display:none;}
   .tool-teaser-icon svg{width:100%;height:100%;}
-  .tool-teaser-name{display:block;font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--navy);margin-bottom:8px;}
-  .tool-teaser p{margin:0;font-size:13px;line-height:1.6;color:var(--ink-dim);flex:1 1 auto;}
-  .tool-teaser-arrow{display:inline-block;margin-top:16px;font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:0.03em;color:var(--red);opacity:0.85;transition:transform .18s ease,opacity .18s ease;}
+  .tool-teaser-name{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:900;font-size:22px;letter-spacing:-0.01em;text-transform:none;color:var(--ink);margin-bottom:8px;}
+  .tool-teaser-name::before{content:'';display:inline-block;width:9px;height:9px;background:var(--red);flex:0 0 auto;}
+  .tool-teaser p{margin:0 0 14px;font-size:13.5px;line-height:1.55;color:var(--ink-dim);flex:1 1 auto;}
+  .tool-teaser-arrow{display:inline-block;margin-top:0;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);opacity:1;transition:transform .18s ease;}
   .tool-teaser-dummy{opacity:0.85;background:var(--bg-alt);}
   .tool-teaser-dummy .tool-teaser-icon{color:var(--ink-faint);}
   .tool-teaser-dummy .tool-teaser-name{color:var(--ink-faint);}
@@ -113,16 +113,14 @@
   .layer-ledger-labels{display:flex;justify-content:space-between;margin-top:36px;margin-bottom:10px;font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;}
   .layer-ledger-labels span:first-child{color:var(--navy);}
   .layer-ledger-labels span:last-child{color:var(--red);}
-  .layer-ledger{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:2px solid var(--ink);}
-  .layer-cell{padding:22px;border-left:1px solid var(--line);}
-  .layer-cell:first-child{border-left:none;}
-  .layer-bar{height:6px;margin-bottom:18px;background:var(--layer-color,var(--navy));}
-  .layer-idx{display:block;font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:0.06em;color:var(--ink-faint);font-variant-numeric:tabular-nums;}
-  .layer-name{font-size:16px;font-weight:900;margin:8px 0 6px;letter-spacing:-0.005em;color:var(--ink);}
-  .layer-sub{font-size:12px;line-height:1.5;color:var(--ink-dim);margin:0 0 12px;}
-  .layer-tag{display:block;font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--navy);font-variant-numeric:tabular-nums;}
-  @media(max-width:820px){.layer-ledger{grid-template-columns:repeat(2,1fr);}.layer-cell{border-left:none;border-top:1px solid var(--line);}.layer-cell:nth-child(-n+2){border-top:none;}}
-  @media(max-width:480px){.layer-ledger{grid-template-columns:1fr;}.layer-cell{border-top:1px solid var(--line);}.layer-cell:first-child{border-top:none;}}
+  .layer-ledger{display:flex;flex-direction:column;border-top:2px solid var(--ink);}
+  .layer-cell{display:grid;grid-template-columns:6px 42px 200px 1fr 130px;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);}
+  .layer-bar{height:34px;background:var(--layer-color);}
+  .layer-idx{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--ink-dim);font-variant-numeric:tabular-nums;}
+  .layer-name{font-family:var(--font-display);font-weight:900;font-size:19px;margin:0;letter-spacing:-0.005em;}
+  .layer-sub{font-size:13.5px;line-height:1.5;color:var(--ink-dim);margin:0;}
+  .layer-tag{font-family:var(--font-mono);font-size:11.5px;font-weight:600;color:var(--navy);text-align:right;}
+  @media(max-width:820px){.layer-cell{grid-template-columns:6px 32px 1fr;grid-template-areas:'bar idx name' 'bar idx sub' 'bar idx tag';row-gap:4px;padding:16px 0;}.layer-cell .layer-tag{text-align:left;grid-area:tag;}.layer-cell .layer-name{grid-area:name;}.layer-cell .layer-sub{grid-area:sub;}.layer-cell .layer-bar{grid-area:bar;}.layer-cell .layer-idx{grid-area:idx;}}
   .signal-card p{font-size:13px;color:var(--ink-dim);line-height:1.55;margin:10px 0 0;}
 
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink);}
@@ -149,18 +147,18 @@
   }
 
   .fp-carousel-wrap{position:relative;margin-top:24px;}
-  .fp-carousel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:var(--line) transparent;}
+  .fp-carousel{display:flex;gap:16px;overflow-x:auto;padding:0 44px 8px;scrollbar-width:thin;scrollbar-color:var(--line) transparent;}
   .fp-carousel::-webkit-scrollbar{height:6px;}
   .fp-carousel::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px;}
   .fp-arrow{position:absolute;top:40%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--navy-deep);cursor:pointer;z-index:2;box-shadow:0 4px 10px rgba(2,32,105,0.1);}
-  .fp-arrow-prev{left:-6px;}
-  .fp-arrow-next{right:-6px;}
+  .fp-arrow-prev{left:6px;}
+  .fp-arrow-next{right:6px;}
   @media(max-width:760px){.fp-arrow{display:none;}}
   .fp-see-all{display:inline-block;margin-top:18px;color:#fff;font-weight:700;font-size:14px;background:var(--red);padding:15px 26px;text-decoration:none;transition:background .15s ease;}
   .fp-see-all:hover{background:#c91b1f;}
 
   /* ---- fingerprint mini-cards: same flip-card component as the dedicated Fingerprints page ---- */
-  .fp-flip-card{flex:0 0 272px;scroll-snap-align:start;perspective:1600px;height:420px;}
+  .fp-flip-card{flex:0 0 272px;perspective:1600px;height:454px;}
   .fp-flip-card:hover .fp-flip-inner{box-shadow:0 16px 32px rgba(2,32,105,0.12);transform:translateY(-2px);}
   .fp-flip-card:hover .fp-flip-inner.is-flipped{transform:translateY(-2px) rotateY(180deg);}
   .fp-flip-inner{position:relative;width:100%;height:100%;cursor:pointer;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,.15,.2,1),box-shadow .25s ease;box-shadow:0 1px 3px rgba(2,32,105,0.06);border-radius:0;}
@@ -182,18 +180,18 @@
   .fp-ei-breakdown-track{height:6px;background:rgba(255,255,255,0.22);border-radius:0;overflow:hidden;}
   .fp-ei-breakdown-fill{height:100%;background:#fff;border-radius:0;}
   .fp-ei-breakdown-row span:last-child{font-size:10px;font-weight:700;color:#fff;text-align:right;}
-  .fp-flip-icon{position:absolute;bottom:0;right:0;width:20px;height:20px;border-radius:50%;background:var(--bg-alt);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1;pointer-events:none;}
+  .fp-flip-icon{position:absolute;top:14px;right:14px;width:20px;height:20px;border-radius:50%;background:var(--bg-alt);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1;pointer-events:none;}
   .fp-back .fp-flip-icon{background:rgba(255,255,255,0.16);color:#fff;}
   .fp-top{position:relative;}
-  .fp-top-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:4px;}
-  .fp-card-name{font-weight:900;font-size:15px;line-height:1.25;color:var(--ink);letter-spacing:-0.01em;}
-  .fp-type-badge{font-family:var(--font-mono);font-size:7.5px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:0;padding:2px 5px;white-space:nowrap;}
+  .fp-top-row{display:flex;justify-content:space-between;align-items:baseline;gap:6px;margin-bottom:4px;padding-right:26px;flex-wrap:nowrap;}
+  .fp-card-name{flex:1 1 auto;font-weight:900;font-size:15px;line-height:1.25;color:var(--ink);letter-spacing:-0.01em;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .fp-type-badge{flex:0 0 auto;font-family:var(--font-mono);font-size:6.5px;font-weight:600;letter-spacing:0.02em;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:0;padding:2px 4px;white-space:nowrap;ce:nowrap;}
   .fp-type-badge[data-type="Push Media"]{background:#F0653D;}
   .fp-type-badge[data-type="Creator"]{background:#00B8A9;}
   .fp-type-badge[data-type="Digital-native publisher"]{background:#1D78BE;}
   .fp-meta-row{display:flex;gap:6px;flex-wrap:wrap;align-items:baseline;font-family:var(--font-mono);font-size:10px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-faint);}
   .fp-meta-row .fp-lang{font-weight:700;color:var(--ink);font-size:11.5px;letter-spacing:0.01em;}
-  .fp-body{position:relative;border-top:2px solid var(--ink);padding-top:14px;padding-bottom:22px;margin-top:12px;display:flex;flex-direction:column;gap:14px;flex:1;}
+  .fp-body{position:relative;border-top:2px solid var(--ink);padding-top:14px;padding-bottom:22px;margin-top:12px;display:flex;flex-direction:column;gap:14px;flex:1;min-height:0;overflow:hidden;}
   .fp-radar-box{height:130px;position:relative;}
   .fp-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;}
   .fp-row-label{font-family:var(--font-mono);font-size:8px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);}
@@ -209,12 +207,12 @@
   .fp-foot{display:flex;align-items:center;border-top:2px solid var(--ink);margin-top:auto;}
   .fp-foot-cell{flex:1 1 0;padding:10px 14px;}
   .fp-foot-cell:first-child{border-right:1px solid var(--line);}
-  .fp-foot-num{display:block;line-height:1.2;font-family:var(--font-mono);font-weight:600;font-size:15px;color:var(--navy);font-variant-numeric:tabular-nums;}
+  .fp-foot-num{display:block;line-height:1.2;font-family:var(--font-mono);font-weight:600;font-size:19px;color:var(--navy);font-variant-numeric:tabular-nums;}
   .fp-foot-label{display:block;line-height:1.2;font-family:var(--font-mono);font-size:8px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-faint);}
   .fp-foot-ei{display:flex;align-items:center;gap:8px;}
-  .fp-ei-gauge-wrap{position:relative;flex:0 0 auto;width:30px;height:30px;display:flex;align-items:center;justify-content:center;}
+  .fp-ei-gauge-wrap{position:relative;flex:0 0 auto;width:44px;height:44px;display:flex;align-items:center;justify-content:center;}
   .fp-ei-gauge-wrap .fp-ei-gauge-svg{position:absolute;top:0;left:0;}
-  .fp-ei-score{position:relative;font-family:var(--font-mono);font-size:10px;font-weight:700;color:var(--ink);}
+  .fp-ei-score{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:700;}
   .fp-ei-category{font-family:var(--font-mono);font-size:9.5px;font-weight:700;}
   .fp-ei-category.fp-cat-leading{color:#1f7a4d;}
   .fp-ei-category.fp-cat-established{color:#125e8a;}
@@ -384,7 +382,7 @@
       <span class="cs-wordmark">CivicSignal</span>
     </a>
     <nav class="cs-navlinks">
-      <a href="index.html" class="active">Overview</a>
+      <a href="index.html">Overview</a>
       <div class="cs-navdrop">
         <button class="cs-navdrop-btn" type="button" aria-expanded="false">Tools</button>
         <div class="cs-navdrop-menu">
@@ -407,7 +405,7 @@
       </div>
       <a href="lab-narrative-threads.html">Lab</a>
       <a href="about.html">About</a>
-      <a href="https://tools.civicsignal.africa/#/login" class="cs-login-btn">Log in</a>
+      <a href="login.html" class="cs-login-btn">Log in</a>
     </nav>
   </div>
 </header>
@@ -432,7 +430,6 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
 });
 </script>
 
-
 <header class="masthead">
   <div class="wrap">
     <div class="masthead-top">
@@ -452,6 +449,10 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
       <div class="masthead-copy">
         <h1 class="headline">Map, track and analyze Africa's <em>evolving media landscape.</em></h1>
         <p class="dek">CivicSignal maps Africa's digital media ecosystem and tracks how it evolves over time &mdash; the continuous-monitoring and analysis layer that sits on top of the continent's biggest media mapping efforts, watching what changes after the map is drawn.</p>
+        <div style="display:flex;gap:0;margin-top:34px;">
+          <a href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates" style="font-family:'Lato',sans-serif;font-weight:700;font-size:14px;color:#fff;background:var(--red);padding:15px 26px;text-decoration:none;">Connect to CivicSignal</a>
+          <a href="wavelength.html" style="font-family:'Lato',sans-serif;font-weight:700;font-size:14px;color:var(--navy);border:2px solid var(--navy);padding:13px 26px;margin-left:12px;text-decoration:none;">Open Wavelength</a>
+        </div>
       </div>
       <div class="masthead-stats">
         <div class="footprint-row">
@@ -463,7 +464,6 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
         <p class="footprint-note">CivicSignal's monitoring footprint across Africa's established, licensed media industry &mdash; from its own MediaData mapping and MediaCloud ingestion infrastructure.</p>
       </div>
     </div>
-    <p class="footprint-note">Open the live tools: <a href="https://explorer.civicsignal.africa/">Explorer</a> &middot; <a href="https://sources.civicsignal.africa/">Source Manager</a> &middot; <a href="https://topics.civicsignal.africa/">Topic Mapper</a>.</p>
     <div class="tool-teaser-row">
       <a class="tool-teaser" href="mediadata.html" id="mediadata">
         <span class="tool-teaser-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></span>
@@ -545,10 +545,6 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
     <h2>Legacy and online media is our foundation layer. We are adding an emerging media layer.</h2>
     <p class="lede">MediaData and MediaCloud, above, map and monitor Africa's established news industry &mdash; licensed outlets, broadcasters, news agencies. But a growing share of African news and commentary now happens outside that industry entirely: independent digital-native publishers, individual creator-journalists, and newsletters, Telegram channels and fediverse accounts that never touch a crawlable website. Three source types, unified into one live view.</p>
 
-    <div class="layer-ledger-labels">
-      <span>&larr; Foundation</span>
-      <span>Emerging layer &rarr;</span>
-    </div>
     <div class="layer-ledger">
       <div class="layer-cell" style="--layer-color:var(--navy);">
         <div class="layer-bar"></div>
@@ -1149,7 +1145,7 @@ const FP_DATA = [
     return FP_ENGAGEMENT_CATEGORIES.find(c => score >= c.min);
   }
   function fpEngagementGaugeSVG(score, color){
-    const r = 12, stroke = 3, size = (r + stroke) * 2, c = size / 2;
+    const r = 18, stroke = 4, size = (r + stroke) * 2, c = size / 2;
     const circumference = 2 * Math.PI * r;
     const offset = circumference * (1 - Math.max(0, Math.min(100, score)) / 100);
     return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" class="fp-ei-gauge-svg" aria-hidden="true">
@@ -1166,9 +1162,49 @@ const FP_DATA = [
     return `<div class="fp-foot-cell fp-foot-ei" style="color:${cat.color}">
       <div class="fp-ei-gauge-wrap">
         ${fpEngagementGaugeSVG(ei.score, cat.color)}
-        <span class="fp-ei-score">${Math.round(ei.score)}</span>
+        <span class="fp-ei-score" style="color:${cat.color}">${Math.round(ei.score)}</span>
       </div>
       <span class="fp-ei-category ${cat.cls}">${cat.label}</span>
+    </div>`;
+  }
+  function fpShortLabelFor(name){
+    const map = {'Politics & Governance':'Politics','Economy':'Economy','Culture & Society':'Culture','Technology':'Tech','Conflict & Security':'Conflict','Health':'Health','Gender & Rights':'Gender','Climate':'Climate'};
+    return map[name] || (name||'').split(' ')[0];
+  }
+  function fpRadarSVG(p){
+    const maxV = Math.max(...CATS.map(c=>p.radar[c]||0), 1);
+    const n = CATS.length;
+    const dots = CATS.map((name,i)=>{
+      const ang=-90+i*(360/n), rad=ang*Math.PI/180;
+      const v=p.radar[name]||0, r=20+(v/maxV)*60;
+      return {x:(100+r*Math.cos(rad)).toFixed(1), y:(100+r*Math.sin(rad)).toFixed(1), color:COLORS[name]||'#8A8E99'};
+    });
+    const polygon = dots.map(d=>d.x+','+d.y).join(' ');
+    const labels = CATS.map((name,i)=>{
+      const ang=-90+i*(360/n), rad=ang*Math.PI/180;
+      const cos=Math.cos(rad), sin=Math.sin(rad), lr=82;
+      const x=100+lr*cos, y=100+lr*sin;
+      const px=(x/200*100).toFixed(2)+'%', py=(y/200*100).toFixed(2)+'%';
+      const tx = cos>0.35?'0%':cos<-0.35?'-100%':'-50%', ty = sin>0.35?'0%':sin<-0.35?'-100%':'-50%';
+      return `<span style="position:absolute;left:${px};top:${py};transform:translate(${tx},${ty});font-family:var(--font-mono);font-size:9px;font-weight:700;color:var(--ink);white-space:nowrap;">${fpShortLabelFor(name)}</span>`;
+    }).join('');
+    return `<div style="position:relative;width:100%;height:100%;">
+      <svg viewBox="0 0 200 200" style="position:absolute;inset:0;width:100%;height:100%;">
+        <polygon points="100.0,70.0 121.2,78.8 130.0,100.0 121.2,121.2 100.0,130.0 78.8,121.2 70.0,100.0 78.8,78.8" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+        <polygon points="100.0,45.0 138.9,61.1 155.0,100.0 138.9,138.9 100.0,155.0 61.1,138.9 45.0,100.0 61.1,61.1" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+        <polygon points="100.0,20.0 156.6,43.4 180.0,100.0 156.6,156.6 100.0,180.0 43.4,156.6 20.0,100.0 43.4,43.4" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+        <line x1="100" y1="100" x2="100.0" y2="20.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+        <line x1="100" y1="100" x2="156.6" y2="43.4" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+        <line x1="100" y1="100" x2="180.0" y2="100.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+        <line x1="100" y1="100" x2="156.6" y2="156.6" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+        <line x1="100" y1="100" x2="100.0" y2="180.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+        <line x1="100" y1="100" x2="43.4" y2="156.6" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+        <line x1="100" y1="100" x2="20.0" y2="100.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+        <line x1="100" y1="100" x2="43.4" y2="43.4" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+        <polygon points="${polygon}" fill="rgba(2,32,105,0.08)" stroke="#022069" stroke-width="1.8" stroke-linejoin="round"/>
+        ${dots.map(d=>`<circle cx="${d.x}" cy="${d.y}" r="3.4" fill="${d.color}"/>`).join('')}
+      </svg>
+      ${labels}
     </div>`;
   }
   function fpTopTopicsHTML(p){
@@ -1195,11 +1231,11 @@ const FP_DATA = [
               <div class="fp-meta-row"><span>${p.country}</span><span>&middot;</span><span class="fp-lang">${p.lang}</span></div>
             </div>
             <div class="fp-body">
-              <div class="fp-radar-box"><canvas id="fp-radar-${id}"></canvas></div>
+              <div class="fp-radar-box">${fpRadarSVG(p)}</div>
               ${fpTopTopicsHTML(p)}
               ${fpEntitiesHTML(p)}
-              <span class="fp-flip-icon">&#8635;</span>
             </div>
+            <span class="fp-flip-icon">&#8635;</span>
             <div class="fp-foot">
               <div class="fp-foot-cell"><span class="fp-foot-num">${p.total.toLocaleString()}</span><span class="fp-foot-label">Articles</span></div>
               ${fpEngagementFootHTML(p)}
@@ -1235,7 +1271,7 @@ const FP_DATA = [
   function remountAllRadars(){
     if(!HAS_CHART) return;
     Object.values(fpRadarCharts).forEach(c=>c.destroy());
-    FP_DATA.forEach((p,i)=>mountRadar(p,i));
+    // radar now rendered inline as SVG in cardHTML
   }
 
   function clampRowToTwoLines(row){
@@ -1253,7 +1289,7 @@ const FP_DATA = [
   if(container){
     container.innerHTML = FP_DATA.map((p,i)=>cardHTML(p,i)).join('');
     container.querySelectorAll('.fp-flip-inner').forEach(wireCard);
-    if(HAS_CHART) FP_DATA.forEach((p,i)=>mountRadar(p,i));
+    // radar now rendered inline as SVG in cardHTML
     container.querySelectorAll('.fp-topics-row, .fp-entities-row').forEach(clampRowToTwoLines);
   }
 
@@ -1456,26 +1492,26 @@ const FP_DATA = [
   </div>
 </section>
 
-<section class="closing-banner">
-  <div class="wrap">
-    <h2>The map is moving. CivicSignal is how you keep up with it.</h2>
-    <p>Investigate the full spectrum of Africa's media landscape &mdash; from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
-    <a class="closing-banner-cta" href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
-  </div>
-</section>
-
-<footer class="close">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand-logos">
-        <img src="assets/cfa-logo.png" alt="Code for Africa">
-        <span class="divider"></span>
-        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance">
+<section class="footer-merged" style="background:var(--navy-deep);padding:56px 0 0;">
+  <div class="wrap" style="display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12);">
+    <div>
+      <h2 style="color:#fff;font-family:'Lato',sans-serif;font-weight:900;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.08;letter-spacing:-.02em;margin:0;max-width:24ch;">The map is moving. CivicSignal is how you keep up with it.</h2>
+      <p style="color:#C7CEE0;font-size:1rem;line-height:1.55;max-width:56ch;margin:18px 0 26px;">Investigate the full spectrum of Africa's media landscape — from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
+      <a href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates" style="display:inline-block;font-family:'Lato',sans-serif;font-weight:700;font-size:14px;color:#fff;background:var(--red);padding:15px 26px;text-decoration:none;">Connect to CivicSignal</a>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:22px;background:#fff;padding:16px 20px;margin-bottom:16px;">
+        <img src="assets/cfa-logo.png" alt="Code for Africa" style="height:52px;width:auto;">
+        <span style="width:1px;height:42px;background:var(--line);"></span>
+        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance" style="height:44px;width:auto;">
       </div>
-      <p class="footer-brand-copy">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
+      <p style="font-size:12.5px;line-height:1.65;color:#9FA9C9;margin:0;">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
     </div>
   </div>
-</footer>
-
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:24px;padding:16px 0;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:#8791AC;">
+    <span>CivicSignal &middot; Code for Africa &mdash; working showcase, not for distribution</span>
+    <a href="index.html" style="color:#8791AC;">&larr; All CivicSignal pages</a>
+  </div>
+</section>
 </body>
 </html>

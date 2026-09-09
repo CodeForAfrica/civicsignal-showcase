@@ -99,7 +99,6 @@
   .callout b{color:var(--navy-deep);}
   .callout.no-llm{border-left-color:var(--navy);}
 
-  .table-scroll{max-width:100%;overflow-x:auto;}
   .fail-table{width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:12.5px;margin:18px 0;background:#fff;border:1px solid var(--line);border-radius:0;overflow:hidden;}
   .fail-table th,.fail-table td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);}
   .fail-table th{background:var(--cream-2);color:var(--muted);font-weight:700;text-transform:uppercase;font-size:10.5px;letter-spacing:0.04em;}
@@ -190,9 +189,9 @@
           <a href="mediameltdown.html">MediaMeltdown</a>
         </div>
       </div>
-      <a href="lab-narrative-threads.html" class="active">Lab</a>
+      <a href="lab-narrative-threads.html">Lab</a>
       <a href="about.html">About</a>
-      <a href="https://tools.civicsignal.africa/#/login" class="cs-login-btn">Log in</a>
+      <a href="login.html" class="cs-login-btn">Log in</a>
     </nav>
   </div>
 </header>
@@ -216,7 +215,6 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
   }
 });
 </script>
-
 
 <header class="masthead">
   <div class="wrap">
@@ -267,14 +265,12 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
     <span class="lab-eyebrow">03 &middot; What happens without guardrails</span>
     <h2>The first version linked almost everything together.</h2>
     <p class="lede">Run against 1,075 real "Conflict &amp; Security" articles from Nigeria (three weeks, Aug 2026) with loose settings &mdash; any 2 shared entities, a 10-day window, a weak frequency cutoff &mdash; one single connected component swallowed 649 of the 1,075 articles. Not a narrative graph, just a blob: everything touches everything eventually once "the Nigeria Police Force" or "Abuja" counts as a real link.</p>
-    <div class="table-scroll" role="region" aria-label="Entity matching settings comparison" tabindex="0">
     <table class="fail-table">
       <tr><th>Setting</th><th>Max entity freq.</th><th>Min shared entities</th><th>Day window</th><th>Result</th></tr>
       <tr><td>Too loose</td><td>&gt;3% of corpus</td><td>2</td><td>10 days</td><td class="hero">one 649-article blob</td></tr>
       <tr><td>Tightened</td><td>&gt;1.5%</td><td>3</td><td>7 days</td><td>140 components, largest 31</td></tr>
       <tr><td>Used below</td><td>&gt;1%</td><td>3</td><td>5 days</td><td class="good">157 components, largest 10</td></tr>
     </table>
-    </div>
     <p>This is the same anti-chaining problem CivicSignal's Major Events detector already solves in production (<code style="font-family:var(--font-mono);background:var(--cream-2);padding:1px 6px;border-radius:4px;">detect_events.py</code>'s <code style="font-family:var(--font-mono);background:var(--cream-2);padding:1px 6px;border-radius:4px;">MAX_ENTITY_DF</code> / <code style="font-family:var(--font-mono);background:var(--cream-2);padding:1px 6px;border-radius:4px;">MIN_SHARED_ENTITIES</code> safeguards) &mdash; this experiment just re-discovered why those exist by hitting the same wall first.</p>
   </div>
 </section>
@@ -552,32 +548,26 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
   </div>
 </section>
 
-<section class="closing-banner simple">
-  <div class="wrap">
-    <h2>The map is moving. CivicSignal is how you keep up with it.</h2>
-    <p>Investigate the full spectrum of Africa's media landscape &mdash; from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
-    <a class="closing-banner-cta" href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
-  </div>
-</section>
-
-<footer class="close">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand-logos">
-        <img src="assets/cfa-logo.png" alt="Code for Africa">
-        <span class="divider"></span>
-        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance">
+<section class="footer-merged" style="background:var(--navy-deep);padding:56px 0 0;">
+  <div class="wrap" style="display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12);">
+    <div>
+      <h2 style="color:#fff;font-family:'Lato',sans-serif;font-weight:900;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.08;letter-spacing:-.02em;margin:0;max-width:24ch;">The map is moving. CivicSignal is how you keep up with it.</h2>
+      <p style="color:#C7CEE0;font-size:1rem;line-height:1.55;max-width:56ch;margin:18px 0 26px;">Investigate the full spectrum of Africa's media landscape — from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
+      <a href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates" style="display:inline-block;font-family:'Lato',sans-serif;font-weight:700;font-size:14px;color:#fff;background:var(--red);padding:15px 26px;text-decoration:none;">Connect to CivicSignal</a>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:22px;background:#fff;padding:16px 20px;margin-bottom:16px;">
+        <img src="assets/cfa-logo.png" alt="Code for Africa" style="height:52px;width:auto;">
+        <span style="width:1px;height:42px;background:var(--line);"></span>
+        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance" style="height:44px;width:auto;">
       </div>
-      <p class="footer-brand-copy">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
+      <p style="font-size:12.5px;line-height:1.65;color:#9FA9C9;margin:0;">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
     </div>
   </div>
-</footer>
-<div class="cs-footbar">
-  <div class="cs-footbar-inner">
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:24px;padding:16px 0;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:#8791AC;">
     <span>CivicSignal &middot; Code for Africa &mdash; working showcase, not for distribution</span>
-    <span>All figures and chains on this page are real, drawn directly from content.db</span>
+    <a href="index.html" style="color:#8791AC;">&larr; All CivicSignal pages</a>
   </div>
-</div>
-
+</section>
 </body>
 </html>

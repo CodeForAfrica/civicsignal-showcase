@@ -41,6 +41,30 @@
   .cs-navlinks a,.cs-navdrop-btn{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B9C2DA;padding:15px 0 13px;border:none;border-bottom:3px solid transparent;background:none;text-decoration:none;cursor:pointer;white-space:nowrap;margin-bottom:-2px;}
   .cs-navlinks a:hover,.cs-navdrop-btn:hover{color:#fff;}
   .cs-navlinks a.active,.cs-navdrop-btn.active{color:var(--red);border-bottom-color:transparent;}
+  .cs-nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;padding:0;border:none;background:none;cursor:pointer;}
+  .cs-nav-toggle span{display:block;width:100%;height:2px;background:#fff;transition:transform .2s ease,opacity .2s ease;}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media(max-width:860px){
+    .cs-nav-toggle{display:flex;}
+    .cs-navlinks{
+      display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;
+      gap:0;background:var(--navy-deep);border-bottom:2px solid var(--red);
+      max-height:calc(100vh - 100%);overflow-y:auto;
+    }
+    .cs-navlinks.cs-nav-open{display:flex;}
+    .cs-navlinks a,.cs-navdrop-btn{width:100%;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:0;justify-content:space-between;}
+    .cs-navlinks a.cs-login-btn{margin:14px 18px;width:auto;}
+    .cs-navdrop{width:100%;}
+    .cs-navdrop-btn{width:100%;justify-content:space-between;}
+    .cs-navlinks .cs-navdrop-menu{
+      display:none;position:static;background:rgba(0,0,0,0.15);border:none;box-shadow:none;
+      padding:0;margin:0;min-width:0;
+    }
+    .cs-navlinks .cs-navdrop.open .cs-navdrop-menu{display:block;}
+    .cs-navlinks .cs-navdrop-menu a{padding:12px 18px 12px 32px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  }
   .cs-footbar{background:var(--navy-deep);}
   .cs-footbar-inner{max-width:1120px;margin:0 auto;padding:16px clamp(20px,5vw,56px);font-family:var(--font-body);font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .cs-footbar-inner a{color:#8791AC;}
@@ -114,7 +138,10 @@
     <a href="index.html" class="cs-brand">
       <span class="cs-wordmark">CivicSignal</span>
     </a>
-    <nav class="cs-navlinks">
+    <button class="cs-nav-toggle" type="button" aria-expanded="false" aria-controls="csNavLinks" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="cs-navlinks" id="csNavLinks">
       <a href="index.html">Overview</a>
       <div class="cs-navdrop">
         <button class="cs-navdrop-btn" type="button" aria-expanded="false">Tools</button>
@@ -161,6 +188,30 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
     drop.querySelector('.cs-navdrop-btn').classList.add('active');
   }
 });
+var csNavToggle = document.querySelector('.cs-nav-toggle');
+var csNavLinks = document.getElementById('csNavLinks');
+if(csNavToggle && csNavLinks){
+  csNavToggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = csNavLinks.classList.toggle('cs-nav-open');
+    csNavToggle.setAttribute('aria-expanded', String(open));
+    if(!open){
+      csNavLinks.querySelectorAll('.cs-navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+    }
+  });
+  csNavLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      csNavLinks.classList.remove('cs-nav-open');
+      csNavToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 860){
+      csNavLinks.classList.remove('cs-nav-open');
+      csNavToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
 </script>
 
 <header class="masthead">

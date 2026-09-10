@@ -34,16 +34,44 @@
   .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;}
 
     .cs-nav{position:sticky;top:0;z-index:100;background:var(--navy);border-bottom:2px solid var(--red);}
-  .cs-nav-top-inner{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);display:flex;align-items:stretch;justify-content:space-between;gap:20px;flex-wrap:wrap;line-height:1;}
+  .cs-nav-top-inner{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;line-height:1;}
   @media(max-width:720px){.cs-nav-top-inner{padding:0 18px;}}
-  .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;padding:14px 0;}
-  .cs-wordmark{font-family:'Lato',sans-serif;font-weight:900;font-size:17px;color:#fff;letter-spacing:0.01em;}
+  .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;padding:18px 0;}
+  .cs-wordmark{font-family:'Lato',sans-serif;font-weight:900;font-size:19px;color:#fff;letter-spacing:0.01em;}
   .cs-navlinks a.cs-login-btn{display:inline-flex;align-items:center;justify-content:center;line-height:1;background:var(--red);border-radius:0;padding:9px 18px;color:#fff !important;font-weight:700;font-size:13px;text-decoration:none;text-transform:none;letter-spacing:normal;font-family:'Lato',sans-serif;border-bottom:none;margin-bottom:0;transition:background .15s ease;align-self:center;}
   .cs-navlinks a.cs-login-btn:hover{background:#c91b1f;color:#fff;}
-  .cs-navlinks{display:flex;gap:26px;align-items:stretch;flex-wrap:wrap;}
-  .cs-navlinks a,.cs-navdrop-btn{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B9C2DA;padding:15px 0 13px;border:none;border-bottom:3px solid transparent;background:none;text-decoration:none;cursor:pointer;white-space:nowrap;margin-bottom:-2px;}
+  .cs-navlinks{display:flex;gap:26px;align-items:center;flex-wrap:wrap;}
+  .cs-navlinks a,.cs-navdrop-btn{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:#B9C2DA;padding:18px 0 16px;border:none;border-bottom:3px solid transparent;background:none;text-decoration:none;cursor:pointer;white-space:nowrap;margin-bottom:-2px;}
   .cs-navlinks a:hover,.cs-navdrop-btn:hover{color:#fff;}
   .cs-navlinks a.active,.cs-navdrop-btn.active{color:var(--red);border-bottom-color:transparent;}
+  .cs-nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;padding:0;border:none;background:none;cursor:pointer;}
+  .cs-nav-toggle span{display:block;width:100%;height:2px;background:#fff;transition:transform .2s ease,opacity .2s ease;}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media(max-width:860px){
+    .cs-nav-toggle{display:flex;}
+    .cs-navlinks{
+      display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;
+      gap:0;background:var(--navy-deep);border-bottom:2px solid var(--red);
+      max-height:calc(100vh - 100%);overflow-y:auto;
+    }
+    .cs-navlinks.cs-nav-open{display:flex;}
+    .cs-navlinks a,.cs-navdrop-btn{width:100%;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:0;justify-content:space-between;}
+    .cs-navlinks a.cs-login-btn{margin:14px 18px;width:auto;}
+    .cs-navdrop{width:100%;}
+    .cs-navdrop-btn{width:100%;justify-content:space-between;}
+    .cs-navlinks .cs-navdrop-menu{
+      display:none;position:static;background:rgba(0,0,0,0.15);border:none;box-shadow:none;
+      padding:0;margin:0;min-width:0;
+    }
+    .cs-navlinks .cs-navdrop.open .cs-navdrop-menu{display:block;}
+    .cs-navlinks .cs-navdrop-menu a{padding:12px 18px 12px 32px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  }
+  .cs-footer-cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;align-items:start;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12);}
+  @media(max-width:760px){.cs-footer-cols{grid-template-columns:1fr;gap:32px;}}
+  .cs-footer-logos{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:22px;background:#fff;padding:16px 20px;margin-bottom:16px;}
+  .cs-footer-logos img{max-width:100%;}
   .cs-footbar{background:var(--navy-deep);}
   .cs-footbar-inner{max-width:1120px;margin:0 auto;padding:16px clamp(20px,5vw,56px);font-family:var(--font-body);font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .cs-footbar-inner a{color:#8791AC;}
@@ -142,10 +170,13 @@
     <a href="index.html" class="cs-brand">
       <span class="cs-wordmark">CivicSignal</span>
     </a>
-    <nav class="cs-navlinks">
+    <button class="cs-nav-toggle" type="button" aria-expanded="false" aria-controls="csNavLinks" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="cs-navlinks" id="csNavLinks">
       <a href="index.html">Overview</a>
       <div class="cs-navdrop">
-        <button class="cs-navdrop-btn active" type="button" aria-expanded="false">Tools</button>
+        <button class="cs-navdrop-btn" type="button" aria-expanded="false">Tools</button>
         <div class="cs-navdrop-menu">
           <a href="mediadata.html">MediaData</a>
           <a href="mediacloud.html">MediaCloud</a>
@@ -153,7 +184,7 @@
           <div class="cs-navdrop-divider"></div>
           <a href="wavelength.html">Wavelength</a>
           <a href="fingerprints.html">Fingerprints</a>
-          <a href="push-media.html" class="active">Push Media</a>
+          <a href="push-media.html">Push Media</a>
         </div>
       </div>
       <div class="cs-navdrop">
@@ -189,8 +220,31 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
     drop.querySelector('.cs-navdrop-btn').classList.add('active');
   }
 });
+var csNavToggle = document.querySelector('.cs-nav-toggle');
+var csNavLinks = document.getElementById('csNavLinks');
+if(csNavToggle && csNavLinks){
+  csNavToggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = csNavLinks.classList.toggle('cs-nav-open');
+    csNavToggle.setAttribute('aria-expanded', String(open));
+    if(!open){
+      csNavLinks.querySelectorAll('.cs-navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+    }
+  });
+  csNavLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      csNavLinks.classList.remove('cs-nav-open');
+      csNavToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 860){
+      csNavLinks.classList.remove('cs-nav-open');
+      csNavToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
 </script>
-
 
 <header class="masthead">
   <div class="wrap">
@@ -306,32 +360,26 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
   </div>
 </section>
 
-<section class="closing-banner simple">
-  <div class="wrap">
-    <h2>The map is moving. CivicSignal is how you keep up with it.</h2>
-    <p>Investigate the full spectrum of Africa's media landscape &mdash; from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
-    <a class="closing-banner-cta" href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
-  </div>
-</section>
-
-<footer class="close">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand-logos">
-        <img src="assets/cfa-logo.png" alt="Code for Africa">
-        <span class="divider"></span>
-        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance">
+<section class="footer-merged" style="background:var(--navy-deep);padding:56px 0 0;">
+  <div class="wrap cs-footer-cols">
+    <div>
+      <h2 style="color:#fff;font-family:'Lato',sans-serif;font-weight:900;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.08;letter-spacing:-.02em;margin:0;max-width:24ch;">The map is moving. CivicSignal is how you keep up with it.</h2>
+      <p style="color:#C7CEE0;font-size:1rem;line-height:1.55;max-width:56ch;margin:18px 0 26px;">Investigate the full spectrum of Africa's media landscape — from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
+      <a href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates" style="display:inline-block;font-family:'Lato',sans-serif;font-weight:700;font-size:14px;color:#fff;background:var(--red);padding:15px 26px;text-decoration:none;">Connect to CivicSignal</a>
+    </div>
+    <div>
+      <div class="cs-footer-logos">
+        <img src="assets/cfa-logo.png" alt="Code for Africa" style="height:52px;width:auto;">
+        <span style="width:1px;height:42px;background:var(--line);"></span>
+        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance" style="height:44px;width:auto;">
       </div>
-      <p class="footer-brand-copy">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
+      <p style="font-size:12.5px;line-height:1.65;color:#9FA9C9;margin:0;">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
     </div>
   </div>
-</footer>
-<div class="cs-footbar">
-  <div class="cs-footbar-inner">
-    <span>CivicSignal &middot; Code for Africa</span>
-    <a href="index.html">&larr; All CivicSignal pages</a>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:24px;padding:16px 0;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:#8791AC;">
+    <span>CivicSignal &middot; Code for Africa &mdash; working showcase, not for distribution</span>
+    <a href="index.html" style="color:#8791AC;">&larr; All CivicSignal pages</a>
   </div>
-</div>
-
+</section>
 </body>
 </html>

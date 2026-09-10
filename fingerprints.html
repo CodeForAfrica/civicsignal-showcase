@@ -13,8 +13,10 @@
     --cream-2:#E3E9F1;
     --ink:#16181C;
     --navy:#022069;
+    --blue:#1D78BE;
     --navy-deep:#051335;
     --red:#EB2227;
+    --red-wash:rgba(235,34,39,0.08);
     --line:#D7DFEA;
     --cream-3:#D5DEEA;
     --muted:#565A66;
@@ -33,7 +35,7 @@
     --c-other:#94A3B8;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable;}
   body{
     margin:0;
     background-color:#FFFFFF;
@@ -48,16 +50,40 @@
 
   /* ---------- shared site nav (all 5 pages) ---------- */
     .cs-nav{position:sticky;top:0;z-index:100;background:var(--navy);border-bottom:2px solid var(--red);}
-  .cs-nav-top-inner{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);display:flex;align-items:stretch;justify-content:space-between;gap:20px;flex-wrap:wrap;line-height:1;}
+  .cs-nav-top-inner{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;line-height:1;}
   @media(max-width:720px){.cs-nav-top-inner{padding:0 18px;}}
-  .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;padding:14px 0;}
-  .cs-wordmark{font-family:'Lato',sans-serif;font-weight:900;font-size:17px;color:#fff;letter-spacing:0.01em;}
+  .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;padding:18px 0;}
+  .cs-wordmark{font-family:'Lato',sans-serif;font-weight:900;font-size:19px;color:#fff;letter-spacing:0.01em;}
   .cs-navlinks a.cs-login-btn{display:inline-flex;align-items:center;justify-content:center;line-height:1;background:var(--red);border-radius:0;padding:9px 18px;color:#fff !important;font-weight:700;font-size:13px;text-decoration:none;text-transform:none;letter-spacing:normal;font-family:'Lato',sans-serif;border-bottom:none;margin-bottom:0;transition:background .15s ease;align-self:center;}
   .cs-navlinks a.cs-login-btn:hover{background:#c91b1f;color:#fff;}
-  .cs-navlinks{display:flex;gap:26px;align-items:stretch;flex-wrap:wrap;}
-  .cs-navlinks a,.cs-navdrop-btn{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B9C2DA;padding:15px 0 13px;border:none;border-bottom:3px solid transparent;background:none;text-decoration:none;cursor:pointer;white-space:nowrap;margin-bottom:-2px;}
+  .cs-navlinks{display:flex;gap:26px;align-items:center;flex-wrap:wrap;}
+  .cs-navlinks a,.cs-navdrop-btn{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:#B9C2DA;padding:18px 0 16px;border:none;border-bottom:3px solid transparent;background:none;text-decoration:none;cursor:pointer;white-space:nowrap;margin-bottom:-2px;}
   .cs-navlinks a:hover,.cs-navdrop-btn:hover{color:#fff;}
   .cs-navlinks a.active,.cs-navdrop-btn.active{color:var(--red);border-bottom-color:transparent;}
+  .cs-nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;padding:0;border:none;background:none;cursor:pointer;}
+  .cs-nav-toggle span{display:block;width:100%;height:2px;background:#fff;transition:transform .2s ease,opacity .2s ease;}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media(max-width:860px){
+    .cs-nav-toggle{display:flex;}
+    .cs-navlinks{
+      display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;
+      gap:0;background:var(--navy-deep);border-bottom:2px solid var(--red);
+      max-height:calc(100vh - 100%);overflow-y:auto;
+    }
+    .cs-navlinks.cs-nav-open{display:flex;}
+    .cs-navlinks a,.cs-navdrop-btn{width:100%;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:0;justify-content:space-between;}
+    .cs-navlinks a.cs-login-btn{margin:14px 18px;width:auto;}
+    .cs-navdrop{width:100%;}
+    .cs-navdrop-btn{width:100%;justify-content:space-between;}
+    .cs-navlinks .cs-navdrop-menu{
+      display:none;position:static;background:rgba(0,0,0,0.15);border:none;box-shadow:none;
+      padding:0;margin:0;min-width:0;
+    }
+    .cs-navlinks .cs-navdrop.open .cs-navdrop-menu{display:block;}
+    .cs-navlinks .cs-navdrop-menu a{padding:12px 18px 12px 32px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  }
   .cs-footbar{background:var(--navy-deep);}
   .cs-footbar-inner{max-width:1120px;margin:0 auto;padding:16px clamp(20px,5vw,56px);font-family:'Lato',sans-serif;font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .cs-footbar-inner a{color:#8791AC;}
@@ -131,6 +157,12 @@
     box-shadow:0 1px 0 rgba(20,27,51,0.02);
   }
   .panel-note{font-size:12px;color:var(--muted);}
+  .disclaimer{
+    background:#fff;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:0;
+    padding:12px 16px;font-size:12.5px;line-height:1.6;color:var(--muted);margin-bottom:16px;
+    display:flex;flex-direction:column;gap:3px;
+  }
+  .disclaimer b{color:var(--ink);font-size:12.5px;font-weight:700;}
   .week-nav{display:flex;align-items:center;gap:10px;}
   .week-nav .panel-note{min-width:132px;text-align:center;font-weight:600;color:var(--navy);}
   .week-btn{
@@ -273,10 +305,10 @@
   .count-pill{font-size:12px;font-weight:700;color:var(--navy);background:var(--cream-2);border-radius:0;padding:5px 12px;white-space:nowrap;}
 
   /* ---------- ENTITY CARDS (click to flip) ---------- */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:620px){.grid{grid-template-columns:1fr;}}
-  .card{perspective:1600px;height:452px;}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+  @media(max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media(max-width:620px){.grid{grid-template-columns:minmax(0,1fr);}}
+  .card{perspective:1600px;height:500px;min-width:0;}
   .card:hover .flip-inner{box-shadow:0 16px 32px rgba(27,35,64,0.12);transform:translateY(-2px);}
   .card:hover .flip-inner.is-flipped{transform:translateY(-2px) rotateY(180deg);}
   .flip-inner{
@@ -288,10 +320,10 @@
   .card-face{
     position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
     border-radius:0;padding:17px 20px 16px;
-    display:flex;flex-direction:column;gap:8px;overflow:hidden;
-    background:#fff;border:1px solid var(--line);border-top:3px solid var(--accent,var(--navy));
+    display:flex;flex-direction:column;gap:6px;overflow:hidden;
+    background:#FBFAF7;border:1px solid var(--line);border-top:3px solid var(--accent,var(--navy));
   }
-  .card-back{transform:rotateY(180deg);background:#1D78BE;border-color:#1D78BE;border-top-color:#fff;color:#fff;}
+  .card-back{transform:rotateY(180deg);background:var(--accent,#1D78BE);border-color:var(--accent,#1D78BE);border-top-color:#fff;color:#fff;}
   .card-back .back-title{color:#fff;}
   .card-back .back-meta-item .k{color:rgba(255,255,255,0.65);}
   .card-back .back-meta-item .v{color:#fff;}
@@ -305,17 +337,19 @@
   .card-back .tag{color:#fff;background:rgba(255,255,255,0.14);}
   .card-back .tag.more{color:rgba(255,255,255,0.65);border-color:rgba(255,255,255,0.35);}
   .card-back .ei-bar-label{color:rgba(255,255,255,0.85);}
+  .card-back .ei-bar-value{color:#fff;}
   .card-back .ei-bar-track{background:rgba(255,255,255,0.22);}
   .card-back .ei-bar-fill{background:#fff;}
-  .card-back .engagement-index-note{color:#fff;text-decoration:underline;}
   .card-back .back-empty{color:rgba(255,255,255,0.65);}
-  .flip-icon{position:absolute;bottom:0;right:0;width:20px;height:20px;border-radius:50%;background:var(--cream-2);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1;pointer-events:none;}
-  .card-back .flip-icon{background:rgba(255,255,255,0.16);color:#fff;position:absolute;bottom:16px;right:20px;}
-  .back-title{font-weight:900;font-size:15px;color:var(--navy-deep);padding-right:4px;}
+  .flip-icon{position:absolute;top:16px;right:16px;width:22px;height:22px;border-radius:50%;background:var(--cream-2);color:var(--navy);display:flex;align-items:center;justify-content:center;pointer-events:none;}
+  .flip-icon svg{width:12px;height:12px;}
+  .card-back .flip-icon{top:16px;right:16px;background:rgba(255,255,255,0.16);color:#fff;}
+  .flip-hint{font-size:7.5px;color:rgba(0,0,0,0.5);text-transform:uppercase;letter-spacing:0.04em;text-align:right;margin-top:2px;}
+  .back-title{font-weight:900;font-size:15px;color:var(--navy-deep);padding-right:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
   .back-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;}
   .back-meta-item{min-width:0;}
   .back-meta-item .k{display:block;font-size:9.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
-  .back-meta-item .v{display:block;font-size:12.5px;color:var(--ink);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .back-meta-item .v{display:block;font-size:12px;color:var(--ink);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .back-meta-item .v a{color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(2,32,105,0.25);}
   .back-meta-item .v a:hover{border-bottom-color:var(--navy);}
   .back-meta-item.span2{grid-column:1/-1;}
@@ -323,48 +357,51 @@
     font-size:12px;color:var(--muted);line-height:1.5;margin:0;
     display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
   }
-  .back-section{border-top:1px solid var(--line);padding-top:6px;margin-top:0;}
+  .back-section{border-top:1px solid var(--line);padding-top:4px;margin-top:0;}
   .back-section-label{font-size:9.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
   .social-chips{display:flex;flex-wrap:wrap;gap:6px;}
-  .social-chip{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--navy);background:var(--cream-2);border-radius:0;padding:3px 8px;text-decoration:none;white-space:nowrap;}
+  .social-chip{display:flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;color:var(--navy);background:var(--cream-2);border-radius:0;padding:3px 8px;text-decoration:none;white-space:nowrap;}
   .social-chip.more{color:var(--muted);background:transparent;border:1px dashed var(--line);}
   .tag-row{display:flex;flex-wrap:wrap;gap:5px;}
-  .tag{font-size:10.5px;color:var(--navy);background:var(--cream-2);border-radius:0;padding:3px 7px;white-space:nowrap;}
-  .tag.more{color:var(--muted);background:transparent;border:1px dashed var(--line);}
-  .ei-front-gauge-wrap{position:relative;flex:0 0 auto;width:30px;height:30px;display:flex;align-items:center;justify-content:center;}
+  .tag{font-size:10.5px;font-weight:600;color:var(--navy);background:var(--cream-2);border-radius:0;padding:3px 7px;white-space:nowrap;}
+  .ei-front-gauge-wrap{position:relative;flex:0 0 auto;width:44px;height:44px;display:flex;align-items:center;justify-content:center;}
   .ei-front-gauge-wrap .ei-gauge-svg{position:absolute;top:0;left:0;}
-  .ei-front-score{position:relative;font-family:var(--font-mono);font-size:10px;font-weight:700;color:var(--ink);}
-  .ei-front-category{font-family:var(--font-mono);font-size:9.5px;font-weight:700;}
+  .ei-front-score{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:700;}
+  .ei-front-category{font-family:var(--font-mono);font-size:9.5px;font-weight:700;white-space:nowrap;}
   .ei-front-category.ei-cat-leading{color:#1f7a4d;}
   .ei-front-category.ei-cat-established{color:#125e8a;}
   .ei-front-category.ei-cat-emerging{color:#a15c00;}
   .ei-front-category.ei-cat-limited{color:var(--muted);}
-  .engagement-index-bars{display:flex;flex-direction:column;gap:6px;margin-bottom:6px;}
-  .ei-bar-row{display:grid;grid-template-columns:100px 1fr;align-items:center;gap:8px;}
-  .ei-bar-label{font-size:10px;color:var(--muted);}
+  .ei-bar-label{font-size:10.5px;color:var(--muted);}
   .ei-bar-track{background:var(--cream-2);border-radius:0;height:6px;overflow:hidden;}
   .ei-bar-fill{height:100%;background:var(--navy);border-radius:0;}
-  .engagement-index-note{display:inline-block;font-size:10.5px;font-weight:600;color:var(--red);text-decoration:none;}
-  .back-empty{margin:auto 0;text-align:center;color:var(--muted);font-size:13px;}
+  .engagement-index-bars-inline{display:flex;gap:18px;}
+  .ei-bar-inline{display:flex;align-items:center;gap:6px;flex:1;min-width:0;}
+  .ei-bar-inline .ei-bar-label{white-space:nowrap;flex:0 0 auto;}
+  .ei-bar-inline .ei-bar-track{flex:1;min-width:0;}
+  .ei-bar-value{flex:0 0 auto;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;}
+  .back-empty{margin:auto 0;text-align:center;color:var(--muted);font-size:12px;}
   .card-top{position:relative;}
-  .card-top-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:4px;}
-  .card-name{font-weight:900;font-size:15px;line-height:1.25;letter-spacing:-0.01em;}
+  .card-top-row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px;}
+  .card-name{font-weight:900;font-size:15px;line-height:1.25;letter-spacing:-0.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
   .badge{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:7.5px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:0;padding:2px 5px;white-space:nowrap;}
   .badge[data-type="Push Media"]{background:#F0653D;}
   .badge[data-type="Creator"]{background:#00B8A9;}
   .badge[data-type="Digital-native publisher"]{background:#1D78BE;}
   .meta-row{display:flex;gap:6px;flex-wrap:wrap;align-items:baseline;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);}
   .meta-row .lang{font-weight:700;color:var(--ink);font-size:11.5px;letter-spacing:0.01em;}
-  .card-body{position:relative;border-top:2px solid var(--ink);padding-top:14px;padding-bottom:22px;margin-top:12px;display:flex;flex-direction:column;gap:14px;flex:1;}
-  .radar-box{height:158px;position:relative;}
-  .radar-box::before{
+  .card-body{position:relative;border-top:2px solid var(--ink);margin:0 -20px;padding:14px 20px 16px;display:flex;flex-direction:column;justify-content:center;gap:14px;flex:1;}
+  .radar-box{width:190px;height:190px;margin:0 auto;position:relative;}
+  .fp-radar-anim{transform-origin:100px 100px;transform:scale(0.25);opacity:0;}
+  .radar-box.is-in .fp-radar-anim{animation:fp-radar-pop 1s cubic-bezier(.2,.8,.2,1) forwards;}
+  @keyframes fp-radar-pop{0%{transform:scale(0.25);opacity:0;}70%{transform:scale(1.05);opacity:1;}100%{transform:scale(1);opacity:1;}}
+  @media(prefers-reduced-motion:reduce){.fp-radar-anim{transform:none;opacity:1;}.radar-box.is-in .fp-radar-anim{animation:none;}}
+  .radar-box-unused-before{
     content:'';position:absolute;inset:8%;border-radius:50%;
-    background:radial-gradient(circle,var(--accent,var(--navy)) 0%,transparent 72%);opacity:0.05;
+    background:radial-gradient(circle,var(--accent,var(--navy)) 0%,transparent 72%);opacity:0;
   }
   .card-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;}
   .card-row-label{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);}
-  .topic-chip{display:inline-flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;color:var(--ink);}
-  .topic-dot{width:5px;height:5px;flex:0 0 auto;}
   .card-top-entities{align-items:center;}
   .entity-badge{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);padding:2px 7px 2px 2px;}
   .entity-type-tag{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:6.5px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:#fff;padding:1px 4px;}
@@ -372,10 +409,11 @@
   .entity-type-tag.et-PERSON{background:var(--navy);}
   .entity-type-tag.et-PLACE{background:var(--blue);}
   .entity-text{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;color:var(--ink);}
-  .card-foot{display:flex;align-items:center;border-top:2px solid var(--ink);margin-top:auto;}
+  .card-foot{display:flex;align-items:center;border-top:2px solid var(--ink);margin:auto -20px 0;min-height:66px;}
   .card-foot-cell{flex:1 1 0;padding:10px 14px;}
-  .card-foot-cell:first-child{border-right:1px solid var(--line);}
-  .foot-num{display:block;line-height:1.2;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;font-size:15px;color:var(--navy);font-variant-numeric:tabular-nums;}
+  .card-foot-cell:first-child{border-right:1px solid var(--line);padding-left:20px;}
+  .card-foot-cell:last-child{padding-right:20px;}
+  .foot-num{display:block;line-height:1.2;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;font-size:19px;color:var(--navy);font-variant-numeric:tabular-nums;}
   .foot-label{display:block;line-height:1.2;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8px;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);}
   .foot-ei{display:flex;align-items:center;gap:8px;}
   .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);font-size:14px;}
@@ -389,6 +427,10 @@
   .type-carousel{margin-bottom:36px;}
   .type-carousel:last-child{margin-bottom:0;}
   .type-carousel .grid{margin-top:0;}
+  .cs-footer-cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;align-items:start;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12);}
+  @media(max-width:760px){.cs-footer-cols{grid-template-columns:1fr;gap:32px;}}
+  .cs-footer-logos{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:22px;background:#fff;padding:16px 20px;margin-bottom:16px;}
+  .cs-footer-logos img{max-width:100%;}
   .type-carousel-head{
     display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px;padding-bottom:10px;
     border-bottom:1px solid var(--line);flex-wrap:wrap;
@@ -596,17 +638,20 @@
     <a href="index.html" class="cs-brand">
       <span class="cs-wordmark">CivicSignal</span>
     </a>
-    <nav class="cs-navlinks">
+    <button class="cs-nav-toggle" type="button" aria-expanded="false" aria-controls="csNavLinks" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="cs-navlinks" id="csNavLinks">
       <a href="index.html">Overview</a>
       <div class="cs-navdrop">
-        <button class="cs-navdrop-btn active" type="button" aria-expanded="false">Tools</button>
+        <button class="cs-navdrop-btn" type="button" aria-expanded="false">Tools</button>
         <div class="cs-navdrop-menu">
           <a href="mediadata.html">MediaData</a>
           <a href="mediacloud.html">MediaCloud</a>
           <a href="mediascapes.html">MediaScapes</a>
           <div class="cs-navdrop-divider"></div>
           <a href="wavelength.html">Wavelength</a>
-          <a href="fingerprints.html" class="active">Fingerprints</a>
+          <a href="fingerprints.html">Fingerprints</a>
           <a href="push-media.html">Push Media</a>
         </div>
       </div>
@@ -643,8 +688,31 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
     drop.querySelector('.cs-navdrop-btn').classList.add('active');
   }
 });
+var csNavToggle = document.querySelector('.cs-nav-toggle');
+var csNavLinks = document.getElementById('csNavLinks');
+if(csNavToggle && csNavLinks){
+  csNavToggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = csNavLinks.classList.toggle('cs-nav-open');
+    csNavToggle.setAttribute('aria-expanded', String(open));
+    if(!open){
+      csNavLinks.querySelectorAll('.cs-navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+    }
+  });
+  csNavLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      csNavLinks.classList.remove('cs-nav-open');
+      csNavToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 860){
+      csNavLinks.classList.remove('cs-nav-open');
+      csNavToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
 </script>
-
 
 <header class="hero" id="pulse">
   <div class="wrap">
@@ -679,15 +747,19 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
             <path class="fp-radar-sweep" d="M100,100 L180,100 A80,80 0 0 0 156.6,43.4 Z"/>
           </g>
           <g class="fp-radar-trace-group">
-            <polygon class="fp-radar-trace" points="100.0,22.0 128.3,71.7 162.0,100.0 124.7,124.7 100.0,170.0 68.2,131.8 45.0,100.0 64.6,64.6"/>
-            <circle class="fp-radar-dot" cx="100.0" cy="22.0" r="3.2"/>
-            <circle class="fp-radar-dot" cx="128.3" cy="71.7" r="3.2"/>
-            <circle class="fp-radar-dot" cx="162.0" cy="100.0" r="3.2"/>
-            <circle class="fp-radar-dot" cx="124.7" cy="124.7" r="3.2"/>
-            <circle class="fp-radar-dot" cx="100.0" cy="170.0" r="3.2"/>
-            <circle class="fp-radar-dot" cx="68.2" cy="131.8" r="3.2"/>
-            <circle class="fp-radar-dot" cx="45.0" cy="100.0" r="3.2"/>
-            <circle class="fp-radar-dot" cx="64.6" cy="64.6" r="3.2"/>
+            <polygon class="fp-radar-trace" points="100.0,22.0 128.3,71.7 162.0,100.0 124.7,124.7 100.0,170.0 68.2,131.8 45.0,100.0 64.6,64.6">
+              <animate attributeName="points" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="100.0,22.0 128.3,71.7 162.0,100.0 124.7,124.7 100.0,170.0 68.2,131.8 45.0,100.0 64.6,64.6;100.0,70.0 148.1,51.9 148.0,100.0 152.3,152.3 100.0,138.0 59.0,141.0 34.0,100.0 70.3,70.3;100.0,42.0 118.4,81.6 172.0,100.0 131.1,131.1 100.0,166.0 78.8,121.2 52.0,100.0 47.7,47.7;100.0,22.0 128.3,71.7 162.0,100.0 124.7,124.7 100.0,170.0 68.2,131.8 45.0,100.0 64.6,64.6"/>
+              <animate attributeName="stroke" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/>
+              <animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red-wash);rgba(2,32,105,0.10);var(--red-wash);var(--red-wash)"/>
+            </polygon>
+            <circle class="fp-radar-dot" cx="100.0" cy="22.0" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="100.0;100.0;100.0;100.0"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="22.0;70.0;42.0;22.0"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="128.3" cy="71.7" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="128.3;148.1;118.4;128.3"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="71.7;51.9;81.6;71.7"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="162.0" cy="100.0" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="162.0;148.0;172.0;162.0"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="100.0;100.0;100.0;100.0"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="124.7" cy="124.7" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="124.7;152.3;131.1;124.7"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="124.7;152.3;131.1;124.7"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="100.0" cy="170.0" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="100.0;100.0;100.0;100.0"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="170.0;138.0;166.0;170.0"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="68.2" cy="131.8" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="68.2;59.0;78.8;68.2"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="131.8;141.0;121.2;131.8"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="45.0" cy="100.0" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="45.0;34.0;52.0;45.0"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="100.0;100.0;100.0;100.0"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
+            <circle class="fp-radar-dot" cx="64.6" cy="64.6" r="3.2"><animate attributeName="cx" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="64.6;70.3;47.7;64.6"/><animate attributeName="cy" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.33;0.66;1" values="64.6;70.3;47.7;64.6"/><animate attributeName="fill" dur="9s" repeatCount="indefinite" keyTimes="0;0.33;0.66;1" values="var(--red);var(--navy);var(--red);var(--red)"/></circle>
           </g>
         </svg>
       </div>
@@ -732,7 +804,7 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
   <section class="section" id="methodology">
     <div class="section-head">
       <div>
-        <h2>How the Engagement Index is calculated</h2>
+        <h2>How reach is calculated</h2>
         <p>Shown on each publisher card, wherever social data is available. A CivicSignal-derived metric, built entirely from data already in the corpus.</p>
       </div>
     </div>
@@ -763,34 +835,27 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
 
 </main>
 
-<section class="closing-banner simple">
-  <div class="wrap">
-    <h2>The map is moving. CivicSignal is how you keep up with it.</h2>
-    <p>Investigate the full spectrum of Africa's media landscape &mdash; from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
-    <a class="closing-banner-cta" href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
-  </div>
-</section>
-
-<footer class="close">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand-logos">
-        <img src="assets/cfa-logo.png" alt="Code for Africa">
-        <span class="divider"></span>
-        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance">
+<section class="footer-merged" style="background:var(--navy-deep);padding:56px 0 0;">
+  <div class="wrap cs-footer-cols">
+    <div>
+      <h2 style="color:#fff;font-family:'Lato',sans-serif;font-weight:900;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.08;letter-spacing:-.02em;margin:0;max-width:24ch;">The map is moving. CivicSignal is how you keep up with it.</h2>
+      <p style="color:#C7CEE0;font-size:1rem;line-height:1.55;max-width:56ch;margin:18px 0 26px;">Investigate the full spectrum of Africa's media landscape — from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
+      <a href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates" style="display:inline-block;font-family:'Lato',sans-serif;font-weight:700;font-size:14px;color:#fff;background:var(--red);padding:15px 26px;text-decoration:none;">Connect to CivicSignal</a>
+    </div>
+    <div>
+      <div class="cs-footer-logos">
+        <img src="assets/cfa-logo.png" alt="Code for Africa" style="height:52px;width:auto;">
+        <span style="width:1px;height:42px;background:var(--line);"></span>
+        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance" style="height:44px;width:auto;">
       </div>
-      <p class="footer-brand-copy">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
+      <p style="font-size:12.5px;line-height:1.65;color:#9FA9C9;margin:0;">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
     </div>
   </div>
-</footer>
-
-<div class="cs-footbar">
-  <div class="cs-footbar-inner">
-    <span>CivicSignal &middot; Code for Africa</span>
-    <a href="index.html">&larr; All CivicSignal pages</a>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:24px;padding:16px 0;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:#8791AC;">
+    <span>CivicSignal &middot; Code for Africa &mdash; working showcase, not for distribution</span>
+    <a href="index.html" style="color:#8791AC;">&larr; All CivicSignal pages</a>
   </div>
-</div>
-
+</section>
 <script>
 const DATA_URL = 'showcase_data.json';
 
@@ -829,6 +894,7 @@ const CATS = DATA.categories;
 const COLORS = DATA.colors;
 const LABELS = Object.fromEntries([...CATS, 'Other'].map(c => [c, c]));
 const TYPE_COLORS = {"Digital-native publisher":"#1D78BE","Creator":"#00B8A9","Push Media":"#F0653D"};
+const FLIP_ICON_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/><circle cx="12" cy="12" r="1.6"/></svg>';
 
 const HAS_CHART = typeof Chart !== 'undefined';
 if(!HAS_CHART){
@@ -877,8 +943,6 @@ function renderCardBack(p){
   const meta = [];
   if(p.url) meta.push(`<div class="back-meta-item span2"><span class="k">Website</span><span class="v"><a href="${p.url}" target="_blank" rel="noopener">${p.url.replace(/^https?:\/\//,'')}</a></span></div>`);
   meta.push(`<div class="back-meta-item"><span class="k">Type</span><span class="v">${p.entityType}</span></div>`);
-  if(e && e.hqCity) meta.push(`<div class="back-meta-item"><span class="k">HQ</span><span class="v">${e.hqCity}, ${p.country}</span></div>`);
-  else meta.push(`<div class="back-meta-item"><span class="k">Country</span><span class="v">${p.country}</span></div>`);
   if(e && e.established) meta.push(`<div class="back-meta-item"><span class="k">Founded</span><span class="v">${e.established}</span></div>`);
   if(e && e.coverageType) meta.push(`<div class="back-meta-item"><span class="k">Coverage</span><span class="v">${e.coverageType}</span></div>`);
   rows.push(`<div class="back-meta-grid">${meta.join('')}</div>`);
@@ -886,10 +950,8 @@ function renderCardBack(p){
   if(e && e.bioShort) rows.push(`<p class="back-bio">${e.bioShort}</p>`);
 
   if(e && e.contentType && e.contentType.length){
-    const shown = e.contentType.slice(0, 3);
-    const extra = e.contentType.length - shown.length;
     rows.push(`<div class="back-section"><div class="back-section-label">Editorial focus</div>
-      <div class="tag-row">${shown.map(t=>`<span class="tag">${t}</span>`).join('')}${extra > 0 ? `<span class="tag more">+${extra}</span>` : ''}</div></div>`);
+      <div class="tag-row">${e.contentType.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`);
   }
 
   if(e && e.staff){
@@ -920,12 +982,11 @@ function renderCardBack(p){
 
   const ei = p.engagementIndex;
   if(ei && ei.confidence !== 'not_available' && ei.score != null){
-    rows.push(`<div class="back-section"><div class="back-section-label">Engagement index breakdown</div>
-      <div class="engagement-index-bars">
-        <div class="ei-bar-row"><span class="ei-bar-label">Platform breadth</span><div class="ei-bar-track"><div class="ei-bar-fill" style="width:${ei.breadthScore}%"></div></div></div>
-        <div class="ei-bar-row"><span class="ei-bar-label">Reach vs. country</span><div class="ei-bar-track"><div class="ei-bar-fill" style="width:${ei.reachScore}%"></div></div></div>
+    rows.push(`<div class="back-section"><div class="back-section-label">Reach breakdown</div>
+      <div class="engagement-index-bars-inline">
+        <div class="ei-bar-inline"><span class="ei-bar-label">Breadth</span><div class="ei-bar-track"><div class="ei-bar-fill" style="width:${ei.breadthScore}%"></div></div><span class="ei-bar-value">${Math.round(ei.breadthScore)}%</span></div>
+        <div class="ei-bar-inline"><span class="ei-bar-label">Reach</span><div class="ei-bar-track"><div class="ei-bar-fill" style="width:${ei.reachScore}%"></div></div><span class="ei-bar-value">${Math.round(ei.reachScore)}%</span></div>
       </div>
-      <a class="engagement-index-note" href="#methodology">How this is calculated &rarr;</a>
     </div>`);
   }
 
@@ -938,7 +999,9 @@ function renderCardBack(p){
 
 // Rendering all ~700 cards (each with its own live Chart.js radar) at once is what was
 // freezing the page - only ever build DOM/charts for the current carousel page of each type.
-const CAROUSEL_PAGE_SIZE = 3;
+function getCarouselPageSize(){
+  return window.matchMedia('(max-width:620px)').matches ? 1 : 3;
+}
 let carouselPage = {}; // entityType -> current page index (0-based)
 
 function topicDiversity(p){
@@ -984,10 +1047,12 @@ const ENGAGEMENT_CATEGORIES = [
   {min:0, label:'Limited reach', cls:'ei-cat-limited', color:'#94A3B8'},
 ];
 function engagementCategory(score){
-  return ENGAGEMENT_CATEGORIES.find(c => score >= c.min);
+  const cat = ENGAGEMENT_CATEGORIES.find(c => score >= c.min);
+  const hue = Math.max(0, Math.min(120, (score / 100) * 120));
+  return { ...cat, color: 'hsl(' + hue.toFixed(0) + ', 72%, 30%)' };
 }
 function engagementGaugeSVG(score, color){
-  const r = 12, stroke = 3, size = (r + stroke) * 2, c = size / 2;
+  const r = 18, stroke = 4, size = (r + stroke) * 2, c = size / 2;
   const circumference = 2 * Math.PI * r;
   const offset = circumference * (1 - Math.max(0, Math.min(100, score)) / 100);
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" class="ei-gauge-svg" aria-hidden="true">
@@ -1004,22 +1069,59 @@ function engagementFootHTML(p){
   return `<div class="card-foot-cell foot-ei" style="color:${cat.color}">
     <div class="ei-front-gauge-wrap">
       ${engagementGaugeSVG(ei.score, cat.color)}
-      <span class="ei-front-score">${Math.round(ei.score)}</span>
+      <span class="ei-front-score" style="color:${cat.color}">${Math.round(ei.score)}</span>
     </div>
     <span class="ei-front-category ${cat.cls}">${cat.label}</span>
   </div>`;
 }
-function topTopicsHTML(p){
-  const top3 = Object.entries(p.radar || {}).sort((a,b)=>b[1]-a[1]).slice(0,3).filter(([,v])=>v>0);
-  if(!top3.length) return '';
-  return `<div class="card-row topics-row"><span class="card-row-label">Topics</span>${top3.map(([cat])=>`<span class="topic-chip"><span class="topic-dot" style="background:${COLORS[cat]||'#1B2340'}"></span>${cat}</span>`).join('')}</div>`;
+function shortLabelFor(name){
+  const map = {'Politics & Governance':'Politics','Economy':'Economy','Culture & Society':'Culture','Technology':'Tech','Conflict & Security':'Conflict','Health':'Health','Gender & Rights':'Gender','Climate':'Climate'};
+  return map[name] || (name||'').split(' ')[0];
+}
+function radarSVG(p){
+  const maxV = Math.max(...CATS.map(c=>p.radar[c]||0), 1);
+  const n = CATS.length;
+  const dots = CATS.map((name,i)=>{
+    const ang=-90+i*(360/n), rad=ang*Math.PI/180;
+    const v=p.radar[name]||0, r=20+(v/maxV)*56;
+    return {x:(100+r*Math.cos(rad)).toFixed(1), y:(100+r*Math.sin(rad)).toFixed(1), color:COLORS[name]||'#8A8E99'};
+  });
+  const polygon = dots.map(d=>d.x+','+d.y).join(' ');
+  const labels = CATS.map((name,i)=>{
+    const ang=-90+i*(360/n), rad=ang*Math.PI/180;
+    const cos=Math.cos(rad), sin=Math.sin(rad), lr=82;
+    const x=100+lr*cos, y=100+lr*sin;
+    const px=(x/200*100).toFixed(2)+'%', py=(y/200*100).toFixed(2)+'%';
+    const tx = cos>0.35?'0%':cos<-0.35?'-100%':'-50%', ty = sin>0.35?'0%':sin<-0.35?'-100%':'-50%';
+    return `<span style="position:absolute;left:${px};top:${py};transform:translate(${tx},${ty});font-family:var(--font-mono);font-size:9px;font-weight:700;color:var(--ink);white-space:nowrap;">${shortLabelFor(name)}</span>`;
+  }).join('');
+  return `<div style="position:relative;width:100%;height:100%;">
+    <svg viewBox="0 0 200 200" style="position:absolute;inset:0;width:100%;height:100%;">
+      <polygon points="100.0,70.0 121.2,78.8 130.0,100.0 121.2,121.2 100.0,130.0 78.8,121.2 70.0,100.0 78.8,78.8" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+      <polygon points="100.0,45.0 138.9,61.1 155.0,100.0 138.9,138.9 100.0,155.0 61.1,138.9 45.0,100.0 61.1,61.1" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+      <polygon points="100.0,20.0 156.6,43.4 180.0,100.0 156.6,156.6 100.0,180.0 43.4,156.6 20.0,100.0 43.4,43.4" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+      <line x1="100" y1="100" x2="100.0" y2="20.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="156.6" y2="43.4" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="180.0" y2="100.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="156.6" y2="156.6" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="100.0" y2="180.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="43.4" y2="156.6" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="20.0" y2="100.0" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="100" y1="100" x2="43.4" y2="43.4" stroke="#EB2227" stroke-width="1" stroke-opacity="0.4"/>
+      <g class="fp-radar-anim">
+        <polygon points="${polygon}" fill="rgba(2,32,105,0.08)" stroke="#022069" stroke-width="1.8" stroke-linejoin="round"/>
+        ${dots.map(d=>`<circle cx="${d.x}" cy="${d.y}" r="3.4" fill="${d.color}"/>`).join('')}
+      </g>
+    </svg>
+    ${labels}
+  </div>`;
 }
 function entitiesHTML(p){
   if(!p.topEntities || !p.topEntities.length) return '';
   return `<div class="card-row card-top-entities"><span class="card-row-label">Entities</span>${p.topEntities.slice(0,3).map(e=>`<span class="entity-badge"><span class="entity-type-tag et-${e.type}">${e.type}</span><span class="entity-text">${escapeHtml(e.text)}</span></span>`).join('')}</div>`;
 }
-function clampRowToTwoLines(row){
-  const items = Array.from(row.children).slice(1);
+function clampRowToTwoLines(row, skip=1){
+  const items = Array.from(row.children).slice(skip);
   if(!items.length) return;
   const countRows = () => new Set(items.filter(el=>el.style.display!=='none').map(el=>el.offsetTop)).size;
   while(countRows() > 2){
@@ -1027,6 +1129,22 @@ function clampRowToTwoLines(row){
     if(visible.length <= 1) break;
     visible[visible.length-1].style.display = 'none';
   }
+}
+function clampTagsWithMore(row){
+  const items = Array.from(row.children);
+  if(!items.length) return;
+  clampRowToTwoLines(row, 0);
+  let hidden = items.filter(el=>el.style.display==='none');
+  if(!hidden.length) return;
+  const more = document.createElement('span');
+  more.className = 'tag more';
+  row.appendChild(more);
+  const countRows = () => new Set(items.concat(more).filter(el=>el.style.display!=='none').map(el=>el.offsetTop)).size;
+  const visible = () => items.filter(el=>el.style.display!=='none');
+  while(countRows() > 2 && visible().length){
+    visible()[visible().length-1].style.display = 'none';
+  }
+  more.textContent = `+${items.filter(el=>el.style.display==='none').length}`;
 }
 
 const radarCharts = {};
@@ -1042,15 +1160,14 @@ function cardHTML(p, radarId){
               <div class="card-name">${p.name}</div>
               <span class="badge" data-type="${p.entityType}">${p.entityType}</span>
             </div>
+            <div class="flip-hint">Flip card</div>
             <div class="meta-row">
               <span>${p.country}</span><span>·</span><span class="lang">${p.lang}${p.lang2 ? ` + ${p.lang2}` : ''}</span>
             </div>
           </div>
           <div class="card-body">
-            <div class="radar-box"><canvas id="radar-${radarId}"></canvas></div>
-            ${topTopicsHTML(p)}
+            <div class="radar-box">${radarSVG(p)}</div>
             ${entitiesHTML(p)}
-            <span class="flip-icon">&#8635;</span>
           </div>
           <div class="card-foot">
             <div class="card-foot-cell"><span class="foot-num">${p.total.toLocaleString()}</span><span class="foot-label">Articles</span></div>
@@ -1058,7 +1175,7 @@ function cardHTML(p, radarId){
           </div>
         </div>
         <div class="card-face card-back">
-          <span class="flip-icon">&#8635;</span>
+          <span class="flip-icon">${FLIP_ICON_SVG}</span>
           ${renderCardBack(p)}
         </div>
       </div>
@@ -1127,14 +1244,15 @@ function renderCards(){
 
   let radarId = 0;
   const pending = []; // {p, radarId} to mount after the whole carousel's HTML is in the DOM
+  const pageSize = getCarouselPageSize();
 
   container.innerHTML = groups.map(({type, items}) => {
-    const totalPages = Math.max(1, Math.ceil(items.length / CAROUSEL_PAGE_SIZE));
+    const totalPages = Math.max(1, Math.ceil(items.length / pageSize));
     let page = carouselPage[type] || 0;
     if(page >= totalPages) page = totalPages - 1;
     carouselPage[type] = page;
-    const start = page * CAROUSEL_PAGE_SIZE;
-    const visibleItems = items.slice(start, start + CAROUSEL_PAGE_SIZE);
+    const start = page * pageSize;
+    const visibleItems = items.slice(start, start + pageSize);
     const cards = visibleItems.map(p => { const id = radarId++; pending.push({p, id}); return cardHTML(p, id); }).join('');
     return `
       <div class="type-carousel">
@@ -1146,6 +1264,7 @@ function renderCards(){
             <button class="carousel-arrow-btn" data-group="${type}" data-dir="1" ${page>=totalPages-1?'disabled':''} aria-label="Next ${type} page">&rsaquo;</button>
           </div>
         </div>
+        ${type === 'Push Media' ? `<div class="disclaimer"><b>Some entries here may be duplicates</b><span>A handful of Push Media sources are registered under more than one name variant &mdash; punctuation, capitalization, or a legal suffix like &ldquo;Inc.&rdquo; or &ldquo;Ltd.&rdquo; differing between messages from the same channel &mdash; so a few entries below may double-count a single real-world outlet rather than represent two distinct sources.</span></div>` : ''}
         <div class="grid type-carousel-track">${cards}</div>
       </div>
     `;
@@ -1160,8 +1279,22 @@ function renderCards(){
     });
   });
 
-  if(HAS_CHART) pending.forEach(({p, id}) => mountRadar(p, id));
-  container.querySelectorAll('.topics-row, .card-top-entities').forEach(clampRowToTwoLines);
+  // radar now rendered inline as SVG in cardHTML; no chart mounting needed
+  container.querySelectorAll('.card-top-entities').forEach(row=>clampRowToTwoLines(row));
+  container.querySelectorAll('.tag-row').forEach(clampTagsWithMore);
+
+  const radarObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.remove('is-in');
+        void entry.target.offsetWidth;
+        entry.target.classList.add('is-in');
+      } else {
+        entry.target.classList.remove('is-in');
+      }
+    });
+  }, {threshold: 0.1});
+  container.querySelectorAll('.radar-box').forEach(box=>radarObserver.observe(box));
 }
 [fCountry,fLang,fTopic,fSort].forEach(el=>el.addEventListener('change', ()=>{
   carouselPage = {};
@@ -1173,6 +1306,10 @@ document.getElementById('resetBtn').addEventListener('click', ()=>{
   renderCards();
 });
 renderCards();
+window.matchMedia('(max-width:620px)').addEventListener('change', ()=>{
+  carouselPage = {};
+  renderCards();
+});
 
 }
 </script>

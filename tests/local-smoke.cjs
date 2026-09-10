@@ -49,6 +49,15 @@ const portal = 'https://tools.civicsignal.africa/';
         await page.waitForTimeout(150);
         const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
         if (overflow) report.failures.push(file + ': horizontal overflow at ' + width);
+        if (width === 390) {
+          const toggle = page.locator('.cs-nav-toggle');
+          assert.ok(await toggle.isVisible(), file + ' mobile menu toggle');
+          await toggle.click();
+          assert.equal(await toggle.getAttribute('aria-expanded'), 'true', file + ' mobile menu opens');
+          assert.ok(await page.locator('a.cs-login-btn').isVisible(), file + ' mobile login is accessible');
+          await toggle.click();
+          assert.equal(await toggle.getAttribute('aria-expanded'), 'false', file + ' mobile menu closes');
+        }
         if (['index.html', 'login.html', 'wavelength.html'].includes(file)) {
           await page.screenshot({ path: path.join(output, file + '-' + width + '.png'), fullPage: true });
         }

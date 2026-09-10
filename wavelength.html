@@ -4,6 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CivicSignal — Wavelength</title>
+<meta name="description" content="A live view of Africa's emerging media ecosystem &mdash; digital-native publishers, creator-journalists and push media, tracked continuously.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CivicSignal">
+<meta property="og:title" content="CivicSignal — Wavelength">
+<meta property="og:description" content="A live view of Africa's emerging media ecosystem — digital-native publishers, creator-journalists and push media, tracked continuously.">
+<meta property="og:image" content="https://safe-ali.github.io/civicsignal-showcase/assets/wavelength-social.jpg">
+<meta property="og:url" content="https://safe-ali.github.io/civicsignal-showcase/wavelength.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CivicSignal — Wavelength">
+<meta name="twitter:description" content="A live view of Africa's emerging media ecosystem — digital-native publishers, creator-journalists and push media, tracked continuously.">
+<meta name="twitter:image" content="https://safe-ali.github.io/civicsignal-showcase/assets/wavelength-social.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=optional" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
@@ -51,23 +62,51 @@
   @media(max-width:720px){.wrap{padding:0 18px;}}
 
   /* ---------- shared site nav (all 5 pages) ---------- */
-    .cs-nav{position:sticky;top:0;z-index:100;background:var(--navy);border-bottom:2px solid var(--red);}
-  .cs-nav-top-inner{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);display:flex;align-items:stretch;justify-content:space-between;gap:20px;flex-wrap:wrap;line-height:1;}
+    .cs-nav{position:sticky;top:0;z-index:5000;background:var(--navy);border-bottom:2px solid var(--red);}
+  .cs-nav-top-inner{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;line-height:1;}
   @media(max-width:720px){.cs-nav-top-inner{padding:0 18px;}}
-  .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;padding:14px 0;}
-  .cs-wordmark{font-family:'Lato',sans-serif;font-weight:900;font-size:17px;color:#fff;letter-spacing:0.01em;}
+  .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;padding:18px 0;}
+  .cs-wordmark{font-family:'Lato',sans-serif;font-weight:900;font-size:19px;color:#fff;letter-spacing:0.01em;}
   .cs-navlinks a.cs-login-btn{display:inline-flex;align-items:center;justify-content:center;line-height:1;background:var(--red);border-radius:0;padding:9px 18px;color:#fff !important;font-weight:700;font-size:13px;text-decoration:none;text-transform:none;letter-spacing:normal;font-family:'Lato',sans-serif;border-bottom:none;margin-bottom:0;transition:background .15s ease;align-self:center;}
   .cs-navlinks a.cs-login-btn:hover{background:#c91b1f;color:#fff;}
-  .cs-navlinks{display:flex;gap:26px;align-items:stretch;flex-wrap:wrap;}
-  .cs-navlinks a,.cs-navdrop-btn{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B9C2DA;padding:15px 0 13px;border:none;border-bottom:3px solid transparent;background:none;text-decoration:none;cursor:pointer;white-space:nowrap;margin-bottom:-2px;}
+  .cs-navlinks{display:flex;gap:26px;align-items:center;flex-wrap:wrap;}
+  .cs-navlinks a,.cs-navdrop-btn{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:#B9C2DA;padding:18px 0 16px;border:none;border-bottom:3px solid transparent;background:none;text-decoration:none;cursor:pointer;white-space:nowrap;margin-bottom:-2px;}
   .cs-navlinks a:hover,.cs-navdrop-btn:hover{color:#fff;}
   .cs-navlinks a.active,.cs-navdrop-btn.active{color:var(--red);border-bottom-color:transparent;}
+  .cs-nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;padding:0;border:none;background:none;cursor:pointer;}
+  .cs-nav-toggle span{display:block;width:100%;height:2px;background:#fff;transition:transform .2s ease,opacity .2s ease;}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media(max-width:860px){
+    .cs-nav-toggle{display:flex;}
+    .cs-navlinks{
+      display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;
+      gap:0;background:var(--navy-deep);border-bottom:2px solid var(--red);
+      max-height:calc(100vh - 100%);overflow-y:auto;
+    }
+    .cs-navlinks.cs-nav-open{display:flex;}
+    .cs-navlinks a,.cs-navdrop-btn{width:100%;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:0;justify-content:space-between;}
+    .cs-navlinks a.cs-login-btn{margin:14px 18px;width:auto;}
+    .cs-navdrop{width:100%;}
+    .cs-navdrop-btn{width:100%;justify-content:space-between;}
+    .cs-navlinks .cs-navdrop-menu{
+      display:none;position:static;background:rgba(0,0,0,0.15);border:none;box-shadow:none;
+      padding:0;margin:0;min-width:0;
+    }
+    .cs-navlinks .cs-navdrop.open .cs-navdrop-menu{display:block;}
+    .cs-navlinks .cs-navdrop-menu a{padding:12px 18px 12px 32px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  }
+  .cs-footer-cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;align-items:start;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12);}
+  @media(max-width:760px){.cs-footer-cols{grid-template-columns:1fr;gap:32px;}}
+  .cs-footer-logos{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:22px;background:#fff;padding:16px 20px;margin-bottom:16px;}
+  .cs-footer-logos img{max-width:100%;}
   .cs-footbar{background:var(--navy-deep);}
   .cs-footbar-inner{max-width:1120px;margin:0 auto;padding:16px clamp(20px,5vw,56px);font-family:'Lato',sans-serif;font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .cs-footbar-inner a{color:#8791AC;}
 
   /* ---------- HERO ---------- */
-  .hero{background:#F4F3F0;border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
+  .hero{background:#F4F3F0;border-bottom:2px solid var(--ink);padding:clamp(48px,8vw,80px) 0 48px;}
   .hero .wrap{position:relative;}
   /* ---------- header/panel mark: echoes the CfA logo's stacked, offset stepped-block geometry ---------- */
   .header-mark{position:absolute;right:clamp(20px,5vw,56px);bottom:-24px;z-index:2;display:flex;flex-direction:column;align-items:flex-end;gap:3px;pointer-events:none;}
@@ -99,13 +138,14 @@
     color:var(--navy-deep);
   }
   .hero-sub{font-size:1.1rem;line-height:1.6;color:var(--muted);max-width:60ch;margin:0 0 28px;}
-  .pulse-line{width:100%;max-width:420px;height:28px;overflow:hidden;margin-bottom:28px;}
-  .pulse-line svg{display:block;width:100%;height:100%;}
-  .pulse-line path{fill:none;stroke:var(--red);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6 5;}
-  @media (prefers-reduced-motion: no-preference){.pulse-line path{animation:dash 3.2s linear infinite;}}
-  @keyframes dash{to{stroke-dashoffset:-220;}}
-  .hero-stats{display:flex;flex-wrap:wrap;gap:34px;margin-bottom:8px;}
-  .stat b{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:26px;font-weight:600;color:var(--navy-deep);font-variant-numeric:tabular-nums;}
+  .pulse-line{width:100%;max-width:560px;height:24px;overflow:hidden;margin-bottom:28px;display:flex;align-items:center;gap:3px;}
+  .pulse-line .eq-bar{flex:0 0 3px;border-radius:0;}
+  @media (prefers-reduced-motion: no-preference){.pulse-line .eq-bar{animation:eq-bounce 3.2s ease-in-out infinite;}}
+  @keyframes eq-bounce{0%,100%{transform:scaleY(0.3);opacity:0.45;}50%{transform:scaleY(1);opacity:1;}}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:0;margin-bottom:8px;border-top:2px solid var(--ink);padding-top:16px;}
+  .stat{padding:0 28px;border-left:1px solid var(--line);}
+  .stat:first-child{padding-left:0;border-left:none;}
+  .stat b{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:32px;font-weight:600;color:var(--navy-deep);font-variant-numeric:tabular-nums;}
   .stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;}
   .source-mix{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 4px;}
   .source-mix .chip{
@@ -235,21 +275,23 @@
   .search-cta-btn:hover{background:#c91b1f;}
 
   /* ---------- PANEL STEPPER ---------- */
-  .stepper-panel{padding:36px 0;margin:0;border-bottom:1px solid var(--line);}
-  .stepper-panel:last-of-type{border-bottom:none;}
+  .stepper-panel{padding:56px 0;margin:0;border-bottom:none;position:relative;}
+  .stepper-panel::after{content:'';position:absolute;bottom:0;left:calc(-1 * clamp(20px,5vw,56px));right:calc(-1 * clamp(20px,5vw,56px));border-bottom:2px solid var(--ink);}
+  .stepper-panel:nth-of-type(even)::before{content:'';position:absolute;top:0;bottom:0;left:calc(-1 * clamp(20px,5vw,56px));right:calc(-1 * clamp(20px,5vw,56px));background:var(--cream);z-index:-1;}
 
   /* ---------- SECTION HEADS ---------- */
   .section{margin:64px 0;}
   .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px;gap:16px;flex-wrap:wrap;}
-  .section-head h2{font-size:26px;font-weight:600;margin:0;color:var(--navy-deep);display:flex;align-items:center;gap:12px;}
+  .section-head h2{font-family:var(--font-display,'Lato',sans-serif);font-size:28px;font-weight:900;letter-spacing:-0.01em;margin:0;color:var(--navy-deep);display:flex;align-items:center;gap:12px;}
   .panel-icon{width:22px;height:22px;flex:0 0 auto;color:var(--red);}
   .panel-icon svg{width:100%;height:100%;}
-  .section-head p{font-size:14px;color:var(--muted);margin:6px 0 0;max-width:56ch;}
+  .section-head p{font-size:14px;color:var(--muted);margin:6px 0 0;max-width:56ch;text-align:justify;}
   .count-pill{font-size:12px;font-weight:700;color:var(--navy);background:var(--cream-2);border-radius:0;padding:5px 12px;white-space:nowrap;}
 
   .tag{font-size:10.5px;color:var(--navy);background:var(--cream-2);border-radius:0;padding:3px 7px;white-space:nowrap;}
   .tag.more{color:var(--muted);background:transparent;border:1px dashed var(--line);}
-  .badge{font-size:10.5px;font-weight:700;background:var(--cream-2);color:var(--navy);border-radius:0;padding:4px 9px;white-space:nowrap;}
+  .badge{display:inline-flex;align-items:center;vertical-align:middle;line-height:1.2;font-size:10.5px;font-weight:700;background:var(--cream-2);color:var(--navy);border-radius:0;padding:4px 9px;white-space:nowrap;}
+  .badge-sm{padding:2px 7px;font-size:9px;}
   .badge[data-type="Push Media"]{background:rgba(240,101,61,0.14);color:var(--c-conflict);}
   .badge[data-type="Creator"]{background:rgba(0,184,169,0.14);color:var(--c-economy);}
   .badge[data-type="Digital-native publisher"]{background:rgba(59,76,202,0.1);color:var(--c-politics);}
@@ -271,7 +313,7 @@
   .feed-title{font-size:14px;font-weight:600;line-height:1.4;}
   .feed-title a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(2,32,105,0.25);}
   .feed-title a:hover{border-bottom-color:var(--navy);}
-  .feed-sub{font-size:12px;color:var(--muted);margin-top:3px;}
+  .feed-sub{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.9;}
   .feed-date{font-size:12px;color:var(--muted);white-space:nowrap;}
 
   /* ---------- RECENT COVERAGE: 3-up topic columns ---------- */
@@ -285,7 +327,10 @@
   #feedSortToggle button.active{background:var(--navy);border-color:var(--navy);color:#fff;}
   .feed-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   @media(max-width:900px){.feed-columns{grid-template-columns:1fr;}}
-  .feed-col{background:#fff;border:1px solid var(--line);border-radius:0;padding:20px;min-width:0;}
+  .feed-col{background:#fff;border:1px solid var(--line);border-radius:0;padding:20px;min-width:0;display:flex;flex-direction:column;height:560px;}
+  .feed-col-list{overflow-y:auto;flex:1;min-height:0;scrollbar-width:thin;scrollbar-color:var(--line) transparent;}
+  .feed-col-list::-webkit-scrollbar{width:6px;}
+  .feed-col-list::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px;}
   .feed-col-head{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
   .feed-col-sw{width:10px;height:10px;border-radius:3px;flex:0 0 auto;}
   .feed-col-head h3{font-size:14px;font-weight:900;color:var(--navy-deep);}
@@ -339,7 +384,12 @@
   .event-map-board{display:grid;grid-template-columns:minmax(280px,1.2fr) minmax(300px,0.9fr);gap:20px;align-items:start;}
   @media(max-width:860px){.event-map-board{grid-template-columns:1fr;}}
   .event-map-card{background:#fff;border:1px solid var(--line);border-radius:0;padding:16px;}
-  #eventsMap{width:100%;height:520px;border-radius:0;background:var(--cream-3);}
+  #eventsMap{width:100%;height:520px;border-radius:0;background:var(--cream-3);position:relative;z-index:0;isolation:isolate;}
+  .leaflet-control-zoom{border-radius:0 !important;box-shadow:none !important;border:1px solid var(--line) !important;}
+  .leaflet-control-zoom a{border-radius:0 !important;color:var(--navy-deep) !important;}
+  .leaflet-popup-content-wrapper{border-radius:0 !important;box-shadow:0 4px 16px rgba(2,32,105,0.15) !important;}
+  .leaflet-popup-tip{border-radius:0 !important;}
+  .event-map-kicker{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:0 0 16px;display:block;}
   .event-map-detail{
     background:#fff;border:1px solid var(--line);border-radius:0;padding:20px 22px;
     box-sizing:border-box;overflow-y:auto;
@@ -455,16 +505,19 @@
     <a href="index.html" class="cs-brand">
       <span class="cs-wordmark">CivicSignal</span>
     </a>
-    <nav class="cs-navlinks">
+    <button class="cs-nav-toggle" type="button" aria-expanded="false" aria-controls="csNavLinks" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="cs-navlinks" id="csNavLinks">
       <a href="index.html">Overview</a>
       <div class="cs-navdrop">
-        <button class="cs-navdrop-btn active" type="button" aria-expanded="false">Tools</button>
+        <button class="cs-navdrop-btn" type="button" aria-expanded="false">Tools</button>
         <div class="cs-navdrop-menu">
           <a href="mediadata.html">MediaData</a>
           <a href="mediacloud.html">MediaCloud</a>
           <a href="mediascapes.html">MediaScapes</a>
           <div class="cs-navdrop-divider"></div>
-          <a href="wavelength.html" class="active">Wavelength</a>
+          <a href="wavelength.html">Wavelength</a>
           <a href="fingerprints.html">Fingerprints</a>
           <a href="push-media.html">Push Media</a>
         </div>
@@ -502,8 +555,31 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
     drop.querySelector('.cs-navdrop-btn').classList.add('active');
   }
 });
+var csNavToggle = document.querySelector('.cs-nav-toggle');
+var csNavLinks = document.getElementById('csNavLinks');
+if(csNavToggle && csNavLinks){
+  csNavToggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = csNavLinks.classList.toggle('cs-nav-open');
+    csNavToggle.setAttribute('aria-expanded', String(open));
+    if(!open){
+      csNavLinks.querySelectorAll('.cs-navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+    }
+  });
+  csNavLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      csNavLinks.classList.remove('cs-nav-open');
+      csNavToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 860){
+      csNavLinks.classList.remove('cs-nav-open');
+      csNavToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
 </script>
-
 
 <header class="hero" id="pulse">
   <div class="wrap">
@@ -518,19 +594,10 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
     </div>
     <h1 class="hero-title">Wavelength</h1>
     <p class="hero-sub">CivicSignal listens in on independent digital publishers, creator-journalists, and newsletter/Telegram push-media channels across the continent — tracking what they cover, in which languages, and how coverage shifts week to week.</p>
-    <div class="pulse-line" aria-hidden="true">
-      <svg viewBox="0 0 600 34" preserveAspectRatio="none">
-        <path d="M0,17 L40,17 L52,4 L64,30 L76,17 L110,17 L122,10 L134,24 L146,17 L600,17" />
-      </svg>
-    </div>
+    <div class="pulse-line" aria-hidden="true"><div class="eq-bar" style="height:8px;animation-delay:0.00s;opacity:1.00;background:rgb(235,34,39);"></div><div class="eq-bar" style="height:19px;animation-delay:0.15s;opacity:0.89;background:rgb(229,37,44);"></div><div class="eq-bar" style="height:22px;animation-delay:0.30s;opacity:0.63;background:rgb(223,39,48);"></div><div class="eq-bar" style="height:14px;animation-delay:0.45s;opacity:0.78;background:rgb(216,42,53);"></div><div class="eq-bar" style="height:14px;animation-delay:0.60s;opacity:0.97;background:rgb(210,44,57);"></div><div class="eq-bar" style="height:22px;animation-delay:0.75s;opacity:0.97;background:rgb(204,47,62);"></div><div class="eq-bar" style="height:19px;animation-delay:0.90s;opacity:0.77;background:rgb(198,50,66);"></div><div class="eq-bar" style="height:8px;animation-delay:1.05s;opacity:0.63;background:rgb(191,52,71);"></div><div class="eq-bar" style="height:19px;animation-delay:1.20s;opacity:0.90;background:rgb(185,55,76);"></div><div class="eq-bar" style="height:22px;animation-delay:1.35s;opacity:1.00;background:rgb(179,57,80);"></div><div class="eq-bar" style="height:14px;animation-delay:1.50s;opacity:0.89;background:rgb(173,60,85);"></div><div class="eq-bar" style="height:14px;animation-delay:1.65s;opacity:0.62;background:rgb(166,63,89);"></div><div class="eq-bar" style="height:22px;animation-delay:1.80s;opacity:0.78;background:rgb(160,65,94);"></div><div class="eq-bar" style="height:19px;animation-delay:1.95s;opacity:0.98;background:rgb(154,68,98);"></div><div class="eq-bar" style="height:8px;animation-delay:2.10s;opacity:0.97;background:rgb(148,70,103);"></div><div class="eq-bar" style="height:19px;animation-delay:2.25s;opacity:0.76;background:rgb(141,73,108);"></div><div class="eq-bar" style="height:22px;animation-delay:2.40s;opacity:0.64;background:rgb(135,76,112);"></div><div class="eq-bar" style="height:14px;animation-delay:2.55s;opacity:0.90;background:rgb(129,78,117);"></div><div class="eq-bar" style="height:15px;animation-delay:2.70s;opacity:1.00;background:rgb(123,81,121);"></div><div class="eq-bar" style="height:22px;animation-delay:2.85s;opacity:0.88;background:rgb(116,84,126);"></div><div class="eq-bar" style="height:19px;animation-delay:3.00s;opacity:0.61;background:rgb(110,86,131);"></div><div class="eq-bar" style="height:9px;animation-delay:3.15s;opacity:0.79;background:rgb(104,89,135);"></div><div class="eq-bar" style="height:19px;animation-delay:3.30s;opacity:0.98;background:rgb(98,91,140);"></div><div class="eq-bar" style="height:21px;animation-delay:3.45s;opacity:0.97;background:rgb(91,94,144);"></div><div class="eq-bar" style="height:13px;animation-delay:3.60s;opacity:0.76;background:rgb(85,97,149);"></div><div class="eq-bar" style="height:15px;animation-delay:3.75s;opacity:0.65;background:rgb(79,99,153);"></div><div class="eq-bar" style="height:22px;animation-delay:3.90s;opacity:0.91;background:rgb(73,102,158);"></div><div class="eq-bar" style="height:18px;animation-delay:4.05s;opacity:1.00;background:rgb(66,104,163);"></div><div class="eq-bar" style="height:9px;animation-delay:4.20s;opacity:0.88;background:rgb(60,107,167);"></div><div class="eq-bar" style="height:20px;animation-delay:4.35s;opacity:0.60;background:rgb(54,110,172);"></div><div class="eq-bar" style="height:21px;animation-delay:4.50s;opacity:0.80;background:rgb(48,112,176);"></div><div class="eq-bar" style="height:13px;animation-delay:4.65s;opacity:0.98;background:rgb(41,115,181);"></div><div class="eq-bar" style="height:15px;animation-delay:4.80s;opacity:0.96;background:rgb(35,117,185);"></div><div class="eq-bar" style="height:22px;animation-delay:4.95s;opacity:0.75;background:rgb(29,120,190);"></div></div>
     <div class="hero-stats" id="heroStats"></div>
     <div class="source-mix" id="sourceMix"></div>
     <span class="share-note" id="pageShareNote" hidden></span>
-    <div class="header-mark" aria-hidden="true">
-      <div class="hm-row hm-row1"><span></span></div>
-      <div class="hm-row hm-row2"><span></span></div>
-      <div class="hm-row hm-row3"><span></span></div>
-    </div>
   </div>
 </header>
 
@@ -610,6 +677,7 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
       <p class="legend-note">Solid border = city-level, real coordinates. Dashed border = country fallback (no confident city match).</p>
       <div class="event-map-board">
         <div class="event-map-card">
+          <span class="event-map-kicker">Live coverage map</span>
           <div id="eventsMap"></div>
           <p class="map-note">Base map &copy; <a href="https://www.esri.com" target="_blank" rel="noopener">Esri</a>.</p>
         </div>
@@ -723,34 +791,27 @@ document.querySelectorAll('.cs-navdrop').forEach(function(drop){
 
 </main>
 
-<section class="closing-banner simple">
-  <div class="wrap">
-    <h2>The map is moving. CivicSignal is how you keep up with it.</h2>
-    <p>Investigate the full spectrum of Africa's media landscape &mdash; from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
-    <a class="closing-banner-cta" href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates">Connect to CivicSignal</a>
-  </div>
-</section>
-
-<footer class="close">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand-logos">
-        <img src="assets/cfa-logo.png" alt="Code for Africa">
-        <span class="divider"></span>
-        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance">
+<section class="footer-merged" style="background:var(--navy-deep);padding:56px 0 0;">
+  <div class="wrap cs-footer-cols">
+    <div>
+      <h2 style="color:#fff;font-family:'Lato',sans-serif;font-weight:900;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.08;letter-spacing:-.02em;margin:0;max-width:24ch;">The map is moving. CivicSignal is how you keep up with it.</h2>
+      <p style="color:#C7CEE0;font-size:1rem;line-height:1.55;max-width:56ch;margin:18px 0 26px;">Investigate the full spectrum of Africa's media landscape — from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
+      <a href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates" style="display:inline-block;font-family:'Lato',sans-serif;font-weight:700;font-size:14px;color:#fff;background:var(--red);padding:15px 26px;text-decoration:none;">Connect to CivicSignal</a>
+    </div>
+    <div>
+      <div class="cs-footer-logos">
+        <img src="assets/cfa-logo.png" alt="Code for Africa" style="height:52px;width:auto;">
+        <span style="width:1px;height:42px;background:var(--line);"></span>
+        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance" style="height:44px;width:auto;">
       </div>
-      <p class="footer-brand-copy">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
+      <p style="font-size:12.5px;line-height:1.65;color:#9FA9C9;margin:0;">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
     </div>
   </div>
-</footer>
-
-<div class="cs-footbar">
-  <div class="cs-footbar-inner">
-    <span>CivicSignal &middot; Code for Africa</span>
-    <a href="index.html">&larr; All CivicSignal pages</a>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:24px;padding:16px 0;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:#8791AC;">
+    <span>CivicSignal &middot; Code for Africa &mdash; working showcase, not for distribution</span>
+    <a href="index.html" style="color:#8791AC;">&larr; All CivicSignal pages</a>
   </div>
-</div>
-
+</section>
 <script>
 // This page holds no data of its own - every number, chart and list below comes from
 // showcase_data.json, fetched fresh each time the page loads. Refreshing that JSON file
@@ -823,6 +884,7 @@ heroStats.innerHTML = statDefs.map(([v,l]) => `
     <b class="count-up" data-target="${v}">0</b>
     <span>${l}</span>
   </div>`).join('');
+
 
 document.querySelectorAll('.count-up').forEach(el => {
   const target = Number(el.dataset.target) || 0;
@@ -1094,7 +1156,7 @@ function renderFeedColumns(){
         <div class="feed-row">
           <div>
             <div class="feed-title">${f.url ? `<a href="${f.url}" target="_blank" rel="noopener">${f.title}</a>` : f.title}</div>
-            <div class="feed-sub">${f.publisher} &middot; ${f.country}${f.entityType ? ` &middot; <span class="badge" data-type="${f.entityType}" style="padding:2px 8px;font-size:10px;">${f.entityType}</span>` : ''}</div>
+            <div class="feed-sub">${f.publisher} &middot; ${f.country}${f.entityType ? ` &middot; <span class="badge badge-sm" data-type="${f.entityType}">${f.entityType}</span>` : ''}</div>
             <div class="feed-date">${f.date}</div>
           </div>
         </div>`).join('')
@@ -1106,7 +1168,7 @@ function renderFeedColumns(){
           <h3>${label}</h3>
         </div>
         <div class="feed-col-summary">${summary}</div>
-        ${rows}
+        <div class="feed-col-list">${rows}</div>
       </div>`;
   }).join('');
 }
@@ -1513,7 +1575,7 @@ function renderEntityDetail(e){
         <div class="feed-row">
           <div>
             <div class="feed-title">${s.url ? `<a href="${s.url}" target="_blank" rel="noopener">${escapeHtml(s.title)}</a>` : escapeHtml(s.title)}</div>
-            <div class="feed-sub">${escapeHtml(s.publisher)} &middot; ${escapeHtml(s.country)} &middot; <span class="badge" data-type="${s.entityType}" style="padding:2px 8px;font-size:10px;">${s.entityType}</span></div>
+            <div class="feed-sub">${escapeHtml(s.publisher)} &middot; ${escapeHtml(s.country)} &middot; <span class="badge badge-sm" data-type="${s.entityType}">${s.entityType}</span></div>
             <div class="feed-date">${s.date || ''}</div>
           </div>
         </div>`).join('')}

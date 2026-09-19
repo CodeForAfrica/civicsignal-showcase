@@ -166,6 +166,7 @@
   .panel-note{font-size:12px;color:var(--muted);}
   .week-nav{display:flex;align-items:center;gap:10px;}
   .week-nav .panel-note{min-width:132px;text-align:center;font-weight:600;color:var(--navy);}
+  .panel-toolbar{flex-wrap:wrap;padding-bottom:16px;margin-bottom:14px;border-bottom:1px solid var(--line);}
   .week-btn{
     background:#fff;border:1px solid var(--line);border-radius:0;width:28px;height:28px;
     font-size:16px;font-weight:700;color:var(--navy);cursor:pointer;line-height:1;
@@ -195,6 +196,20 @@
   .chart-box{height:320px;position:relative;margin-top:6px;}
   .week-empty-note{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);}
   @media(max-width:720px){.chart-box{height:260px;}}
+
+  /* ---------- streamgraph major-event callouts: sit on top of the chart itself,
+     not in reserved blank space, so the tag can be bigger without shrinking the chart ---------- */
+  .event-callouts{position:absolute;inset:0;pointer-events:none;}
+  .evt-callout-line{position:absolute;width:0;border-left:1px dashed;pointer-events:none;opacity:0.8;}
+  .evt-callout{
+    position:absolute;transform:translateX(-50%);pointer-events:auto;cursor:pointer;
+    border:none;border-radius:0;color:#fff;font-family:'Lato',sans-serif;font-size:8.5px;font-weight:700;
+    padding:3px 7px;width:190px;line-height:10.5px;text-align:left;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+    box-shadow:0 1px 4px rgba(0,0,0,0.25);
+  }
+  .evt-callout:hover{filter:brightness(1.12);}
+  .legend .legend-events-more{color:var(--red);font-weight:700;text-decoration:underline;}
 
   /* ---------- FILTER BAR ---------- */
   .filters{
@@ -612,7 +627,17 @@ if(csNavToggle && csNavLinks){
         <h2><span class="panel-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1 8c1.1-3.4 2.7-3.4 3.8 0s2.7 3.4 3.8 0 2.7-3.4 3.8 0 1.6 1.7 2.6 1.7"/></svg></span>Weekly Signal</h2>
         <p>One week of coverage at a time, broken down by topic. Step back with &lsaquo; to compare against earlier weeks, or filter by country and language below; the legend re-ranks itself by whichever week and filter you're looking at.</p>
       </div>
-      <div class="week-nav">
+    </div>
+    <div class="filters">
+      <label>Country
+        <select id="fWeekCountry"><option value="all">All countries</option></select>
+      </label>
+      <label>Language
+        <select id="fWeekLang"><option value="all">All languages</option></select>
+      </label>
+    </div>
+    <div class="panel">
+      <div class="week-nav panel-toolbar">
         <button class="week-btn" id="weekPrev" aria-label="Previous week">‹</button>
         <span class="panel-note" id="chartRange"></span>
         <button class="week-btn" id="weekNext" aria-label="Next week">›</button>
@@ -624,18 +649,8 @@ if(csNavToggle && csNavLinks){
         </button>
         <span class="share-note" id="shareNote" hidden></span>
       </div>
-    </div>
-    <div class="filters">
-      <label>Country
-        <select id="fWeekCountry"><option value="all">All countries</option></select>
-      </label>
-      <label>Language
-        <select id="fWeekLang"><option value="all">All languages</option></select>
-      </label>
-    </div>
-    <div class="panel">
       <div class="legend" id="legend"></div>
-      <div class="chart-box"><canvas id="streamChart"></canvas></div>
+      <div class="chart-box"><canvas id="streamChart"></canvas><div class="event-callouts" id="eventCallouts"></div></div>
       <div id="weekEmptyState"></div>
     </div>
   </section>
@@ -785,7 +800,7 @@ if(csNavToggle && csNavLinks){
       </div>
       <div>
         <h3>Known limits</h3>
-        <p>Publication dates lean heavily on recent scrape runs, keyword classification is heuristic rather than semantic, Arabic-language coverage is detected but not yet topic-classified with dedicated keywords, and Push Media sources are cross-border by nature — they're labeled "Pan-African" rather than attributed to one of the seven tracked countries.</p>
+        <p>Publication dates lean heavily on recent scrape runs, keyword classification is heuristic rather than semantic, Arabic-language coverage is detected but not yet topic-classified with dedicated keywords, and Push Media sources are cross-border by nature — they're labeled "Pan-African" rather than attributed to one of the seven tracked countries. Major Event categories are keyword-scored the same way: an article can score high on a category just by mentioning it in passing rather than reporting on it — a widely-syndicated Dolly Parton obituary was tagged "Natural Disaster" because it recalled her charitable response to a past wildfire and flood, not because it was disaster reporting. The clustering itself (shared entities, tight date window) is still a real, correlated event; the category label is the part that can misfire.</p>
       </div>
     </div>
   </section>
@@ -1017,6 +1032,14 @@ function rankTopicsForWeek(weekDays){
   return [...CATS].sort((a,b) => totals[b]-totals[a]);
 }
 
+// weekday labels on the streamgraph's x-axis - the point is to make the weekend
+// publishing dip legible at a glance, not just visible as an unlabeled notch
+const WEEKDAY_ABBR = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+function dateUTC(dateStr){ const [y,m,d] = dateStr.split('-').map(Number); return new Date(Date.UTC(y, m-1, d)); }
+function isWeekend(dateStr){ const wd = dateUTC(dateStr).getUTCDay(); return wd === 0 || wd === 6; }
+function dayTickLabel(dateStr){ return [WEEKDAY_ABBR[dateUTC(dateStr).getUTCDay()], dateStr.slice(5)]; }
+let currentWeekDays = [];
+
 const ctx = document.getElementById('streamChart').getContext('2d');
 let chart;
 function buildDatasets(weekDays, rankedCats){
@@ -1031,8 +1054,72 @@ function buildDatasets(weekDays, rankedCats){
     pointRadius: 0,
   }));
 }
+// ---- major-event callouts on the streamgraph: the week's top 3 events, anchored
+// on the day each one broke (not repeated across every week it stayed active).
+// Tags sit directly on top of the chart itself, not in reserved blank space above
+// it, so there's room for a 2-line headline at a readable size instead of a
+// single truncated line. ----
+const MAX_EVENT_CALLOUTS = 3;
+const EVENT_ROW_STEP = 42, EVENT_TOP_PAD = 8, EVENT_TAG_HALF_W = 95, EVENT_TAG_H = 36;
+
+function topEventsForWeek(weekDays, n){
+  if(!weekDays.length) return { shown: [], overflow: 0 };
+  const start = weekDays[0], end = weekDays[weekDays.length-1];
+  const inWeek = (DATA.events || []).filter(e => e.startDate >= start && e.startDate <= end);
+  const ranked = inWeek.slice().sort((a,b) => b.articleCount - a.articleCount);
+  return { shown: ranked.slice(0, n), overflow: ranked.length - Math.min(n, ranked.length) };
+}
+
+function eventCalloutTooltip(e){
+  return `Major Event (scroll down for more)\n${e.headline}\n${e.category} · ${e.articleCount} articles, ${e.publisherCount} publishers · ${formatEventDateRange(e)}`;
+}
+
+function scrollToMajorEvents(){
+  document.getElementById('major-events').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// the "+N more" overflow lives in the topic legend, not floating unlabeled over the
+// chart - it needs the word "events" to read on its own, and a legend row already
+// doubles as the chart's index of "things shown here"
+function renderEventOverflowInLegend(overflow){
+  let el = document.getElementById('legendEventsMore');
+  if(overflow > 0){
+    if(!el){
+      el = document.createElement('span');
+      el.id = 'legendEventsMore';
+      el.className = 'item legend-events-more';
+      el.addEventListener('click', scrollToMajorEvents);
+      legendEl.appendChild(el);
+    }
+    el.textContent = `+${overflow} more events this week`;
+  } else if(el){
+    el.remove();
+  }
+}
+
+function renderEventCallouts(){
+  const wrap = document.getElementById('eventCallouts');
+  if(!wrap || !chart) return;
+  const { shown, overflow } = topEventsForWeek(currentWeekDays, MAX_EVENT_CALLOUTS);
+  const chartW = chart.width, baseY = chart.chartArea.bottom;
+  const pieces = shown.map((e, i) => {
+    const idx = currentWeekDays.indexOf(e.startDate);
+    if(idx < 0) return '';
+    const x = Math.min(Math.max(chart.scales.x.getPixelForValue(idx), EVENT_TAG_HALF_W), chartW - EVENT_TAG_HALF_W);
+    const rowY = EVENT_TOP_PAD + i*EVENT_ROW_STEP;
+    const tagBottom = rowY + EVENT_TAG_H;
+    const color = (DATA.eventCategoryColors && DATA.eventCategoryColors[e.category]) || '#022069';
+    return `<div class="evt-callout-line" style="left:${x}px; top:${tagBottom}px; height:${Math.max(0, baseY-tagBottom)}px; border-left-color:${color};"></div>
+      <button type="button" class="evt-callout" style="left:${x}px; top:${rowY}px; background:${color};" title="${escapeHtml(eventCalloutTooltip(e))}" data-scroll-events>${escapeHtml(e.headline)}</button>`;
+  }).join('');
+  wrap.innerHTML = pieces;
+  wrap.querySelectorAll('[data-scroll-events]').forEach(el => el.addEventListener('click', scrollToMajorEvents));
+  renderEventOverflowInLegend(overflow);
+}
+
 function updateChart(){
   const { start, weekDays } = currentWeek();
+  currentWeekDays = weekDays;
   document.getElementById('chartRange').textContent = formatWeekRange(weekDays);
   weekPrevBtn.disabled = start === 0;
   weekNextBtn.disabled = weekOffset === 0;
@@ -1044,14 +1131,15 @@ function updateChart(){
   if(!HAS_CHART) return;
   const datasets = buildDatasets(weekDays, rankedCats);
   if(chart){
-    chart.data.labels = weekDays.map(d=>d.slice(5));
+    chart.data.labels = weekDays.map(dayTickLabel);
     chart.data.datasets = datasets;
     chart.update();
+    renderEventCallouts();
     return;
   }
   chart = new Chart(ctx, {
     type: 'line',
-    data: { labels: weekDays.map(d=>d.slice(5)), datasets },
+    data: { labels: weekDays.map(dayTickLabel), datasets },
     options: {
       responsive:true, maintainAspectRatio:false,
       // render at a higher internal resolution than the CSS display size, so both the on-page
@@ -1059,15 +1147,23 @@ function updateChart(){
       // pixelated when blown up
       devicePixelRatio: Math.max(window.devicePixelRatio || 1, 2.5),
       interaction:{mode:'index', intersect:false},
+      layout:{ padding:{ top: 4 } },
+      onResize: () => renderEventCallouts(),
       plugins:{ legend:{display:false}, tooltip:{
         backgroundColor:'#1B2340', padding:10, titleFont:{weight:700}, bodyFont:{size:11},
       }},
       scales:{
-        x:{ stacked:true, grid:{display:false}, ticks:{color:'#565A66', font:{size:11}} },
+        x:{ stacked:true, grid:{display:false}, ticks:{
+          font:{size:11},
+          // flag Sat/Sun in the accent red so the weekend publishing dip reads as
+          // "oh, it's the weekend" rather than an unexplained notch in the graph
+          color: (c) => (currentWeekDays[c.index] && isWeekend(currentWeekDays[c.index])) ? '#EB2227' : '#565A66',
+        } },
         y:{ stacked:true, grid:{color:'#D7DFEA'}, ticks:{color:'#565A66', font:{size:11}} },
       }
     }
   });
+  renderEventCallouts();
 }
 weekPrevBtn.addEventListener('click', ()=>{ weekOffset++; updateChart(); });
 weekNextBtn.addEventListener('click', ()=>{ if(weekOffset>0){ weekOffset--; updateChart(); } });

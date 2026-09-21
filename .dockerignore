@@ -1,0 +1,8 @@
+**
+!Dockerfile
+!docker/
+!docker/default.conf
+!*.html
+!showcase_data.json
+!assets/
+!assets/**

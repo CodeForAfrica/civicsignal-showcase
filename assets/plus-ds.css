@@ -1,0 +1,172 @@
+/* CivicSignal x Plus Alliance design system.
+   Source: the Plus Alliance site (paper and Plus Blue grounds, Poppins, hairlines, square corners, coral for marks only).
+   Linked LAST on every page so it overrides each page's inline <style>. To roll back: remove the two lines
+   (<link> to this file + the Poppins font link) from a page. Data-encoding colours (chart topics, event categories) are
+   deliberately NOT part of the brand palette and are left alone. */
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,900;1,400&display=swap');
+
+/* ---------- 1. tokens ---------- */
+:root{
+  --plus-blue:#0626a9; --plus-red:#f25440; --lavender:#e4e7f6; --paper:#ffffff;
+  --ink-soft:#494645; --ink-muted:#666362; --line-p:#cfcece;
+  --b-ink:#ffffff; --b-soft:#e4e7f6; --b-muted:#ccd2ed; --b-eyebrow:#fbc5bf; --b-line:rgba(119,137,208,.7);
+  --font:'Poppins','Segoe UI',Arial,sans-serif;
+
+  /* roles used by the rules below (paper ground = default) */
+  --fg:#2c2927; --soft:#494645; --hair:#cfcece; --eyebrow:#0626a9; --strong:#2c2927;
+
+  /* the page tokens, remapped onto the system */
+  --ink:#2c2927; --ink-dim:#494645; --ink-faint:#666362; --muted:#666362;
+  --navy:#0626a9; --navy-deep:#0626a9; --blue:#0626a9; --red:#f25440; --red-wash:rgba(242,84,64,.08);
+  --line:#cfcece; --bg:#ffffff; --bg-alt:#e4e7f6; --bg-raised:#ffffff;
+  --cream:#e4e7f6; --cream-2:#e4e7f6; --cream-3:#cfcece;
+  --font-display:var(--font); --font-body:var(--font); --font-mono:var(--font);
+}
+
+/* ---------- 2. base ---------- */
+html{background:#fff;}
+body{font-family:var(--font);font-size:clamp(16px,.35vw + 14.6px,18px);line-height:1.65;font-weight:400;color:var(--fg);-webkit-font-smoothing:antialiased;}
+*,*::before,*::after{font-family:var(--font) !important;}
+code,pre,kbd,samp,code *{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important;}
+h1,h2,h3,h4{font-weight:800;text-wrap:balance;}
+::selection{background:var(--plus-red);color:#fff;}
+:focus-visible{outline:2px solid currentColor;outline-offset:4px;}
+a{color:var(--plus-blue);}
+.num,.stat b,.stat .num,[class*="num"]{font-variant-numeric:tabular-nums;}
+
+/* ---------- 3. grounds: Plus Blue chapters flip the page tokens locally ---------- */
+header.masthead,header.hero,section.footer-merged,.closing-banner:not(.simple){
+  --fg:#fff; --soft:var(--b-soft); --hair:var(--b-line); --eyebrow:var(--b-eyebrow); --strong:#fff;
+  --ink:#fff; --ink-dim:var(--b-soft); --ink-faint:var(--b-muted); --muted:var(--b-muted); --ink-soft:var(--b-soft); --ink-muted:var(--b-muted);
+  --navy:#fff; --navy-deep:#fff; --blue:var(--b-soft);
+  --line:var(--b-line); --bg-alt:rgba(255,255,255,.08); --bg-raised:rgba(255,255,255,.06);
+  --cream:rgba(255,255,255,.08); --cream-2:rgba(255,255,255,.1); --cream-3:var(--b-line);
+  color:#fff;
+}
+header.masthead,header.hero,.closing-banner:not(.simple){background:var(--plus-blue) !important;border-bottom:0;}
+section.footer-merged{background:var(--plus-blue) !important;}
+header.masthead a,header.hero a,section.footer-merged a{color:var(--b-soft);}
+
+/* ---------- 4. nav (the Plus "HUD": blue bar, tracked caps, underlined CTA) ---------- */
+.cs-nav{background:var(--plus-blue);border-bottom:1px solid var(--b-line);}
+.cs-brand{padding:20px 0;}
+.cs-wordmark{font-weight:800;font-size:20px;letter-spacing:-.01em;color:#fff;}
+.cs-navlinks{gap:clamp(18px,2.4vw,32px);}
+.cs-navlinks a,.cs-navdrop-btn{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--b-soft);}
+.cs-navlinks a:hover,.cs-navdrop-btn:hover{color:#fff;}
+.cs-navlinks a.active,.cs-navdrop-btn.active{color:var(--b-eyebrow);}
+.cs-navdrop-menu{background:var(--plus-blue);border:1px solid var(--b-line);box-shadow:none;margin-top:0;}
+.cs-navdrop-menu a{font-size:13px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--b-soft);}
+.cs-navdrop-menu a:hover{color:#fff;background:rgba(255,255,255,.08);}
+.cs-navdrop-divider{background:var(--b-line);}
+.cs-navlinks a.cs-login-btn{background:none;padding:0;border:0;color:#fff !important;text-decoration:underline;text-underline-offset:5px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;}
+.cs-navlinks a.cs-login-btn:hover{background:none;color:var(--b-eyebrow) !important;}
+@media(max-width:860px){
+  .cs-navlinks{background:var(--plus-blue);border-bottom:1px solid var(--b-line);}
+  .cs-navlinks a,.cs-navdrop-btn{border-bottom:1px solid var(--b-line);}
+  .cs-navlinks .cs-navdrop-menu{background:rgba(0,0,0,.14);}
+  .cs-navlinks .cs-navdrop-menu a{border-bottom:1px solid var(--b-line);}
+  .cs-navlinks a.cs-login-btn{border:0;padding:14px 0;}
+}
+
+/* ---------- 5. masthead / hero ---------- */
+header.masthead{padding:clamp(72px,10vw,128px) 0 clamp(56px,8vw,96px);}
+.masthead-top{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--eyebrow);padding-left:20px;}
+.masthead-top::before{width:8px;height:8px;background:var(--plus-red);}
+header.masthead h1,h1.headline{font-size:clamp(34px,5.8vw,76px);font-weight:800;line-height:1.04;letter-spacing:-.025em;color:#fff;}
+header.masthead h1 em,h1.headline em{color:var(--b-eyebrow);font-style:normal;}
+.dek,header.masthead p.dek{font-size:clamp(18px,1.7vw,22px);font-weight:300;line-height:1.5;color:var(--b-soft);max-width:54ch;}
+
+/* ---------- 6. chapters on paper ---------- */
+section.block{padding:clamp(64px,9vw,112px) 0;border-bottom:1px solid var(--line-p);}
+section.block h2{font-size:clamp(26px,3.6vw,44px);font-weight:800;line-height:1.08;letter-spacing:-.015em;color:var(--fg);}
+section.block .lede{font-size:clamp(17px,1.5vw,20px);font-weight:300;line-height:1.5;color:var(--soft);}
+section.block .lede strong{font-weight:600;color:var(--fg);}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.08em;line-height:16px;color:var(--eyebrow);gap:12px;}
+.kicker::before{width:8px;height:8px;background:var(--plus-red);}
+.note{background:var(--lavender);border-left:4px solid var(--plus-blue);color:var(--ink-soft);}
+.post-card::before{width:8px;height:8px;clip-path:none;background:var(--plus-red);top:36px;}
+.post-card:first-child::before{top:8px;}
+.post-card h3 a,.report-title a{color:var(--fg);border-bottom-color:rgba(6,38,169,.3);}
+.post-read,.report-go{color:var(--plus-blue);border-bottom-color:var(--plus-blue);font-weight:700;letter-spacing:.04em;}
+.post-read:hover,.report-go:hover{color:#041a7a;border-bottom-color:#041a7a;}
+.report-list{border-top:2px solid var(--fg);}
+.report-year{color:var(--plus-blue);}
+.sources-note,.sources-note a{color:var(--ink-muted);}
+
+/* ---------- 7. calls to action: square, tracked caps. Blue on paper, white on blue. ---------- */
+.closing-banner-cta,.dev-cta-btn,.lab-cta-btn,.fp-see-all,.login-submit,.search-cta-btn,.wavelength-banner-inner .cta{
+  background:var(--plus-blue);color:#fff;border:0;border-radius:0;
+  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+}
+.closing-banner-cta:hover,.dev-cta-btn:hover,.lab-cta-btn:hover,.fp-see-all:hover,.login-submit:hover,.search-cta-btn:hover,.wavelength-banner-inner .cta:hover{background:#041a7a;color:#fff;}
+.closing-banner:not(.simple) .closing-banner-cta,section.footer-merged a[href^="mailto"]{
+  background:#fff !important;color:var(--plus-blue) !important;font-size:12px !important;font-weight:700 !important;letter-spacing:.08em;text-transform:uppercase;border-radius:0;
+}
+section.footer-merged a[href^="mailto"]:hover{background:var(--lavender) !important;}
+
+/* ---------- 8. footer ---------- */
+.cs-footer-cols{border-bottom-color:var(--b-line);}
+.cs-footbar,.cs-footbar-inner,.cs-footbar-inner a,section.footer-merged .wrap > span,section.footer-merged .wrap > a{color:var(--b-muted) !important;}
+section.footer-merged p{color:var(--b-soft) !important;}
+section.footer-merged h2{letter-spacing:-.02em;}
+
+/* ---------- 9. inline-styled CTAs and red-text leftovers ---------- */
+/* coral never carries text: anything that was red text becomes Plus Blue (or the light coral eyebrow on blue) */
+.panel-icon,.tag-cnti,.tag-oasis,.finding .fn,.finding-icon,.layer-ledger-labels span:last-child,
+.legend .legend-events-more,.product-dummy-note,.product-waitlist-cta,.quote-card .src,.fp-see-link:hover{color:var(--plus-blue);}
+.tool-teaser-soon{color:var(--b-eyebrow);border-color:var(--b-eyebrow);}
+/* inline primary CTA (background:var(--red) in the markup): blue on paper, white on blue */
+a[style*="background:var(--red)"]{
+  background:var(--plus-blue) !important;color:#fff !important;border-radius:0 !important;
+  font-size:12px !important;font-weight:700 !important;letter-spacing:.08em;text-transform:uppercase;padding:16px 26px !important;
+}
+header.masthead a[style*="background:var(--red)"],header.hero a[style*="background:var(--red)"],section.footer-merged a[style*="background:var(--red)"]{
+  background:#fff !important;color:var(--plus-blue) !important;
+}
+/* inline secondary CTA (outlined) */
+header.masthead a[style*="border:2px solid"]{
+  font-size:12px !important;font-weight:700 !important;letter-spacing:.08em;text-transform:uppercase;border-radius:0 !important;padding:14px 24px !important;
+}
+
+/* ---------- 10. Wavelength / Fingerprints hero (header.hero) ---------- */
+header.hero{padding:clamp(72px,10vw,128px) 0 clamp(56px,8vw,96px);}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;line-height:16px;color:var(--eyebrow);padding-left:20px;}
+.eyebrow::before{width:8px;height:8px;background:var(--plus-red);}
+h1.hero-title{font-size:clamp(44px,8vw,112px);font-weight:800;line-height:1.02;letter-spacing:-.03em;color:#fff;max-width:14ch;margin-bottom:28px;}
+.hero-sub{font-size:clamp(18px,1.7vw,22px);font-weight:300;line-height:1.5;color:var(--b-soft);max-width:54ch;}
+.pulse-line .eq-bar{background:var(--b-eyebrow) !important;}
+.hero-stats{border-top:2px solid #fff;}
+.stat b{font-weight:800;font-size:clamp(26px,3vw,36px);}
+.stat span{color:var(--b-muted);font-weight:600;letter-spacing:.08em;}
+.source-mix .chip{background:transparent;border:1px solid var(--b-line);color:#fff;}
+.source-mix .chip b{color:#fff;}
+
+/* ---------- 11. headings and big numerals are ink on paper (white on blue); blue is for eyebrows and links ---------- */
+.section-head h2,.metric-card .metric-value,.toolstat-card .num,.lit-heading,.compare-value,.lb-value,.event-stats b,
+.cluster-card h4,.feed-col-head h3,.lab-experiment-title,.limits-list li b,.stat .num{color:var(--fg);}
+
+/* ---------- 12. footer bottom row: an inline padding:16px 0 zeroed the side gutters on narrow screens ---------- */
+section.footer-merged .wrap[style*="padding:16px 0"]{padding-left:clamp(20px,5vw,56px) !important;padding-right:clamp(20px,5vw,56px) !important;}
+
+/* ---------- 13. SERIF VARIANT (Plus Alliance html[data-v="serif"]) ----------
+   Every header and big numeral in Merriweather 900; eyebrows, nav labels and body copy stay Poppins.
+   Switch it off by removing data-v="serif" from <html>. */
+html[data-v="serif"]{--serif:'Merriweather',Georgia,'Times New Roman',serif;}
+html[data-v="serif"] :is(h1,h2,h3,h4,.stat b,.stat .num,.num,.footprint-stat .num,.metric-value,.lb-value,.compare-value,
+  .report-year,.report-title,.tool-teaser-name,.event-headline,.cluster-card h4,.feed-title){
+  font-family:var(--serif) !important;font-synthesis:none;font-weight:900;letter-spacing:-.005em;
+}
+html[data-v="serif"] header.masthead h1,html[data-v="serif"] h1.headline,html[data-v="serif"] h1.hero-title{
+  font-size:clamp(30px,5.2vw,72px);line-height:1.1;letter-spacing:-.005em;
+}
+html[data-v="serif"] h1.hero-title{font-size:clamp(36px,6.6vw,96px);}
+html[data-v="serif"] section.block h2,html[data-v="serif"] .section-head h2{line-height:1.16;letter-spacing:-.005em;}
+html[data-v="serif"] .stat b{font-size:clamp(24px,2.6vw,32px);}
+html[data-v="serif"] .report-title{font-size:1.08rem;line-height:1.35;}
+html[data-v="serif"] .cs-wordmark,html[data-v="serif"] .cs-navlinks *,html[data-v="serif"] .kicker,html[data-v="serif"] .eyebrow,html[data-v="serif"] .masthead-top{font-family:var(--font) !important;}
+
+/* ---------- 14. CTAs may wrap on narrow phones instead of pushing the page wider ---------- */
+.closing-banner-cta,.dev-cta-btn,.lab-cta-btn,.fp-see-all,.login-submit,.search-cta-btn,.wavelength-banner-inner .cta,
+a[style*="background:var(--red)"],section.footer-merged a[href^="mailto"]{max-width:100%;white-space:normal;text-align:center;}

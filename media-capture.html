@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en" data-v="serif">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CivicSignal &mdash; Media Capture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#022069; --navy-deep:#051335;
+    --red:#EB2227; --red-wash:rgba(235,34,39,0.08);
+    --blue:#1D78BE;
+    --bg:#FFFFFF; --bg-alt:#F4F3F0; --bg-raised:#FFFFFF;
+    --line:#E2E0DA;
+    --ink:#16181C; --ink-dim:#565A66; --ink-faint:#8A8E99;
+    --font-display:'Lato',-apple-system,'Segoe UI',sans-serif;
+    --font-body:'Lato',-apple-system,'Segoe UI',sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;}
+  html{background:var(--bg);}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:var(--blue);}
+  img,svg{max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
+  @media(max-width:720px){.wrap{padding:0 18px;}}
+  h1,h2,h3{font-family:var(--font-display);font-weight:900;text-wrap:balance;margin:0;letter-spacing:-0.01em;}
+  .kicker{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .kicker::before{content:'';display:block;flex:0 0 auto;width:22px;height:3px;background:var(--red);}
+  section.block.sources-block{padding:0 0 32px;}
+  .sources-note{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);letter-spacing:0.02em;line-height:1.7;max-width:80ch;}
+  .sources-note a{color:var(--ink-faint);text-decoration:underline;}
+  .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;}
+
+    .cs-nav{position:sticky;top:0;z-index:100;background:var(--navy);border-bottom:2px solid var(--red);}
+  .cs-nav-top-inner{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;line-height:1;}
+  @media(max-width:720px){.cs-nav-top-inner{padding:0 18px;}}
+  .cs-brand{display:flex;align-items:center;gap:12px;text-decoration:none;padding:18px 0;}
+  .cs-wordmark{font-family:'Lato',sans-serif;font-weight:900;font-size:19px;color:#fff;letter-spacing:0.01em;}
+  .cs-navlinks a.cs-login-btn{display:inline-flex;align-items:center;justify-content:center;line-height:1;background:var(--red);border-radius:0;padding:9px 18px;color:#fff !important;font-weight:700;font-size:13px;text-decoration:none;text-transform:none;letter-spacing:normal;font-family:'Lato',sans-serif;border-bottom:none;margin-bottom:0;transition:background .15s ease;align-self:center;}
+  .cs-navlinks a.cs-login-btn:hover{background:#c91b1f;color:#fff;}
+  .cs-navlinks{display:flex;gap:26px;align-items:center;flex-wrap:wrap;}
+  .cs-navlinks a,.cs-navdrop-btn{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:#B9C2DA;padding:18px 0 16px;border:none;border-bottom:3px solid transparent;background:none;text-decoration:none;cursor:pointer;white-space:nowrap;margin-bottom:-2px;}
+  .cs-navlinks a:hover,.cs-navdrop-btn:hover{color:#fff;}
+  .cs-navlinks a.active,.cs-navdrop-btn.active{color:var(--red);border-bottom-color:transparent;}
+  .cs-nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;padding:0;border:none;background:none;cursor:pointer;}
+  .cs-nav-toggle span{display:block;width:100%;height:2px;background:#fff;transition:transform .2s ease,opacity .2s ease;}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .cs-nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media(max-width:860px){
+    .cs-nav-toggle{display:flex;}
+    .cs-navlinks{
+      display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;
+      gap:0;background:var(--navy-deep);border-bottom:2px solid var(--red);
+      max-height:calc(100vh - 100%);overflow-y:auto;
+    }
+    .cs-navlinks.cs-nav-open{display:flex;}
+    .cs-navlinks a,.cs-navdrop-btn{width:100%;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:0;justify-content:space-between;}
+    .cs-navlinks a.cs-login-btn{margin:14px 18px;width:auto;}
+    .cs-navdrop{width:100%;}
+    .cs-navdrop-btn{width:100%;justify-content:space-between;}
+    .cs-navlinks .cs-navdrop-menu{
+      display:none;position:static;background:rgba(0,0,0,0.15);border:none;box-shadow:none;
+      padding:0;margin:0;min-width:0;
+    }
+    .cs-navlinks .cs-navdrop.open .cs-navdrop-menu{display:block;}
+    .cs-navlinks .cs-navdrop-menu a{padding:12px 18px 12px 32px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  }
+  .cs-footer-cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;align-items:start;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12);}
+  @media(max-width:760px){.cs-footer-cols{grid-template-columns:1fr;gap:32px;}}
+  .cs-footer-logos{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:22px;background:#fff;padding:16px 20px;margin-bottom:16px;}
+  .cs-footer-logos img{max-width:100%;}
+  .cs-footbar{background:var(--navy-deep);}
+  .cs-footbar-inner{max-width:1120px;margin:0 auto;padding:16px clamp(20px,5vw,56px);font-family:var(--font-body);font-size:12.5px;color:#8791AC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .cs-footbar-inner a{color:#8791AC;}
+
+  header.masthead{background:var(--bg-alt);border-bottom:1px solid var(--line);padding:clamp(48px,8vw,80px) 0 48px;}
+  .masthead-top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px;padding-left:32px;font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:0.08em;color:var(--navy);text-transform:uppercase;line-height:1.2;}
+  .masthead-top::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:22px;height:3px;background:var(--red);}
+  h1.headline{font-size:clamp(2rem,5vw,3.3rem);line-height:1.1;max-width:18ch;letter-spacing:-0.015em;}
+  h1.headline em{font-style:normal;color:var(--navy);}
+  .dek{margin-top:20px;max-width:64ch;font-size:1.1rem;color:var(--ink-dim);}
+
+  section.block{padding:clamp(48px,8vw,84px) 0;border-bottom:1px solid var(--line);}
+  section.block h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:16px;max-width:28ch;}
+  section.block .lede{font-size:1.03rem;color:var(--ink-dim);max-width:70ch;margin-bottom:28px;}
+  section.block .lede strong{color:var(--ink);font-weight:700;}
+
+  .post-list{display:flex;flex-direction:column;gap:0;}
+  .post-card{position:relative;padding:28px 0 28px 24px;border-bottom:1px solid var(--line);}
+  .post-card:first-child{padding-top:0;}
+  .post-card::before{
+    content:'';
+    position:absolute;top:28px;left:0;width:11px;height:18px;
+    background:var(--navy);
+    clip-path:polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+  }
+  .post-card:first-child::before{top:0;}
+  .post-meta{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;}
+  .post-card h3{font-size:1.2rem;margin-bottom:10px;}
+  .post-card h3 a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(2,32,105,0.25);}
+  .post-card h3 a:hover{border-bottom-color:var(--navy);}
+  .post-card p{font-size:14.5px;color:var(--ink-dim);line-height:1.65;max-width:75ch;margin:0 0 12px;}
+  .post-read{display:inline-block;font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:0.03em;color:var(--red);text-decoration:none;border-bottom:1px solid var(--red);}
+  .post-read:hover{color:#c91b1f;border-bottom-color:#c91b1f;}
+
+  .note{background:var(--bg-alt);border-left:4px solid var(--navy);border-radius:0;padding:18px 22px;font-size:13.5px;color:var(--ink-dim);max-width:72ch;}
+  .note b{color:var(--ink);}
+
+  .closing-banner{background:var(--red);padding:clamp(48px,8vw,76px) 0;}
+  .closing-banner h2{color:#fff;font-size:clamp(1.8rem,5vw,3.25rem);line-height:1.05;letter-spacing:-0.02em;margin:0;max-width:24ch;}
+  .closing-banner p{margin:22px 0 32px;font-size:1.05rem;line-height:1.55;color:#fff;max-width:62ch;}
+  .closing-banner-cta{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--red);background:#fff;padding:16px 28px;text-decoration:none;}
+  footer.close{background:var(--navy-deep);color:#EFE9E2;padding:0;margin-top:0;}
+  footer.close a{color:#F0A0A2;}
+  .tool-teaser-soon{display:inline-block;margin-left:8px;font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:0.05em;text-transform:none;color:var(--red);border:1px solid var(--red);border-radius:0;padding:1px 8px;vertical-align:middle;}
+  .footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:44px 0 40px;border-bottom:1px solid rgba(255,255,255,0.12);}
+  @media(max-width:760px){.footer-grid{grid-template-columns:1fr;}}
+  .footer-brand-logos{display:flex;align-items:center;gap:22px;background:#fff;border-radius:0;padding:16px 20px;justify-self:start;}
+  .footer-brand-logos img{height:52px;width:auto;display:block;}
+  .footer-brand-logos .footer-plus{height:44px;}
+  .footer-brand-logos .divider{width:1px;height:42px;background:var(--line);}
+  .footer-brand-copy{font-size:12.5px;line-height:1.65;color:#9FA9C9;max-width:60ch;}
+  .footer-brand-copy b{color:#EFE9E2;}
+  .search-cta-btn{flex:0 0 auto;background:var(--red);color:#fff;font-weight:700;font-size:13.5px;padding:13px 24px;border-radius:0;text-decoration:none;white-space:nowrap;}
+  .search-cta-btn:hover{background:#c91b1f;}
+
+    .cs-navdrop{position:relative;}
+  .cs-navdrop-btn{display:flex;align-items:center;gap:5px;}
+  .cs-navdrop-btn::after{content:'';width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;margin-top:2px;transition:transform .15s ease;}
+  .cs-navdrop.open .cs-navdrop-btn::after{transform:rotate(180deg);}
+  .cs-navdrop-menu{display:none;position:absolute;top:100%;left:0;margin-top:2px;background:var(--navy-deep);border:1px solid rgba(255,255,255,0.12);padding:8px 0;min-width:180px;box-shadow:0 12px 28px rgba(0,0,0,0.3);z-index:50;}
+  .cs-navdrop.open .cs-navdrop-menu{display:block;}
+  .cs-navdrop-menu a{display:block;padding:8px 16px;color:#B9C2DA;font-family:'Lato',sans-serif;font-weight:700;font-size:13px;text-decoration:none;letter-spacing:0.01em;white-space:nowrap;border:none;margin:0;text-transform:none;}
+  .cs-navdrop-menu a:hover{color:#fff;background:rgba(255,255,255,0.06);}
+  .cs-navdrop-menu a.active{color:#fff;border:none;}
+  .cs-navdrop-divider{height:1px;background:rgba(255,255,255,0.12);margin:6px 12px;}
+  .closing-banner.simple{background:var(--bg,#FFFFFF);padding:clamp(40px,7vw,56px) 0;border-top:2px solid var(--ink);}
+  .closing-banner.simple h2{color:var(--ink);font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.25;letter-spacing:-0.01em;max-width:32ch;}
+  .closing-banner.simple p{margin:14px 0 24px;color:var(--ink-dim,var(--muted));font-size:1rem;max-width:62ch;}
+  .closing-banner.simple .closing-banner-cta{background:var(--red);color:#fff;padding:14px 26px;font-size:14px;}
+  .closing-banner.simple .closing-banner-cta:hover{background:#c91b1f;}
+
+  .report-list{display:flex;flex-direction:column;border-top:2px solid var(--ink);}
+  .report-row{display:grid;grid-template-columns:88px minmax(0,1fr) auto;column-gap:28px;row-gap:6px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line);}
+  .report-year{font-family:var(--font-mono);font-weight:600;font-size:15px;color:var(--navy);font-variant-numeric:tabular-nums;}
+  .report-title{font-family:var(--font-display);font-weight:900;font-size:1.12rem;line-height:1.3;margin:0;letter-spacing:-0.005em;}
+  .report-title a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(2,32,105,0.25);}
+  .report-title a:hover{border-bottom-color:var(--navy);}
+  .report-meta{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;margin-top:6px;}
+  .report-desc{font-size:14.5px;color:var(--ink-dim);line-height:1.65;max-width:68ch;margin:8px 0 0;}
+  .report-go{font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:0.03em;color:var(--red);text-decoration:none;border-bottom:1px solid var(--red);white-space:nowrap;}
+  .report-go:hover{color:#c91b1f;border-bottom-color:#c91b1f;}
+  @media(max-width:720px){.report-row{grid-template-columns:minmax(0,1fr);}.report-go{justify-self:start;margin-top:4px;}}
+</style>
+<link rel="stylesheet" href="assets/plus-ds.css">
+</head>
+<body>
+
+<header class="cs-nav">
+  <div class="cs-nav-top-inner">
+    <a href="index.html" class="cs-brand">
+      <span class="cs-wordmark">CivicSignal</span>
+    </a>
+    <button class="cs-nav-toggle" type="button" aria-expanded="false" aria-controls="csNavLinks" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="cs-navlinks" id="csNavLinks">
+      <a href="index.html">Overview</a>
+      <div class="cs-navdrop">
+        <button class="cs-navdrop-btn" type="button" aria-expanded="false">Tools</button>
+        <div class="cs-navdrop-menu">
+          <a href="mediadata.html">MediaData</a>
+          <a href="mediacloud.html">MediaCloud</a>
+          <a href="mediascapes.html">MediaScapes</a>
+          <div class="cs-navdrop-divider"></div>
+          <a href="wavelength.html">Wavelength</a>
+          <a href="fingerprints.html">Fingerprints</a>
+          <a href="push-media.html">Push Media</a>
+        </div>
+      </div>
+      <div class="cs-navdrop">
+        <button class="cs-navdrop-btn" type="button" aria-expanded="false">Research</button>
+        <div class="cs-navdrop-menu">
+          <a href="project-oasis.html">Digital Natives</a>
+          <a href="cnti-creators.html">Creators</a>
+          <a href="digital-news.html">Digital News Reports</a>
+          <div class="cs-navdrop-divider"></div>
+          <a href="media-capture.html">Media Capture</a>
+          <a href="media-vulnerability.html">Media Vulnerability</a>
+          <a href="mediameltdown.html">MediaMeltdown</a>
+        </div>
+      </div>
+      <a href="lab-narrative-threads.html">Lab</a>
+      <a href="about.html">About</a>
+      <a href="https://tools.civicsignal.africa/#/login" class="cs-login-btn">Log in</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+document.querySelectorAll('.cs-navdrop-btn').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var drop = btn.closest('.cs-navdrop');
+    var wasOpen = drop.classList.contains('open');
+    document.querySelectorAll('.cs-navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+    if(!wasOpen) drop.classList.add('open');
+  });
+});
+document.addEventListener('click', function(){
+  document.querySelectorAll('.cs-navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+});
+document.querySelectorAll('.cs-navdrop').forEach(function(drop){
+  if(drop.querySelector('.cs-navdrop-menu a.active')){
+    drop.querySelector('.cs-navdrop-btn').classList.add('active');
+  }
+});
+var csNavToggle = document.querySelector('.cs-nav-toggle');
+var csNavLinks = document.getElementById('csNavLinks');
+if(csNavToggle && csNavLinks){
+  csNavToggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = csNavLinks.classList.toggle('cs-nav-open');
+    csNavToggle.setAttribute('aria-expanded', String(open));
+    if(!open){
+      csNavLinks.querySelectorAll('.cs-navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+    }
+  });
+  csNavLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      csNavLinks.classList.remove('cs-nav-open');
+      csNavToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 860){
+      csNavLinks.classList.remove('cs-nav-open');
+      csNavToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+</script>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-top">
+      <span>CivicSignal Research &middot; Media capture</span>
+      <span>2 reports</span>
+    </div>
+    <h1 class="headline">How media gets <em>captured</em>.</h1>
+    <p class="dek">CivicSignal and Code for Africa research on media capture &mdash; how outlets and journalists come under the influence of state and other powerful actors, and what that does to editorial independence.</p>
+  </div>
+</header>
+
+<!-- TODO: add the 2026 climate-capture report here once its title and link are confirmed. -->
+<section class="block">
+  <div class="wrap">
+    <span class="kicker">The reports</span>
+    <h2>Capture, case by case.</h2>
+    <div class="report-list">
+      <div class="report-row">
+        <div class="report-year">2026</div>
+        <div class="report-body">
+          <h3 class="report-title"><a href="mailto:civicsignal@theplusalliance.org?subject=Media%20Capture%20report%20request">Media Capture: How foreign states infiltrate media in francophone West Africa</a></h3>
+          <div class="report-meta">CivicSignal &middot; GIZ SRIEWA partnership &middot; Available on request</div>
+        <p class="report-desc">Traces how state-linked entities in C&ocirc;te d'Ivoire, Senegal and Niger drew outlets and journalists into relationships that embedded foreign narratives and distorted editorial practice.</p>
+        </div>
+        <a class="report-go" href="mailto:civicsignal@theplusalliance.org?subject=Media%20Capture%20report%20request">Request the report &rarr;</a>
+      </div>
+      <div class="report-row">
+        <div class="report-year">2024</div>
+        <div class="report-body">
+          <h3 class="report-title"><a href="https://research.civicsignal.africa/media/CfA_ADDO_Media_Capture_Report.pdf" target="_blank" rel="noopener">CfA ADDO Media Capture Report</a></h3>
+          <div class="report-meta">Code for Africa &middot; PDF</div>
+        </div>
+        <a class="report-go" href="https://research.civicsignal.africa/media/CfA_ADDO_Media_Capture_Report.pdf" target="_blank" rel="noopener">Open PDF &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block sources-block" style="border-bottom:none;">
+  <div class="wrap">
+    <span class="kicker">Sources</span>
+    <p class="sources-note">The 2024 report is hosted on <a href="https://research.civicsignal.africa" target="_blank" rel="noopener">research.civicsignal.africa</a>, CivicSignal's research site. The 2026 francophone West Africa report is available on request.</p>
+  </div>
+</section>
+
+<section class="footer-merged" style="background:var(--navy-deep);padding:56px 0 0;">
+  <div class="wrap cs-footer-cols">
+    <div>
+      <h2 style="color:#fff;font-family:'Lato',sans-serif;font-weight:900;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.08;letter-spacing:-.02em;margin:0;max-width:24ch;">The map is moving. CivicSignal is how you keep up with it.</h2>
+      <p style="color:#C7CEE0;font-size:1rem;line-height:1.55;max-width:56ch;margin:18px 0 26px;">Investigate the full spectrum of Africa's media landscape — from legacy broadcasters to digital-native newsrooms, creator-journalists, and the newsletters and channels that never touch a website.</p>
+      <a href="mailto:civicsignal@theplusalliance.org?subject=Subscribe%20me%20to%20CivicSignal%20updates" style="display:inline-block;font-family:'Lato',sans-serif;font-weight:700;font-size:14px;color:#fff;background:var(--red);padding:15px 26px;text-decoration:none;">Connect to CivicSignal</a>
+    </div>
+    <div>
+      <div class="cs-footer-logos">
+        <img src="assets/cfa-logo.png" alt="Code for Africa" style="height:52px;width:auto;">
+        <span style="width:1px;height:42px;background:var(--line);"></span>
+        <img class="footer-plus" src="assets/plus-alliance-logo.png" alt="Plus Alliance" style="height:44px;width:auto;">
+      </div>
+      <p style="font-size:12.5px;line-height:1.65;color:#9FA9C9;margin:0;">The Plus Alliance was co-founded by Code for Africa, the International Center for Journalists and PROTO in 2024. The European Journalism Centre joined the Plus Alliance as a constituent member in June 2026. We are registered in South Africa and operate from Cape Town, Delhi, Doha, Maastricht, Nairobi and Washington, DC.</p>
+    </div>
+  </div>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:24px;padding:16px 0;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:#8791AC;">
+    <span>CivicSignal &middot; Code for Africa</span>
+    <a href="index.html" style="color:#8791AC;">&larr; All CivicSignal pages</a>
+  </div>
+</section>
+</body>
+</html>

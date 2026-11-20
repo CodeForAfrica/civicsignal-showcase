@@ -1248,7 +1248,8 @@ function renderCards(){
 
   const groups = groupByType(filtered);
   document.getElementById('pubCount').textContent =
-    `${filtered.length} profiled across ${groups.length} source type${groups.length===1?'':'s'}`;
+    `${filtered.length} profiled across ${groups.length} source type${groups.length===1?'':'s'}`
+    + (DATA.window ? ` · article counts cover the last ${Math.round(DATA.window.days / 30.4)} months` : '');
 
   let radarId = 0;
   const pending = []; // {p, radarId} to mount after the whole carousel's HTML is in the DOM

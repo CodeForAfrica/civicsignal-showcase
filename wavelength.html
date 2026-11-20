@@ -740,11 +740,11 @@ if(csNavToggle && csNavLinks){
     </div>
   </section>
 
-  <section class="section stepper-panel" data-panel-title="Topic &amp; language mix, whole corpus">
+  <section class="section stepper-panel" data-panel-title="Topic &amp; language mix">
     <div class="section-head">
       <div>
-        <h2><span class="panel-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 2a6 6 0 0 1 5.2 9L8 8z"/></svg></span>Topic &amp; language mix, whole corpus</h2>
-        <p>Share of all classified articles by topic and by detected language, across every publisher and country in this dataset.</p>
+        <h2><span class="panel-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 2a6 6 0 0 1 5.2 9L8 8z"/></svg></span>Topic &amp; language mix</h2>
+        <p id="mixPanelNote">Share of all classified articles by topic and by detected language, across every publisher and country in this dataset.</p>
       </div>
     </div>
     <div class="mix-grid">
@@ -889,13 +889,19 @@ if(!HAS_CHART){
     + '</div>');
 }
 
-document.getElementById('liveStatusText').textContent = 'LIVE · UPDATED ' + DATA.generatedAt;
+document.getElementById('liveStatusText').textContent = 'LIVE · UPDATED ' + DATA.generatedAt + (DATA.window ? ' · DATA THROUGH ' + DATA.window.to : '');
+// when the data is a rolling window (not the whole corpus), say so wherever a figure would otherwise read as all-time
+const WINDOW_LABEL = DATA.window ? `last ${Math.round(DATA.window.days / 30.4)} months` : null;
+if (DATA.window) {
+  const fmtD = d => new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  document.getElementById('mixPanelNote').textContent = `Share of classified articles by topic and by detected language, across every publisher and country, from ${fmtD(DATA.window.from)} to ${fmtD(DATA.window.to)}.`;
+}
 
 // ---- header/panel banner: same footprint-row treatment as the index page's masthead stats ----
 // ---- hero stats: animated count-up ----
 const heroStats = document.getElementById('heroStats');
 const statDefs = [
-  [DATA.totals.articles, 'Stories in corpus'],
+  [DATA.totals.articles, WINDOW_LABEL ? 'Stories, ' + WINDOW_LABEL : 'Stories in corpus'],
   [DATA.totals.mapped||0, 'Publishers mapped'],
   [DATA.totals.tracked||0, 'Publishers tracked'],
   [DATA.totals.countries, 'Countries covered'],
